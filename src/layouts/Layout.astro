@@ -1,0 +1,284 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description } = Astro.props;
+
+import '@fontsource/inter/300.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/inter/800.css';
+import '@fontsource/outfit/700.css';
+import '@fontsource/outfit/900.css';
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="theme-color" content="#030303">
+		<title>{title}</title>
+		<meta name="description" content={description || "Click Logística"} />
+		<meta name="description" content={description || "Click Logística"} />
+		<!-- Fonts loaded via @fontsource imports -->
+        <style is:global>
+            /* Global Styles matching original CSS */
+            body {
+                margin: 0;
+                background-color: #030303;
+                font-family: 'Inter', sans-serif;
+            }
+        </style>
+	</head>
+	<body class="text-white antialiased bg-brand-black selection:bg-brand-primary selection:text-black">
+        <!-- Preloader -->
+        <div id="preloader"
+            style="position: fixed; inset: 0; z-index: 9999; background-color: #030303; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.05s ease-out;">
+            <div class="animate-pulse"
+                style="width: 64px; height: 64px; background-color: #EAB308; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; box-shadow: 0 0 40px rgba(234,179,8,0.2);">
+                <span style="font-size: 32px; font-weight: 800; color: #000; font-family: sans-serif;">C</span>
+            </div>
+            <div
+                style="width: 120px; height: 2px; background: rgba(255,255,255,0.1); border-radius: 99px; overflow: hidden;">
+                <div style="width: 50%; height: 100%; background: #EAB308; animation: loading 0.5s infinite ease-in-out;">
+                </div>
+            </div>
+            <style>
+                @keyframes loading {
+                    0% {
+                        transform: translateX(-150%);
+                    }
+    
+                    50% {
+                        transform: translateX(0%);
+                    }
+    
+                    100% {
+                        transform: translateX(150%);
+                    }
+                }
+            </style>
+            <script>
+                // Dismiss immediately when DOM is ready
+                document.addEventListener('DOMContentLoaded', () => {
+                    const p = document.getElementById('preloader');
+                    if (p) {
+                        // Instant removal check
+                        requestAnimationFrame(() => {
+                            p.style.opacity = '0';
+                            setTimeout(() => p.remove(), 50);
+                        });
+                    }
+                });
+                // Fallback
+                window.addEventListener('load', () => {
+                    const p = document.getElementById('preloader');
+                    if (p) p.remove();
+                });
+            </script>
+        </div>
+
+		<!-- Navbar Flotante -->
+		<nav class="fixed w-full z-50 transition-all duration-300 py-6" id="navbar">
+			<div class="max-w-7xl mx-auto px-6 lg:px-8">
+				<div class="flex items-center justify-between h-20">
+					<div class="flex items-center gap-3 cursor-pointer group" onclick="window.location.href='/'">
+						<div
+							class="w-12 h-12 bg-brand-primary rounded-xl flex items-center justify-center text-black font-bold text-2xl shadow-[0_0_20px_rgba(234,179,8,0.3)] group-hover:shadow-[0_0_30px_rgba(234,179,8,0.6)] transition-all">
+							C
+						</div>
+						<span class="text-2xl font-bold tracking-tight text-white">CLICK <span
+								class="text-brand-primary font-normal">Logística</span></span>
+					</div>
+					<div class="hidden md:block">
+						<div class="flex items-baseline space-x-10">
+							<a href="/#ecosistema"
+								class="text-sm font-medium text-gray-400 hover:text-brand-primary transition-colors">Ecosistema</a>
+							<div class="relative group">
+								<button
+									class="flex items-center gap-1 text-sm font-medium text-gray-400 hover:text-brand-primary transition-colors py-2">
+									Nosotros <i class="fa-solid fa-chevron-down text-xs"></i>
+								</button>
+								<div
+									class="absolute top-full left-0 mt-2 w-48 bg-brand-dark/95 backdrop-blur-md border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
+									<a href="/equipo"
+										class="block px-6 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 first:rounded-t-xl transition-colors">Nuestro
+										Equipo</a>
+									<a href="/historia"
+										class="block px-6 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Nuestra
+										Historia</a>
+									<a href="/marcas"
+										class="block px-6 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 last:rounded-b-xl transition-colors">Nuestras
+										Marcas</a>
+								</div>
+							</div>
+							<a href="/empresas"
+								class="text-sm font-medium text-gray-400 hover:text-brand-primary transition-colors">Soy
+								Empresa</a>
+							<a href="/#reclutamiento"
+								class="bg-white text-black px-8 py-3 rounded-full text-sm font-bold hover:bg-brand-primary hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] transition-all transform hover:-translate-y-0.5">
+								Postúlate Ahora
+							</a>
+						</div>
+					</div>
+					<!-- Mobile Menu Button -->
+					<div class="md:hidden">
+						<button id="mobile-menu-open" aria-label="Abrir menú"
+							class="text-white hover:text-brand-primary transition-colors p-2">
+							<i class="fa-solid fa-bars text-2xl"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="fixed inset-0 z-[9999] bg-brand-black transform translate-x-full transition-transform duration-300 md:hidden flex flex-col">
+
+            <!-- Menu Header -->
+            <div class="flex items-center justify-between p-6 border-b border-white/10">
+                <div class="flex items-center gap-2">
+                    <div
+                        class="w-8 h-8 bg-brand-primary rounded-lg flex items-center justify-center text-black font-bold text-lg">
+                        C
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-white">CLICK <span
+                            class="text-brand-primary font-normal">Logística</span></span>
+                </div>
+                <button id="mobile-menu-close" aria-label="Cerrar menú"
+                    class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <nav class="flex flex-col text-left overflow-y-auto">
+                <!-- Nosotros Dropdown -->
+                <div class="border-b border-white/10">
+                    <button id="mobile-submenu-toggle"
+                        class="w-full p-6 text-lg text-white font-medium flex justify-between items-center hover:bg-white/5 transition-colors">
+                        Nosotros
+                        <i id="submenu-arrow"
+                            class="fa-solid fa-chevron-down text-sm text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="nosotros-submenu" class="hidden flex-col bg-white/5">
+                        <a href="/equipo" class="mobile-link block px-8 py-4 text-gray-300 hover:text-white hover:bg-white/5 border-t border-white/10">Nuestro
+                            Equipo</a>
+                        <a href="/historia" class="mobile-link block px-8 py-4 text-gray-300 hover:text-white hover:bg-white/5 border-t border-white/10">Nuestra
+                            Historia</a>
+                        <a href="/marcas" class="mobile-link block px-8 py-4 text-gray-300 hover:text-white hover:bg-white/5 border-t border-white/10">Nuestras
+                            Marcas</a>
+                    </div>
+                </div>
+
+                <!-- Single Links -->
+                <a href="/empresas" class="mobile-link p-6 border-b border-white/10 text-lg text-white font-medium hover:bg-white/5 transition-colors block">
+                    Empresas
+                </a>
+
+                <div class="p-6">
+                    <a href="/#reclutamiento" class="mobile-link block w-full py-4 bg-brand-primary text-black rounded-xl font-bold text-center shadow-[0_4px_15px_rgba(234,179,8,0.3)] hover:shadow-[0_4px_25px_rgba(234,179,8,0.5)] transition-all">
+                        Postúlate Ahora
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+		<slot />
+
+        <!-- WhatsApp Button -->
+        <a id="whatsapp-float"
+            href="https://wa.me/573000000000?text=Hola,%20quisiera%20información%20para%20contratar%20personal"
+            target="_blank" class="fixed bottom-8 right-8 z-50 flex items-center gap-3 group"
+            aria-label="Contactar por WhatsApp">
+            <span
+                class="bg-white text-black px-4 py-2 rounded-lg font-bold text-sm shadow-lg opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0 duration-300 pointer-events-none">
+                ¿Necesitas ayuda inmediata?
+            </span>
+            <div
+                class="w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:shadow-[0_0_30px_rgba(37,211,102,0.8)] hover:scale-110 transition-all font-brands">
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+        </a>
+
+        <!-- Footer -->
+        <footer class="bg-black py-16 border-t border-white/10 text-gray-400 text-sm">
+            <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-black font-bold text-lg">
+                        C
+                    </div>
+                    <span class="font-semibold text-white text-lg">CLICK Logística &copy; 2025</span>
+                </div>
+                <div class="flex gap-8">
+                    <a href="/politica" class="hover:text-brand-primary transition-colors">Aviso de Privacidad</a>
+                    <a href="/terminos" class="hover:text-brand-primary transition-colors">Términos y Condiciones</a>
+                </div>
+                <div class="flex gap-4">
+                    <a href="#" aria-label="LinkedIn"
+                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-primary hover:text-black transition-all"><i
+                            class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"
+                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-primary hover:text-black transition-all"><i
+                            class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Menu Logic
+            const mobileMenuOpen = document.getElementById('mobile-menu-open');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const submenuToggle = document.getElementById('mobile-submenu-toggle');
+            const nosotrosSubmenu = document.getElementById('nosotros-submenu');
+            const submenuArrow = document.getElementById('submenu-arrow');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            function openMobileMenu() {
+                mobileMenu.classList.remove('translate-x-full');
+            }
+
+            function closeMobileMenu() {
+                mobileMenu.classList.add('translate-x-full');
+            }
+
+            function toggleMobileSubmenu() {
+                nosotrosSubmenu.classList.toggle('hidden');
+                nosotrosSubmenu.classList.toggle('flex');
+                submenuArrow.classList.toggle('rotate-180');
+            }
+
+            if(mobileMenuOpen) mobileMenuOpen.addEventListener('click', openMobileMenu);
+            if(mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+            if(submenuToggle) submenuToggle.addEventListener('click', toggleMobileSubmenu);
+            
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+        
+            // Navbar Scroll Logic
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-brand-black/90', 'backdrop-blur-md', 'shadow-lg', 'py-4');
+                    navbar.classList.remove('py-6');
+                } else {
+                    navbar.classList.remove('bg-brand-black/90', 'backdrop-blur-md', 'shadow-lg', 'py-4');
+                    navbar.classList.add('py-6');
+                }
+            });
+        </script>
+        <script>
+            import '../js/main.js';
+        </script>
+	</body>
+</html>
