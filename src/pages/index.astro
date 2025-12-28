@@ -224,7 +224,7 @@ import Layout from '../layouts/Layout.astro';
                                 <label
                                     class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Nombre
                                     Completo</label>
-                                <input type="text"
+                                <input type="text" id="candidate-name"
                                     class="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all focus:bg-black/60"
                                     placeholder="Ej. Juan Pérez">
                             </div>
@@ -232,7 +232,7 @@ import Layout from '../layouts/Layout.astro';
                                 <label
                                     class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Correo
                                     Electrónico</label>
-                                <input type="email"
+                                <input type="email" id="candidate-email"
                                     class="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all focus:bg-black/60"
                                     placeholder="juan@email.com">
                             </div>
@@ -240,7 +240,7 @@ import Layout from '../layouts/Layout.astro';
                                 <label
                                     class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Teléfono
                                     / WhatsApp</label>
-                                <input type="tel"
+                                <input type="tel" id="candidate-phone"
                                     class="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all focus:bg-black/60"
                                     placeholder="+57 300 000 0000">
                             </div>
@@ -261,7 +261,7 @@ import Layout from '../layouts/Layout.astro';
                                 <label class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Área
                                     de Interés</label>
                                 <div class="relative">
-                                    <select
+                                    <select id="candidate-area"
                                         class="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:border-brand-primary focus:outline-none transition-all appearance-none cursor-pointer">
                                         <option>Operario Logístico</option>
                                         <option>Supervisor de Operaciones</option>
@@ -280,21 +280,21 @@ import Layout from '../layouts/Layout.astro';
                                     (Años)</label>
                                 <div class="flex gap-4">
                                     <label class="flex-1 cursor-pointer">
-                                        <input type="radio" name="exp" class="peer sr-only">
+                                        <input type="radio" name="exp" value="0-1" class="peer sr-only">
                                         <div
                                             class="text-center p-4 rounded-xl border border-white/10 hover:bg-white/5 peer-checked:bg-white peer-checked:text-black peer-checked:border-white peer-checked:font-bold transition-all">
                                             0-1
                                         </div>
                                     </label>
                                     <label class="flex-1 cursor-pointer">
-                                        <input type="radio" name="exp" class="peer sr-only">
+                                        <input type="radio" name="exp" value="1-3" class="peer sr-only">
                                         <div
                                             class="text-center p-4 rounded-xl border border-white/10 hover:bg-white/5 peer-checked:bg-white peer-checked:text-black peer-checked:border-white peer-checked:font-bold transition-all">
                                             1-3
                                         </div>
                                     </label>
                                     <label class="flex-1 cursor-pointer">
-                                        <input type="radio" name="exp" class="peer sr-only">
+                                        <input type="radio" name="exp" value="+3" class="peer sr-only">
                                         <div
                                             class="text-center p-4 rounded-xl border border-white/10 hover:bg-white/5 peer-checked:bg-white peer-checked:text-black peer-checked:border-white peer-checked:font-bold transition-all">
                                             +3

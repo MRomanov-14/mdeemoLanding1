@@ -80,34 +80,34 @@ import Layout from '../layouts/Layout.astro';
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-2">
                                 <label class="text-sm text-gray-400 uppercase tracking-wide font-medium">Nombre</label>
-                                <input type="text"
+                                <input type="text" id="company-firstname"
                                     class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-primary focus:outline-none focus:bg-black/60 transition-all placeholder-gray-400"
                                     placeholder="Tu nombre">
                             </div>
                             <div class="space-y-2">
                                 <label
                                     class="text-sm text-gray-400 uppercase tracking-wide font-medium">Apellido</label>
-                                <input type="text"
+                                <input type="text" id="company-lastname"
                                     class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-primary focus:outline-none focus:bg-black/60 transition-all placeholder-gray-400"
                                     placeholder="Tu apellido">
                             </div>
                             <div class="space-y-2 md:col-span-2">
                                 <label class="text-sm text-gray-400 uppercase tracking-wide font-medium">Empresa</label>
-                                <input type="text"
+                                <input type="text" id="company-name"
                                     class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-primary focus:outline-none focus:bg-black/60 transition-all placeholder-gray-400"
                                     placeholder="Nombre de la empresa">
                             </div>
                             <div class="space-y-2">
                                 <label class="text-sm text-gray-400 uppercase tracking-wide font-medium">Email
                                     Corporativo</label>
-                                <input type="email"
+                                <input type="email" id="company-email"
                                     class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-primary focus:outline-none focus:bg-black/60 transition-all placeholder-gray-400"
                                     placeholder="nombre@empresa.com">
                             </div>
                             <div class="space-y-2">
                                 <label
                                     class="text-sm text-gray-400 uppercase tracking-wide font-medium">Teléfono</label>
-                                <input type="tel"
+                                <input type="tel" id="company-phone"
                                     class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-primary focus:outline-none focus:bg-black/60 transition-all placeholder-gray-400"
                                     placeholder="+57 ...">
                             </div>
@@ -127,7 +127,7 @@ import Layout from '../layouts/Layout.astro';
                             <div class="space-y-3 md:col-span-2">
                                 <label class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Cargo
                                     o Puesto Solicitado</label>
-                                <input type="text"
+                                <input type="text" id="company-jobtitle"
                                     class="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all focus:bg-black/60"
                                     placeholder="Ej. Auxiliar Logístico, Supervisor...">
                             </div>
@@ -136,7 +136,7 @@ import Layout from '../layouts/Layout.astro';
                                     class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Cantidad
                                     de Vacantes</label>
                                 <div class="relative">
-                                    <select
+                                    <select id="company-vacancy"
                                         class="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all appearance-none cursor-pointer">
                                         <option>1 - 5</option>
                                         <option>5 - 20</option>
@@ -153,7 +153,7 @@ import Layout from '../layouts/Layout.astro';
                                 <label
                                     class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Ubicación</label>
                                 <div class="relative">
-                                    <select
+                                    <select id="company-location"
                                         class="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all appearance-none cursor-pointer">
                                         <option value="" disabled selected>Selecciona Departamento - Ciudad</option>
                                         <option>Amazonas - Leticia</option>
@@ -199,7 +199,7 @@ import Layout from '../layouts/Layout.astro';
                                 <label
                                     class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Descripción
                                     / Requerimientos</label>
-                                <textarea rows="4"
+                                <textarea id="company-description" rows="4"
                                     class="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-400 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all focus:bg-black/60"
                                     placeholder="Breve descripción de las funciones y requisitos clave..."></textarea>
                             </div>

@@ -79,7 +79,7 @@ export function initFormWizard() {
     });
 
     document.querySelectorAll('[data-action="finish"]').forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', async () => {
             const terms = document.getElementById('terms-recruitment');
             const label = document.querySelector('label[for="terms-recruitment"]');
 
@@ -99,8 +99,42 @@ export function initFormWizard() {
 
                 return;
             }
-            transitionStep('step-3', 'step-success', 'next');
-            document.getElementById('progress-line').style.width = '100%';
+
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
+            btn.disabled = true;
+
+            const expInput = document.querySelector('input[name="exp"]:checked');
+            const data = {
+                fullName: document.getElementById('candidate-name').value,
+                email: document.getElementById('candidate-email').value,
+                phone: document.getElementById('candidate-phone').value,
+                areaInterest: document.getElementById('candidate-area').value,
+                experienceYears: expInput ? expInput.value : ''
+            };
+
+            try {
+                const response = await fetch('/api/candidates', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    transitionStep('step-3', 'step-success', 'next');
+                    document.getElementById('progress-line').style.width = '100%';
+                } else {
+                    const res = await response.json();
+                    alert('Error al enviar: ' + (res.error || 'Intenta nuevamente.'));
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Error de conexión.');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
         });
     });
 

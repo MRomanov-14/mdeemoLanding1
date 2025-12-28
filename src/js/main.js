@@ -195,21 +195,57 @@ function initCounters() {
     document.querySelectorAll('.counter').forEach(el => observer.observe(el));
 }
 // Companies Form Logic
-window.submitForm = function () {
+window.submitForm = async function () {
     const terms = document.getElementById('terms-company');
     if (terms && !terms.checked) {
         alert('Por favor, acepta los Términos y Condiciones para continuar.');
         return;
     }
 
-    const step2 = document.getElementById('step-2');
-    const success = document.getElementById('step-success');
+    const submitBtn = document.querySelector('button[onclick="submitForm()"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
+    submitBtn.disabled = true;
 
-    if (step2 && success) {
-        step2.classList.add('hidden', 'opacity-0');
-        success.classList.remove('hidden');
-        // Simple animation
-        setTimeout(() => success.classList.add('animate-in'), 100);
+    const data = {
+        firstName: document.getElementById('company-firstname').value,
+        lastName: document.getElementById('company-lastname').value,
+        companyName: document.getElementById('company-name').value,
+        email: document.getElementById('company-email').value,
+        phone: document.getElementById('company-phone').value,
+        jobTitle: document.getElementById('company-jobtitle').value,
+        vacancyCount: document.getElementById('company-vacancy').value,
+        location: document.getElementById('company-location').value,
+        description: document.getElementById('company-description').value
+    };
+
+    try {
+        const response = await fetch('/api/companies', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            const step2 = document.getElementById('step-2');
+            const success = document.getElementById('step-success');
+
+            if (step2 && success) {
+                step2.classList.add('hidden', 'opacity-0');
+                success.classList.remove('hidden');
+                setTimeout(() => success.classList.add('animate-in'), 100);
+            }
+        } else {
+            const res = await response.json();
+            alert('Error al enviar: ' + (res.error || 'Intenta nuevamente.'));
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    } catch (err) {
+        console.error(err);
+        alert('Error de conexión.');
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
     }
 };
 
