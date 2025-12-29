@@ -70,7 +70,6 @@ import Layout from '../layouts/Layout.astro';
     <section id="ecosistema" class="py-32 bg-brand-black relative">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-
                 <!-- Columna Texto -->
                 <div class="space-y-10">
                     <div class="space-y-4">
@@ -84,90 +83,51 @@ import Layout from '../layouts/Layout.astro';
                         En CLICK Logística no solo cubrimos vacantes. Analizamos, optimizamos y desplegamos células
                         operativas de alto rendimiento para gigantes de la industria.
                     </p>
-
-                    <div class="grid grid-cols-2 gap-6 pt-4">
-                        <div
-                            class="p-6 bg-white/5 rounded-2xl border border-white/10 hover:border-brand-primary/50 transition-colors">
-                            <div class="text-4xl font-bold text-brand-primary mb-2 counter" data-target="1500">0</div>
-                            <div class="text-sm font-medium text-gray-400 uppercase tracking-wider">Colaboradores
-                                Activos</div>
-                        </div>
-                        <div
-                            class="p-6 bg-white/5 rounded-2xl border border-white/10 hover:border-brand-primary/50 transition-colors">
-                            <div class="text-4xl font-bold text-brand-primary mb-2 counter" data-target="98">0</div>
-                            <div class="text-sm font-medium text-gray-400 uppercase tracking-wider">% Efectividad</div>
-                        </div>
-                        <div
-                            class="p-6 bg-white/5 rounded-2xl border border-white/10 hover:border-brand-primary/50 transition-colors">
-                            <div class="text-4xl font-bold text-brand-primary mb-2 counter" data-target="24">0</div>
-                            <div class="text-sm font-medium text-gray-400 uppercase tracking-wider">Horas Respuesta
+                    <!-- Iconos de Engagement -->
+                    <div class="grid grid-cols-3 gap-6 pt-6 border-t border-white/10 mt-8">
+                        <div class="text-center group cursor-default">
+                            <div class="w-14 h-14 mx-auto bg-white/5 rounded-2xl flex items-center justify-center text-brand-primary mb-3 border border-white/10 group-hover:bg-brand-primary group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.3)]">
+                                <i class="fa-solid fa-rocket text-2xl"></i>
                             </div>
+                            <p class="text-xs font-bold text-gray-300 uppercase tracking-wider group-hover:text-white transition-colors">Agilidad</p>
                         </div>
-                        <div
-                            class="p-6 bg-white/5 rounded-2xl border border-white/10 hover:border-brand-primary/50 transition-colors">
-                            <div class="text-4xl font-bold text-brand-primary mb-2 counter" data-target="12">0</div>
-                            <div class="text-sm font-medium text-gray-400 uppercase tracking-wider">Ciudades</div>
+                        <div class="text-center group cursor-default">
+                            <div class="w-14 h-14 mx-auto bg-white/5 rounded-2xl flex items-center justify-center text-brand-primary mb-3 border border-white/10 group-hover:bg-brand-primary group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.3)]">
+                                <i class="fa-solid fa-user-shield text-2xl"></i>
+                            </div>
+                            <p class="text-xs font-bold text-gray-300 uppercase tracking-wider group-hover:text-white transition-colors">Confianza</p>
+                        </div>
+                        <div class="text-center group cursor-default">
+                            <div class="w-14 h-14 mx-auto bg-white/5 rounded-2xl flex items-center justify-center text-brand-primary mb-3 border border-white/10 group-hover:bg-brand-primary group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.3)]">
+                                <i class="fa-solid fa-chart-pie text-2xl"></i>
+                            </div>
+                            <p class="text-xs font-bold text-gray-300 uppercase tracking-wider group-hover:text-white transition-colors">Resultados</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Columna Visual Cards -->
-                <div class="relative h-[700px] w-full hidden lg:block perspective-1000">
-                    <!-- Cards flotantes estilo "Antigravity" -->
-                    <div
-                        class="absolute top-20 left-10 w-72 p-8 bg-brand-dark/90 rounded-3xl border border-white/10 z-20 animate-float hover:-translate-y-4 transition-all duration-500 shadow-2xl backdrop-blur-sm group">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-brand-primary flex items-center justify-center text-black text-xl">
-                                <i class="fa-solid fa-truck-fast"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-white text-lg">Operaciones</h3>
-                                <p class="text-xs text-brand-primary uppercase tracking-wider font-bold">In-House</p>
-                            </div>
-                        </div>
-                        <p class="text-sm text-gray-400 leading-relaxed group-hover:text-white transition-colors">
-                            Gestión completa de almacenes y última milla con estándares internacionales.</p>
-                    </div>
+                <!-- Columna Visual (Imagen Derecha) -->
+                <div class="relative w-full h-[600px] group rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+                    <!-- Overlay Gradiente -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10 opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
+                    
+                    <img 
+                        src="/images/home1.png" 
+                        alt="Infraestructura Propia Click Logística" 
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out"
+                    />
 
-                    <div class="absolute top-60 right-0 w-72 p-8 bg-brand-dark/90 rounded-3xl border border-white/10 z-10 animate-float hover:-translate-y-4 transition-all duration-500 shadow-2xl backdrop-blur-sm group"
-                        style="animation-delay: 1.5s;">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-black text-xl">
-                                <i class="fa-solid fa-users-viewfinder"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-white text-lg">Reclutamiento 4.0</h3>
-                                <p class="text-xs text-brand-primary uppercase tracking-wider font-bold">IA + Human
-                                    Touch</p>
-                            </div>
-                        </div>
-                        <p class="text-sm text-gray-400 leading-relaxed group-hover:text-white transition-colors">
-                            Filtrado predictivo para encontrar el fit perfecto en tiempo récord.</p>
-                    </div>
-
-                    <div class="absolute bottom-20 left-24 w-72 p-8 bg-brand-dark/90 rounded-3xl border border-white/10 z-30 animate-float hover:-translate-y-4 transition-all duration-500 shadow-2xl backdrop-blur-sm group"
-                        style="animation-delay: 2.5s;">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-gray-800 flex items-center justify-center text-brand-primary text-xl border border-brand-primary/30">
-                                <i class="fa-solid fa-chart-line"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-white text-lg">Analytics</h3>
-                                <p class="text-xs text-brand-primary uppercase tracking-wider font-bold">Real Time</p>
-                            </div>
-                        </div>
-                        <p class="text-sm text-gray-400 leading-relaxed group-hover:text-white transition-colors">
-                            Transparencia total en KPIs de personal y productividad.</p>
-                    </div>
-
-                    <!-- Decorative Glows -->
-                    <div
-                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-primary/10 rounded-full blur-[100px] -z-10">
+                    <!-- Texto sobre imagen -->
+                    <div class="absolute bottom-10 left-10 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <h3 class="text-3xl font-bold text-white mb-2">Infraestructura Propia</h3>
+                        <p class="text-brand-primary text-sm uppercase tracking-widest font-bold">Click Logística</p>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Decorative Glows -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-primary/10 rounded-full blur-[100px] -z-10"></div>
+        </div>
             </div>
         </div>
     </section>
