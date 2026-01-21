@@ -20,8 +20,8 @@ export const POST = async ({ request }) => {
         } = data;
 
         // Basic validation
-        if (!firstName || !email || !companyName) {
-            return new Response(JSON.stringify({ error: 'Faltan campos obligatorios' }), {
+        if (!firstName || !lastName || !companyName || !email || !phone || !jobTitle || !vacancyCount || !location || !description) {
+            return new Response(JSON.stringify({ error: 'Faltan campos obligatorios. Por favor, completa todo el formulario.' }), {
                 status: 400,
                 headers: { 'Content-Type': 'application/json' }
             });

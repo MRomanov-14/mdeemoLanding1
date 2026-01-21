@@ -195,28 +195,80 @@ function initCounters() {
     document.querySelectorAll('.counter').forEach(el => observer.observe(el));
 }
 // Companies Form Logic
+// Helper: Show Visual Error
+function showErrorVisual(input) {
+    input.classList.add('ring-2', 'ring-red-500', 'ring-offset-2', 'bg-red-500/10');
+    
+    // Add shake animation
+    const container = input.parentElement;
+    container.classList.add('animate-shake');
+
+    // Remove error after 3s
+    setTimeout(() => {
+        input.classList.remove('ring-2', 'ring-red-500', 'ring-offset-2', 'bg-red-500/10');
+        container.classList.remove('animate-shake');
+    }, 3000);
+}
+
+// Companies Form Logic
 window.submitForm = async function () {
+    const submitBtn = document.querySelector('button[onclick="submitForm()"]');
     const terms = document.getElementById('terms-company');
+    const termsContainer = terms?.parentElement;
+    
+    let isValid = true;
+
+    // Validate Terms
     if (terms && !terms.checked) {
-        alert('Por favor, acepta los Términos y Condiciones para continuar.');
-        return;
+        if (termsContainer) {
+            termsContainer.classList.add('animate-shake');
+            terms.classList.add('ring-2', 'ring-red-500', 'ring-offset-2');
+            setTimeout(() => {
+                termsContainer.classList.remove('animate-shake');
+                terms.classList.remove('ring-2', 'ring-red-500', 'ring-offset-2');
+            }, 3000);
+        }
+        isValid = false;
     }
 
-    const submitBtn = document.querySelector('button[onclick="submitForm()"]');
+    // Get Fields
+    const fields = {
+        firstName: document.getElementById('company-firstname'),
+        lastName: document.getElementById('company-lastname'),
+        companyName: document.getElementById('company-name'),
+        email: document.getElementById('company-email'),
+        phone: document.getElementById('company-phone'),
+        jobTitle: document.getElementById('company-jobtitle'),
+        vacancyCount: document.getElementById('company-vacancy'),
+        location: document.getElementById('company-location'),
+        description: document.getElementById('company-description')
+    };
+
+    // Validate fields
+    Object.values(fields).forEach(input => {
+        if (!input) return;
+        if (!input.value.trim()) {
+            showErrorVisual(input);
+            isValid = false;
+        }
+    });
+
+    if (!isValid) return;
+
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
     submitBtn.disabled = true;
 
     const data = {
-        firstName: document.getElementById('company-firstname').value,
-        lastName: document.getElementById('company-lastname').value,
-        companyName: document.getElementById('company-name').value,
-        email: document.getElementById('company-email').value,
-        phone: document.getElementById('company-phone').value,
-        jobTitle: document.getElementById('company-jobtitle').value,
-        vacancyCount: document.getElementById('company-vacancy').value,
-        location: document.getElementById('company-location').value,
-        description: document.getElementById('company-description').value
+        firstName: fields.firstName.value.trim(),
+        lastName: fields.lastName.value.trim(),
+        companyName: fields.companyName.value.trim(),
+        email: fields.email.value.trim(),
+        phone: fields.phone.value.trim(),
+        jobTitle: fields.jobTitle.value.trim(),
+        vacancyCount: fields.vacancyCount.value,
+        location: fields.location.value,
+        description: fields.description.value.trim()
     };
 
     try {
@@ -254,6 +306,25 @@ window.nextStep = function () {
     const step2 = document.getElementById('step-2');
     const step1Indicator = document.getElementById('step-1-indicator');
     const step2Indicator = document.getElementById('step-2-indicator');
+
+    // Validation for Step 1
+    const fields = [
+        document.getElementById('company-firstname'),
+        document.getElementById('company-lastname'),
+        document.getElementById('company-name'),
+        document.getElementById('company-email'),
+        document.getElementById('company-phone')
+    ];
+
+    let isValid = true;
+    fields.forEach(input => {
+        if (input && !input.value.trim()) {
+            showErrorVisual(input);
+            isValid = false;
+        }
+    });
+
+    if (!isValid) return;
 
     if (step1 && step2) {
         step1.classList.add('hidden', 'opacity-0');
