@@ -1,0 +1,181 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+    <meta charset="utf-8">
+    <title>Plantilla CV ATS - Click Logística</title>
+    <!--[if gte mso 9]>
+    <xml>
+    <w:WordDocument>
+        <w:View>Print</w:View>
+        <w:Zoom>100</w:Zoom>
+        <w:DoNotOptimizeForBrowser/>
+    </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+        /* Word specific styles */
+        @page {
+            mso-page-orientation: portrait;
+            size: 21cm 29.7cm;
+            margin: 2.5cm 2.5cm 2.5cm 2.5cm;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            font-size: 11pt;
+            line-height: 1.15;
+            tab-interval: 36.0pt;
+        }
+        h1 {
+            font-size: 24pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 6pt;
+            text-align: center;
+        }
+        h2 {
+            font-size: 12pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 1.5pt solid black;
+            padding-bottom: 3pt;
+            margin-top: 18pt;
+            margin-bottom: 6pt;
+        }
+        .header-contact {
+            text-align: center;
+            font-size: 10pt;
+            margin-bottom: 12pt;
+        }
+        .job-block {
+            margin-bottom: 12pt;
+        }
+        p.job-header {
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+            tab-stops: right 450.0pt;
+        }
+        span.date {
+            mso-tab-count: 1;
+            float: right;
+        }
+        .company {
+            font-style: italic;
+            margin-bottom: 4pt;
+        }
+        ul {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        li {
+            margin-bottom: 2pt;
+        }
+        .tips-outer {
+            border: 2pt dotted #eab308;
+            padding: 8pt;
+            margin-bottom: 20pt;
+            background: #ffffff;
+        }
+        .tips-inner {
+            background: #09090b;
+            padding: 15pt;
+            color: #ffffff;
+        }
+        .tips-title {
+            color: #eab308;
+            font-weight: bold;
+            font-size: 12pt;
+            margin-bottom: 8pt;
+            text-transform: uppercase;
+        }
+        .tips-text {
+            color: #ffffff;
+            font-weight: normal;
+            margin-bottom: 8pt;
+        }
+        .tips-text strong {
+            color: #eab308;
+        }
+        .tips-list {
+            margin-left: 15pt;
+        }
+        .tips-list li {
+            color: #ffffff;
+            margin-bottom: 3pt;
+        }
+        .tips-list strong {
+            color: #eab308;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tips-outer">
+        <div class="tips-inner">
+            <p class="tips-title">💡 ATENCIÓN</p>
+            <p class="tips-text">Esta plantilla es compatible con ATS. Guarda este archivo. Reemplaza los textos y guarda como <strong>PDF</strong> para enviar.</p>
+            <ul class="tips-list">
+                <li><strong>Perfil:</strong> Resume tu experiencia en almacenes, manejo de carga o transporte.</li>
+                <li><strong>Experiencia:</strong> Usa verbos como "Cargar", "Organizar", "Despachar", "Verificar".</li>
+                <li><strong>Habilidades:</strong> Menciona herramientas que sepas usar (Montacargas, Gato hidráulico, Pistola de código de barras).</li>
+            </ul>
+        </div>
+    </div>
+
+    <h1>NOMBRE APELLIDO</h1>
+    
+    <p class="header-contact">
+        (57) 300 123 4567 - Ciudad, Barrio - tu-email@ejemplo.com
+    </p>
+
+    <p style="text-align: justify;">
+        [PERFIL PROFESIONAL] Operario logístico responsable y proactivo con experiencia en centros de distribución y almacenes. Capacidad probada para el alistamiento de pedidos (picking/packing), cargue y descargue de mercancía, y control de inventarios. Comprometido con las normas de seguridad industrial y la eficiencia operativa. Disponible para turnos rotativos.
+    </p>
+
+    <h2>EXPERIENCIA LABORAL</h2>
+
+    <div class="job-block">
+        <p class="job-header">Operario Logístico / Auxiliar de Bodega <span style="float:right">Ene 2023 - Presente</span></p>
+        <p class="company">Nombre de la Empresa (Ej. Distribuidora XYZ), Ciudad</p>
+        <p>Responsable de la recepción y despacho de mercancía en el centro de distribución.</p>
+        <ul>
+            <li>Realicé el picking y packing de un promedio de 300 pedidos diarios con 98% de precisión.</li>
+            <li>Operé gato hidráulico (transpaleta) para el movimiento de estibas y organización en estantería.</li>
+            <li>Apoyé en la toma física de inventarios cíclicos mensuales, reportando novedades al supervisor.</li>
+            <li>Garanticé el orden y aseo de la zona de trabajo cumpliendo con las normas de seguridad.</li>
+        </ul>
+    </div>
+
+    <div class="job-block">
+        <p class="job-header">Ayudante de Carga y Descargue (Opcional) <span style="float:right">Jun 2021 - Dic 2022</span></p>
+        <p class="company">Nombre de la Empresa Anterior, Ciudad</p>
+        <p>Apoyo en labores operativas de transporte y almacenamiento.</p>
+        <ul>
+            <li>Realicé cargue y descargue de vehículos de reparto asegurando la integridad de los productos.</li>
+            <li>Verifiqué las cantidades recibidas contra las facturas o remisiones de entrega.</li>
+            <li>Clasifiqué mercancía por referencias y zonas de despacho.</li>
+        </ul>
+    </div>
+
+    <h2>EDUCACIÓN</h2>
+
+    <div class="job-block">
+        <p class="job-header">Nombre del Colegio / Institución <span style="float:right">Año de Grado</span></p>
+        <p class="company">Bachiller Académico / Técnico en Logística</p>
+    </div>
+
+    <h2>CERTIFICACIONES Y CURSOS</h2>
+    <ul>
+        <li>Curso de Manejo Seguro de Montacargas - Entidad (Año)</li>
+        <li>Curso de Trabajo en Alturas (Vigente/Vencido) - Entidad (Año)</li>
+        <li>Manipulación de Alimentos - Entidad (Año)</li>
+    </ul>
+
+    <h2>HABILIDADES</h2>
+    <ul>
+        <li><strong>Herramientas:</strong> Radiofrecuencia (Pistola lectora), Transpaleta manual, Excel básico.</li>
+        <li><strong>Operativas:</strong> Picking, Packing, Inventarios, Cargue y Descargue.</li>
+        <li><strong>Personales:</strong> Puntualidad, Trabajo en equipo, Honestidad, Atención al detalle.</li>
+    </ul>
+
+</body>
+</html>

@@ -1,8 +1,9 @@
-import { neon } from '@neondatabase/serverless';
+import postgres from 'postgres';
 
 export const getDb = () => {
-    if (!import.meta.env.DATABASE_URL) {
-        throw new Error('DATABASE_URL is not defined');
+    const url = import.meta.env.DATABASE_URL || import.meta.env.STGLANDING_POSTGRES_URL;
+    if (!url) {
+        throw new Error('DATABASE_URL or STGLANDING_POSTGRES_URL is not defined');
     }
-    return neon(import.meta.env.DATABASE_URL);
+    return postgres(url);
 };

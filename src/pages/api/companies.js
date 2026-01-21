@@ -28,7 +28,7 @@ export const POST = async ({ request }) => {
         }
 
         await sql`
-            INSERT INTO companies (first_name, last_name, company_name, email, phone, job_title, vacancy_count, location, description)
+            INSERT INTO clicklandingpublic.companies (first_name, last_name, company_name, email, phone, job_title, vacancy_count, location, description)
             VALUES (${firstName}, ${lastName}, ${companyName}, ${email}, ${phone}, ${jobTitle}, ${vacancyCount}, ${location}, ${description})
         `;
 
