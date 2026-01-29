@@ -2,34 +2,34 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="CLICK Logística | Nuestras Marcas">
+<Layout title="CLICK Logística | Nuestras Marcas" forcedTheme="light">
     <!-- Hero Section -->
     <section
-        class="relative min-h-[60vh] flex flex-col justify-start items-center overflow-hidden bg-brand-black pt-48 pb-20">
+        class="relative min-h-[60vh] flex flex-col justify-start items-center overflow-hidden bg-[var(--color-bg)] pt-48 pb-20">
         <!-- Radial Gradient Overlay -->
         <div
-            class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-brand-primary/10 via-brand-black/50 to-brand-black pointer-events-none">
+            class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-brand-primary/20 via-[var(--color-bg)] to-[var(--color-bg)] pointer-events-none">
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
-            <h1 class="text-3xl md:text-5xl font-black tracking-tight text-white mb-6 leading-tight font-[Outfit]">
+            <h1 class="text-3xl md:text-5xl font-black tracking-tight text-[var(--color-text)] mb-6 leading-tight font-[Outfit]">
                 ECOSISTEMA DE<br />
                 <span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-yellow-200 to-brand-primary">MARCAS</span>
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-brand-primary/60 to-brand-primary">MARCAS</span>
             </h1>
 
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-400 font-light leading-relaxed mb-8">
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-[var(--color-text-muted)] font-light leading-relaxed mb-8">
                 Soluciones especializadas que convergen para cubrir cada aspecto de tu operación.
             </p>
         </div>
     </section>
 
     <!-- Brands Carousel Section -->
-    <section class="py-24 bg-black relative overflow-hidden">
+    <section class="py-24 bg-[var(--color-bg)] relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 mb-16 text-center">
-            <h2 class="text-3xl font-bold text-white mb-4 font-['Outfit']">Nuestras Alianzas</h2>
+            <h2 class="text-3xl font-bold text-[var(--color-text)] mb-4 font-['Outfit']">Nuestras Alianzas</h2>
             <div class="w-24 h-1 bg-brand-primary mx-auto rounded-full"></div>
-            <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Empresas líderes que confían en nuestra infraestructura
+            <p class="mt-4 text-[var(--color-text-muted)] max-w-2xl mx-auto">Empresas líderes que confían en nuestra infraestructura
                 logística.</p>
         </div>
 
@@ -37,86 +37,86 @@ import Layout from '../layouts/Layout.astro';
         <div class="relative flex overflow-x-hidden group">
             <!-- Gradient Masks for seamless fade effect -->
             <div
-                class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none">
+                class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[var(--color-bg)] to-transparent z-10 pointer-events-none">
             </div>
             <div
-                class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none">
+                class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[var(--color-bg)] to-transparent z-10 pointer-events-none">
             </div>
 
             <div class="animate-scroll-left flex gap-16 whitespace-nowrap py-4 hover:[animation-play-state:paused]">
                 <!-- Set 1 -->
                 <div class="flex items-center gap-16">
                     <div onclick="openBrandModal('PASAREX')"
-                        class="flex flex-col items-center justify-center px-10 py-6 border border-white/10 rounded-2xl bg-white/5 hover:border-brand-primary/50 hover:bg-white/10 transition-all duration-300 w-72 h-40 group/card cursor-pointer">
+                        class="flex flex-col items-center justify-center px-10 py-6 border border-[var(--color-border)] rounded-2xl bg-[var(--color-surface)] hover:border-brand-primary/50 hover:bg-[var(--color-surface)]/80 transition-all duration-300 w-72 h-40 group/card cursor-pointer shadow-sm">
                         <span
-                            class="text-3xl font-black text-white group-hover/card:text-brand-primary transition-colors tracking-tighter">PASAREX</span>
+                            class="text-3xl font-black text-[var(--color-text)] group-hover/card:text-brand-primary transition-colors tracking-tighter">PASAREX</span>
                     </div>
                     <div onclick="openBrandModal('QUICK')"
-                        class="flex flex-col items-center justify-center px-10 py-6 border border-white/10 rounded-2xl bg-white/5 hover:border-brand-primary/50 hover:bg-white/10 transition-all duration-300 w-72 h-40 group/card cursor-pointer">
+                        class="flex flex-col items-center justify-center px-10 py-6 border border-[var(--color-border)] rounded-2xl bg-[var(--color-surface)] hover:border-brand-primary/50 hover:bg-[var(--color-surface)]/80 transition-all duration-300 w-72 h-40 group/card cursor-pointer shadow-sm">
                         <span
-                            class="text-4xl font-black italic text-white group-hover/card:text-brand-primary transition-colors tracking-wide font-sans">QUICK</span>
+                            class="text-4xl font-black italic text-[var(--color-text)] group-hover/card:text-brand-primary transition-colors tracking-wide font-sans">QUICK</span>
                     </div>
                     <div onclick="openBrandModal('GEODIS')"
-                        class="flex flex-col items-center justify-center px-10 py-6 border border-white/10 rounded-2xl bg-white/5 hover:border-brand-primary/50 hover:bg-white/10 transition-all duration-300 w-72 h-40 group/card cursor-pointer">
+                        class="flex flex-col items-center justify-center px-10 py-6 border border-[var(--color-border)] rounded-2xl bg-[var(--color-surface)] hover:border-brand-primary/50 hover:bg-[var(--color-surface)]/80 transition-all duration-300 w-72 h-40 group/card cursor-pointer shadow-sm">
                         <span
-                            class="text-3xl font-bold text-white group-hover/card:text-brand-primary transition-colors tracking-[0.2em] font-['Inter']">GEODIS</span>
+                            class="text-3xl font-bold text-[var(--color-text)] group-hover/card:text-brand-primary transition-colors tracking-[0.2em] font-['Inter']">GEODIS</span>
                     </div>
                 </div>
 
                 <!-- Set 2 -->
                 <div class="flex items-center gap-16">
                     <div onclick="openBrandModal('PASAREX')"
-                        class="flex flex-col items-center justify-center px-10 py-6 border border-white/10 rounded-2xl bg-white/5 hover:border-brand-primary/50 hover:bg-white/10 transition-all duration-300 w-72 h-40 group/card cursor-pointer">
+                        class="flex flex-col items-center justify-center px-10 py-6 border border-[var(--color-border)] rounded-2xl bg-[var(--color-surface)] hover:border-brand-primary/50 hover:bg-[var(--color-surface)]/80 transition-all duration-300 w-72 h-40 group/card cursor-pointer shadow-sm">
                         <span
-                            class="text-3xl font-black text-white group-hover/card:text-brand-primary transition-colors tracking-tighter">PASAREX</span>
+                            class="text-3xl font-black text-[var(--color-text)] group-hover/card:text-brand-primary transition-colors tracking-tighter">PASAREX</span>
                     </div>
                     <div onclick="openBrandModal('QUICK')"
-                        class="flex flex-col items-center justify-center px-10 py-6 border border-white/10 rounded-2xl bg-white/5 hover:border-brand-primary/50 hover:bg-white/10 transition-all duration-300 w-72 h-40 group/card cursor-pointer">
+                        class="flex flex-col items-center justify-center px-10 py-6 border border-[var(--color-border)] rounded-2xl bg-[var(--color-surface)] hover:border-brand-primary/50 hover:bg-[var(--color-surface)]/80 transition-all duration-300 w-72 h-40 group/card cursor-pointer shadow-sm">
                         <span
-                            class="text-4xl font-black italic text-white group-hover/card:text-brand-primary transition-colors tracking-wide font-sans">QUICK</span>
+                            class="text-4xl font-black italic text-[var(--color-text)] group-hover/card:text-brand-primary transition-colors tracking-wide font-sans">QUICK</span>
                     </div>
                     <div onclick="openBrandModal('GEODIS')"
-                        class="flex flex-col items-center justify-center px-10 py-6 border border-white/10 rounded-2xl bg-white/5 hover:border-brand-primary/50 hover:bg-white/10 transition-all duration-300 w-72 h-40 group/card cursor-pointer">
+                        class="flex flex-col items-center justify-center px-10 py-6 border border-[var(--color-border)] rounded-2xl bg-[var(--color-surface)] hover:border-brand-primary/50 hover:bg-[var(--color-surface)]/80 transition-all duration-300 w-72 h-40 group/card cursor-pointer shadow-sm">
                         <span
-                            class="text-3xl font-bold text-white group-hover/card:text-brand-primary transition-colors tracking-[0.2em] font-['Inter']">GEODIS</span>
+                            class="text-3xl font-bold text-[var(--color-text)] group-hover/card:text-brand-primary transition-colors tracking-[0.2em] font-['Inter']">GEODIS</span>
                     </div>
                 </div>
 
                 <!-- Set 3 -->
                 <div class="flex items-center gap-16">
                     <div onclick="openBrandModal('PASAREX')"
-                        class="flex flex-col items-center justify-center px-10 py-6 border border-white/10 rounded-2xl bg-white/5 hover:border-brand-primary/50 hover:bg-white/10 transition-all duration-300 w-72 h-40 group/card cursor-pointer">
+                        class="flex flex-col items-center justify-center px-10 py-6 border border-[var(--color-border)] rounded-2xl bg-[var(--color-surface)] hover:border-brand-primary/50 hover:bg-[var(--color-surface)]/80 transition-all duration-300 w-72 h-40 group/card cursor-pointer shadow-sm">
                         <span
-                            class="text-3xl font-black text-white group-hover/card:text-brand-primary transition-colors tracking-tighter">PASAREX</span>
+                            class="text-3xl font-black text-[var(--color-text)] group-hover/card:text-brand-primary transition-colors tracking-tighter">PASAREX</span>
                     </div>
                     <div onclick="openBrandModal('QUICK')"
-                        class="flex flex-col items-center justify-center px-10 py-6 border border-white/10 rounded-2xl bg-white/5 hover:border-brand-primary/50 hover:bg-white/10 transition-all duration-300 w-72 h-40 group/card cursor-pointer">
+                        class="flex flex-col items-center justify-center px-10 py-6 border border-[var(--color-border)] rounded-2xl bg-[var(--color-surface)] hover:border-brand-primary/50 hover:bg-[var(--color-surface)]/80 transition-all duration-300 w-72 h-40 group/card cursor-pointer shadow-sm">
                         <span
-                            class="text-4xl font-black italic text-white group-hover/card:text-brand-primary transition-colors tracking-wide font-sans">QUICK</span>
+                            class="text-4xl font-black italic text-[var(--color-text)] group-hover/card:text-brand-primary transition-colors tracking-wide font-sans">QUICK</span>
                     </div>
                     <div onclick="openBrandModal('GEODIS')"
-                        class="flex flex-col items-center justify-center px-10 py-6 border border-white/10 rounded-2xl bg-white/5 hover:border-brand-primary/50 hover:bg-white/10 transition-all duration-300 w-72 h-40 group/card cursor-pointer">
+                        class="flex flex-col items-center justify-center px-10 py-6 border border-[var(--color-border)] rounded-2xl bg-[var(--color-surface)] hover:border-brand-primary/50 hover:bg-[var(--color-surface)]/80 transition-all duration-300 w-72 h-40 group/card cursor-pointer shadow-sm">
                         <span
-                            class="text-3xl font-bold text-white group-hover/card:text-brand-primary transition-colors tracking-[0.2em] font-['Inter']">GEODIS</span>
+                            class="text-3xl font-bold text-[var(--color-text)] group-hover/card:text-brand-primary transition-colors tracking-[0.2em] font-['Inter']">GEODIS</span>
                     </div>
                 </div>
 
                 <!-- Set 4 -->
                 <div class="flex items-center gap-16">
                     <div onclick="openBrandModal('PASAREX')"
-                        class="flex flex-col items-center justify-center px-10 py-6 border border-white/10 rounded-2xl bg-white/5 hover:border-brand-primary/50 hover:bg-white/10 transition-all duration-300 w-72 h-40 group/card cursor-pointer">
+                        class="flex flex-col items-center justify-center px-10 py-6 border border-[var(--color-border)] rounded-2xl bg-[var(--color-surface)] hover:border-brand-primary/50 hover:bg-[var(--color-surface)]/80 transition-all duration-300 w-72 h-40 group/card cursor-pointer shadow-sm">
                         <span
-                            class="text-3xl font-black text-white group-hover/card:text-brand-primary transition-colors tracking-tighter">PASAREX</span>
+                            class="text-3xl font-black text-[var(--color-text)] group-hover/card:text-brand-primary transition-colors tracking-tighter">PASAREX</span>
                     </div>
                     <div onclick="openBrandModal('QUICK')"
-                        class="flex flex-col items-center justify-center px-10 py-6 border border-white/10 rounded-2xl bg-white/5 hover:border-brand-primary/50 hover:bg-white/10 transition-all duration-300 w-72 h-40 group/card cursor-pointer">
+                        class="flex flex-col items-center justify-center px-10 py-6 border border-[var(--color-border)] rounded-2xl bg-[var(--color-surface)] hover:border-brand-primary/50 hover:bg-[var(--color-surface)]/80 transition-all duration-300 w-72 h-40 group/card cursor-pointer shadow-sm">
                         <span
-                            class="text-4xl font-black italic text-white group-hover/card:text-brand-primary transition-colors tracking-wide font-sans">QUICK</span>
+                            class="text-4xl font-black italic text-[var(--color-text)] group-hover/card:text-brand-primary transition-colors tracking-wide font-sans">QUICK</span>
                     </div>
                     <div onclick="openBrandModal('GEODIS')"
-                        class="flex flex-col items-center justify-center px-10 py-6 border border-white/10 rounded-2xl bg-white/5 hover:border-brand-primary/50 hover:bg-white/10 transition-all duration-300 w-72 h-40 group/card cursor-pointer">
+                        class="flex flex-col items-center justify-center px-10 py-6 border border-[var(--color-border)] rounded-2xl bg-[var(--color-surface)] hover:border-brand-primary/50 hover:bg-[var(--color-surface)]/80 transition-all duration-300 w-72 h-40 group/card cursor-pointer shadow-sm">
                         <span
-                            class="text-3xl font-bold text-white group-hover/card:text-brand-primary transition-colors tracking-[0.2em] font-['Inter']">GEODIS</span>
+                            class="text-3xl font-bold text-[var(--color-text)] group-hover/card:text-brand-primary transition-colors tracking-[0.2em] font-['Inter']">GEODIS</span>
                     </div>
                 </div>
             </div>
@@ -126,16 +126,16 @@ import Layout from '../layouts/Layout.astro';
     <!-- Modal de Marcas -->
     <div id="brandModal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
         <!-- Backdrop -->
-        <div class="absolute inset-0 bg-black/90 backdrop-blur-md transition-opacity opacity-0" id="modalBackdrop"></div>
+        <div class="absolute inset-0 bg-[var(--color-bg)]/90 backdrop-blur-md transition-opacity opacity-0" id="modalBackdrop"></div>
 
         <!-- Modal Content -->
         <div class="absolute inset-0 flex items-center justify-center p-4">
-            <div class="bg-brand-dark border border-white/10 rounded-3xl shadow-2xl max-w-4xl w-full transform scale-95 opacity-0 transition-all duration-300 relative overflow-hidden flex flex-col md:flex-row"
+            <div class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl shadow-2xl max-w-4xl w-full transform scale-95 opacity-0 transition-all duration-300 relative overflow-hidden flex flex-col md:flex-row"
                 id="modalContent">
 
                 <!-- Close Button -->
                 <button onclick="closeBrandModal()"
-                    class="absolute top-4 right-4 text-white/50 hover:text-white transition-colors z-20 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-brand-primary hover:text-black backdrop-blur-sm">
+                    class="absolute top-4 right-4 text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors z-20 w-10 h-10 flex items-center justify-center rounded-full bg-[var(--color-bg)]/50 hover:bg-brand-primary hover:text-black backdrop-blur-sm">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
 
@@ -150,12 +150,12 @@ import Layout from '../layouts/Layout.astro';
                 <div class="w-full md:w-1/2 p-8 md:p-12 relative flex flex-col justify-center">
                     <!-- Brand Name -->
                     <h3 id="modalTitle"
-                        class="text-4xl md:text-5xl font-black text-white mb-2 font-['Outfit'] tracking-tight"></h3>
+                        class="text-4xl md:text-5xl font-black text-[var(--color-text)] mb-2 font-['Outfit'] tracking-tight"></h3>
                     <div class="w-20 h-1.5 bg-brand-primary rounded-full mb-8"></div>
 
                     <!-- Achievements List -->
                     <div class="space-y-6">
-                        <h4 class="text-xl font-semibold text-white/90 mb-4 flex items-center gap-2">
+                        <h4 class="text-xl font-semibold text-[var(--color-text)]/90 mb-4 flex items-center gap-2">
                             <i class="fa-solid fa-trophy text-brand-primary"></i>
                             Impacto & Logros
                         </h4>
@@ -164,9 +164,9 @@ import Layout from '../layouts/Layout.astro';
                         </ul>
                     </div>
 
-                    <div class="mt-10 pt-6 border-t border-white/10 flex justify-end">
+                    <div class="mt-10 pt-6 border-t border-[var(--color-border)] flex justify-end">
                         <button onclick="closeBrandModal()"
-                            class="group flex items-center gap-2 text-brand-primary font-bold hover:text-white transition-colors">
+                            class="group flex items-center gap-2 text-brand-primary font-bold hover:text-[var(--color-text)] transition-colors">
                             Cerrar
                             <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                         </button>
@@ -227,8 +227,8 @@ import Layout from '../layouts/Layout.astro';
 
             list.innerHTML = data.achievements
                 .map((item, index) => `
-                    <li class="flex items-start gap-4 text-gray-300 group/item" style="animation-delay: \${index * 100}ms">
-                        <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0 group-hover/item:bg-brand-primary group-hover/item:text-black transition-all duration-300">
+                    <li class="flex items-start gap-4 text-gray-500 group/item" style="animation-delay: \${index * 100}ms">
+                        <div class="w-10 h-10 rounded-lg bg-[var(--color-bg)] flex items-center justify-center shrink-0 group-hover/item:bg-brand-primary group-hover/item:text-black transition-all duration-300 shadow-sm">
                             <i class="\${item.icon} text-lg animate-pulse-slow"></i>
                         </div>
                         <span class="mt-2 text-sm md:text-base leading-relaxed">\${item.text}</span>

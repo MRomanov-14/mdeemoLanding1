@@ -35,19 +35,21 @@ export function initFormWizard() {
         const progressLine = document.getElementById('progress-line');
         const dots = document.querySelectorAll('.step-dot');
 
-        const progress = ((step - 1) / 2) * 100;
+        // Formula: Start at 15% (Step 1), End at 100% (Step 3)
+        // Range = 85%. Each step adds 42.5%
+        const progress = 15 + ((step - 1) / 2) * 85;
         progressLine.style.width = `${progress}%`;
 
         dots.forEach(dot => {
             const s = parseInt(dot.getAttribute('data-step'));
             if (s <= step) {
                 dot.classList.add('bg-brand-primary', 'text-black', 'border-transparent', 'shadow-[0_0_15px_rgba(234,179,8,0.5)]');
-                dot.classList.remove('bg-brand-dark', 'border-white/20', 'text-white');
+                dot.classList.remove('bg-[#262626]', 'border-white/20', 'text-gray-400');
                 if (s < step) dot.innerHTML = '<i class="fa-solid fa-check"></i>';
                 else dot.innerHTML = s;
             } else {
                 dot.classList.remove('bg-brand-primary', 'text-black', 'border-transparent', 'shadow-[0_0_15px_rgba(234,179,8,0.5)]');
-                dot.classList.add('bg-brand-dark', 'border-white/20', 'text-white');
+                dot.classList.add('bg-[#262626]', 'border-white/20', 'text-gray-400');
                 dot.innerHTML = s;
             }
         });

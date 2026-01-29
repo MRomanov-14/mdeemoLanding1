@@ -2,9 +2,10 @@
 interface Props {
 	title: string;
 	description?: string;
+    forcedTheme?: 'light' | 'dark';
 }
 
-const { title, description } = Astro.props;
+const { title, description, forcedTheme } = Astro.props;
 
 import '@fontsource/inter/300.css';
 import '@fontsource/inter/400.css';
@@ -17,7 +18,7 @@ import '@fontsource/outfit/900.css';
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="scroll-smooth" data-theme={forcedTheme}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,20 +31,55 @@ import '@fontsource/outfit/900.css';
 		<!-- Fonts loaded via @fontsource imports -->
         <style is:global>
             /* Global Styles matching original CSS */
+            :root {
+                --color-bg: #030303;
+                --color-text: #ffffff;
+                --color-surface: rgba(255, 255, 255, 0.05);
+                --navbar-bg: rgba(3, 3, 3, 0.9);
+                --color-text-muted: #9ca3af; /* gray-400 */
+                --color-border: rgba(255, 255, 255, 0.1);
+                --color-card-bg: rgba(255, 255, 255, 0.05);
+                --color-input-bg: rgba(0, 0, 0, 0.4);
+                --gradient-from: #eab308;
+                --gradient-via: #fef08a;
+                --gradient-to: #eab308;
+            }
+
+            [data-theme='light'] {
+                --color-bg: #ffffff;
+                --color-text: #000000;
+                --color-surface: #f3f4f6;
+                --navbar-bg: rgba(255, 255, 255, 0.95);
+                --color-text-muted: #4b5563; /* gray-600 */
+                --color-border: rgba(0, 0, 0, 0.1);
+                --color-card-bg: rgba(0, 0, 0, 0.05);
+                --color-input-bg: rgba(243, 244, 246, 0.8);
+                --gradient-from: #c27803;
+                --gradient-via: #eab308;
+                --gradient-to: #c27803;
+            }
+
             body {
                 margin: 0;
-                background-color: #030303;
+                background-color: var(--color-bg) !important;
+                color: var(--color-text) !important;
                 font-family: 'Inter', sans-serif;
                 overflow-x: hidden;
                 width: 100%;
                 position: relative;
+                transition: background-color 0.3s ease, color 0.3s ease;
             }
             html {
                 overflow-x: hidden;
             }
+            
+            /* Theme transitions for other elements */
+            nav, .mobile-link, footer, div, section, button, input {
+                transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+            }
         </style>
 	</head>
-	<body class="text-white antialiased bg-brand-black selection:bg-brand-primary selection:text-black">
+	<body class="antialiased selection:bg-brand-primary selection:text-black">
         <!-- Preloader -->
         <div id="preloader"
             style="position: fixed; inset: 0; z-index: 9999; background-color: #030303; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.05s ease-out;">
@@ -100,44 +136,48 @@ import '@fontsource/outfit/900.css';
 							class="w-12 h-12 bg-brand-primary rounded-xl flex items-center justify-center text-black font-bold text-2xl shadow-[0_0_20px_rgba(234,179,8,0.3)] group-hover:shadow-[0_0_30px_rgba(234,179,8,0.6)] transition-all">
 							C
 						</div>
-						<span class="text-2xl font-bold tracking-tight text-white">CLICK <span
+						<span class="text-2xl font-bold tracking-tight text-[var(--color-text)]">CLICK <span
 								class="text-brand-primary font-normal">Logística</span></span>
 					</div>
+					
 					<div class="hidden md:block">
 						<div class="flex items-baseline space-x-10">
 							<a href="/#ecosistema"
-								class="text-sm font-medium text-gray-400 hover:text-brand-primary transition-colors">Ecosistema</a>
+								class="text-sm font-medium text-[var(--color-text)] hover:text-brand-primary transition-colors">Ecosistema</a>
 							<div class="relative group">
 								<button
-									class="flex items-center gap-1 text-sm font-medium text-gray-400 hover:text-brand-primary transition-colors py-2">
+									class="flex items-center gap-1 text-sm font-medium text-[var(--color-text)] hover:text-brand-primary transition-colors py-2">
 									Nosotros <i class="fa-solid fa-chevron-down text-xs"></i>
 								</button>
 								<div
-									class="absolute top-full left-0 mt-2 w-48 bg-brand-dark/95 backdrop-blur-md border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
+									class="absolute top-full left-0 mt-2 w-48 bg-[var(--color-bg)] backdrop-blur-md border border-[var(--color-border)] rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
 									<a href="/equipo"
-										class="block px-6 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 first:rounded-t-xl transition-colors">Nuestro
+										class="block px-6 py-3 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] first:rounded-t-xl transition-colors">Nuestro
 										Equipo</a>
 									<a href="/historia"
-										class="block px-6 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Nuestra
+										class="block px-6 py-3 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] transition-colors">Nuestra
 										Historia</a>
 									<a href="/marcas"
-										class="block px-6 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 last:rounded-b-xl transition-colors">Nuestras
+										class="block px-6 py-3 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] last:rounded-b-xl transition-colors">Nuestras
 										Marcas</a>
 								</div>
 							</div>
 							<a href="/empresas"
-								class="text-sm font-medium text-gray-400 hover:text-brand-primary transition-colors">Soy
+								class="text-sm font-medium text-[var(--color-text)] hover:text-brand-primary transition-colors">Soy
 								Empresa</a>
 							<a href="/#reclutamiento"
-								class="bg-white text-black px-8 py-3 rounded-full text-sm font-bold hover:bg-brand-primary hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] transition-all transform hover:-translate-y-0.5">
+								class="bg-[var(--color-text)] text-[var(--color-bg)] px-8 py-3 rounded-full text-sm font-bold hover:bg-brand-primary hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] transition-all transform hover:-translate-y-0.5">
 								Postúlate Ahora
 							</a>
+                            <button id="theme-toggle" class="p-2 rounded-full hover:bg-[var(--color-surface)] transition-colors hidden md:flex items-center justify-center w-10 h-10 text-[var(--color-text)]" aria-label="Cambiar tema">
+                                <i class="fa-solid fa-sun text-yellow-500 text-lg transition-transform duration-500" id="theme-icon"></i>
+                            </button>
 						</div>
 					</div>
 					<!-- Mobile Menu Button -->
 					<div class="md:hidden">
 						<button id="mobile-menu-open" aria-label="Abrir menú"
-							class="text-white hover:text-brand-primary transition-colors p-2">
+							class="text-[var(--color-text)] hover:text-brand-primary transition-colors p-2">
 							<i class="fa-solid fa-bars text-2xl"></i>
 						</button>
 					</div>
@@ -147,45 +187,51 @@ import '@fontsource/outfit/900.css';
 
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu"
-            class="fixed inset-0 z-[9999] bg-brand-black transform translate-x-full transition-transform duration-300 md:hidden flex flex-col">
+            class="fixed inset-0 z-[9999] bg-[var(--color-bg)] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col">
 
             <!-- Menu Header -->
-            <div class="flex items-center justify-between p-6 border-b border-white/10">
+            <div class="flex items-center justify-between p-6 border-b border-[var(--color-border)]">
                 <div class="flex items-center gap-2">
                     <div
                         class="w-8 h-8 bg-brand-primary rounded-lg flex items-center justify-center text-black font-bold text-lg">
                         C
                     </div>
-                    <span class="text-xl font-bold tracking-tight text-white">CLICK <span
+                    <span class="text-xl font-bold tracking-tight text-[var(--color-text)]">CLICK <span
                             class="text-brand-primary font-normal">Logística</span></span>
                 </div>
-                <button id="mobile-menu-close" aria-label="Cerrar menú"
-                    class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors">
-                    <i class="fa-solid fa-xmark text-xl"></i>
-                </button>
+                <div class="flex items-center gap-4">
+                     <!-- Mobile Theme Toggle -->
+                    <button id="theme-toggle-mobile" class="p-2 rounded-full hover:bg-[var(--color-surface)] transition-colors flex items-center justify-center w-10 h-10 text-[var(--color-text)]" aria-label="Cambiar tema">
+                        <i class="fa-solid fa-sun text-yellow-500 text-lg transition-transform duration-500" id="theme-icon-mobile"></i>
+                    </button>
+                    <button id="mobile-menu-close" aria-label="Cerrar menú"
+                        class="w-10 h-10 bg-[var(--color-surface)] rounded-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--color-surface)]/80 transition-colors">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
             </div>
 
             <nav class="flex flex-col text-left overflow-y-auto">
                 <!-- Nosotros Dropdown -->
-                <div class="border-b border-white/10">
+                <div class="border-b border-[var(--color-border)]">
                     <button id="mobile-submenu-toggle"
-                        class="w-full p-6 text-lg text-white font-medium flex justify-between items-center hover:bg-white/5 transition-colors">
+                        class="w-full p-6 text-lg text-[var(--color-text)] font-medium flex justify-between items-center hover:bg-[var(--color-surface)] transition-colors">
                         Nosotros
                         <i id="submenu-arrow"
-                            class="fa-solid fa-chevron-down text-sm text-gray-400 transition-transform duration-300"></i>
+                            class="fa-solid fa-chevron-down text-sm text-[var(--color-text-muted)] transition-transform duration-300"></i>
                     </button>
-                    <div id="nosotros-submenu" class="hidden flex-col bg-white/5">
-                        <a href="/equipo" class="mobile-link block px-8 py-4 text-gray-300 hover:text-white hover:bg-white/5 border-t border-white/10">Nuestro
+                    <div id="nosotros-submenu" class="hidden flex-col bg-[var(--color-surface)]">
+                        <a href="/equipo" class="mobile-link block px-8 py-4 text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] border-t border-[var(--color-border)]">Nuestro
                             Equipo</a>
-                        <a href="/historia" class="mobile-link block px-8 py-4 text-gray-300 hover:text-white hover:bg-white/5 border-t border-white/10">Nuestra
+                        <a href="/historia" class="mobile-link block px-8 py-4 text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] border-t border-[var(--color-border)]">Nuestra
                             Historia</a>
-                        <a href="/marcas" class="mobile-link block px-8 py-4 text-gray-300 hover:text-white hover:bg-white/5 border-t border-white/10">Nuestras
+                        <a href="/marcas" class="mobile-link block px-8 py-4 text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] border-t border-[var(--color-border)]">Nuestras
                             Marcas</a>
                     </div>
                 </div>
 
                 <!-- Single Links -->
-                <a href="/empresas" class="mobile-link p-6 border-b border-white/10 text-lg text-white font-medium hover:bg-white/5 transition-colors block">
+                <a href="/empresas" class="mobile-link p-6 border-b border-[var(--color-border)] text-lg text-[var(--color-text)] font-medium hover:bg-[var(--color-surface)] transition-colors block">
                     Empresas
                 </a>
 
@@ -202,7 +248,7 @@ import '@fontsource/outfit/900.css';
         <!-- WhatsApp Button -->
         <a id="whatsapp-float"
             href="https://wa.me/573000000000?text=Hola,%20quisiera%20información%20para%20contratar%20personal"
-            target="_blank" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 flex items-center gap-3 group"
+            target="_blank" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] flex items-center gap-3 group transition-all duration-300"
             aria-label="Contactar por WhatsApp">
             <span
                 class="bg-white text-black px-4 py-2 rounded-lg font-bold text-sm shadow-lg opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0 duration-300 pointer-events-none">
@@ -215,14 +261,14 @@ import '@fontsource/outfit/900.css';
         </a>
 
         <!-- Footer -->
-        <footer class="bg-black py-16 border-t border-white/10 text-gray-400 text-sm">
+        <footer class="bg-[var(--color-bg)] py-16 border-t border-[var(--color-border)] text-[var(--color-text-muted)] text-sm transition-colors duration-300">
             <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
                 <div class="flex items-center gap-3">
                     <div
-                        class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-black font-bold text-lg">
+                        class="w-10 h-10 bg-brand-primary rounded-lg flex items-center justify-center text-black font-bold text-lg shadow-[0_0_10px_rgba(234,179,8,0.3)]">
                         C
                     </div>
-                    <span class="font-semibold text-white text-lg">CLICK Logística &copy; 2025</span>
+                    <span class="font-semibold text-[var(--color-text)] text-lg transition-colors duration-300">CLICK Logística &copy; 2025</span>
                 </div>
                 <div class="flex gap-8">
                     <a href="/politica" class="hover:text-brand-primary transition-colors">Aviso de Privacidad</a>
@@ -230,16 +276,19 @@ import '@fontsource/outfit/900.css';
                 </div>
                 <div class="flex gap-4">
                     <a href="#" aria-label="LinkedIn"
-                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-primary hover:text-black transition-all"><i
+                        class="w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text)] hover:bg-brand-primary hover:text-black hover:border-brand-primary transition-all"><i
                             class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="Instagram"
-                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-primary hover:text-black transition-all"><i
-                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"
+                        class="w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text)] hover:bg-brand-primary hover:text-black hover:border-brand-primary transition-all"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="TikTok"
+                        class="w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text)] hover:bg-brand-primary hover:text-black hover:border-brand-primary transition-all"><i
+                            class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
         </footer>
 
-        <script>
+        <script is:inline define:vars={{ forcedTheme }}>
             // Menu Logic
             const mobileMenuOpen = document.getElementById('mobile-menu-open');
             const mobileMenuClose = document.getElementById('mobile-menu-close');
@@ -250,17 +299,19 @@ import '@fontsource/outfit/900.css';
             const mobileLinks = document.querySelectorAll('.mobile-link');
 
             function openMobileMenu() {
-                mobileMenu.classList.remove('translate-x-full');
+                if (mobileMenu) mobileMenu.classList.remove('translate-x-full');
             }
 
             function closeMobileMenu() {
-                mobileMenu.classList.add('translate-x-full');
+                if (mobileMenu) mobileMenu.classList.add('translate-x-full');
             }
 
             function toggleMobileSubmenu() {
-                nosotrosSubmenu.classList.toggle('hidden');
-                nosotrosSubmenu.classList.toggle('flex');
-                submenuArrow.classList.toggle('rotate-180');
+                if (nosotrosSubmenu && submenuArrow) {
+                    nosotrosSubmenu.classList.toggle('hidden');
+                    nosotrosSubmenu.classList.toggle('flex');
+                    submenuArrow.classList.toggle('rotate-180');
+                }
             }
 
             if(mobileMenuOpen) mobileMenuOpen.addEventListener('click', openMobileMenu);
@@ -274,17 +325,93 @@ import '@fontsource/outfit/900.css';
             // Navbar Scroll Logic
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
+                if (!navbar) return;
+                
                 if (window.scrollY > 50) {
-                    navbar.classList.add('bg-brand-black/90', 'backdrop-blur-md', 'shadow-lg', 'py-4');
+                    navbar.classList.add('backdrop-blur-md', 'shadow-lg', 'py-4');
                     navbar.classList.remove('py-6');
+                    
+                    const theme = document.documentElement.getAttribute('data-theme');
+                    if (theme === 'light') {
+                       navbar.style.backgroundColor = 'rgba(255,255,255,0.9)';
+                       navbar.classList.remove('bg-brand-black/90');
+                    } else {
+                       navbar.style.backgroundColor = 'rgba(3,3,3,0.9)';
+                       navbar.classList.add('bg-brand-black/90');
+                    }
+
                 } else {
                     navbar.classList.remove('bg-brand-black/90', 'backdrop-blur-md', 'shadow-lg', 'py-4');
                     navbar.classList.add('py-6');
+                    navbar.style.backgroundColor = '';
                 }
             });
+
+            // Theme Toggle Logic
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+            const themeIcon = document.getElementById('theme-icon');
+            const themeIconMobile = document.getElementById('theme-icon-mobile');
+            const html = document.documentElement;
+
+            // Initialize
+            let currentTheme = forcedTheme;
+            if (!currentTheme) {
+                currentTheme = localStorage.getItem('theme') || 'dark';
+            }
+            
+            html.setAttribute('data-theme', currentTheme);
+            updateIcon(currentTheme);
+
+            function toggleTheme() {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateIcon(newTheme);
+            }
+
+            if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+            if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
+
+            function updateIcon(theme) {
+                const iconClass = theme === 'dark' 
+                    ? 'fa-solid fa-sun text-yellow-500 text-lg transition-transform duration-500 rotate-0'
+                    : 'fa-solid fa-moon text-brand-primary text-lg transition-transform duration-500 rotate-[360deg]';
+                
+                if (themeIcon) themeIcon.className = iconClass;
+                if (themeIconMobile) themeIconMobile.className = iconClass;
+            }
+
+            // WhatsApp Footer Boundary Logic
+            const whatsappButton = document.getElementById('whatsapp-float');
+            const footer = document.querySelector('footer');
+
+            if (whatsappButton && footer) {
+                function adjustWhatsApp() {
+                    if (!whatsappButton || !footer) return;
+                    
+                    const footerRect = footer.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    const originalBottom = window.innerWidth >= 768 ? 32 : 24; // md:bottom-8 or bottom-6
+
+                    if (footerRect.top < windowHeight) {
+                        const overlap = windowHeight - footerRect.top;
+                        whatsappButton.style.bottom = `${overlap + originalBottom}px`;
+                    } else {
+                        whatsappButton.style.bottom = `${originalBottom}px`;
+                    }
+                }
+
+                window.addEventListener('scroll', adjustWhatsApp);
+                window.addEventListener('resize', adjustWhatsApp);
+                adjustWhatsApp(); // Initial check
+            }
         </script>
         <script>
             import '../js/main.js';
         </script>
 	</body>
 </html>
+
