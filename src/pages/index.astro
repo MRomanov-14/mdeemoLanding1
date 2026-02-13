@@ -310,13 +310,72 @@ import Layout from '../layouts/Layout.astro';
                                     class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[var(--color-text-muted)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all"
                                     placeholder="juan@email.com">
                             </div>
-                            <div class="space-y-3 md:col-span-2">
+                            <div class="space-y-3">
                                 <label
                                     class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Teléfono
                                     / WhatsApp</label>
                                 <input type="tel" id="candidate-phone" required
                                     class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[var(--color-text-muted)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all"
                                     placeholder="300 123 4567">
+                            </div>
+                            <!-- Ciudad -->
+                            <div class="space-y-3">
+                                <label
+                                    class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Ciudad</label>
+                                <div class="relative custom-dropdown" id="dropdown-city-container">
+                                    <input type="hidden" id="candidate-city" required>
+                                    
+                                    <button type="button" id="city-dropdown-trigger"
+                                        class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-left text-[var(--color-text-muted)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all flex items-center justify-between group hover:bg-[var(--color-surface)]">
+                                        <span id="city-dropdown-label" class="flex items-center gap-3">
+                                            Selecciona tu ciudad
+                                        </span>
+                                        <i id="city-dropdown-arrow" class="fa-solid fa-chevron-down text-brand-primary transition-transform duration-300"></i>
+                                    </button>
+
+                                    <div id="city-dropdown-menu" 
+                                        class="absolute top-full left-0 w-full mt-2 border border-[var(--color-border)] rounded-xl shadow-2xl overflow-hidden z-50 hidden opacity-0 translate-y-2 transition-all duration-300"
+                                        style="background-color: var(--color-bg, #0a0a0a)">
+                                        
+                                        <div class="p-1 space-y-1">
+                                            <button type="button" class="city-dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-[var(--color-text-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] rounded-lg transition-colors group" data-value="Bogotá">
+                                                <div class="w-10 h-10 rounded-lg bg-[var(--color-surface)] flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
+                                                    <i class="fa-solid fa-building"></i>
+                                                </div>
+                                                <span class="font-medium">Bogotá</span>
+                                            </button>
+
+                                            <button type="button" class="city-dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-[var(--color-text-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] rounded-lg transition-colors group" data-value="Medellín">
+                                                <div class="w-10 h-10 rounded-lg bg-[var(--color-surface)] flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
+                                                    <i class="fa-solid fa-mountain-city"></i>
+                                                </div>
+                                                <span class="font-medium">Medellín</span>
+                                            </button>
+
+                                            <button type="button" class="city-dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-[var(--color-text-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] rounded-lg transition-colors group" data-value="Cali">
+                                                <div class="w-10 h-10 rounded-lg bg-[var(--color-surface)] flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
+                                                    <i class="fa-solid fa-sun"></i>
+                                                </div>
+                                                <span class="font-medium">Cali</span>
+                                            </button>
+
+                                            <button type="button" class="city-dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-[var(--color-text-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] rounded-lg transition-colors group" data-value="Barranquilla">
+                                                <div class="w-10 h-10 rounded-lg bg-[var(--color-surface)] flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
+                                                    <i class="fa-solid fa-water"></i>
+                                                </div>
+                                                <span class="font-medium">Barranquilla</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Dirección -->
+                            <div class="space-y-3 md:col-span-2">
+                                <label
+                                    class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Dirección</label>
+                                <input type="text" id="candidate-address" required
+                                    class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[var(--color-text-muted)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all"
+                                    placeholder="Ej. Calle 100 #15-20, Barrio Centro">
                             </div>
                         </div>
                         <div class="mt-10 flex justify-end">
@@ -348,7 +407,8 @@ import Layout from '../layouts/Layout.astro';
                                         </button>
 
                                         <div id="dropdown-menu" 
-                                            class="absolute top-full left-0 w-full mt-2 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl shadow-2xl overflow-hidden z-50 hidden opacity-0 translate-y-2 transition-all duration-300">
+                                            class="absolute top-full left-0 w-full mt-2 border border-[var(--color-border)] rounded-xl shadow-2xl overflow-hidden z-50 hidden opacity-0 translate-y-2 transition-all duration-300"
+                                            style="background-color: var(--color-bg, #0a0a0a)">
                                             
                                             <div class="p-1 space-y-1">
                                                 <button type="button" class="dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-[var(--color-text-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] rounded-lg transition-colors group" data-value="Operario Logístico">

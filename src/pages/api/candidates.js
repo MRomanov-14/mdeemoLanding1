@@ -12,6 +12,8 @@ export const POST = async ({ request }) => {
             cedula,
             email,
             phone,
+            city,
+            address,
             areaInterest,
             experienceYears,
             cvUrl 
@@ -25,8 +27,8 @@ export const POST = async ({ request }) => {
         }
 
         await sql`
-            INSERT INTO clicklandingpublic.candidates (full_name, cedula, email, phone, area_interest, experience_years, cv_url)
-            VALUES (${fullName}, ${cedula}, ${email}, ${phone}, ${areaInterest}, ${experienceYears}, ${cvUrl})
+            INSERT INTO clicklandingpublic.candidates (full_name, cedula, email, phone, city, address, area_interest, experience_years, cv_url)
+            VALUES (${fullName}, ${cedula}, ${email}, ${phone}, ${city}, ${address}, ${areaInterest}, ${experienceYears}, ${cvUrl})
         `;
 
         return new Response(JSON.stringify({ success: true, message: 'Postulación recibida' }), {
