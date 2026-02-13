@@ -8,11 +8,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: var(--color-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--color-surface);
   border-radius: 4px;
 }
 
@@ -22,8 +22,8 @@
 
 /* Base Styles */
 body {
-  background-color: #09090b;
-  color: #fafafa;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   overflow-x: hidden;
 }
 
@@ -32,10 +32,10 @@ html {
 }
 
 .glass-panel {
-  background: rgba(24, 24, 27, 0.6);
+  background: var(--color-surface);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
 }
 
 .hero-canvas {

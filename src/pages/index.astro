@@ -14,7 +14,7 @@ import Layout from '../layouts/Layout.astro';
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
             <div
-                class="hidden md:inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-brand-black/90 border border-white/10 text-brand-primary text-xs md:text-sm font-semibold mb-8 animate-float backdrop-blur-md">
+                class="hidden md:inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] text-brand-primary text-xs md:text-sm font-semibold mb-8 animate-float backdrop-blur-md">
                 <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-brand-primary animate-pulse"></span>
                 Tecnología aplicada a Operaciones
             </div>
@@ -255,7 +255,7 @@ import Layout from '../layouts/Layout.astro';
 
             <!-- Form Container -->
             <div
-                class="bg-[#0d0d0d] [:root[data-theme=light]_&]:bg-black/90 [:root[data-theme=light]_&]:backdrop-blur-xl [:root[data-theme=light]_&]:border-white/10 border border-white/20 rounded-[2rem] p-6 md:p-14 shadow-2xl relative mb-20 md:mb-0">
+                class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[2rem] p-6 md:p-14 shadow-2xl relative mb-20 md:mb-0">
 
                 <!-- Decorative Top Border -->
                 <div
@@ -264,17 +264,17 @@ import Layout from '../layouts/Layout.astro';
 
                 <!-- Progress Bar -->
                 <div class="flex items-center justify-between mb-12 relative px-4">
-                    <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-[#262626] rounded-full -z-10">
+                    <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-[var(--color-card-bg)] rounded-full -z-10">
                     </div>
                     <div id="progress-line"
                         class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-brand-primary rounded-full transition-all duration-700 ease-out"
                         style="width: 15%"></div>
 
-                    <div class="step-dot active w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-sm font-bold shadow-[0_0_15px_rgba(234,179,8,0.5)] transition-all z-10 text-black border-4 border-black"
+                    <div class="step-dot active w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-sm font-bold shadow-[0_0_15px_rgba(234,179,8,0.5)] transition-all z-10 text-black border-4 border-[var(--color-bg)]"
                         data-step="1">1</div>
-                    <div class="step-dot w-10 h-10 rounded-full bg-[#262626] border border-white/20 flex items-center justify-center text-sm font-bold transition-all z-10 text-gray-400"
+                    <div class="step-dot w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center text-sm font-bold transition-all z-10 text-[var(--color-text-muted)]"
                         data-step="2">2</div>
-                    <div class="step-dot w-10 h-10 rounded-full bg-[#262626] border border-white/20 flex items-center justify-center text-sm font-bold transition-all z-10 text-gray-400"
+                    <div class="step-dot w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center text-sm font-bold transition-all z-10 text-[var(--color-text-muted)]"
                         data-step="3">3</div>
                 </div>
 
@@ -283,7 +283,7 @@ import Layout from '../layouts/Layout.astro';
 
                     <!-- Step 1: Info Básica -->
                     <div class="wizard-step" id="step-1">
-                        <h3 class="text-2xl font-bold text-white mb-8">¿Quién eres?</h3>
+                        <h3 class="text-2xl font-bold text-[var(--color-text)] mb-8">¿Quién eres?</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <!-- Full Name -->
                             <div class="space-y-3">
@@ -291,7 +291,7 @@ import Layout from '../layouts/Layout.astro';
                                     class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Nombre
                                     Completo</label>
                                 <input type="text" id="candidate-name" required
-                                    class="w-full bg-[#1a1a1a] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all focus:bg-[#252525]"
+                                    class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[var(--color-text-muted)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all"
                                     placeholder="Ej. Juan Pérez">
                             </div>
                             <!-- Cédula -->
@@ -299,7 +299,7 @@ import Layout from '../layouts/Layout.astro';
                                 <label
                                     class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Cédula</label>
                                 <input type="text" id="candidate-cedula" required inputmode="numeric" pattern="[0-9]*"
-                                    class="w-full bg-[#1a1a1a] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all focus:bg-[#252525]"
+                                    class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[var(--color-text-muted)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all"
                                     placeholder="Ej. 1234567890">
                             </div>
                             <div class="space-y-3">
@@ -307,7 +307,7 @@ import Layout from '../layouts/Layout.astro';
                                     class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Correo
                                     Electrónico</label>
                                 <input type="email" id="candidate-email" required
-                                    class="w-full bg-[#1a1a1a] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all focus:bg-[#252525]"
+                                    class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[var(--color-text-muted)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all"
                                     placeholder="juan@email.com">
                             </div>
                             <div class="space-y-3 md:col-span-2">
@@ -315,7 +315,7 @@ import Layout from '../layouts/Layout.astro';
                                     class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Teléfono
                                     / WhatsApp</label>
                                 <input type="tel" id="candidate-phone" required
-                                    class="w-full bg-[#1a1a1a] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all focus:bg-[#252525]"
+                                    class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[var(--color-text-muted)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all"
                                     placeholder="300 123 4567">
                             </div>
                         </div>
@@ -329,7 +329,7 @@ import Layout from '../layouts/Layout.astro';
 
                     <!-- Step 2: Perfil -->
                     <div class="wizard-step hidden opacity-0 translate-x-10" id="step-2">
-                        <h3 class="text-2xl font-bold text-white mb-8">Tu Perfil Profesional</h3>
+                        <h3 class="text-2xl font-bold text-[var(--color-text)] mb-8">Tu Perfil Profesional</h3>
                         <div class="space-y-8">
                             <div class="space-y-3">
                                 <label class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Área
@@ -340,7 +340,7 @@ import Layout from '../layouts/Layout.astro';
                                         <input type="hidden" id="candidate-area" required>
                                         
                                         <button type="button" id="dropdown-trigger"
-                                            class="w-full bg-[#1a1a1a] border border-white/10 rounded-xl px-5 py-4 text-left text-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all flex items-center justify-between group hover:bg-[#252525]">
+                                            class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-left text-[var(--color-text-muted)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all flex items-center justify-between group hover:bg-[var(--color-surface)]">
                                             <span id="dropdown-label" class="flex items-center gap-3">
                                                 Selecciona un área...
                                             </span>
@@ -348,46 +348,46 @@ import Layout from '../layouts/Layout.astro';
                                         </button>
 
                                         <div id="dropdown-menu" 
-                                            class="absolute top-full left-0 w-full mt-2 bg-[#1a1a1a] border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50 hidden opacity-0 translate-y-2 transition-all duration-300">
+                                            class="absolute top-full left-0 w-full mt-2 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl shadow-2xl overflow-hidden z-50 hidden opacity-0 translate-y-2 transition-all duration-300">
                                             
                                             <div class="p-1 space-y-1">
-                                                <button type="button" class="dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-gray-300 hover:bg-white/10 hover:text-white rounded-lg transition-colors group" data-value="Operario Logístico">
-                                                    <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
+                                                <button type="button" class="dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-[var(--color-text-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] rounded-lg transition-colors group" data-value="Operario Logístico">
+                                                    <div class="w-10 h-10 rounded-lg bg-[var(--color-surface)] flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
                                                         <i class="fa-solid fa-box-open"></i>
                                                     </div>
                                                     <div>
                                                         <span class="block font-medium">Operario Logístico</span>
-                                                        <span class="text-xs text-gray-500 group-hover:text-gray-300">Almacén, Picking, Packing</span>
+                                                        <span class="text-xs text-[var(--color-text-muted)] group-hover:text-[var(--color-text)]">Almacén, Picking, Packing</span>
                                                     </div>
                                                 </button>
 
-                                                <button type="button" class="dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-gray-300 hover:bg-white/10 hover:text-white rounded-lg transition-colors group" data-value="Supervisor de Operaciones">
-                                                    <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
+                                                <button type="button" class="dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-[var(--color-text-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] rounded-lg transition-colors group" data-value="Supervisor de Operaciones">
+                                                    <div class="w-10 h-10 rounded-lg bg-[var(--color-surface)] flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
                                                         <i class="fa-solid fa-clipboard-check"></i>
                                                     </div>
                                                     <div>
                                                         <span class="block font-medium">Supervisor de Operaciones</span>
-                                                        <span class="text-xs text-gray-500 group-hover:text-gray-300">Liderazgo, Control, KPI's</span>
+                                                        <span class="text-xs text-[var(--color-text-muted)] group-hover:text-[var(--color-text)]">Liderazgo, Control, KPI's</span>
                                                     </div>
                                                 </button>
 
-                                                <button type="button" class="dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-gray-300 hover:bg-white/10 hover:text-white rounded-lg transition-colors group" data-value="Conductor / Distribución">
-                                                    <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
+                                                <button type="button" class="dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-[var(--color-text-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] rounded-lg transition-colors group" data-value="Conductor / Distribución">
+                                                    <div class="w-10 h-10 rounded-lg bg-[var(--color-surface)] flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
                                                         <i class="fa-solid fa-truck-fast"></i>
                                                     </div>
                                                     <div>
                                                         <span class="block font-medium">Conductor / Distribución</span>
-                                                        <span class="text-xs text-gray-500 group-hover:text-gray-300">Entrega, Rutas, Vehículo</span>
+                                                        <span class="text-xs text-[var(--color-text-muted)] group-hover:text-[var(--color-text)]">Entrega, Rutas, Vehículo</span>
                                                     </div>
                                                 </button>
 
-                                                <button type="button" class="dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-gray-300 hover:bg-white/10 hover:text-white rounded-lg transition-colors group" data-value="Administrativo">
-                                                    <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
+                                                <button type="button" class="dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-[var(--color-text-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] rounded-lg transition-colors group" data-value="Administrativo">
+                                                    <div class="w-10 h-10 rounded-lg bg-[var(--color-surface)] flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
                                                         <i class="fa-solid fa-laptop-file"></i>
                                                     </div>
                                                     <div>
                                                         <span class="block font-medium">Administrativo</span>
-                                                        <span class="text-xs text-gray-500 group-hover:text-gray-300">Oficina, Auxiliar, Soporte</span>
+                                                        <span class="text-xs text-[var(--color-text-muted)] group-hover:text-[var(--color-text)]">Oficina, Auxiliar, Soporte</span>
                                                     </div>
                                                 </button>
                                             </div>
@@ -428,7 +428,7 @@ import Layout from '../layouts/Layout.astro';
                         </div>
                         <div class="mt-10 flex justify-between">
                             <button type="button" data-action="prev" data-target="1"
-                                class="px-8 py-4 text-gray-400 hover:text-white transition-colors font-medium">
+                                class="px-8 py-4 text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors font-medium">
                                 Atrás
                             </button>
                             <button type="button" data-action="next" data-target="3"
@@ -440,10 +440,10 @@ import Layout from '../layouts/Layout.astro';
 
                     <!-- Step 3: CV & Confirmar -->
                     <div class="wizard-step hidden opacity-0 translate-x-10" id="step-3">
-                        <h3 class="text-2xl font-bold text-white mb-2">Sube tu hoja de vida</h3>
+                        <h3 class="text-2xl font-bold text-[var(--color-text)] mb-2">Sube tu hoja de vida</h3>
                         
                         <!-- Template CTA -->
-                        <div class="mb-6 p-4 rounded-xl bg-[#1a1a1a] border border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div class="mb-6 p-4 rounded-xl bg-[var(--color-card-bg)] border border-[var(--color-border)] flex flex-col md:flex-row items-center justify-between gap-4">
                             <div class="flex items-center gap-4">
                                 <div class="w-10 h-10 rounded-full bg-brand-primary/20 flex items-center justify-center text-brand-primary flex-shrink-0">
                                     <i class="fa-solid fa-file-word"></i>
@@ -469,7 +469,7 @@ import Layout from '../layouts/Layout.astro';
                                 <i class="fa-solid fa-cloud-arrow-up"></i>
                             </div>
                             <p id="upload-main-text" class="font-bold text-lg text-[var(--color-text)] transition-colors">Haz clic para subir tu CV</p>
-                            <p id="file-upload-text" class="text-sm text-gray-500 mt-2 transition-all">Formato: PDF (Máx 5MB)</p>
+                            <p id="file-upload-text" class="text-sm text-[var(--color-text-muted)] mt-2 transition-all">Formato: PDF (Máx 5MB)</p>
                         </div>
 
                         <div class="mt-6 flex items-center justify-center gap-2">
@@ -521,14 +521,14 @@ import Layout from '../layouts/Layout.astro';
     <div id="termsModal" class="fixed inset-0 z-[10000] hidden">
         <div class="absolute inset-0 bg-[var(--color-bg)]/80 backdrop-blur-sm" id="modalOverlay"></div>
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl px-6">
-            <div class="bg-brand-dark border border-[var(--color-border)] rounded-2xl shadow-2xl p-8 max-h-[80vh] overflow-y-auto transform scale-95 opacity-0 transition-all duration-300" id="modalContent">
+            <div class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl shadow-2xl p-8 max-h-[80vh] overflow-y-auto transform scale-95 opacity-0 transition-all duration-300" id="modalContent">
                 <div class="flex justify-between items-start mb-6">
                     <h3 class="text-2xl font-bold text-[var(--color-text)]">Autorización de Tratamiento de Datos Personales</h3>
                     <button id="closeTermsBtn" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors">
                         <i class="fa-solid fa-xmark text-xl"></i>
                     </button>
                 </div>
-                <div class="prose prose-invert text-gray-300 text-sm leading-relaxed space-y-4">
+                <div class="prose text-[var(--color-text-muted)] text-sm leading-relaxed space-y-4">
                     <p>
                         De conformidad con la Ley 1581 de 2012 y el Decreto 1377 de 2013, informo que los datos
                         personales aquí consignados serán incorporados en una base de datos responsabilidad de

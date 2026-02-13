@@ -44,12 +44,12 @@ export function initFormWizard() {
             const s = parseInt(dot.getAttribute('data-step'));
             if (s <= step) {
                 dot.classList.add('bg-brand-primary', 'text-black', 'border-transparent', 'shadow-[0_0_15px_rgba(234,179,8,0.5)]');
-                dot.classList.remove('bg-[#262626]', 'border-white/20', 'text-gray-400');
+                dot.classList.remove('bg-[var(--color-surface)]', 'border-[var(--color-border)]', 'text-[var(--color-text-muted)]');
                 if (s < step) dot.innerHTML = '<i class="fa-solid fa-check"></i>';
                 else dot.innerHTML = s;
             } else {
                 dot.classList.remove('bg-brand-primary', 'text-black', 'border-transparent', 'shadow-[0_0_15px_rgba(234,179,8,0.5)]');
-                dot.classList.add('bg-[#262626]', 'border-white/20', 'text-gray-400');
+                dot.classList.add('bg-[var(--color-surface)]', 'border-[var(--color-border)]', 'text-[var(--color-text-muted)]');
                 dot.innerHTML = s;
             }
         });
@@ -198,8 +198,8 @@ export function initFormWizard() {
                 label.innerHTML = `<i class="${iconClass} text-brand-primary"></i> ${text}`;
                 
                 // Update trigger style
-                trigger.classList.remove('text-gray-400');
-                trigger.classList.add('text-white');
+                trigger.classList.remove('text-[var(--color-text-muted)]');
+                trigger.classList.add('text-[var(--color-text)]');
 
                 // Close menu
                 menu.classList.add('opacity-0', 'translate-y-2');
@@ -251,16 +251,16 @@ export function initFormWizard() {
         }
 
         function highlight(e) {
-            dropZone.classList.add('border-brand-primary', 'bg-white/10');
-            dropZone.classList.remove('border-white/20');
+            dropZone.classList.add('border-brand-primary', 'bg-[var(--color-surface)]');
+            dropZone.classList.remove('border-[var(--color-border)]');
         }
 
         function unhighlight(e) {
             // Only remove if no file selected yet, or just styling revert logic
              const file = fileInput.files[0];
              if(!file) {
-                dropZone.classList.remove('border-brand-primary', 'bg-white/10');
-                dropZone.classList.add('border-white/20');
+                dropZone.classList.remove('border-brand-primary', 'bg-[var(--color-surface)]');
+                dropZone.classList.add('border-[var(--color-border)]');
              }
         }
 
@@ -288,38 +288,38 @@ export function initFormWizard() {
                     // Reset UI
                     mainText.innerText = 'Haz clic para subir tu CV';
                     mainText.classList.remove('text-brand-primary');
-                    mainText.classList.add('text-white');
+                    mainText.classList.add('text-[var(--color-text)]');
                     
                     subText.innerText = 'Formato: PDF (Máx 5MB)';
-                    subText.classList.remove('text-white', 'font-bold', 'bg-white/10', 'px-3', 'py-1', 'rounded-lg', 'inline-block');
-                    subText.classList.add('text-gray-500');
+                    subText.classList.remove('text-[var(--color-text)]', 'font-bold', 'bg-[var(--color-surface)]', 'px-3', 'py-1', 'rounded-lg', 'inline-block');
+                    subText.classList.add('text-[var(--color-text-muted)]');
 
                     icon.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i>';
-                    icon.classList.add('bg-white/5', 'text-gray-400');
+                    icon.classList.add('bg-[var(--color-surface)]', 'text-[var(--color-text-muted)]');
                     icon.classList.remove('bg-brand-primary', 'text-black', 'scale-110', 'animate-pop');
 
                     dropZone.classList.remove('border-brand-primary', 'bg-brand-primary/5', 'border-solid');
-                    dropZone.classList.add('border-dashed', 'border-white/20');
+                    dropZone.classList.add('border-dashed', 'border-[var(--color-border)]');
                     return;
                 }
 
                 // Update UI Success
                 mainText.innerText = '¡Archivo Seleccionado!';
                 mainText.classList.add('text-brand-primary');
-                mainText.classList.remove('text-white');
+                mainText.classList.remove('text-[var(--color-text)]');
 
                 subText.innerText = file.name;
-                subText.classList.add('text-white', 'font-bold', 'bg-white/10', 'px-3', 'py-1', 'rounded-lg', 'inline-block');
-                subText.classList.remove('text-gray-500');
+                subText.classList.add('text-[var(--color-text)]', 'font-bold', 'bg-[var(--color-surface)]', 'px-3', 'py-1', 'rounded-lg', 'inline-block');
+                subText.classList.remove('text-[var(--color-text-muted)]');
                 
                 // Icon Animation
                 icon.innerHTML = '<i class="fa-solid fa-file-circle-check"></i>';
-                icon.classList.remove('bg-white/5', 'text-gray-400');
+                icon.classList.remove('bg-[var(--color-surface)]', 'text-[var(--color-text-muted)]');
                 icon.classList.add('bg-brand-primary', 'text-black', 'scale-110', 'animate-pop');
                 
                 // Container
                 dropZone.classList.add('border-brand-primary', 'bg-brand-primary/5', 'border-solid');
-                dropZone.classList.remove('border-dashed', 'border-white/20');
+                dropZone.classList.remove('border-dashed', 'border-[var(--color-border)]');
             }
         }
     }
@@ -533,8 +533,8 @@ export function initFormWizard() {
              // Reset selection
              hiddenInput.value = '';
              triggerLabel.innerText = 'Selecciona un cargo';
-             trigger.classList.add('text-gray-400');
-             trigger.classList.remove('text-white');
+             trigger.classList.add('text-[var(--color-text-muted)]');
+             trigger.classList.remove('text-[var(--color-text)]');
         }
     }
 
@@ -616,9 +616,9 @@ export function initFormWizard() {
         const btnClass = type === 'success' ? 'bg-brand-primary text-black hover:bg-yellow-400' : 'bg-brand-primary text-black hover:bg-yellow-400';
 
         modalOverlay.innerHTML = `
-            <div class="bg-brand-dark border border-white/10 rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center transform scale-95 transition-all duration-300" id="${modalId}-content">
+            <div class="bg-[var(--color-bg)] border border-[var(--color-border)] rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center transform scale-95 transition-all duration-300" id="${modalId}-content">
                 ${icon}
-                <p class="text-white text-lg font-medium mb-6">${message}</p>
+                <p class="text-[var(--color-text)] text-lg font-medium mb-6">${message}</p>
                 <button id="${modalId}-btn" class="px-6 py-2 rounded-full font-bold ${btnClass} transition-colors shadow-lg">
                     Aceptar
                 </button>

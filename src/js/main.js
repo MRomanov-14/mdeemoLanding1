@@ -143,23 +143,15 @@ function initTicker() {
     if (!tickerContainer) return;
 
     // Duplicate content for seamless loop
-    const clientString = clients.map(c => `<span class="mx-12 text-3xl font-bold text-white/30 hover:text-brand-primary transition-colors cursor-default">${c}</span>`).join('');
+    const clientString = clients.map(c => `<span class="mx-12 text-3xl font-bold text-[var(--color-text)]/30 hover:text-brand-primary transition-colors cursor-default">${c}</span>`).join('');
     tickerContainer.innerHTML = clientString + clientString + clientString + clientString;
 }
 
-// Navbar Scroll Logic
+// Navbar Scroll Logic (theme-aware — handled by Layout.astro inline script)
 function initNavbarScroll() {
-    const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            nav.classList.add('bg-brand-black/90', 'backdrop-blur-md', 'shadow-lg');
-            nav.classList.remove('py-6', 'bg-transparent');
-            nav.classList.add('py-4');
-        } else {
-            nav.classList.remove('bg-brand-black/90', 'backdrop-blur-md', 'shadow-lg', 'py-4');
-            nav.classList.add('py-6', 'bg-transparent');
-        }
-    });
+    // Scroll behavior is now managed by the inline script in Layout.astro
+    // which already checks data-theme and applies the correct bg color.
+    // This function is kept as a no-op to avoid breaking the init call.
 }
 
 // Counters (Intersection Observer)
@@ -334,7 +326,7 @@ window.nextStep = function () {
 
         // Update indicators
         step1Indicator.innerHTML = '<i class="fa-solid fa-check"></i>';
-        step2Indicator.classList.remove('bg-white/10', 'text-gray-400');
+        step2Indicator.classList.remove('bg-[var(--color-surface)]', 'text-[var(--color-text-muted)]');
         step2Indicator.classList.add('bg-brand-primary', 'text-black');
     }
 };
@@ -353,7 +345,7 @@ window.prevStep = function () {
 
         // Update indicators
         step1Indicator.innerHTML = '1';
-        step2Indicator.classList.add('bg-white/10', 'text-gray-400');
+        step2Indicator.classList.add('bg-[var(--color-surface)]', 'text-[var(--color-text-muted)]');
         step2Indicator.classList.remove('bg-brand-primary', 'text-black');
     }
 };
