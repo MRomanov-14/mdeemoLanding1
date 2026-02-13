@@ -105,6 +105,58 @@ import Layout from '../layouts/Layout.astro';
         </div>
     </section>
 
+    <!-- CTA Section -->
+    <section class="py-24 md:py-32 relative overflow-hidden bg-[var(--color-bg)]" id="cta-section">
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <!-- CTA Card -->
+            <div class="relative opacity-0" id="cta-card">
+                <!-- Thin accent line -->
+                <div class="w-16 h-[2px] bg-brand-primary mx-auto mb-16"></div>
+
+                <!-- Stat Counters -->
+                <div class="flex items-center justify-center gap-8 md:gap-16 mb-16" id="cta-stats">
+                    <div class="text-center cta-stat opacity-0">
+                        <div class="text-4xl md:text-6xl font-black text-[var(--color-text)] font-[Outfit] tracking-tight" data-count="5">0+</div>
+                        <p class="text-xs text-[var(--color-text-muted)] uppercase tracking-[0.2em] mt-2">Años</p>
+                    </div>
+                    <div class="w-px h-12 bg-[var(--color-border)]"></div>
+                    <div class="text-center cta-stat opacity-0">
+                        <div class="text-4xl md:text-6xl font-black text-[var(--color-text)] font-[Outfit] tracking-tight" data-count="24">0+</div>
+                        <p class="text-xs text-[var(--color-text-muted)] uppercase tracking-[0.2em] mt-2">Clientes</p>
+                    </div>
+                    <div class="w-px h-12 bg-[var(--color-border)]"></div>
+                    <div class="text-center cta-stat opacity-0">
+                        <div class="text-4xl md:text-6xl font-black text-[var(--color-text)] font-[Outfit] tracking-tight" data-count="1000">0+</div>
+                        <p class="text-xs text-[var(--color-text-muted)] uppercase tracking-[0.2em] mt-2">Operaciones</p>
+                    </div>
+                </div>
+
+                <!-- CTA Content -->
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-black text-[var(--color-text)] font-[Outfit] mb-4 leading-tight">
+                        ¿Listo para escribir el <span class="text-brand-primary">próximo capítulo</span> juntos?
+                    </h2>
+                    <p class="text-[var(--color-text-muted)] text-lg font-light max-w-xl mx-auto mb-12 leading-relaxed">
+                        Soluciones logísticas a la medida, respaldadas por experiencia y compromiso real.
+                    </p>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <a href="/empresas"
+                            class="px-8 py-3.5 bg-brand-primary text-black font-bold rounded-full transition-colors duration-200 hover:bg-yellow-400 flex items-center gap-3 text-base">
+                            Solicita una Cotización
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                        <a href="/empresas"
+                            class="px-8 py-3.5 border border-[var(--color-border)] text-[var(--color-text)] font-medium rounded-full hover:border-brand-primary hover:text-brand-primary transition-colors duration-200 flex items-center gap-3 text-base">
+                            Conoce Nuestros Servicios
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
         import { gsap } from 'gsap';
         import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -159,5 +211,42 @@ import Layout from '../layouts/Layout.astro';
             duration: 1,
             ease: 'power4.inOut'
         }, '-=0.5');
+
+        // CTA Fade In
+        gsap.to('#cta-card', {
+            scrollTrigger: {
+                trigger: '#cta-section',
+                start: 'top 75%'
+            },
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power2.out'
+        });
+
+        // Stat Counters
+        gsap.to('.cta-stat', {
+            scrollTrigger: {
+                trigger: '#cta-stats',
+                start: 'top 85%'
+            },
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: 'power2.out',
+            onComplete: () => {
+                document.querySelectorAll<HTMLElement>('[data-count]').forEach(el => {
+                    const target = parseInt(el.dataset.count || '0');
+                    const obj = { val: 0 };
+                    gsap.to(obj, {
+                        val: target,
+                        duration: 1.5,
+                        ease: 'power2.out',
+                        onUpdate: () => {
+                            el.textContent = Math.floor(obj.val).toLocaleString() + '+';
+                        }
+                    });
+                });
+            }
+        });
     </script>
 </Layout>
