@@ -17,25 +17,205 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 text-center text-[var(--color-text)]">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-sm font-semibold mb-8 animate-float backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-brand-primary animate-pulse"></span>
+                Soluciones B2B de Alto Impacto
+            </div>
 
             <h1
-                class="h1-critical text-3xl md:text-5xl font-black tracking-tight text-[var(--color-text)] mb-6 leading-tight font-[Outfit]">
+                class="h1-critical text-4xl md:text-7xl font-black tracking-tight text-[var(--color-text)] mb-6 leading-tight font-[Outfit]">
                 EL TALENTO QUE<br />
                 <span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-brand-primary/60 to-brand-primary">TU
-                    OPERACIÓN NECESITA</span>
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-brand-primary/60 to-brand-primary">IMPULSA TU ÉXITO</span>
             </h1>
 
-            <p class="p-critical mt-4 max-w-2xl mx-auto text-lg text-[var(--color-text-muted)] font-light leading-relaxed mb-8">
-                Déjanos encontrar los perfiles especializados que impulsarán tu productividad. Nosotros nos encargamos
-                del reclutamiento, tú te encargas de crecer.
+            <p class="p-critical mt-4 max-w-2xl mx-auto text-lg md:text-xl text-[var(--color-text-muted)] font-light leading-relaxed mb-8">
+                Conectamos tu operación con el <span class="text-[var(--color-text)] font-semibold">mejor capital humano</span> del país. Gestión inteligente para empresas que no se detienen.
             </p>
 
-            <div class="mt-4">
+            <div class="mt-4 flex flex-col sm:flex-row gap-4 justify-center">
                 <button onclick="document.getElementById('solicitud').scrollIntoView({behavior: 'smooth'})"
-                    class="px-8 py-3 bg-brand-primary text-black font-bold rounded-full shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] transition-all transform hover:-translate-y-1 flex items-center gap-2 mx-auto">
-                    Solicitar Personal <i class="fa-solid fa-arrow-down"></i>
+                    class="px-10 py-4 bg-brand-primary text-black font-bold rounded-full shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                    Cotizar Ahora <i class="fa-solid fa-paper-plane"></i>
                 </button>
+                <button onclick="document.getElementById('beneficios').scrollIntoView({behavior: 'smooth'})"
+                    class="px-10 py-4 bg-transparent border border-[var(--color-border)] text-[var(--color-text)] font-bold rounded-full hover:bg-[var(--color-surface)] transition-all">
+                    Ver Beneficios
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Ticker -->
+    <div class="bg-[var(--color-bg)] py-12 border-y border-[var(--color-border)] overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-6 mb-8 text-center">
+            <p class="text-sm font-bold text-[var(--color-text-muted)] uppercase tracking-[0.2em]">Empresas que confían en nosotros</p>
+        </div>
+        <div class="flex overflow-x-hidden group whitespace-nowrap">
+            <div class="animate-scroll-left flex gap-12 md:gap-24 items-center py-4">
+                <!-- Brand Items -->
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-[0.2em] whitespace-nowrap">GEODIS</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-wide whitespace-nowrap">OLFABRAND</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-tighter whitespace-nowrap">361° LOGÍSTICA</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-wide whitespace-nowrap">ALCOMEX</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase italic tracking-wide whitespace-nowrap">QUICK</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-tight whitespace-nowrap">ARTE LITOGRÁFICO</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-wide whitespace-nowrap">MULTI-IMPRESOS</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase italic tracking-tight whitespace-nowrap">ESTRATÉGICA</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-[0.15em] whitespace-nowrap inline-flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5080 5080" class="w-8 h-8 md:w-10 md:h-10 inline-block flex-shrink-0"><path d="M1259.79 3620.61l34.49 -48.2c57.11,-123.32 26.06,-1376.93 26.29,-1571.05 0.13,-110.8 22.67,-323.84 -16.48,-417.52l-63.87 -77.05c-15.94,65.03 -895.35,935.68 -997.51,1011.86 99.83,262.85 961.76,911.44 1017.08,1101.96z" fill="#FECA01"/><path d="M1586.33 2616.81c54.14,121.35 21.19,63.46 114.86,159.96l870.55 840.52 1.53 -993.22 -986.94 -7.26z" fill="#FECA01"/><path d="M4930.31 207.23l20.83 -18.97c-72.99,-103.16 7.12,-34.93 -113.66,-70.73l-2130.53 -4.5 7.16 2246.03c160.74,-77.33 427.03,-391.43 570.06,-536.62 243.69,-247.36 1465.54,-1515.72 1646.14,-1615.21z" fill="#FFCC00"/><path d="M4767.64 4995.11l177.23 -30.42 -1746.52 -1746.62c-73.95,-74.09 -187.28,-154.1 -216.37,-255.35 -153.02,-71.97 -118.1,-114.17 -274.54,-207.27l9.64 2237.49 2050.56 2.17z" fill="#FFCC00"/><polygon points="1456.73,2319.04 1467.28,2484.38 2571.31,2481.96 2568.18,1373.14 1439.21,1378.76" fill="#FFCC00"/><path d="M2458.76 4815.46c39.61,19.66 72.9,27.71 120.5,54.9 -78.6,-1038.52 187.35,-861.3 -313.72,-1354.4l-726.97 -723.11c-113.46,-56.64 -40.62,-76.58 -80.59,19.73 -19.54,986.08 -68.34,896.74 274.46,1235.93l581.55 583.23c95.3,92.92 122.67,100.42 144.77,183.72z" fill="#FFCC00"/><path d="M2559.32 1222.28c24.81,-168.9 12.51,-352.28 12.12,-526.22 -0.19,-88.35 7.19,-204.78 4.24,-287.35 -4.86,-136.02 36.41,-171.55 -79.38,-159.69 -43.03,174.5 -807.7,742.01 -910.55,981.37l973.57 -8.11z" fill="#FFCC00"/></svg>COLSUBSIDIO</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-tighter whitespace-nowrap">CIA AUTOPARTES</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-wide whitespace-nowrap">REVISTA PODER</span>
+                <!-- Duplicate for seamless scroll -->
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-[0.2em] whitespace-nowrap">GEODIS</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-wide whitespace-nowrap">OLFABRAND</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-tighter whitespace-nowrap">361° LOGÍSTICA</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-wide whitespace-nowrap">ALCOMEX</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase italic tracking-wide whitespace-nowrap">QUICK</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-tight whitespace-nowrap">ARTE LITOGRÁFICO</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-wide whitespace-nowrap">MULTI-IMPRESOS</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase italic tracking-tight whitespace-nowrap">ESTRATÉGICA</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-[0.15em] whitespace-nowrap inline-flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5080 5080" class="w-8 h-8 md:w-10 md:h-10 inline-block flex-shrink-0"><path d="M1259.79 3620.61l34.49 -48.2c57.11,-123.32 26.06,-1376.93 26.29,-1571.05 0.13,-110.8 22.67,-323.84 -16.48,-417.52l-63.87 -77.05c-15.94,65.03 -895.35,935.68 -997.51,1011.86 99.83,262.85 961.76,911.44 1017.08,1101.96z" fill="#FECA01"/><path d="M1586.33 2616.81c54.14,121.35 21.19,63.46 114.86,159.96l870.55 840.52 1.53 -993.22 -986.94 -7.26z" fill="#FECA01"/><path d="M4930.31 207.23l20.83 -18.97c-72.99,-103.16 7.12,-34.93 -113.66,-70.73l-2130.53 -4.5 7.16 2246.03c160.74,-77.33 427.03,-391.43 570.06,-536.62 243.69,-247.36 1465.54,-1515.72 1646.14,-1615.21z" fill="#FFCC00"/><path d="M4767.64 4995.11l177.23 -30.42 -1746.52 -1746.62c-73.95,-74.09 -187.28,-154.1 -216.37,-255.35 -153.02,-71.97 -118.1,-114.17 -274.54,-207.27l9.64 2237.49 2050.56 2.17z" fill="#FFCC00"/><polygon points="1456.73,2319.04 1467.28,2484.38 2571.31,2481.96 2568.18,1373.14 1439.21,1378.76" fill="#FFCC00"/><path d="M2458.76 4815.46c39.61,19.66 72.9,27.71 120.5,54.9 -78.6,-1038.52 187.35,-861.3 -313.72,-1354.4l-726.97 -723.11c-113.46,-56.64 -40.62,-76.58 -80.59,19.73 -19.54,986.08 -68.34,896.74 274.46,1235.93l581.55 583.23c95.3,92.92 122.67,100.42 144.77,183.72z" fill="#FFCC00"/><path d="M2559.32 1222.28c24.81,-168.9 12.51,-352.28 12.12,-526.22 -0.19,-88.35 7.19,-204.78 4.24,-287.35 -4.86,-136.02 36.41,-171.55 -79.38,-159.69 -43.03,174.5 -807.7,742.01 -910.55,981.37l973.57 -8.11z" fill="#FFCC00"/></svg>COLSUBSIDIO</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-tighter whitespace-nowrap">CIA AUTOPARTES</span>
+                <span class="text-2xl md:text-4xl font-black text-[var(--color-text-muted)] hover:text-brand-primary transition-colors cursor-default opacity-50 hover:opacity-100 uppercase tracking-wide whitespace-nowrap">REVISTA PODER</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <section id="beneficios" class="py-24 bg-[var(--color-bg)] relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black text-[var(--color-text)] mb-4 font-[Outfit]">¿POR QUÉ ELEGIR <span class="text-brand-primary">CLICK</span>?</h2>
+                <p class="text-[var(--color-text-muted)] text-lg max-w-2xl mx-auto">Optimizamos tus procesos de reclutamiento para que te concentres en lo que importa: hacer crecer tu negocio.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="p-8 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/50 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-users-viewfinder text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[var(--color-text)] mb-4">Perfiles Curados</h3>
+                    <p class="text-[var(--color-text-muted)] leading-relaxed">Filtramos técnica y psicológicamente a cada aplicante para asegurar el fit perfecto con tu cultura.</p>
+                </div>
+                <!-- Benefit 2 -->
+                <div class="p-8 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/50 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-shield-halved text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[var(--color-text)] mb-4">Respaldo Total</h3>
+                    <p class="text-[var(--color-text-muted)] leading-relaxed">Garantía de cumplimiento y reposición inmediata de personal si no se cumplen las expectativas.</p>
+                </div>
+                <!-- Benefit 3 -->
+                <div class="p-8 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/50 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-brain text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[var(--color-text)] mb-4">Inteligencia Operativa</h3>
+                    <p class="text-[var(--color-text-muted)] leading-relaxed">Integramos inteligencia artificial en nuestros procesos de software y control para agilizar tu operación, brindándote visibilidad en tiempo real y decisiones más estratégicas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceso Click Timeline Section -->
+    <section id="proceso" class="py-24 bg-[var(--color-bg)] relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-black text-[var(--color-text)] mb-4 font-[Outfit]">NUESTRO <span class="text-brand-primary">PROCESO</span></h2>
+                <p class="text-[var(--color-text-muted)] text-lg max-w-2xl mx-auto">Un método estructurado y transparente para conectar tu operación con el talento ideal.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="proceso-timeline relative">
+                <!-- Connecting Line -->
+                <div class="timeline-line absolute top-1/2 left-0 w-full h-[3px] -translate-y-1/2 hidden md:block">
+                    <div class="timeline-line-bg h-full w-full rounded-full" style="background: repeating-linear-gradient(90deg, var(--color-text-muted) 0, var(--color-text-muted) 8px, transparent 8px, transparent 16px); opacity: 0.25;"></div>
+                    <div class="timeline-line-progress absolute top-0 left-0 h-full rounded-full bg-brand-primary transition-all duration-1000" style="width: 0%;"></div>
+                </div>
+
+                <!-- Steps Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-7 gap-6 md:gap-0 relative z-10">
+
+                    <!-- Step 1 -->
+                    <div class="proceso-step flex flex-col items-center text-center" data-step-index="0">
+                        <p class="text-xs md:text-sm font-semibold text-[var(--color-text)] mb-3 h-10 flex items-end leading-tight">Diagnóstico de la<br>situación actual.</p>
+                        <div class="step-connector w-[2px] h-6 bg-[var(--color-text-muted)]/30 hidden md:block"></div>
+                        <div class="step-icon w-14 h-14 md:w-16 md:h-16 rounded-full bg-brand-primary flex items-center justify-center text-2xl transition-all duration-500">
+                            <i class="fa-solid fa-magnifying-glass text-black text-lg"></i>
+                        </div>
+                        <div class="step-connector w-[2px] h-6 bg-[var(--color-text-muted)]/30 hidden md:block"></div>
+                        <p class="text-xs md:text-sm text-[var(--color-text-muted)] mt-3 h-10 flex items-start leading-tight">&nbsp;</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="proceso-step flex flex-col items-center text-center" data-step-index="1">
+                        <p class="text-xs md:text-sm text-[var(--color-text-muted)] mb-3 h-10 flex items-end leading-tight">&nbsp;</p>
+                        <div class="step-connector w-[2px] h-6 bg-[var(--color-text-muted)]/30 hidden md:block"></div>
+                        <div class="step-icon w-14 h-14 md:w-16 md:h-16 rounded-full bg-brand-primary flex items-center justify-center text-2xl transition-all duration-500">
+                            <i class="fa-solid fa-boxes-stacked text-black text-lg"></i>
+                        </div>
+                        <div class="step-connector w-[2px] h-6 bg-[var(--color-text-muted)]/30 hidden md:block"></div>
+                        <p class="text-xs md:text-sm font-semibold text-[var(--color-text)] mt-3 h-10 flex items-start leading-tight">Definición de Volúmenes<br>De Operación</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="proceso-step flex flex-col items-center text-center" data-step-index="2">
+                        <p class="text-xs md:text-sm font-semibold text-[var(--color-text)] mb-3 h-10 flex items-end leading-tight">Esquematización De<br>Operación</p>
+                        <div class="step-connector w-[2px] h-6 bg-[var(--color-text-muted)]/30 hidden md:block"></div>
+                        <div class="step-icon w-14 h-14 md:w-16 md:h-16 rounded-full bg-brand-primary flex items-center justify-center text-2xl transition-all duration-500">
+                            <i class="fa-solid fa-sitemap text-black text-lg"></i>
+                        </div>
+                        <div class="step-connector w-[2px] h-6 bg-[var(--color-text-muted)]/30 hidden md:block"></div>
+                        <p class="text-xs md:text-sm text-[var(--color-text-muted)] mt-3 h-10 flex items-start leading-tight">&nbsp;</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="proceso-step flex flex-col items-center text-center" data-step-index="3">
+                        <p class="text-xs md:text-sm text-[var(--color-text-muted)] mb-3 h-10 flex items-end leading-tight">&nbsp;</p>
+                        <div class="step-connector w-[2px] h-6 bg-[var(--color-text-muted)]/30 hidden md:block"></div>
+                        <div class="step-icon w-14 h-14 md:w-16 md:h-16 rounded-full bg-brand-primary flex items-center justify-center text-2xl transition-all duration-500">
+                            <i class="fa-solid fa-chart-bar text-black text-lg"></i>
+                        </div>
+                        <div class="step-connector w-[2px] h-6 bg-[var(--color-text-muted)]/30 hidden md:block"></div>
+                        <p class="text-xs md:text-sm font-semibold text-[var(--color-text)] mt-3 h-10 flex items-start leading-tight">Definición de los<br>Indicadores</p>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="proceso-step flex flex-col items-center text-center" data-step-index="4">
+                        <p class="text-xs md:text-sm font-semibold text-[var(--color-text)] mb-3 h-10 flex items-end leading-tight">Propuesta de mejoramiento<br>y económica</p>
+                        <div class="step-connector w-[2px] h-6 bg-[var(--color-text-muted)]/30 hidden md:block"></div>
+                        <div class="step-icon w-14 h-14 md:w-16 md:h-16 rounded-full bg-brand-primary flex items-center justify-center text-2xl transition-all duration-500">
+                            <i class="fa-solid fa-file-invoice-dollar text-black text-lg"></i>
+                        </div>
+                        <div class="step-connector w-[2px] h-6 bg-[var(--color-text-muted)]/30 hidden md:block"></div>
+                        <p class="text-xs md:text-sm text-[var(--color-text-muted)] mt-3 h-10 flex items-start leading-tight">&nbsp;</p>
+                    </div>
+
+                    <!-- Step 6 -->
+                    <div class="proceso-step flex flex-col items-center text-center" data-step-index="5">
+                        <p class="text-xs md:text-sm text-[var(--color-text-muted)] mb-3 h-10 flex items-end leading-tight">&nbsp;</p>
+                        <div class="step-connector w-[2px] h-6 bg-[var(--color-text-muted)]/30 hidden md:block"></div>
+                        <div class="step-icon w-14 h-14 md:w-16 md:h-16 rounded-full bg-brand-primary flex items-center justify-center text-2xl transition-all duration-500">
+                            <i class="fa-solid fa-handshake text-black text-lg"></i>
+                        </div>
+                        <div class="step-connector w-[2px] h-6 bg-[var(--color-text-muted)]/30 hidden md:block"></div>
+                        <p class="text-xs md:text-sm font-semibold text-[var(--color-text)] mt-3 h-10 flex items-start leading-tight">Firma De<br>Acuerdo</p>
+                    </div>
+
+                    <!-- Step 7 -->
+                    <div class="proceso-step flex flex-col items-center text-center" data-step-index="6">
+                        <p class="text-xs md:text-sm font-semibold text-[var(--color-text)] mb-3 h-10 flex items-end leading-tight">Implementación</p>
+                        <div class="step-connector w-[2px] h-6 bg-[var(--color-text-muted)]/30 hidden md:block"></div>
+                        <div class="step-icon w-14 h-14 md:w-16 md:h-16 rounded-full bg-brand-primary flex items-center justify-center text-2xl transition-all duration-500">
+                            <i class="fa-solid fa-rocket text-black text-lg"></i>
+                        </div>
+                        <div class="step-connector w-[2px] h-6 bg-[var(--color-text-muted)]/30 hidden md:block"></div>
+                        <p class="text-xs md:text-sm text-[var(--color-text-muted)] mt-3 h-10 flex items-start leading-tight">&nbsp;</p>
+                    </div>
+
+                </div>
             </div>
         </div>
     </section>
@@ -56,8 +236,8 @@ import Layout from '../layouts/Layout.astro';
                     class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-50">
                 </div>
 
-                <h2 class="text-3xl font-bold text-white mb-2 font-[Outfit]">Solicitar Personal</h2>
-                <p class="text-gray-400 mb-10">Completa el formulario y un asesor comercial te contactará a la brevedad.</p>
+                <h2 class="text-4xl font-black text-white mb-2 font-[Outfit] tracking-tight">VAMOS A <span class="text-brand-primary uppercase italic">CONECTAR</span></h2>
+                <p class="text-gray-400 mb-10 text-lg">Un experto en logística analizará tu requerimiento en tiempo real.</p>
 
                 <form id="company-request-form" class="space-y-8" onsubmit="event.preventDefault();">
 
@@ -217,14 +397,14 @@ import Layout from '../layouts/Layout.astro';
                             </label>
                         </div>
 
-                        <div class="mt-10 flex justify-between items-center">
+                        <div class="mt-10 flex justify-between items-center pt-6 border-t border-white/5">
                             <button type="button" onclick="prevStep()"
-                                class="px-8 py-4 text-gray-400 hover:text-white transition-colors font-medium">
-                                Atrás
+                                class="px-8 py-4 text-gray-500 hover:text-white transition-colors font-medium flex items-center gap-2">
+                                <i class="fa-solid fa-chevron-left text-xs"></i> Atrás
                             </button>
                             <button type="submit" onclick="submitForm()"
                                 class="px-10 py-4 bg-brand-primary hover:bg-yellow-400 text-black rounded-xl font-bold transition-all flex items-center gap-3 shadow-[0_4px_20px_rgba(234,179,8,0.3)] hover:shadow-[0_4px_30px_rgba(234,179,8,0.5)] transform hover:-translate-y-1">
-                                Enviar Solicitud <i class="fa-solid fa-check"></i>
+                                Enviar Solicitud <i class="fa-solid fa-paper-plane text-sm"></i>
                             </button>
                         </div>
                     </div>
@@ -363,8 +543,152 @@ import Layout from '../layouts/Layout.astro';
 
         @media(min-width: 768px) {
             .h1-critical {
-                font-size: 3rem;
+                font-size: 5rem;
             }
         }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .animate-scroll-left {
+            animation: scroll-left 40s linear infinite;
+        }
+
+        .hero-critical {
+            min-height: 90vh !important;
+        }
+
+        /* Mobile specific glow reduction */
+        @media (max-width: 640px) {
+             .hero-critical {
+                padding-top: 8rem;
+                min-height: 70vh !important;
+            }
+            .h1-critical {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* ===== Proceso Timeline ===== */
+        .proceso-timeline {
+            padding: 2rem 0;
+        }
+
+        .proceso-step {
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .proceso-step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-icon {
+            position: relative;
+            filter: drop-shadow(0 0 0px rgba(234, 179, 8, 0));
+            transition: filter 0.5s ease, transform 0.5s ease;
+        }
+
+        .proceso-step.visible .step-icon {
+            filter: drop-shadow(0 0 12px rgba(234, 179, 8, 0.4));
+        }
+
+        .proceso-step:hover .step-icon {
+            transform: scale(1.15) translateY(-4px);
+            filter: drop-shadow(0 0 20px rgba(234, 179, 8, 0.6));
+        }
+
+        .step-pentagon polygon {
+            transition: fill 0.3s ease;
+        }
+
+        .proceso-step:hover .step-pentagon polygon {
+            fill: #facc15;
+        }
+
+        .step-connector {
+            transition: background-color 0.5s ease;
+        }
+
+        .proceso-step.visible .step-connector {
+            background-color: rgba(234, 179, 8, 0.4) !important;
+        }
+
+        /* Small dot on the line for each step */
+        .proceso-step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: var(--color-text-muted);
+            border-radius: 50%;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        @media (max-width: 767px) {
+            .proceso-timeline .grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .proceso-step {
+                flex-direction: row;
+                text-align: left;
+                gap: 1rem;
+            }
+            .proceso-step p:first-child,
+            .proceso-step p:last-child {
+                height: auto;
+            }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.3)); }
+            50% { filter: drop-shadow(0 0 20px rgba(234, 179, 8, 0.6)); }
+        }
     </style>
+
+    <script>
+        // Proceso Timeline Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const steps = document.querySelectorAll('.proceso-step');
+            const progressLine = document.querySelector('.timeline-line-progress');
+
+            if (!steps.length) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const section = entry.target;
+                        const allSteps = section.querySelectorAll('.proceso-step');
+                        allSteps.forEach((step, i) => {
+                            setTimeout(() => {
+                                step.classList.add('visible');
+                            }, i * 200);
+                        });
+
+                        // Animate the progress line
+                        if (progressLine) {
+                            setTimeout(() => {
+                                progressLine.style.width = '100%';
+                            }, 300);
+                        }
+
+                        observer.unobserve(section);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            const timelineSection = document.querySelector('#proceso');
+            if (timelineSection) observer.observe(timelineSection);
+        });
+    </script>
 </Layout>

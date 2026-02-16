@@ -1,0 +1,1075 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="CLICK Logística | Servicios Integrales de Operación Logística" description="Click OPL: Operador logístico 3PL especializado en toma de inventarios, operación de centros de distribución, diagnóstico express y consultoría logística.">
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[var(--color-bg)]">
+        <canvas id="servicesNetworkCanvas" class="absolute inset-0 w-full h-full" style="z-index:1;"></canvas>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-primary/10 via-[var(--color-bg)] to-[var(--color-bg)] pointer-events-none" style="z-index:2;"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 text-center" style="z-index:3;">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] text-brand-primary text-sm font-semibold mb-8 animate-float backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-brand-primary animate-pulse"></span>
+                Operador Logístico 3PL
+            </div>
+
+            <h1 class="text-4xl md:text-7xl lg:text-8xl font-black tracking-tight text-[var(--color-text)] mb-8 leading-tight font-[Outfit]">
+                SOLUCIONES<br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--gradient-from)] via-[var(--gradient-via)] to-[var(--gradient-to)] animate-pulse-slow">LOGÍSTICAS</span>
+                <br/>INTEGRALES
+            </h1>
+
+            <p class="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-[var(--color-text-muted)] font-light leading-relaxed">
+                Nos ocupamos por entender las necesidades de nuestros clientes y diseñamos
+                <span class="text-[var(--color-text)] font-medium">soluciones a la medida</span> que permitan el logro de los objetivos trazados y las exigencias del sector.
+            </p>
+
+            <div class="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <button onclick="document.getElementById('servicios').scrollIntoView({behavior: 'smooth'})"
+                    class="group relative px-10 py-5 bg-brand-primary text-black rounded-full font-bold text-lg shadow-[0_0_30px_rgba(234,179,8,0.3)] hover:shadow-[0_0_50px_rgba(234,179,8,0.5)] transition-all overflow-hidden">
+                    <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
+                    Explorar Servicios
+                    <i class="fa-solid fa-arrow-down ml-2"></i>
+                </button>
+                <a href="/empresas"
+                    class="px-10 py-5 bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)] rounded-full font-bold text-lg hover:bg-[var(--color-card-bg)] hover:border-brand-primary/50 transition-all backdrop-blur-sm">
+                    Solicitar Cotización
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-brand-primary cursor-pointer" style="z-index:5;" onclick="document.getElementById('servicios').scrollIntoView({behavior: 'smooth'})">
+            <i class="fa-solid fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Stats Strip -->
+    <div class="bg-[var(--color-bg)] border-y border-[var(--color-border)] py-10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="svc-reveal">
+                <div class="text-3xl md:text-4xl font-black text-brand-primary font-[Outfit]">24+</div>
+                <div class="text-sm text-[var(--color-text-muted)] mt-1">Clientes Activos</div>
+            </div>
+            <div class="svc-reveal">
+                <div class="text-3xl md:text-4xl font-black text-brand-primary font-[Outfit]">10+</div>
+                <div class="text-sm text-[var(--color-text-muted)] mt-1">Años de Experiencia</div>
+            </div>
+            <div class="svc-reveal">
+                <div class="text-3xl md:text-4xl font-black text-brand-primary font-[Outfit]">98%</div>
+                <div class="text-sm text-[var(--color-text-muted)] mt-1">Satisfacción</div>
+            </div>
+            <div class="svc-reveal">
+                <div class="text-3xl md:text-4xl font-black text-brand-primary font-[Outfit]">4</div>
+                <div class="text-sm text-[var(--color-text-muted)] mt-1">Ciudades</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-24 md:py-32 bg-[var(--color-bg)] relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-2/3 h-full bg-brand-primary/5 opacity-50 blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 svc-reveal">
+                <h2 class="text-4xl md:text-6xl font-black text-[var(--color-text)] mb-6 font-[Outfit]">
+                    NUESTROS <span class="text-brand-primary">SERVICIOS</span>
+                </h2>
+                <div class="h-1 w-20 bg-brand-primary rounded-full mx-auto mb-6"></div>
+                <p class="text-[var(--color-text-muted)] text-lg max-w-2xl mx-auto">
+                    Contamos con el expertiz en servicios logísticos que impulsan la eficiencia de su operación
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Service 1: Inventarios -->
+                <div class="svc-reveal group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 md:p-10 hover:border-brand-primary/50 transition-all duration-500 overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:bg-brand-primary group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-lg">
+                            <i class="fa-solid fa-clipboard-check text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[var(--color-text)] mb-3 font-[Outfit]">Toma Física de Inventarios</h3>
+                        <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
+                            Ofrecemos el servicio integral a la medida de la toma física de inventarios de materiales, partes y producto terminado. Optimice sus resultados financieros con métodos productivos y confiables.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Materiales</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Producto Terminado</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Partes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2: Operación CD -->
+                <div class="svc-reveal group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 md:p-10 hover:border-brand-primary/50 transition-all duration-500 overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:bg-brand-primary group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-lg">
+                            <i class="fa-solid fa-warehouse text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[var(--color-text)] mb-3 font-[Outfit]">Operación Logística CD</h3>
+                        <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
+                            Operación integral del centro de distribución en modalidad in house. Concentre sus esfuerzos en generar valor esencial para conseguir una ventaja competitiva.
+                        </p>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4">
+                            <div class="flex items-center gap-2 text-xs text-[var(--color-text-muted)]">
+                                <i class="fa-solid fa-shield-halved text-brand-primary"></i> Prevenga Riesgos
+                            </div>
+                            <div class="flex items-center gap-2 text-xs text-[var(--color-text-muted)]">
+                                <i class="fa-solid fa-sliders text-brand-primary"></i> Ajuste Procesos
+                            </div>
+                            <div class="flex items-center gap-2 text-xs text-[var(--color-text-muted)]">
+                                <i class="fa-solid fa-arrow-trend-down text-brand-primary"></i> Reduzca Costos
+                            </div>
+                            <div class="flex items-center gap-2 text-xs text-[var(--color-text-muted)]">
+                                <i class="fa-solid fa-lock text-brand-primary"></i> Controle
+                            </div>
+                            <div class="flex items-center gap-2 text-xs text-[var(--color-text-muted)]">
+                                <i class="fa-solid fa-chart-line text-brand-primary"></i> Mejore KPIs
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3: Diagnóstico -->
+                <div class="svc-reveal group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 md:p-10 hover:border-brand-primary/50 transition-all duration-500 overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:bg-brand-primary group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-lg">
+                            <i class="fa-solid fa-magnifying-glass-chart text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[var(--color-text)] mb-3 font-[Outfit]">Diagnóstico Express CD</h3>
+                        <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
+                            Evaluar, revisar y calificar las operaciones logísticas de los centros de distribución, identificando los riesgos que afectan la productividad.
+                        </p>
+                        <div class="flex gap-4">
+                            <div class="flex-1 text-center p-3 bg-[var(--color-card-bg)] rounded-xl border border-[var(--color-border)]">
+                                <div class="text-brand-primary font-bold text-lg">01</div>
+                                <div class="text-xs text-[var(--color-text-muted)] mt-1">Visita Técnica</div>
+                            </div>
+                            <div class="flex-1 text-center p-3 bg-[var(--color-card-bg)] rounded-xl border border-[var(--color-border)]">
+                                <div class="text-brand-primary font-bold text-lg">02</div>
+                                <div class="text-xs text-[var(--color-text-muted)] mt-1">Calificación</div>
+                            </div>
+                            <div class="flex-1 text-center p-3 bg-[var(--color-card-bg)] rounded-xl border border-[var(--color-border)]">
+                                <div class="text-brand-primary font-bold text-lg">03</div>
+                                <div class="text-xs text-[var(--color-text-muted)] mt-1">Informe</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4: Consultoría -->
+                <div class="svc-reveal group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 md:p-10 hover:border-brand-primary/50 transition-all duration-500 overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:bg-brand-primary group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-lg">
+                            <i class="fa-solid fa-lightbulb text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[var(--color-text)] mb-3 font-[Outfit]">Consultoría Logística</h3>
+                        <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
+                            Entregamos resultados sostenibles y transferimos beneficios de negocio tangibles. Implementamos las mejores prácticas de desempeño.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Planificación de Demanda</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Redes de Abastecimiento</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Centros de Distribución</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Network Connectivity Visualization -->
+    <section class="py-24 md:py-32 bg-[var(--color-bg)] relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 svc-reveal">
+                <h2 class="text-4xl md:text-6xl font-black text-[var(--color-text)] mb-6 font-[Outfit]">
+                    CONECTAMOS SU <span class="text-brand-primary">CADENA DE VALOR</span>
+                </h2>
+                <p class="text-[var(--color-text-muted)] text-lg max-w-2xl mx-auto">
+                    Nuestra red logística integra cada eslabón de su operación
+                </p>
+            </div>
+
+            <div class="relative w-full h-[500px] md:h-[600px] rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] overflow-hidden svc-reveal">
+                <canvas id="networkVisualization" class="absolute inset-0 w-full h-full"></canvas>
+                <!-- Floating Labels -->
+                <div class="absolute inset-0 pointer-events-none" id="networkLabels"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diagnostic Variables -->
+    <section class="py-24 md:py-32 bg-[var(--color-bg)] relative">
+        <div class="absolute bottom-0 left-0 w-2/3 h-full bg-brand-primary/5 opacity-30 blur-[120px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 svc-reveal">
+                <h2 class="text-4xl md:text-6xl font-black text-[var(--color-text)] mb-6 font-[Outfit]">
+                    CALIFICACIÓN <span class="text-brand-primary">PONDERADA</span>
+                </h2>
+                <p class="text-[var(--color-text-muted)] text-lg max-w-2xl mx-auto">
+                    Evaluamos 10 variables clave de su centro de distribución
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">1</div>
+                    <div>
+                        <h4 class="font-bold text-[var(--color-text)] text-sm">Sistemas de Recibo y Almacenamiento</h4>
+                        <p class="text-xs text-[var(--color-text-muted)] mt-1">Infraestructura soporte de los procesos de recibo y almacenamiento.</p>
+                    </div>
+                </div>
+                <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">2</div>
+                    <div>
+                        <h4 class="font-bold text-[var(--color-text)] text-sm">Separación, Alistamiento y Despacho</h4>
+                        <p class="text-xs text-[var(--color-text-muted)] mt-1">Gestión de pedidos, metodología y recursos tecnológicos.</p>
+                    </div>
+                </div>
+                <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">3</div>
+                    <div>
+                        <h4 class="font-bold text-[var(--color-text)] text-sm">Equipos y Medios de Almacenamiento</h4>
+                        <p class="text-xs text-[var(--color-text-muted)] mt-1">Estado y funcionalidad de equipos en la operación.</p>
+                    </div>
+                </div>
+                <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">4</div>
+                    <div>
+                        <h4 class="font-bold text-[var(--color-text)] text-sm">Distribución Física y Layout</h4>
+                        <p class="text-xs text-[var(--color-text-muted)] mt-1">Espacios, zonas de servicio, pasillos y flujo de materiales.</p>
+                    </div>
+                </div>
+                <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">5</div>
+                    <div>
+                        <h4 class="font-bold text-[var(--color-text)] text-sm">Gestión de Inventarios</h4>
+                        <p class="text-xs text-[var(--color-text-muted)] mt-1">Control de transacciones, métodos de control físico y tenencia.</p>
+                    </div>
+                </div>
+                <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">6</div>
+                    <div>
+                        <h4 class="font-bold text-[var(--color-text)] text-sm">Indicadores de Gestión</h4>
+                        <p class="text-xs text-[var(--color-text-muted)] mt-1">Métricas estratégicas del proceso logístico.</p>
+                    </div>
+                </div>
+                <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">7</div>
+                    <div>
+                        <h4 class="font-bold text-[var(--color-text)] text-sm">Seguridad Industrial y Salud</h4>
+                        <p class="text-xs text-[var(--color-text-muted)] mt-1">Riesgos laborales en los procesos logísticos.</p>
+                    </div>
+                </div>
+                <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">8</div>
+                    <div>
+                        <h4 class="font-bold text-[var(--color-text)] text-sm">Aseguramiento de Calidad</h4>
+                        <p class="text-xs text-[var(--color-text-muted)] mt-1">Estandarización e identificación de actividades sin valor.</p>
+                    </div>
+                </div>
+                <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">9</div>
+                    <div>
+                        <h4 class="font-bold text-[var(--color-text)] text-sm">Recurso Humano</h4>
+                        <p class="text-xs text-[var(--color-text-muted)] mt-1">Nivel de conocimiento y falencias del personal.</p>
+                    </div>
+                </div>
+                <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">10</div>
+                    <div>
+                        <h4 class="font-bold text-[var(--color-text)] text-sm">Sistemas de Información y Tecnología</h4>
+                        <p class="text-xs text-[var(--color-text-muted)] mt-1">Uso de tecnologías para optimizar procesos logísticos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section id="timelineSection" class="py-24 md:py-32 bg-[var(--color-bg)] relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-20 svc-reveal">
+                <h2 class="text-4xl md:text-6xl font-black text-[var(--color-text)] mb-6 font-[Outfit]">
+                    ASÍ <span class="text-brand-primary">TRABAJAMOS</span>
+                </h2>
+                <p class="text-[var(--color-text-muted)] text-lg">Nuestro proceso garantiza resultados medibles</p>
+            </div>
+
+            <div id="timelineContainer" class="relative">
+                <!-- Background track line (gray) -->
+                <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-[3px] bg-[var(--color-border)] opacity-30 md:-translate-x-[1px] rounded-full"></div>
+                <!-- Animated yellow progress line -->
+                <div id="timelineProgress" class="absolute left-6 md:left-1/2 top-0 w-[3px] md:-translate-x-[1px] rounded-full" style="height:0%; background: linear-gradient(180deg, #eab308 0%, #fbbf24 60%, #f59e0b 100%); box-shadow: 0 0 12px rgba(234,179,8,0.6), 0 0 30px rgba(234,179,8,0.3); transition: height 0.15s ease-out;"></div>
+                <!-- Glow dot at bottom of progress line -->
+                <div id="timelineGlowDot" class="absolute left-6 md:left-1/2 w-[11px] h-[11px] rounded-full md:-translate-x-[5px] -translate-x-[4px] pointer-events-none" style="top:0%; background: radial-gradient(circle, #fbbf24 30%, rgba(234,179,8,0.6) 60%, transparent 100%); box-shadow: 0 0 16px rgba(234,179,8,0.8), 0 0 40px rgba(234,179,8,0.4); transition: top 0.15s ease-out;"></div>
+
+                <div class="space-y-8 md:space-y-12">
+                    <!-- Step 1 - LEFT -->
+                    <div class="tl-step relative flex items-start gap-6 md:gap-10" data-step="1">
+                        <div class="hidden md:flex md:w-1/2 justify-end pr-8">
+                            <div class="tl-card text-right">
+                                <h4 class="font-bold text-[var(--color-text)] text-lg">Diagnóstico de la Situación Actual</h4>
+                                <p class="text-sm text-[var(--color-text-muted)] mt-1.5">Análisis profundo de su operación logística</p>
+                            </div>
+                        </div>
+                        <div class="tl-dot relative z-10 w-12 h-12 rounded-full border-[3px] border-[var(--color-border)] bg-[var(--color-bg)] flex items-center justify-center text-[var(--color-text-muted)] font-bold text-sm shrink-0 transition-all duration-500">1</div>
+                        <div class="md:w-1/2">
+                            <div class="tl-card md:hidden">
+                                <h4 class="font-bold text-[var(--color-text)]">Diagnóstico</h4>
+                                <p class="text-sm text-[var(--color-text-muted)] mt-1">Análisis profundo de su operación logística</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 2 - RIGHT -->
+                    <div class="tl-step relative flex items-start gap-6 md:gap-10" data-step="2">
+                        <div class="hidden md:flex md:w-1/2"></div>
+                        <div class="tl-dot relative z-10 w-12 h-12 rounded-full border-[3px] border-[var(--color-border)] bg-[var(--color-bg)] flex items-center justify-center text-[var(--color-text-muted)] font-bold text-sm shrink-0 transition-all duration-500">2</div>
+                        <div class="md:w-1/2">
+                            <div class="tl-card">
+                                <h4 class="font-bold text-[var(--color-text)] text-lg">Definición de Volúmenes</h4>
+                                <p class="text-sm text-[var(--color-text-muted)] mt-1.5">Dimensionamiento preciso de la operación</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 3 - LEFT -->
+                    <div class="tl-step relative flex items-start gap-6 md:gap-10" data-step="3">
+                        <div class="hidden md:flex md:w-1/2 justify-end pr-8">
+                            <div class="tl-card text-right">
+                                <h4 class="font-bold text-[var(--color-text)] text-lg">Esquematización de Operación</h4>
+                                <p class="text-sm text-[var(--color-text-muted)] mt-1.5">Diseño de la solución logística</p>
+                            </div>
+                        </div>
+                        <div class="tl-dot relative z-10 w-12 h-12 rounded-full border-[3px] border-[var(--color-border)] bg-[var(--color-bg)] flex items-center justify-center text-[var(--color-text-muted)] font-bold text-sm shrink-0 transition-all duration-500">3</div>
+                        <div class="md:w-1/2">
+                            <div class="tl-card md:hidden">
+                                <h4 class="font-bold text-[var(--color-text)]">Esquematización</h4>
+                                <p class="text-sm text-[var(--color-text-muted)] mt-1">Diseño de la solución logística</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 4 - RIGHT -->
+                    <div class="tl-step relative flex items-start gap-6 md:gap-10" data-step="4">
+                        <div class="hidden md:flex md:w-1/2"></div>
+                        <div class="tl-dot relative z-10 w-12 h-12 rounded-full border-[3px] border-[var(--color-border)] bg-[var(--color-bg)] flex items-center justify-center text-[var(--color-text-muted)] font-bold text-sm shrink-0 transition-all duration-500">4</div>
+                        <div class="md:w-1/2">
+                            <div class="tl-card">
+                                <h4 class="font-bold text-[var(--color-text)] text-lg">Definición de Indicadores</h4>
+                                <p class="text-sm text-[var(--color-text-muted)] mt-1.5">KPIs claros para medir resultados</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 5 - LEFT -->
+                    <div class="tl-step relative flex items-start gap-6 md:gap-10" data-step="5">
+                        <div class="hidden md:flex md:w-1/2 justify-end pr-8">
+                            <div class="tl-card text-right">
+                                <h4 class="font-bold text-[var(--color-text)] text-lg">Propuesta de Mejoramiento</h4>
+                                <p class="text-sm text-[var(--color-text-muted)] mt-1.5">Plan de acción y propuesta económica</p>
+                            </div>
+                        </div>
+                        <div class="tl-dot relative z-10 w-12 h-12 rounded-full border-[3px] border-[var(--color-border)] bg-[var(--color-bg)] flex items-center justify-center text-[var(--color-text-muted)] font-bold text-sm shrink-0 transition-all duration-500">5</div>
+                        <div class="md:w-1/2">
+                            <div class="tl-card md:hidden">
+                                <h4 class="font-bold text-[var(--color-text)]">Propuesta</h4>
+                                <p class="text-sm text-[var(--color-text-muted)] mt-1">Plan de acción y propuesta económica</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 6 - RIGHT -->
+                    <div class="tl-step relative flex items-start gap-6 md:gap-10" data-step="6">
+                        <div class="hidden md:flex md:w-1/2"></div>
+                        <div class="tl-dot relative z-10 w-12 h-12 rounded-full border-[3px] border-[var(--color-border)] bg-[var(--color-bg)] flex items-center justify-center text-[var(--color-text-muted)] font-bold text-sm shrink-0 transition-all duration-500">6</div>
+                        <div class="md:w-1/2">
+                            <div class="tl-card">
+                                <h4 class="font-bold text-[var(--color-text)] text-lg">Firma de Acuerdo</h4>
+                                <p class="text-sm text-[var(--color-text-muted)] mt-1.5">Formalización del proyecto</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 7 - LEFT -->
+                    <div class="tl-step relative flex items-start gap-6 md:gap-10" data-step="7">
+                        <div class="hidden md:flex md:w-1/2 justify-end pr-8">
+                            <div class="tl-card text-right">
+                                <h4 class="font-bold text-[var(--color-text)] text-lg">Implementación</h4>
+                                <p class="text-sm text-[var(--color-text-muted)] mt-1.5">Ejecución del plan operativo</p>
+                            </div>
+                        </div>
+                        <div class="tl-dot relative z-10 w-12 h-12 rounded-full border-[3px] border-[var(--color-border)] bg-[var(--color-bg)] flex items-center justify-center text-[var(--color-text-muted)] font-bold text-sm shrink-0 transition-all duration-500">7</div>
+                        <div class="md:w-1/2">
+                            <div class="tl-card md:hidden">
+                                <h4 class="font-bold text-[var(--color-text)]">Implementación</h4>
+                                <p class="text-sm text-[var(--color-text-muted)] mt-1">Ejecución del plan operativo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 8 - RIGHT -->
+                    <div class="tl-step relative flex items-start gap-6 md:gap-10" data-step="8">
+                        <div class="hidden md:flex md:w-1/2"></div>
+                        <div class="tl-dot relative z-10 w-12 h-12 rounded-full border-[3px] border-[var(--color-border)] bg-[var(--color-bg)] flex items-center justify-center text-[var(--color-text-muted)] font-bold text-sm shrink-0 transition-all duration-500">8</div>
+                        <div class="md:w-1/2">
+                            <div class="tl-card">
+                                <h4 class="font-bold text-[var(--color-text)] text-lg">Capacitación del Equipo</h4>
+                                <p class="text-sm text-[var(--color-text-muted)] mt-1.5">Entrenamiento integral del personal</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 9 - LEFT -->
+                    <div class="tl-step relative flex items-start gap-6 md:gap-10" data-step="9">
+                        <div class="hidden md:flex md:w-1/2 justify-end pr-8">
+                            <div class="tl-card text-right">
+                                <h4 class="font-bold text-[var(--color-text)] text-lg">Seguimiento Continuo</h4>
+                                <p class="text-sm text-[var(--color-text-muted)] mt-1.5">Monitoreo de indicadores en tiempo real</p>
+                            </div>
+                        </div>
+                        <div class="tl-dot relative z-10 w-12 h-12 rounded-full border-[3px] border-[var(--color-border)] bg-[var(--color-bg)] flex items-center justify-center text-[var(--color-text-muted)] font-bold text-sm shrink-0 transition-all duration-500">9</div>
+                        <div class="md:w-1/2">
+                            <div class="tl-card md:hidden">
+                                <h4 class="font-bold text-[var(--color-text)]">Seguimiento</h4>
+                                <p class="text-sm text-[var(--color-text-muted)] mt-1">Monitoreo de indicadores en tiempo real</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 10 - RIGHT (final) -->
+                    <div class="tl-step relative flex items-start gap-6 md:gap-10" data-step="10">
+                        <div class="hidden md:flex md:w-1/2"></div>
+                        <div class="tl-dot relative z-10 w-12 h-12 rounded-full border-[3px] border-[var(--color-border)] bg-[var(--color-bg)] flex items-center justify-center text-[var(--color-text-muted)] font-bold text-sm shrink-0 transition-all duration-500">10</div>
+                        <div class="md:w-1/2">
+                            <div class="tl-card">
+                                <h4 class="font-bold text-[var(--color-text)] text-lg">Mejora Continua</h4>
+                                <p class="text-sm text-[var(--color-text-muted)] mt-1.5">Optimización permanente de resultados</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 md:py-32 bg-[var(--color-bg)] relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-primary/5 via-transparent to-transparent pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10 svc-reveal">
+            <h2 class="text-4xl md:text-6xl font-black text-[var(--color-text)] mb-6 font-[Outfit]">
+                ¿LISTO PARA <span class="text-brand-primary">OPTIMIZAR</span>?
+            </h2>
+            <p class="text-[var(--color-text-muted)] text-lg max-w-xl mx-auto mb-10">
+                A partir de ahora usted tiene los servicios y para solicitarlos solamente haga un <span class="text-brand-primary font-bold">«click»</span>
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/empresas"
+                    class="group relative px-10 py-5 bg-brand-primary text-black rounded-full font-bold text-lg shadow-[0_0_30px_rgba(234,179,8,0.3)] hover:shadow-[0_0_50px_rgba(234,179,8,0.5)] transition-all overflow-hidden">
+                    <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
+                    Solicitar Cotización
+                    <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Scripts -->
+    <script>
+        // ===== Scroll Reveal =====
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('svc-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.svc-reveal').forEach(el => observer.observe(el));
+        }
+
+        // ===== Hero Network Canvas =====
+        function initHeroNetwork() {
+            const canvas = document.getElementById('servicesNetworkCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let w, h, particles = [];
+
+            function resize() {
+                w = canvas.parentElement.clientWidth;
+                h = canvas.parentElement.clientHeight;
+                canvas.width = w;
+                canvas.height = h;
+                initParticles();
+            }
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * w;
+                    this.y = Math.random() * h;
+                    this.vx = (Math.random() - 0.5) * 0.4;
+                    this.vy = (Math.random() - 0.5) * 0.4;
+                    this.size = Math.random() * 2.5 + 1;
+                }
+                update() {
+                    this.x += this.vx; this.y += this.vy;
+                    if (this.x < 0 || this.x > w) this.vx *= -1;
+                    if (this.y < 0 || this.y > h) this.vy *= -1;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = '#eab308';
+                    ctx.fill();
+                }
+            }
+
+            function initParticles() {
+                particles = [];
+                const count = Math.min(w / 18, 60);
+                for (let i = 0; i < count; i++) particles.push(new Particle());
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, w, h);
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 160) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = `rgba(234,179,8,${(1 - dist / 160) * 0.5})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            animate();
+        }
+
+        // ===== Network Visualization (Service Nodes) =====
+        function initNetworkViz() {
+            const canvas = document.getElementById('networkVisualization');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let w, h;
+
+            const serviceNodes = [
+                { label: 'Inventarios', iconKey: 'clipboard', x: 0, y: 0, targetX: 0, targetY: 0 },
+                { label: 'Operación CD', iconKey: 'warehouse', x: 0, y: 0, targetX: 0, targetY: 0 },
+                { label: 'Diagnóstico', iconKey: 'search', x: 0, y: 0, targetX: 0, targetY: 0 },
+                { label: 'Consultoría', iconKey: 'bulb', x: 0, y: 0, targetX: 0, targetY: 0 },
+                { label: 'CLICK OPL', iconKey: 'bolt', x: 0, y: 0, targetX: 0, targetY: 0, isCenter: true },
+                { label: 'Demanda', iconKey: 'chart', x: 0, y: 0, targetX: 0, targetY: 0 },
+                { label: 'Abastecimiento', iconKey: 'chain', x: 0, y: 0, targetX: 0, targetY: 0 },
+                { label: 'Calidad', iconKey: 'shield', x: 0, y: 0, targetX: 0, targetY: 0 },
+                { label: 'Tecnología', iconKey: 'monitor', x: 0, y: 0, targetX: 0, targetY: 0 },
+            ];
+
+            // Draw vector icon centered at (0,0) with given size
+            function drawIcon(iconKey, cx, cy, size, color) {
+                ctx.save();
+                ctx.translate(cx, cy);
+                ctx.strokeStyle = color;
+                ctx.fillStyle = color;
+                ctx.lineWidth = 2.5;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                const s = size; // half-size reference
+
+                switch (iconKey) {
+                    case 'clipboard': {
+                        // Clipboard board
+                        const bw = s * 0.7, bh = s * 0.9;
+                        ctx.beginPath();
+                        ctx.roundRect(-bw, -bh, bw * 2, bh * 2, 3);
+                        ctx.stroke();
+                        // Clip tab at top
+                        const tw = s * 0.35;
+                        ctx.beginPath();
+                        ctx.roundRect(-tw, -bh - 3, tw * 2, 8, 2);
+                        ctx.fill();
+                        // Check lines
+                        const lineY = [-bh + bh * 0.5, -bh + bh * 0.9, -bh + bh * 1.3];
+                        lineY.forEach(ly => {
+                            ctx.beginPath();
+                            ctx.moveTo(-bw + 8, ly);
+                            ctx.lineTo(bw - 8, ly);
+                            ctx.stroke();
+                        });
+                        break;
+                    }
+                    case 'warehouse': {
+                        // Warehouse roof triangle
+                        ctx.beginPath();
+                        ctx.moveTo(0, -s * 0.9);
+                        ctx.lineTo(-s * 0.85, -s * 0.15);
+                        ctx.lineTo(s * 0.85, -s * 0.15);
+                        ctx.closePath();
+                        ctx.stroke();
+                        // Building body
+                        ctx.beginPath();
+                        ctx.rect(-s * 0.7, -s * 0.15, s * 1.4, s * 1.0);
+                        ctx.stroke();
+                        // Door
+                        ctx.beginPath();
+                        ctx.rect(-s * 0.2, s * 0.25, s * 0.4, s * 0.6);
+                        ctx.stroke();
+                        break;
+                    }
+                    case 'search': {
+                        // Magnifying glass circle
+                        const r = s * 0.55;
+                        ctx.beginPath();
+                        ctx.arc(-s * 0.1, -s * 0.15, r, 0, Math.PI * 2);
+                        ctx.stroke();
+                        // Handle
+                        ctx.lineWidth = 3;
+                        ctx.beginPath();
+                        ctx.moveTo(-s * 0.1 + r * 0.7, -s * 0.15 + r * 0.7);
+                        ctx.lineTo(s * 0.7, s * 0.75);
+                        ctx.stroke();
+                        ctx.lineWidth = 2.5;
+                        break;
+                    }
+                    case 'bulb': {
+                        // Bulb dome
+                        ctx.beginPath();
+                        ctx.arc(0, -s * 0.2, s * 0.55, Math.PI * 1.15, Math.PI * -0.15);
+                        ctx.quadraticCurveTo(s * 0.35, s * 0.3, s * 0.22, s * 0.5);
+                        ctx.lineTo(-s * 0.22, s * 0.5);
+                        ctx.quadraticCurveTo(-s * 0.35, s * 0.3, -s * 0.55 * Math.cos(Math.PI * 0.15), -s * 0.2 + s * 0.55 * Math.sin(Math.PI * 0.15));
+                        ctx.stroke();
+                        // Base lines
+                        for (let i = 0; i < 3; i++) {
+                            const y = s * 0.55 + i * 5;
+                            ctx.beginPath();
+                            ctx.moveTo(-s * 0.18, y);
+                            ctx.lineTo(s * 0.18, y);
+                            ctx.stroke();
+                        }
+                        // Filament rays
+                        ctx.lineWidth = 1.5;
+                        const rays = [[-s*0.85, -s*0.2], [s*0.85, -s*0.2], [0, -s*0.95], [-s*0.6, -s*0.7], [s*0.6, -s*0.7]];
+                        rays.forEach(([rx, ry]) => {
+                            ctx.beginPath();
+                            ctx.moveTo(rx * 0.65, ry * 0.65);
+                            ctx.lineTo(rx, ry);
+                            ctx.stroke();
+                        });
+                        ctx.lineWidth = 2.5;
+                        break;
+                    }
+                    case 'bolt': {
+                        // Lightning bolt - filled for center node
+                        ctx.beginPath();
+                        ctx.moveTo(s * 0.15, -s);
+                        ctx.lineTo(-s * 0.45, s * 0.05);
+                        ctx.lineTo(s * 0.05, s * 0.05);
+                        ctx.lineTo(-s * 0.15, s);
+                        ctx.lineTo(s * 0.45, -s * 0.05);
+                        ctx.lineTo(-s * 0.05, -s * 0.05);
+                        ctx.closePath();
+                        ctx.fill();
+                        break;
+                    }
+                    case 'chart': {
+                        // Axes
+                        ctx.beginPath();
+                        ctx.moveTo(-s * 0.7, -s * 0.8);
+                        ctx.lineTo(-s * 0.7, s * 0.8);
+                        ctx.lineTo(s * 0.8, s * 0.8);
+                        ctx.stroke();
+                        // Bars
+                        const bars = [
+                            { x: -s * 0.4, w: s * 0.25, h: s * 0.5 },
+                            { x: -s * 0.05, w: s * 0.25, h: s * 1.0 },
+                            { x: s * 0.3, w: s * 0.25, h: s * 0.75 },
+                        ];
+                        bars.forEach(b => {
+                            ctx.beginPath();
+                            ctx.rect(b.x, s * 0.8 - b.h, b.w, b.h);
+                            ctx.fill();
+                        });
+                        break;
+                    }
+                    case 'chain': {
+                        // Two interlocking chain links
+                        ctx.lineWidth = 2.5;
+                        // Link 1
+                        ctx.beginPath();
+                        ctx.roundRect(-s * 0.85, -s * 0.3, s * 1.0, s * 0.6, s * 0.3);
+                        ctx.stroke();
+                        // Link 2
+                        ctx.beginPath();
+                        ctx.roundRect(-s * 0.15, -s * 0.3, s * 1.0, s * 0.6, s * 0.3);
+                        ctx.stroke();
+                        break;
+                    }
+                    case 'shield': {
+                        // Shield outline
+                        ctx.beginPath();
+                        ctx.moveTo(0, -s * 0.9);
+                        ctx.quadraticCurveTo(s * 0.8, -s * 0.7, s * 0.75, -s * 0.1);
+                        ctx.quadraticCurveTo(s * 0.65, s * 0.55, 0, s * 0.95);
+                        ctx.quadraticCurveTo(-s * 0.65, s * 0.55, -s * 0.75, -s * 0.1);
+                        ctx.quadraticCurveTo(-s * 0.8, -s * 0.7, 0, -s * 0.9);
+                        ctx.stroke();
+                        // Checkmark
+                        ctx.lineWidth = 3;
+                        ctx.beginPath();
+                        ctx.moveTo(-s * 0.3, s * 0.0);
+                        ctx.lineTo(-s * 0.05, s * 0.3);
+                        ctx.lineTo(s * 0.35, -s * 0.25);
+                        ctx.stroke();
+                        ctx.lineWidth = 2.5;
+                        break;
+                    }
+                    case 'monitor': {
+                        // Monitor screen
+                        const mw = s * 0.85, mh = s * 0.6;
+                        ctx.beginPath();
+                        ctx.roundRect(-mw, -mh - s * 0.1, mw * 2, mh * 2, 4);
+                        ctx.stroke();
+                        // Stand
+                        ctx.beginPath();
+                        ctx.moveTo(-s * 0.15, mh - s * 0.1);
+                        ctx.lineTo(-s * 0.15, mh + s * 0.25);
+                        ctx.moveTo(s * 0.15, mh - s * 0.1);
+                        ctx.lineTo(s * 0.15, mh + s * 0.25);
+                        ctx.stroke();
+                        // Base
+                        ctx.beginPath();
+                        ctx.moveTo(-s * 0.45, mh + s * 0.25);
+                        ctx.lineTo(s * 0.45, mh + s * 0.25);
+                        ctx.stroke();
+                        // Screen line (code cursor)
+                        ctx.lineWidth = 1.5;
+                        ctx.beginPath();
+                        ctx.moveTo(-mw + 10, -s * 0.25);
+                        ctx.lineTo(-mw + 10 + s * 0.5, -s * 0.25);
+                        ctx.moveTo(-mw + 10, -s * 0.05);
+                        ctx.lineTo(-mw + 10 + s * 0.35, -s * 0.05);
+                        ctx.stroke();
+                        ctx.lineWidth = 2.5;
+                        break;
+                    }
+                }
+                ctx.restore();
+            }
+
+            const connections = [
+                [4,0],[4,1],[4,2],[4,3],[4,5],[4,6],[4,7],[4,8],
+                [0,5],[1,6],[2,7],[3,8],[0,1],[2,3],[5,6],[7,8]
+            ];
+
+            let pulses = [];
+            let time = 0;
+
+            function resize() {
+                w = canvas.parentElement.clientWidth;
+                h = canvas.parentElement.clientHeight;
+                canvas.width = w;
+                canvas.height = h;
+                positionNodes();
+            }
+
+            function positionNodes() {
+                const cx = w / 2, cy = h / 2;
+                const r = Math.min(w, h) * 0.32;
+                serviceNodes[4].targetX = cx;
+                serviceNodes[4].targetY = cy;
+                serviceNodes[4].x = cx;
+                serviceNodes[4].y = cy;
+                const outerNodes = [0,1,2,3,5,6,7,8];
+                outerNodes.forEach((ni, i) => {
+                    const angle = (i / outerNodes.length) * Math.PI * 2 - Math.PI / 2;
+                    serviceNodes[ni].targetX = cx + Math.cos(angle) * r;
+                    serviceNodes[ni].targetY = cy + Math.sin(angle) * r;
+                    serviceNodes[ni].x = serviceNodes[ni].targetX;
+                    serviceNodes[ni].y = serviceNodes[ni].targetY;
+                });
+            }
+
+            function spawnPulse() {
+                const conn = connections[Math.floor(Math.random() * connections.length)];
+                pulses.push({ from: conn[0], to: conn[1], t: 0 });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, w, h);
+                time += 0.01;
+
+                // Float nodes gently
+                serviceNodes.forEach((n, i) => {
+                    if (!n.isCenter) {
+                        n.x = n.targetX + Math.sin(time * 1.5 + i) * 4;
+                        n.y = n.targetY + Math.cos(time * 1.2 + i * 0.7) * 4;
+                    }
+                });
+
+                // Draw connections with gradient
+                connections.forEach(([a, b]) => {
+                    const na = serviceNodes[a], nb = serviceNodes[b];
+                    const lineGrad = ctx.createLinearGradient(na.x, na.y, nb.x, nb.y);
+                    lineGrad.addColorStop(0, 'rgba(234,179,8,0.25)');
+                    lineGrad.addColorStop(0.5, 'rgba(234,179,8,0.08)');
+                    lineGrad.addColorStop(1, 'rgba(234,179,8,0.25)');
+                    ctx.beginPath();
+                    ctx.strokeStyle = lineGrad;
+                    ctx.lineWidth = 1.2;
+                    ctx.moveTo(na.x, na.y);
+                    ctx.lineTo(nb.x, nb.y);
+                    ctx.stroke();
+                });
+
+                // Draw pulses
+                if (Math.random() < 0.025) spawnPulse();
+                pulses = pulses.filter(p => p.t <= 1);
+                pulses.forEach(p => {
+                    p.t += 0.012;
+                    const a = serviceNodes[p.from], b = serviceNodes[p.to];
+                    const px = a.x + (b.x - a.x) * p.t;
+                    const py = a.y + (b.y - a.y) * p.t;
+                    // Glow around pulse
+                    ctx.save();
+                    ctx.shadowColor = '#eab308';
+                    ctx.shadowBlur = 12;
+                    ctx.beginPath();
+                    ctx.arc(px, py, 4, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(234,179,8,${1 - p.t})`;
+                    ctx.fill();
+                    ctx.restore();
+                    // Trail
+                    const trailGrad = ctx.createLinearGradient(
+                        a.x + (b.x - a.x) * Math.max(0, p.t - 0.18), a.y + (b.y - a.y) * Math.max(0, p.t - 0.18),
+                        px, py
+                    );
+                    trailGrad.addColorStop(0, 'rgba(234,179,8,0)');
+                    trailGrad.addColorStop(1, `rgba(234,179,8,${(1 - p.t) * 0.6})`);
+                    ctx.beginPath();
+                    ctx.strokeStyle = trailGrad;
+                    ctx.lineWidth = 2.5;
+                    const trailT = Math.max(0, p.t - 0.18);
+                    ctx.moveTo(a.x + (b.x - a.x) * trailT, a.y + (b.y - a.y) * trailT);
+                    ctx.lineTo(px, py);
+                    ctx.stroke();
+                });
+
+                // Draw nodes
+                serviceNodes.forEach(n => {
+                    const radius = n.isCenter ? 44 : 34;
+                    const iconSize = n.isCenter ? 18 : 13;
+
+                    // Outer glow halo (3 layers)
+                    for (let layer = 3; layer >= 1; layer--) {
+                        const glowR = radius + layer * 14;
+                        const alpha = n.isCenter ? 0.08 / layer : 0.04 / layer;
+                        const grad = ctx.createRadialGradient(n.x, n.y, radius, n.x, n.y, glowR);
+                        grad.addColorStop(0, `rgba(234,179,8,${alpha})`);
+                        grad.addColorStop(1, 'rgba(234,179,8,0)');
+                        ctx.beginPath();
+                        ctx.arc(n.x, n.y, glowR, 0, Math.PI * 2);
+                        ctx.fillStyle = grad;
+                        ctx.fill();
+                    }
+
+                    // Circle fill
+                    ctx.beginPath();
+                    ctx.arc(n.x, n.y, radius, 0, Math.PI * 2);
+                    if (n.isCenter) {
+                        const cGrad = ctx.createRadialGradient(n.x - 8, n.y - 8, 0, n.x, n.y, radius);
+                        cGrad.addColorStop(0, '#fbbf24');
+                        cGrad.addColorStop(0.7, '#eab308');
+                        cGrad.addColorStop(1, '#ca8a04');
+                        ctx.fillStyle = cGrad;
+                    } else {
+                        ctx.fillStyle = 'rgba(20,20,20,0.85)';
+                    }
+                    ctx.fill();
+
+                    // Circle border with glow
+                    ctx.save();
+                    ctx.shadowColor = '#eab308';
+                    ctx.shadowBlur = n.isCenter ? 20 : 10;
+                    ctx.beginPath();
+                    ctx.arc(n.x, n.y, radius, 0, Math.PI * 2);
+                    ctx.strokeStyle = n.isCenter ? '#fbbf24' : 'rgba(234,179,8,0.7)';
+                    ctx.lineWidth = n.isCenter ? 3.5 : 2;
+                    ctx.stroke();
+                    ctx.restore();
+
+                    // Inner ring for outer nodes
+                    if (!n.isCenter) {
+                        ctx.beginPath();
+                        ctx.arc(n.x, n.y, radius - 5, 0, Math.PI * 2);
+                        ctx.strokeStyle = 'rgba(234,179,8,0.15)';
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+
+                    // Draw vector icon
+                    const iconColor = n.isCenter ? '#1a1a1a' : '#ffffff';
+                    drawIcon(n.iconKey, n.x, n.y, iconSize, iconColor);
+
+                    // Label with background pill
+                    const labelText = n.label;
+                    ctx.font = `700 ${n.isCenter ? 13 : 11}px Inter, Outfit, sans-serif`;
+                    const textW = ctx.measureText(labelText).width;
+                    const pillPad = 10;
+                    const pillH = n.isCenter ? 22 : 19;
+                    const pillY = n.y + radius + 12;
+
+                    // Pill background
+                    ctx.beginPath();
+                    ctx.roundRect(n.x - textW / 2 - pillPad, pillY - pillH / 2, textW + pillPad * 2, pillH, pillH / 2);
+                    ctx.fillStyle = 'rgba(0,0,0,0.7)';
+                    ctx.fill();
+                    ctx.strokeStyle = 'rgba(234,179,8,0.3)';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+
+                    // Label text
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillStyle = '#ffffff';
+                    ctx.save();
+                    ctx.shadowColor = 'rgba(234,179,8,0.5)';
+                    ctx.shadowBlur = 4;
+                    ctx.fillText(labelText, n.x, pillY);
+                    ctx.restore();
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            animate();
+        }
+
+        // ===== Timeline Scroll Animation =====
+        function initTimeline() {
+            const container = document.getElementById('timelineContainer');
+            const progressBar = document.getElementById('timelineProgress');
+            const glowDot = document.getElementById('timelineGlowDot');
+            const steps = document.querySelectorAll('.tl-step');
+            if (!container || !progressBar || !glowDot || !steps.length) return;
+
+            function updateTimeline() {
+                const containerRect = container.getBoundingClientRect();
+                const containerTop = containerRect.top;
+                const containerH = containerRect.height;
+                const viewH = window.innerHeight;
+
+                // Calculate how far the viewport center has traveled through the container
+                const triggerPoint = viewH * 0.6;
+                const scrolled = triggerPoint - containerTop;
+                const progress = Math.max(0, Math.min(1, scrolled / containerH));
+
+                // Update yellow line height
+                const heightPx = progress * containerH;
+                progressBar.style.height = heightPx + 'px';
+                glowDot.style.top = heightPx + 'px';
+
+                // Activate steps that the line has reached
+                steps.forEach(step => {
+                    const dot = step.querySelector('.tl-dot');
+                    const cards = step.querySelectorAll('.tl-card');
+                    if (!dot) return;
+
+                    const dotRect = dot.getBoundingClientRect();
+                    const dotCenter = dotRect.top + dotRect.height / 2;
+                    const isActive = dotCenter < (window.scrollY + triggerPoint + containerTop > 0 ? triggerPoint : viewH);
+                    // Simpler: check if the progress line has reached this dot
+                    const dotOffsetInContainer = dot.getBoundingClientRect().top - containerRect.top;
+                    const lineReached = heightPx >= dotOffsetInContainer;
+
+                    if (lineReached) {
+                        dot.classList.add('tl-dot-active');
+                        step.classList.add('tl-step-active');
+                        cards.forEach(c => c.classList.add('tl-card-visible'));
+                    } else {
+                        dot.classList.remove('tl-dot-active');
+                        step.classList.remove('tl-step-active');
+                        cards.forEach(c => c.classList.remove('tl-card-visible'));
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateTimeline, { passive: true });
+            window.addEventListener('resize', updateTimeline);
+            updateTimeline();
+        }
+
+        // Init everything
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollReveal();
+            setTimeout(() => initHeroNetwork(), 500);
+            setTimeout(() => initNetworkViz(), 1000);
+            initTimeline();
+        });
+    </script>
+
+    <style>
+        .svc-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .svc-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .diagnostic-card {
+            transition: all 0.3s ease;
+        }
+        .diagnostic-card:hover {
+            transform: translateX(4px);
+        }
+        @keyframes shimmer {
+            100% { transform: translateX(200%); }
+        }
+
+        /* Timeline step animations */
+        .tl-dot {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tl-dot-active {
+            border-color: #eab308 !important;
+            background: #eab308 !important;
+            color: #000 !important;
+            box-shadow: 0 0 20px rgba(234,179,8,0.5), 0 0 40px rgba(234,179,8,0.2);
+            transform: scale(1.1);
+        }
+        .tl-card {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .tl-card-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .tl-step-active .tl-dot {
+            animation: tl-pulse 2s ease-in-out infinite;
+        }
+        @keyframes tl-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(234,179,8,0.5), 0 0 40px rgba(234,179,8,0.2); }
+            50% { box-shadow: 0 0 25px rgba(234,179,8,0.7), 0 0 50px rgba(234,179,8,0.3); }
+        }
+    </style>
+
+</Layout>
