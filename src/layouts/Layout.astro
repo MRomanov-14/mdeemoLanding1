@@ -1,34 +1,34 @@
 ---
 interface Props {
-	title: string;
-	description?: string;
-    forcedTheme?: 'light' | 'dark';
+    title: string;
+    description?: string;
+    forcedTheme?: "light" | "dark";
 }
 
 const { title, description, forcedTheme } = Astro.props;
 
-import '@fontsource/inter/300.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/600.css';
-import '@fontsource/inter/700.css';
-import '@fontsource/inter/800.css';
-import '@fontsource/outfit/700.css';
-import '@fontsource/outfit/900.css';
+import "@fontsource/inter/300.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/inter/800.css";
+import "@fontsource/outfit/700.css";
+import "@fontsource/outfit/900.css";
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es" class="scroll-smooth" data-theme={forcedTheme}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="theme-color" content="#030303">
-		<title>{title}</title>
-		<meta name="description" content={description || "Click Logística"} />
-		<meta name="description" content={description || "Click Logística"} />
-		<!-- Fonts loaded via @fontsource imports -->
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="theme-color" content="#030303" />
+        <title>{title}</title>
+        <meta name="description" content={description || "Click Logística"} />
+        <meta name="description" content={description || "Click Logística"} />
+        <!-- Fonts loaded via @fontsource imports -->
         <style is:global>
             /* Global Styles matching original CSS */
             :root {
@@ -45,7 +45,7 @@ import '@fontsource/outfit/900.css';
                 --gradient-to: #eab308;
             }
 
-            [data-theme='light'] {
+            [data-theme="light"] {
                 --color-bg: #ffffff;
                 --color-text: #000000;
                 --color-surface: #f3f4f6;
@@ -63,7 +63,7 @@ import '@fontsource/outfit/900.css';
                 margin: 0;
                 background-color: var(--color-bg) !important;
                 color: var(--color-text) !important;
-                font-family: 'Inter', sans-serif;
+                font-family: "Inter", sans-serif;
                 overflow-x: hidden;
                 width: 100%;
                 position: relative;
@@ -72,24 +72,41 @@ import '@fontsource/outfit/900.css';
             html {
                 overflow-x: hidden;
             }
-            
+
             /* Theme transitions for other elements */
-            nav, .mobile-link, footer, div, section, button, input {
-                transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+            nav,
+            .mobile-link,
+            footer,
+            div,
+            section,
+            button,
+            input {
+                transition: background-color 0.3s ease, color 0.3s ease,
+                    border-color 0.3s ease, opacity 0.3s ease;
             }
         </style>
-	</head>
-	<body class="antialiased selection:bg-brand-primary selection:text-black">
+    </head>
+    <body class="antialiased selection:bg-brand-primary selection:text-black">
         <!-- Preloader -->
-        <div id="preloader"
-            style="position: fixed; inset: 0; z-index: 9999; background-color: #030303; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.05s ease-out;">
-            <div class="animate-pulse"
-                style="width: 64px; height: 64px; background-color: #EAB308; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; box-shadow: 0 0 40px rgba(234,179,8,0.2);">
-                <span style="font-size: 32px; font-weight: 800; color: #000; font-family: sans-serif;">C</span>
+        <div
+            id="preloader"
+            style="position: fixed; inset: 0; z-index: 9999; background-color: #030303; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.05s ease-out;"
+        >
+            <div
+                class="animate-pulse"
+                style="width: 64px; height: 64px; background-color: #EAB308; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; box-shadow: 0 0 40px rgba(234,179,8,0.2);"
+            >
+                <span
+                    style="font-size: 32px; font-weight: 800; color: #000; font-family: sans-serif;"
+                    >C</span
+                >
             </div>
             <div
-                style="width: 120px; height: 2px; background: rgba(255,255,255,0.1); border-radius: 99px; overflow: hidden;">
-                <div style="width: 50%; height: 100%; background: #EAB308; animation: loading 0.5s infinite ease-in-out;">
+                style="width: 120px; height: 2px; background: rgba(255,255,255,0.1); border-radius: 99px; overflow: hidden;"
+            >
+                <div
+                    style="width: 50%; height: 100%; background: #EAB308; animation: loading 0.5s infinite ease-in-out;"
+                >
                 </div>
             </div>
             <style>
@@ -97,11 +114,11 @@ import '@fontsource/outfit/900.css';
                     0% {
                         transform: translateX(-150%);
                     }
-    
+
                     50% {
                         transform: translateX(0%);
                     }
-    
+
                     100% {
                         transform: translateX(150%);
                     }
@@ -109,105 +126,157 @@ import '@fontsource/outfit/900.css';
             </style>
             <script>
                 // Dismiss immediately when DOM is ready
-                document.addEventListener('DOMContentLoaded', () => {
-                    const p = document.getElementById('preloader');
+                document.addEventListener("DOMContentLoaded", () => {
+                    const p = document.getElementById("preloader");
                     if (p) {
                         // Instant removal check
                         requestAnimationFrame(() => {
-                            p.style.opacity = '0';
+                            p.style.opacity = "0";
                             setTimeout(() => p.remove(), 50);
                         });
                     }
                 });
                 // Fallback
-                window.addEventListener('load', () => {
-                    const p = document.getElementById('preloader');
+                window.addEventListener("load", () => {
+                    const p = document.getElementById("preloader");
                     if (p) p.remove();
                 });
             </script>
         </div>
 
-		<!-- Navbar Flotante -->
-		<nav class="fixed w-full z-50 transition-all duration-300 py-6" id="navbar">
-			<div class="max-w-7xl mx-auto px-6 lg:px-8">
-				<div class="flex items-center justify-between h-20">
-					<div class="flex items-center gap-3 cursor-pointer group" onclick="window.location.href='/'">
-						<div
-							class="w-12 h-12 bg-brand-primary rounded-xl flex items-center justify-center text-black font-bold text-2xl shadow-[0_0_20px_rgba(234,179,8,0.3)] group-hover:shadow-[0_0_30px_rgba(234,179,8,0.6)] transition-all">
-							C
-						</div>
-						<span class="text-2xl font-bold tracking-tight text-[var(--color-text)]">CLICK <span
-								class="text-brand-primary font-normal">Logística</span></span>
-					</div>
-					
-					<div class="hidden md:block">
-						<div class="flex items-baseline space-x-10">
-							<a href="/#ecosistema"
-								class="text-sm font-medium text-[var(--color-text)] hover:text-brand-primary transition-colors">Ecosistema</a>
-							<a href="/servicios"
-								class="text-sm font-medium text-[var(--color-text)] hover:text-brand-primary transition-colors">Servicios</a>
-							<div class="relative group">
-								<button
-									class="flex items-center gap-1 text-sm font-medium text-[var(--color-text)] hover:text-brand-primary transition-colors py-2">
-									Nosotros <i class="fa-solid fa-chevron-down text-xs"></i>
-								</button>
-								<div
-									class="absolute top-full left-0 mt-2 w-48 bg-[var(--color-bg)] backdrop-blur-md border border-[var(--color-border)] rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
-									<a href="/equipo"
-										class="block px-6 py-3 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] first:rounded-t-xl transition-colors">Nuestro
-										Equipo</a>
-									<a href="/historia"
-										class="block px-6 py-3 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] transition-colors">Nuestra
-										Historia</a>
-									<a href="/marcas"
-										class="block px-6 py-3 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] last:rounded-b-xl transition-colors">Nuestras
-										Marcas</a>
-								</div>
-							</div>
-							<a href="/empresas"
-								class="text-sm font-medium text-[var(--color-text)] hover:text-brand-primary transition-colors">Soy
-								Empresa</a>
-							<a href="/#reclutamiento"
-								class="bg-[var(--color-text)] text-[var(--color-bg)] px-8 py-3 rounded-full text-sm font-bold hover:bg-brand-primary hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] transition-all transform hover:-translate-y-0.5">
-								Postúlate Ahora
-							</a>
-                            <button id="theme-toggle" class="p-2 rounded-full hover:bg-[var(--color-surface)] transition-colors hidden md:flex items-center justify-center w-10 h-10 text-[var(--color-text)]" aria-label="Cambiar tema">
-                                <i class="fa-solid fa-sun text-yellow-500 text-lg transition-transform duration-500" id="theme-icon"></i>
+        <!-- Navbar Flotante -->
+        <nav
+            class="fixed w-full z-50 transition-all duration-300 py-6"
+            id="navbar"
+        >
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="flex items-center justify-between h-20">
+                    <div
+                        class="flex items-center gap-3 cursor-pointer group"
+                        onclick="window.location.href='/'"
+                    >
+                        <div
+                            class="w-12 h-12 bg-brand-primary rounded-xl flex items-center justify-center text-black font-bold text-2xl shadow-[0_0_20px_rgba(234,179,8,0.3)] group-hover:shadow-[0_0_30px_rgba(234,179,8,0.6)] transition-all"
+                        >
+                            C
+                        </div>
+                        <span
+                            class="text-2xl font-bold tracking-tight text-[var(--color-text)]"
+                            >CLICK <span class="text-brand-primary font-normal"
+                                >Logística</span
+                            >
+                        </span>
+                    </div>
+
+                    <div class="hidden md:block">
+                        <div class="flex items-baseline space-x-10">
+                            <a
+                                href="/#ecosistema"
+                                class="text-sm font-medium text-[var(--color-text)] hover:text-brand-primary transition-colors"
+                                >Ecosistema</a
+                            >
+                            <a
+                                href="/servicios"
+                                class="text-sm font-medium text-[var(--color-text)] hover:text-brand-primary transition-colors"
+                                >Servicios</a
+                            >
+                            <div class="relative group">
+                                <button
+                                    class="flex items-center gap-1 text-sm font-medium text-[var(--color-text)] hover:text-brand-primary transition-colors py-2"
+                                >
+                                    Nosotros <i
+                                        class="fa-solid fa-chevron-down text-xs"
+                                    ></i>
+                                </button>
+                                <div
+                                    class="absolute top-full left-0 mt-2 w-48 bg-[var(--color-bg)] backdrop-blur-md border border-[var(--color-border)] rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50"
+                                >
+                                    <a
+                                        href="/equipo"
+                                        class="block px-6 py-3 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] first:rounded-t-xl transition-colors"
+                                        >Nuestro Equipo</a
+                                    >
+                                    <a
+                                        href="/historia"
+                                        class="block px-6 py-3 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] transition-colors"
+                                        >Nuestra Historia</a
+                                    >
+                                </div>
+                            </div>
+                            <a
+                                href="/empresas"
+                                class="text-sm font-medium text-[var(--color-text)] hover:text-brand-primary transition-colors"
+                                >Soy Empresa</a
+                            >
+                            <a
+                                href="/#reclutamiento"
+                                class="bg-[var(--color-text)] text-[var(--color-bg)] px-8 py-3 rounded-full text-sm font-bold hover:bg-brand-primary hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] transition-all transform hover:-translate-y-0.5"
+                            >
+                                Postúlate Ahora
+                            </a>
+                            <button
+                                id="theme-toggle"
+                                class="p-2 rounded-full hover:bg-[var(--color-surface)] transition-colors hidden md:flex items-center justify-center w-10 h-10 text-[var(--color-text)]"
+                                aria-label="Cambiar tema"
+                            >
+                                <i
+                                    class="fa-solid fa-sun text-yellow-500 text-lg transition-transform duration-500"
+                                    id="theme-icon"></i>
                             </button>
-						</div>
-					</div>
-					<!-- Mobile Menu Button -->
-					<div class="md:hidden">
-						<button id="mobile-menu-open" aria-label="Abrir menú"
-							class="text-[var(--color-text)] hover:text-brand-primary transition-colors p-2">
-							<i class="fa-solid fa-bars text-2xl"></i>
-						</button>
-					</div>
-				</div>
-			</div>
-		</nav>
+                        </div>
+                    </div>
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden">
+                        <button
+                            id="mobile-menu-open"
+                            aria-label="Abrir menú"
+                            class="text-[var(--color-text)] hover:text-brand-primary transition-colors p-2"
+                        >
+                            <i class="fa-solid fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
 
         <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu"
-            class="fixed inset-0 z-[9999] bg-[var(--color-bg)] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col">
-
+        <div
+            id="mobile-menu"
+            class="fixed inset-0 z-[9999] bg-[var(--color-bg)] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col"
+        >
             <!-- Menu Header -->
-            <div class="flex items-center justify-between p-6 border-b border-[var(--color-border)]">
+            <div
+                class="flex items-center justify-between p-6 border-b border-[var(--color-border)]"
+            >
                 <div class="flex items-center gap-2">
                     <div
-                        class="w-8 h-8 bg-brand-primary rounded-lg flex items-center justify-center text-black font-bold text-lg">
+                        class="w-8 h-8 bg-brand-primary rounded-lg flex items-center justify-center text-black font-bold text-lg"
+                    >
                         C
                     </div>
-                    <span class="text-xl font-bold tracking-tight text-[var(--color-text)]">CLICK <span
-                            class="text-brand-primary font-normal">Logística</span></span>
+                    <span
+                        class="text-xl font-bold tracking-tight text-[var(--color-text)]"
+                        >CLICK <span class="text-brand-primary font-normal"
+                            >Logística</span
+                        >
+                    </span>
                 </div>
                 <div class="flex items-center gap-4">
-                     <!-- Mobile Theme Toggle -->
-                    <button id="theme-toggle-mobile" class="p-2 rounded-full hover:bg-[var(--color-surface)] transition-colors flex items-center justify-center w-10 h-10 text-[var(--color-text)]" aria-label="Cambiar tema">
-                        <i class="fa-solid fa-sun text-yellow-500 text-lg transition-transform duration-500" id="theme-icon-mobile"></i>
+                    <!-- Mobile Theme Toggle -->
+                    <button
+                        id="theme-toggle-mobile"
+                        class="p-2 rounded-full hover:bg-[var(--color-surface)] transition-colors flex items-center justify-center w-10 h-10 text-[var(--color-text)]"
+                        aria-label="Cambiar tema"
+                    >
+                        <i
+                            class="fa-solid fa-sun text-yellow-500 text-lg transition-transform duration-500"
+                            id="theme-icon-mobile"></i>
                     </button>
-                    <button id="mobile-menu-close" aria-label="Cerrar menú"
-                        class="w-10 h-10 bg-[var(--color-surface)] rounded-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--color-surface)]/80 transition-colors">
+                    <button
+                        id="mobile-menu-close"
+                        aria-label="Cerrar menú"
+                        class="w-10 h-10 bg-[var(--color-surface)] rounded-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--color-surface)]/80 transition-colors"
+                    >
                         <i class="fa-solid fa-xmark text-xl"></i>
                     </button>
                 </div>
@@ -216,207 +285,278 @@ import '@fontsource/outfit/900.css';
             <nav class="flex flex-col text-left overflow-y-auto">
                 <!-- Nosotros Dropdown -->
                 <div class="border-b border-[var(--color-border)]">
-                    <button id="mobile-submenu-toggle"
-                        class="w-full p-6 text-lg text-[var(--color-text)] font-medium flex justify-between items-center hover:bg-[var(--color-surface)] transition-colors">
+                    <button
+                        id="mobile-submenu-toggle"
+                        class="w-full p-6 text-lg text-[var(--color-text)] font-medium flex justify-between items-center hover:bg-[var(--color-surface)] transition-colors"
+                    >
                         Nosotros
-                        <i id="submenu-arrow"
-                            class="fa-solid fa-chevron-down text-sm text-[var(--color-text-muted)] transition-transform duration-300"></i>
+                        <i
+                            id="submenu-arrow"
+                            class="fa-solid fa-chevron-down text-sm text-[var(--color-text-muted)] transition-transform duration-300"
+                        ></i>
                     </button>
-                    <div id="nosotros-submenu" class="hidden flex-col bg-[var(--color-surface)]">
-                        <a href="/equipo" class="mobile-link block px-8 py-4 text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] border-t border-[var(--color-border)]">Nuestro
-                            Equipo</a>
-                        <a href="/historia" class="mobile-link block px-8 py-4 text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] border-t border-[var(--color-border)]">Nuestra
-                            Historia</a>
-                        <a href="/marcas" class="mobile-link block px-8 py-4 text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] border-t border-[var(--color-border)]">Nuestras
-                            Marcas</a>
+                    <div
+                        id="nosotros-submenu"
+                        class="hidden flex-col bg-[var(--color-surface)]"
+                    >
+                        <a
+                            href="/equipo"
+                            class="mobile-link block px-8 py-4 text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] border-t border-[var(--color-border)]"
+                            >Nuestro Equipo</a
+                        >
+                        <a
+                            href="/historia"
+                            class="mobile-link block px-8 py-4 text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] border-t border-[var(--color-border)]"
+                            >Nuestra Historia</a
+                        >
                     </div>
                 </div>
 
                 <!-- Single Links -->
-                <a href="/servicios" class="mobile-link p-6 border-b border-[var(--color-border)] text-lg text-[var(--color-text)] font-medium hover:bg-[var(--color-surface)] transition-colors block">
+                <a
+                    href="/servicios"
+                    class="mobile-link p-6 border-b border-[var(--color-border)] text-lg text-[var(--color-text)] font-medium hover:bg-[var(--color-surface)] transition-colors block"
+                >
                     Servicios
                 </a>
-                <a href="/empresas" class="mobile-link p-6 border-b border-[var(--color-border)] text-lg text-[var(--color-text)] font-medium hover:bg-[var(--color-surface)] transition-colors block">
+                <a
+                    href="/empresas"
+                    class="mobile-link p-6 border-b border-[var(--color-border)] text-lg text-[var(--color-text)] font-medium hover:bg-[var(--color-surface)] transition-colors block"
+                >
                     Empresas
                 </a>
 
                 <div class="p-6">
-                    <a href="/#reclutamiento" class="mobile-link block w-full py-4 bg-brand-primary text-black rounded-xl font-bold text-center shadow-[0_4px_15px_rgba(234,179,8,0.3)] hover:shadow-[0_4px_25px_rgba(234,179,8,0.5)] transition-all">
+                    <a
+                        href="/#reclutamiento"
+                        class="mobile-link block w-full py-4 bg-brand-primary text-black rounded-xl font-bold text-center shadow-[0_4px_15px_rgba(234,179,8,0.3)] hover:shadow-[0_4px_25px_rgba(234,179,8,0.5)] transition-all"
+                    >
                         Postúlate Ahora
                     </a>
                 </div>
             </nav>
         </div>
 
-		<slot />
+        <slot />
 
         <!-- WhatsApp Button -->
-        <a id="whatsapp-float"
+        <a
+            id="whatsapp-float"
             href="https://wa.me/573000000000?text=Hola,%20quisiera%20información%20para%20contratar%20personal"
-            target="_blank" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] flex items-center gap-3 group transition-all duration-300"
-            aria-label="Contactar por WhatsApp">
+            target="_blank"
+            class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] flex items-center gap-3 group transition-all duration-300"
+            aria-label="Contactar por WhatsApp"
+        >
             <span
-                class="bg-white text-black px-4 py-2 rounded-lg font-bold text-sm shadow-lg opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0 duration-300 pointer-events-none">
+                class="bg-white text-black px-4 py-2 rounded-lg font-bold text-sm shadow-lg opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0 duration-300 pointer-events-none"
+            >
                 ¿Necesitas ayuda inmediata?
             </span>
             <div
-                class="w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:shadow-[0_0_30px_rgba(37,211,102,0.8)] hover:scale-110 transition-all font-brands">
+                class="w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:shadow-[0_0_30px_rgba(37,211,102,0.8)] hover:scale-110 transition-all font-brands"
+            >
                 <i class="fa-brands fa-whatsapp"></i>
             </div>
         </a>
 
         <!-- Footer -->
-        <footer class="bg-[var(--color-bg)] py-16 border-t border-[var(--color-border)] text-[var(--color-text-muted)] text-sm transition-colors duration-300">
-            <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+        <footer
+            class="bg-[var(--color-bg)] py-16 border-t border-[var(--color-border)] text-[var(--color-text-muted)] text-sm transition-colors duration-300"
+        >
+            <div
+                class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8"
+            >
                 <div class="flex items-center gap-3">
                     <div
-                        class="w-10 h-10 bg-brand-primary rounded-lg flex items-center justify-center text-black font-bold text-lg shadow-[0_0_10px_rgba(234,179,8,0.3)]">
+                        class="w-10 h-10 bg-brand-primary rounded-lg flex items-center justify-center text-black font-bold text-lg shadow-[0_0_10px_rgba(234,179,8,0.3)]"
+                    >
                         C
                     </div>
-                    <span class="font-semibold text-[var(--color-text)] text-lg transition-colors duration-300">CLICK Logística &copy; 2025</span>
+                    <span
+                        class="font-semibold text-[var(--color-text)] text-lg transition-colors duration-300"
+                        >CLICK Logística &copy; 2025</span
+                    >
                 </div>
                 <div class="flex gap-8">
-                    <a href="/politica" class="hover:text-brand-primary transition-colors">Aviso de Privacidad</a>
-                    <a href="/terminos" class="hover:text-brand-primary transition-colors">Términos y Condiciones</a>
+                    <a
+                        href="/politica"
+                        class="hover:text-brand-primary transition-colors"
+                        >Aviso de Privacidad</a
+                    >
+                    <a
+                        href="/terminos"
+                        class="hover:text-brand-primary transition-colors"
+                        >Términos y Condiciones</a
+                    >
                 </div>
                 <div class="flex gap-4">
-                    <a href="#" aria-label="LinkedIn"
-                        class="w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text)] hover:bg-brand-primary hover:text-black hover:border-brand-primary transition-all"><i
-                            class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="Facebook"
-                        class="w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text)] hover:bg-brand-primary hover:text-black hover:border-brand-primary transition-all"><i
-                            class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" aria-label="TikTok"
-                        class="w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text)] hover:bg-brand-primary hover:text-black hover:border-brand-primary transition-all"><i
-                            class="fa-brands fa-tiktok"></i></a>
+                    <a
+                        href="#"
+                        aria-label="LinkedIn"
+                        class="w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text)] hover:bg-brand-primary hover:text-black hover:border-brand-primary transition-all"
+                        ><i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a
+                        href="#"
+                        aria-label="Facebook"
+                        class="w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text)] hover:bg-brand-primary hover:text-black hover:border-brand-primary transition-all"
+                        ><i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a
+                        href="#"
+                        aria-label="TikTok"
+                        class="w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text)] hover:bg-brand-primary hover:text-black hover:border-brand-primary transition-all"
+                        ><i class="fa-brands fa-tiktok"></i>
+                    </a>
                 </div>
             </div>
         </footer>
 
         <script is:inline define:vars={{ forcedTheme }}>
             // Menu Logic
-            const mobileMenuOpen = document.getElementById('mobile-menu-open');
-            const mobileMenuClose = document.getElementById('mobile-menu-close');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const submenuToggle = document.getElementById('mobile-submenu-toggle');
-            const nosotrosSubmenu = document.getElementById('nosotros-submenu');
-            const submenuArrow = document.getElementById('submenu-arrow');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const mobileMenuOpen = document.getElementById("mobile-menu-open");
+            const mobileMenuClose =
+                document.getElementById("mobile-menu-close");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const submenuToggle = document.getElementById(
+                "mobile-submenu-toggle"
+            );
+            const nosotrosSubmenu = document.getElementById("nosotros-submenu");
+            const submenuArrow = document.getElementById("submenu-arrow");
+            const mobileLinks = document.querySelectorAll(".mobile-link");
 
             function openMobileMenu() {
-                if (mobileMenu) mobileMenu.classList.remove('translate-x-full');
+                if (mobileMenu) mobileMenu.classList.remove("translate-x-full");
             }
 
             function closeMobileMenu() {
-                if (mobileMenu) mobileMenu.classList.add('translate-x-full');
+                if (mobileMenu) mobileMenu.classList.add("translate-x-full");
             }
 
             function toggleMobileSubmenu() {
                 if (nosotrosSubmenu && submenuArrow) {
-                    nosotrosSubmenu.classList.toggle('hidden');
-                    nosotrosSubmenu.classList.toggle('flex');
-                    submenuArrow.classList.toggle('rotate-180');
+                    nosotrosSubmenu.classList.toggle("hidden");
+                    nosotrosSubmenu.classList.toggle("flex");
+                    submenuArrow.classList.toggle("rotate-180");
                 }
             }
 
-            if(mobileMenuOpen) mobileMenuOpen.addEventListener('click', openMobileMenu);
-            if(mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
-            if(submenuToggle) submenuToggle.addEventListener('click', toggleMobileSubmenu);
-            
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', closeMobileMenu);
-            });
-        
-            // Navbar Scroll Logic
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (!navbar) return;
-                
-                if (window.scrollY > 50) {
-                    navbar.classList.add('backdrop-blur-md', 'shadow-lg', 'py-4');
-                    navbar.classList.remove('py-6');
-                    
-                    const theme = document.documentElement.getAttribute('data-theme');
-                    if (theme === 'light') {
-                       navbar.style.backgroundColor = 'rgba(255,255,255,0.9)';
-                       navbar.classList.remove('bg-brand-black/90');
-                    } else {
-                       navbar.style.backgroundColor = 'rgba(3,3,3,0.9)';
-                       navbar.classList.add('bg-brand-black/90');
-                    }
+            if (mobileMenuOpen)
+                mobileMenuOpen.addEventListener("click", openMobileMenu);
+            if (mobileMenuClose)
+                mobileMenuClose.addEventListener("click", closeMobileMenu);
+            if (submenuToggle)
+                submenuToggle.addEventListener("click", toggleMobileSubmenu);
 
+            mobileLinks.forEach((link) => {
+                link.addEventListener("click", closeMobileMenu);
+            });
+
+            // Navbar Scroll Logic
+            const navbar = document.getElementById("navbar");
+            window.addEventListener("scroll", () => {
+                if (!navbar) return;
+
+                if (window.scrollY > 50) {
+                    navbar.classList.add(
+                        "backdrop-blur-md",
+                        "shadow-lg",
+                        "py-4"
+                    );
+                    navbar.classList.remove("py-6");
+
+                    const theme =
+                        document.documentElement.getAttribute("data-theme");
+                    if (theme === "light") {
+                        navbar.style.backgroundColor = "rgba(255,255,255,0.9)";
+                        navbar.classList.remove("bg-brand-black/90");
+                    } else {
+                        navbar.style.backgroundColor = "rgba(3,3,3,0.9)";
+                        navbar.classList.add("bg-brand-black/90");
+                    }
                 } else {
-                    navbar.classList.remove('bg-brand-black/90', 'backdrop-blur-md', 'shadow-lg', 'py-4');
-                    navbar.classList.add('py-6');
-                    navbar.style.backgroundColor = '';
+                    navbar.classList.remove(
+                        "bg-brand-black/90",
+                        "backdrop-blur-md",
+                        "shadow-lg",
+                        "py-4"
+                    );
+                    navbar.classList.add("py-6");
+                    navbar.style.backgroundColor = "";
                 }
             });
 
             // Theme Toggle Logic
-            const themeToggle = document.getElementById('theme-toggle');
-            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-            const themeIcon = document.getElementById('theme-icon');
-            const themeIconMobile = document.getElementById('theme-icon-mobile');
+            const themeToggle = document.getElementById("theme-toggle");
+            const themeToggleMobile = document.getElementById(
+                "theme-toggle-mobile"
+            );
+            const themeIcon = document.getElementById("theme-icon");
+            const themeIconMobile =
+                document.getElementById("theme-icon-mobile");
             const html = document.documentElement;
 
             // Initialize
             let currentTheme = forcedTheme;
             if (!currentTheme) {
-                currentTheme = localStorage.getItem('theme') || 'dark';
+                currentTheme = localStorage.getItem("theme") || "dark";
             }
-            
-            html.setAttribute('data-theme', currentTheme);
+
+            html.setAttribute("data-theme", currentTheme);
             updateIcon(currentTheme);
 
             function toggleTheme() {
-                const currentTheme = html.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                
-                html.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
+                const currentTheme = html.getAttribute("data-theme");
+                const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+                html.setAttribute("data-theme", newTheme);
+                localStorage.setItem("theme", newTheme);
                 updateIcon(newTheme);
             }
 
-            if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
-            if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
+            if (themeToggle) themeToggle.addEventListener("click", toggleTheme);
+            if (themeToggleMobile)
+                themeToggleMobile.addEventListener("click", toggleTheme);
 
             function updateIcon(theme) {
-                const iconClass = theme === 'dark' 
-                    ? 'fa-solid fa-sun text-yellow-500 text-lg transition-transform duration-500 rotate-0'
-                    : 'fa-solid fa-moon text-brand-primary text-lg transition-transform duration-500 rotate-[360deg]';
-                
+                const iconClass =
+                    theme === "dark"
+                        ? "fa-solid fa-sun text-yellow-500 text-lg transition-transform duration-500 rotate-0"
+                        : "fa-solid fa-moon text-brand-primary text-lg transition-transform duration-500 rotate-[360deg]";
+
                 if (themeIcon) themeIcon.className = iconClass;
                 if (themeIconMobile) themeIconMobile.className = iconClass;
             }
 
             // WhatsApp Footer Boundary Logic
-            const whatsappButton = document.getElementById('whatsapp-float');
-            const footer = document.querySelector('footer');
+            const whatsappButton = document.getElementById("whatsapp-float");
+            const footer = document.querySelector("footer");
 
             if (whatsappButton && footer) {
                 function adjustWhatsApp() {
                     if (!whatsappButton || !footer) return;
-                    
+
                     const footerRect = footer.getBoundingClientRect();
                     const windowHeight = window.innerHeight;
                     const originalBottom = window.innerWidth >= 768 ? 32 : 24; // md:bottom-8 or bottom-6
 
                     if (footerRect.top < windowHeight) {
                         const overlap = windowHeight - footerRect.top;
-                        whatsappButton.style.bottom = `${overlap + originalBottom}px`;
+                        whatsappButton.style.bottom = `${
+                            overlap + originalBottom
+                        }px`;
                     } else {
                         whatsappButton.style.bottom = `${originalBottom}px`;
                     }
                 }
 
-                window.addEventListener('scroll', adjustWhatsApp);
-                window.addEventListener('resize', adjustWhatsApp);
+                window.addEventListener("scroll", adjustWhatsApp);
+                window.addEventListener("resize", adjustWhatsApp);
                 adjustWhatsApp(); // Initial check
             }
         </script>
         <script>
-            import '../js/main.js';
+            import "../js/main.js";
         </script>
-	</body>
+    </body>
 </html>
-
