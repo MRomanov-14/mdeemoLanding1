@@ -51,10 +51,16 @@ import "cropperjs/dist/cropper.css";
                 <h1
                     class="text-4xl md:text-5xl font-black text-[var(--color-text)] mb-4 font-[Outfit]"
                 >
-                    FICHA DE <span class="text-brand-primary"
-                        >CARACTERIZACIÓN</span
-                    >
+                    ¡ESTÁS A UN PASO DE SER <span class="text-brand-primary"
+                        >CLICKER</span
+                    >!
                 </h1>
+                <p
+                    class="text-lg text-[var(--color-text-muted)] mt-2 font-medium"
+                >
+                    Llena esta ficha de caracterización para continuar tu
+                    proceso.
+                </p>
             </div>
 
             <div
@@ -415,18 +421,6 @@ import "cropperjs/dist/cropper.css";
                                     required
                                     name="departamento"
                                     class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none appearance-none"
-                                    onchange="
-                                        const citySelect = document.querySelector('select[name=\'municipio_ciudad\']');
-                                        const mappings = {
-                                            'Antioquia': 'Medellín',
-                                            'Atlántico': 'Barranquilla',
-                                            'Bogotá D.C.': 'Bogotá',
-                                            'Valle del Cauca': 'Cali'
-                                        };
-                                        if (mappings[this.value]) {
-                                            citySelect.value = mappings[this.value];
-                                        }
-                                    "
                                 >
                                     <option value="" disabled selected
                                         >Seleccionar...</option
@@ -1353,6 +1347,31 @@ import "cropperjs/dist/cropper.css";
         "fc-telefono"
     ) as HTMLInputElement;
 
+    // Setup Department-City Auto-Select
+    if (formEl) {
+        const deptSelect = formEl.querySelector(
+            'select[name="departamento"]'
+        ) as HTMLSelectElement;
+        const citySelect = formEl.querySelector(
+            'select[name="municipio_ciudad"]'
+        ) as HTMLSelectElement;
+
+        if (deptSelect && citySelect) {
+            deptSelect.addEventListener("change", (e) => {
+                const val = (e.target as HTMLSelectElement).value;
+                const mappings: Record<string, string> = {
+                    Antioquia: "Medellín",
+                    Atlántico: "Barranquilla",
+                    "Bogotá D.C.": "Bogotá",
+                    "Valle del Cauca": "Cali",
+                };
+                if (mappings[val]) {
+                    citySelect.value = mappings[val];
+                }
+            });
+        }
+    }
+
     const STORAGE_KEY = "click_caracterizacion_data";
     const AUTH_KEY = "click_caracterizacion_auth";
 
@@ -1369,7 +1388,11 @@ import "cropperjs/dist/cropper.css";
         cedulaVal: string,
         nameVal: string,
         emailVal: string = "",
-        phoneVal: string = ""
+        phoneVal: string = "",
+        addressVal: string = "",
+        cityVal: string = "",
+        departmentVal: string = "",
+        neighborhoodVal: string = ""
     ) {
         if (pinGateway) pinGateway.classList.add("hidden");
         if (wizardProgressHeader) {
@@ -1400,6 +1423,49 @@ import "cropperjs/dist/cropper.css";
         if (fcTelefono && phoneVal) {
             fcTelefono.value = phoneVal;
         }
+
+        // Pre-fill location fields
+        if (addressVal) {
+            const addressInput = formEl?.elements.namedItem(
+                "direccion_residencia"
+            ) as HTMLInputElement;
+            if (addressInput) addressInput.value = addressVal;
+        }
+        if (neighborhoodVal) {
+            const neighborhoodInput = formEl?.elements.namedItem(
+                "barrio"
+            ) as HTMLInputElement;
+            if (neighborhoodInput) neighborhoodInput.value = neighborhoodVal;
+        }
+        if (departmentVal) {
+            const deptSelect = formEl?.elements.namedItem(
+                "departamento"
+            ) as HTMLSelectElement;
+            if (deptSelect) {
+                // Ensure the value exists in our options before setting
+                const options = Array.from(deptSelect.options).map(
+                    (o) => o.value
+                );
+                if (options.includes(departmentVal)) {
+                    deptSelect.value = departmentVal;
+                    // Trigger change to update city
+                    deptSelect.dispatchEvent(new Event("change"));
+                }
+            }
+        }
+        if (cityVal) {
+            const citySelect = formEl?.elements.namedItem(
+                "municipio_ciudad"
+            ) as HTMLSelectElement;
+            if (citySelect) {
+                const options = Array.from(citySelect.options).map(
+                    (o) => o.value
+                );
+                if (options.includes(cityVal)) {
+                    citySelect.value = cityVal;
+                }
+            }
+        }
     }
 
     if (btnVerifyPin) {
@@ -1422,7 +1488,9 @@ import "cropperjs/dist/cropper.css";
                 const { data, error } = await supabase
                     .schema("clicklandingpublic")
                     .from("candidates")
-                    .select("full_name, email, phone")
+                    .select(
+                        "full_name, email, phone, location_address, location_neighborhood, location_city, location_department"
+                    )
                     .eq("cedula", cedulaVal)
                     .eq("access_pin", pinVal)
                     .maybeSingle();
@@ -1462,13 +1530,21 @@ import "cropperjs/dist/cropper.css";
                         name: data.full_name,
                         email: data.email,
                         phone: data.phone,
+                        address: data.location_address,
+                        city: data.location_city,
+                        department: data.location_department,
+                        neighborhood: data.location_neighborhood,
                     })
                 );
                 enableFormView(
                     cedulaVal,
                     data.full_name,
                     data.email,
-                    data.phone
+                    data.phone,
+                    data.location_address,
+                    data.location_city,
+                    data.location_department,
+                    data.location_neighborhood
                 );
             } catch (err: any) {
                 console.error("Gateway Auth Error:", err);
@@ -1492,7 +1568,11 @@ import "cropperjs/dist/cropper.css";
                     parsedAuth.cedula,
                     parsedAuth.name,
                     parsedAuth.email,
-                    parsedAuth.phone
+                    parsedAuth.phone,
+                    parsedAuth.address,
+                    parsedAuth.city,
+                    parsedAuth.department,
+                    parsedAuth.neighborhood
                 );
             }
         } catch (e) {
