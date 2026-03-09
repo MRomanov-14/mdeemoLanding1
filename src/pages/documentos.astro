@@ -1149,22 +1149,50 @@ import "cropperjs/dist/cropper.css";
                 <!-- Pantalla de Éxito -->
                 <div
                     id="success-message"
-                    class="hidden absolute inset-0 bg-[var(--color-surface)] z-50 flex flex-col items-center justify-center p-8 text-center rounded-[2rem]"
+                    class="hidden absolute inset-0 bg-black/80 backdrop-blur-sm z-50 flex flex-col items-center justify-center p-4 rounded-[2rem] transition-all duration-500 opacity-0"
                 >
                     <div
-                        class="w-20 h-20 bg-brand-primary rounded-full flex items-center justify-center mb-6 text-4xl text-black shadow-[0_0_30px_rgba(234,179,8,0.6)] animate-bounce"
+                        class="bg-[var(--color-surface)] border border-[var(--color-border)] p-10 md:p-14 rounded-3xl w-full max-w-lg shadow-2xl flex flex-col items-center text-center relative overflow-hidden transform scale-95 transition-transform duration-500"
+                        id="success-message-card"
                     >
-                        <i class="fa-solid fa-check"></i>
+                        <!-- Decorative glow -->
+                        <div
+                            class="absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/20 blur-[50px] rounded-full pointer-events-none"
+                        >
+                        </div>
+                        <div
+                            class="absolute -bottom-20 -left-20 w-40 h-40 bg-brand-primary/10 blur-[50px] rounded-full pointer-events-none"
+                        >
+                        </div>
+
+                        <div
+                            class="w-24 h-24 bg-gradient-to-br from-brand-primary to-yellow-600 rounded-full flex items-center justify-center mb-8 text-5xl text-black shadow-[0_0_40px_rgba(234,179,8,0.5)] animate-bounce relative z-10 mx-auto"
+                        >
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+
+                        <h3
+                            class="text-4xl font-extrabold text-white mb-4 tracking-tight"
+                        >
+                            ¡Recibido!
+                        </h3>
+
+                        <p
+                            class="text-[var(--color-text-muted)] text-lg mb-10 leading-relaxed max-w-md mx-auto"
+                        >
+                            La <strong class="text-brand-primary font-semibold"
+                                >Ficha de Caracterización</strong
+                            > se ha guardado exitosamente. Ya puedes cerrar esta
+                            ventana.
+                        </p>
+
+                        <button
+                            onclick="location.reload()"
+                            class="w-full sm:w-auto px-10 py-4 bg-brand-primary hover:bg-yellow-400 text-black rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-[0_0_20px_rgba(234,179,8,0.5)] transform hover:-translate-y-1"
+                        >
+                            Volver al Inicio
+                        </button>
                     </div>
-                    <h3 class="text-3xl font-bold mb-4">¡Recibido!</h3>
-                    <p class="text-[var(--color-text-muted)] mb-8">
-                        La ficha de caracterización se ha guardado exitosamente.
-                    </p>
-                    <button
-                        onclick="location.reload()"
-                        class="px-8 py-3 bg-brand-primary text-black rounded-xl font-bold"
-                        >Volver</button
-                    >
                 </div>
             </div>
         </div>
@@ -1782,7 +1810,16 @@ import "cropperjs/dist/cropper.css";
                 localStorage.removeItem(AUTH_KEY);
 
                 const msg = document.getElementById("success-message");
-                if (msg) msg.classList.remove("hidden");
+                const msgCard = document.getElementById("success-message-card");
+                if (msg && msgCard) {
+                    msg.classList.remove("hidden");
+                    // Trigger reflow for transition
+                    void msg.offsetWidth;
+                    msg.classList.remove("opacity-0");
+                    msg.classList.add("opacity-100");
+                    msgCard.classList.remove("scale-95");
+                    msgCard.classList.add("scale-100");
+                }
             } catch (err: any) {
                 console.error(err);
                 alert("Error al enviar: " + err.message);
