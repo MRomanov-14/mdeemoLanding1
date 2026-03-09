@@ -29,6 +29,7 @@
     "@neondatabase/serverless": "^1.0.2",
     "@supabase/supabase-js": "^2.91.0",
     "astro": "^5.16.12",
+    "cropperjs": "^1.6.2",
     "gsap": "^3.12.4",
     "lenis": "^1.0.42",
     "pg": "^8.16.3",

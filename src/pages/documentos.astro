@@ -1,0 +1,1753 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "cropperjs/dist/cropper.css";
+---
+
+<Layout
+    title="Ficha de Caracterización | CLICK Logística"
+    description="Formulario de caracterización para candidatos pre-seleccionados."
+>
+    <section
+        class="pt-32 pb-20 bg-[var(--color-bg)] min-h-screen relative overflow-hidden"
+    >
+        <div
+            class="absolute top-0 right-0 w-2/3 h-full bg-brand-primary/5 opacity-50 blur-[120px] pointer-events-none"
+        >
+        </div>
+        <style>
+            /* Hide number input spinners */
+            input[type="number"]::-webkit-inner-spin-button,
+            input[type="number"]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+            input[type="number"] {
+                -moz-appearance: textfield;
+            }
+
+            /* Show Date Picker Icon clearly on Dark Mode */
+            input[type="date"]::-webkit-calendar-picker-indicator {
+                cursor: pointer;
+                filter: invert(1);
+                opacity: 0.6;
+                transition: opacity 0.2s;
+            }
+            input[type="date"]::-webkit-calendar-picker-indicator:hover {
+                opacity: 1;
+            }
+
+            /* Circular Crop Mask */
+            .cropper-view-box,
+            .cropper-face {
+                border-radius: 50%;
+            }
+            .cropper-line,
+            .cropper-point {
+                display: none; /* Hide resizing lines for a clean circular look */
+            }
+        </style>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h1
+                    class="text-4xl md:text-5xl font-black text-[var(--color-text)] mb-4 font-[Outfit]"
+                >
+                    FICHA DE <span class="text-brand-primary"
+                        >CARACTERIZACIÓN</span
+                    >
+                </h1>
+            </div>
+
+            <div
+                class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[2rem] shadow-2xl p-6 md:p-12 md:px-14 relative"
+            >
+                <!-- PIN Gateway -->
+                <div
+                    id="pin-gateway"
+                    class="flex flex-col items-center justify-center py-10 transition-all duration-300"
+                >
+                    <div
+                        class="bg-[var(--color-card-bg)] border border-[var(--color-border)] p-8 rounded-[2rem] w-full max-w-[450px] shadow-2xl flex flex-col items-center relative overflow-hidden"
+                    >
+                        <div
+                            class="w-20 h-20 bg-brand-primary/10 rounded-full flex items-center justify-center mb-6 text-brand-primary text-3xl"
+                        >
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Acceso a Ficha</h3>
+                        <p
+                            class="text-sm text-[var(--color-text-muted)] text-center mb-8"
+                        >
+                            Por favor ingresa tu cédula y el PIN de 6 dígitos
+                            que recibiste para habilitar el formulario.
+                        </p>
+
+                        <div class="w-full mb-5">
+                            <label
+                                class="text-xs font-bold text-[var(--color-text-muted)] tracking-wider mb-2 block uppercase"
+                                >Cédula</label
+                            >
+                            <input
+                                type="number"
+                                id="gateway-cedula"
+                                class="w-full bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] focus:border-brand-primary focus:ring-1 outline-none transition-all"
+                                placeholder="Tu número de documento"
+                            />
+                        </div>
+
+                        <div class="w-full mb-8">
+                            <label
+                                class="text-xs font-bold text-[var(--color-text-muted)] tracking-wider mb-2 block uppercase"
+                                >PIN de Acceso</label
+                            >
+                            <input
+                                type="number"
+                                id="gateway-pin"
+                                class="w-full bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] focus:border-brand-primary focus:ring-1 outline-none tracking-[0.5em] font-mono text-center text-xl transition-all"
+                                placeholder="******"
+                            />
+                        </div>
+
+                        <button
+                            type="button"
+                            id="btn-verify-pin"
+                            class="w-full py-4 px-4 bg-brand-primary hover:bg-yellow-400 text-black text-lg font-bold rounded-xl transition-all shadow-lg hover:shadow-[0_0_20px_rgba(234,179,8,0.4)]"
+                        >
+                            Verificar y Entrar <i
+                                class="fa-solid fa-arrow-right ml-2 opacity-70"
+                            ></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Progress Line -->
+                <div
+                    id="wizard-progress-header"
+                    class="flex items-center justify-between mb-16 relative px-2 md:px-8 hidden opacity-0 transition-opacity duration-500"
+                >
+                    <div
+                        class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-[var(--color-card-bg)] rounded-full -z-10"
+                    >
+                    </div>
+                    <div
+                        id="progress-line"
+                        class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-brand-primary rounded-full transition-all duration-500"
+                        style="width: 20%"
+                    >
+                    </div>
+                    <div
+                        class="step-dot active w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center font-bold text-black border-4 border-[var(--color-bg)] transition-all z-10"
+                        data-step="1"
+                    >
+                        1
+                    </div>
+                    <div
+                        class="step-dot w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center font-bold text-[var(--color-text-muted)] transition-all z-10"
+                        data-step="2"
+                    >
+                        2
+                    </div>
+                    <div
+                        class="step-dot w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center font-bold text-[var(--color-text-muted)] transition-all z-10"
+                        data-step="3"
+                    >
+                        3
+                    </div>
+                    <div
+                        class="step-dot w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center font-bold text-[var(--color-text-muted)] transition-all z-10"
+                        data-step="4"
+                    >
+                        4
+                    </div>
+                    <div
+                        class="step-dot w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center font-bold text-[var(--color-text-muted)] transition-all z-10"
+                        data-step="5"
+                    >
+                        5
+                    </div>
+                </div>
+
+                <form
+                    id="caracterizacion-form"
+                    class="hidden opacity-0 transition-opacity duration-500"
+                >
+                    <!-- STEP 1: Datos Personales -->
+                    <div class="wizard-step" id="step-1">
+                        <h2
+                            class="text-2xl font-bold mb-8 pb-4 border-b border-[var(--color-border)]"
+                        >
+                            1. Datos Personales Básicos
+                        </h2>
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-2 mt-8"
+                            style="column-gap: 3.5rem; row-gap: 2.5rem;"
+                        >
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Cédula</span
+                                ><input
+                                    type="number"
+                                    required
+                                    id="fc-cedula"
+                                    name="cedula"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] focus:border-brand-primary focus:ring-1 outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Nombre Completo</span
+                                ><input
+                                    type="text"
+                                    required
+                                    id="fc-nombre"
+                                    name="nombre"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] focus:border-brand-primary focus:ring-1 outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Correo</span
+                                ><input
+                                    type="email"
+                                    required
+                                    name="correo"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] focus:border-brand-primary focus:ring-1 outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Teléfono</span
+                                ><input
+                                    type="number"
+                                    required
+                                    name="telefono_celular"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] focus:border-brand-primary focus:ring-1 outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Fecha Nacimiento</span
+                                ><input
+                                    type="date"
+                                    required
+                                    id="fc-fecha-nac"
+                                    name="fecha_nacimiento"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] focus:border-brand-primary focus:ring-1 outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Edad</span
+                                ><input
+                                    type="number"
+                                    required
+                                    id="fc-edad"
+                                    name="edad"
+                                    readonly
+                                    class="w-full mt-1 bg-black/20 border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text-muted)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Lugar de Nacimiento</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="lugar_nacimiento"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] focus:border-brand-primary focus:ring-1 outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Fecha Expedición CC</span
+                                ><input
+                                    type="date"
+                                    required
+                                    name="fecha_expedicion_documento"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] focus:border-brand-primary focus:ring-1 outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Lugar Expedición</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="lugar_expedicion"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] focus:border-brand-primary focus:ring-1 outline-none"
+                                />
+                            </label>
+
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Estado Civil</span
+                                >
+                                <select
+                                    required
+                                    name="estado_civil"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                >
+                                    <option value="">Selecciona</option><option
+                                        value="Soltero">Soltero(a)</option
+                                    ><option value="Casado">Casado(a)</option
+                                    ><option value="Unión Libre"
+                                        >Unión Libre</option
+                                    ><option value="Separado"
+                                        >Separado(a)</option
+                                    ><option value="Viudo">Viudo(a)</option>
+                                </select>
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Género</span
+                                >
+                                <select
+                                    required
+                                    name="genero"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                >
+                                    <option value="">Selecciona</option><option
+                                        value="Masculino">Masculino</option
+                                    ><option value="Femenino">Femenino</option
+                                    ><option value="No binario"
+                                        >No binario</option
+                                    ><option value="Otros">Otros</option><option
+                                        value="Prefiero no responder"
+                                        >Prefiero no responder</option
+                                    >
+                                </select>
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Orientación Sexual</span
+                                >
+                                <select
+                                    required
+                                    name="orientacion_sexual"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                >
+                                    <option value="">Selecciona</option><option
+                                        value="Heterosexual"
+                                        >Heterosexual</option
+                                    ><option value="Homosexual"
+                                        >Homosexual</option
+                                    ><option value="Pansexual">Pansexual</option
+                                    ><option value="LGTBQ+"
+                                        >Comunidad LGTBQ+</option
+                                    >
+                                </select>
+                            </label>
+                        </div>
+                        <div class="mt-8 flex justify-end">
+                            <button
+                                type="button"
+                                data-next="2"
+                                class="px-8 py-3 bg-brand-primary hover:bg-yellow-400 text-black font-bold rounded-xl transition-all"
+                                >Siguiente <i
+                                    class="fa-solid fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Ubicación y Socioeconómico -->
+                    <div class="wizard-step hidden opacity-0" id="step-2">
+                        <h2
+                            class="text-2xl font-bold mb-8 pb-4 border-b border-[var(--color-border)]"
+                        >
+                            2. Ubicación y Socioeconómico
+                        </h2>
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-2 mt-8"
+                            style="column-gap: 3.5rem; row-gap: 2.5rem;"
+                        >
+                            <label class="block md:col-span-2"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Dirección</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="direccion_residencia"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Barrio</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="barrio"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Localidad/Comuna</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="localidad_comuna"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Municipio/Ciudad</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="municipio_ciudad"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Departamento</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="departamento"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Estrato</span
+                                >
+                                <select
+                                    required
+                                    name="estrato"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                >
+                                    <option value="">Selecciona</option><option
+                                        value="1">1</option
+                                    ><option value="2">2</option><option
+                                        value="3">3</option
+                                    ><option value="4">4</option><option
+                                        value="5">5</option
+                                    ><option value="6">6</option>
+                                </select>
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Tipo Vivienda</span
+                                >
+                                <select
+                                    required
+                                    name="tipo_vivienda"
+                                    onchange="document.getElementById('otroviv').style.display=this.value==='Otros'?'block':'none'"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                >
+                                    <option value="">Selecciona</option><option
+                                        value="Propia">Propia</option
+                                    ><option value="Arrendamiento"
+                                        >Arrendamiento</option
+                                    ><option value="Familiar">Familiar</option
+                                    ><option value="Otros">Otros</option>
+                                </select>
+                                <input
+                                    type="text"
+                                    id="otroviv"
+                                    name="tipo_vivienda_otros"
+                                    placeholder="¿Cuál?"
+                                    class="w-full mt-2 hidden bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Nº Personas en Hogar</span
+                                ><input
+                                    type="number"
+                                    required
+                                    name="numero_personas_hogar"
+                                    min="1"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Nº Personas a Cargo</span
+                                ><input
+                                    type="number"
+                                    required
+                                    name="numero_personas_cargo"
+                                    min="0"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Ingreso Mensual Aprox.</span
+                                >
+                                <select
+                                    required
+                                    name="ingreso_mensual_familiar"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                >
+                                    <option value="">Selecciona</option><option
+                                        value="-1 SMMLV"
+                                        >Menos de 1 SMMLV</option
+                                    ><option value="1-2 SMMLV"
+                                        >1 a 2 SMMLV</option
+                                    ><option value="2-3 SMMLV"
+                                        >2 a 3 SMMLV</option
+                                    ><option value="+3 SMMLV"
+                                        >Más de 3 SMMLV</option
+                                    >
+                                </select>
+                            </label>
+
+                            <label class="block md:col-span-2"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Aspectos Culturales</span
+                                >
+                                <select
+                                    required
+                                    name="aspectos_culturales"
+                                    onchange="document.getElementById('otroasp').style.display=this.value==='Otros'?'block':'none'"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                >
+                                    <option value="">Selecciona</option><option
+                                        value="Ninguno">Ninguno</option
+                                    ><option value="Afrocolombiano"
+                                        >Afrocolombiano</option
+                                    ><option value="Indígena">Indígena</option
+                                    ><option value="Raizal">Raizal</option
+                                    ><option value="Rrom">Rrom (Gitano)</option
+                                    ><option value="Otros">Otros</option>
+                                </select>
+                                <input
+                                    type="text"
+                                    id="otroasp"
+                                    name="aspectos_culturales_otros"
+                                    placeholder="Indica"
+                                    class="w-full mt-2 hidden bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+
+                            <!-- Miembros del hogar (simpificado) -->
+                            <div
+                                class="md:col-span-2 mt-4 border border-[var(--color-border)] p-4 rounded-xl"
+                            >
+                                <label
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Tienen Hijos?</label
+                                >
+                                <select
+                                    required
+                                    name="tiene_hijos"
+                                    onchange="document.getElementById('edadhijos').style.display=this.value==='true'?'block':'none'"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 outline-none"
+                                >
+                                    <option value="">Selecciona</option><option
+                                        value="true">Sí</option
+                                    ><option value="false">No</option>
+                                </select>
+                                <div id="edadhijos" class="hidden mt-3">
+                                    <label
+                                        class="text-sm font-medium text-brand-primary uppercase"
+                                        >Edades de Hijos</label
+                                    >
+                                    <input
+                                        type="text"
+                                        name="edad_hijos"
+                                        placeholder="Ej. 2, 5 y 10"
+                                        class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 flex justify-between">
+                            <button
+                                type="button"
+                                data-prev="1"
+                                class="px-6 py-3 font-medium text-[var(--color-text-muted)] hover:text-white transition-all"
+                                >Atrás</button
+                            >
+                            <button
+                                type="button"
+                                data-next="3"
+                                class="px-8 py-3 bg-brand-primary hover:bg-yellow-400 text-black font-bold rounded-xl transition-all"
+                                >Siguiente <i
+                                    class="fa-solid fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Educación y Laboral -->
+                    <div class="wizard-step hidden opacity-0" id="step-3">
+                        <h2
+                            class="text-2xl font-bold mb-8 pb-4 border-b border-[var(--color-border)]"
+                        >
+                            3. Educación y Laboral
+                        </h2>
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-2 mt-8"
+                            style="column-gap: 3.5rem; row-gap: 2.5rem;"
+                        >
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Nivel Educativo</span
+                                >
+                                <select
+                                    required
+                                    name="nivel_educativo"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                >
+                                    <option value="">Selecciona</option><option
+                                        value="Ninguno">Ninguno</option
+                                    ><option value="Primaria Incompleta"
+                                        >Primaria Incompleta</option
+                                    ><option value="Primaria Completa"
+                                        >Primaria Completa</option
+                                    ><option value="Bachiller Incompleto"
+                                        >Bachiller Incompleto</option
+                                    ><option value="Bachiller Completo"
+                                        >Bachiller Completo</option
+                                    ><option value="Técnico">Técnico</option
+                                    ><option value="Tecnólogo">Tecnólogo</option
+                                    ><option value="Profesional Incompleto"
+                                        >Profesional Universitario sin culminar</option
+                                    ><option value="Profesional"
+                                        >Profesional</option
+                                    ><option value="Especialista"
+                                        >Especialista</option
+                                    >
+                                </select>
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Institución</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="institucion_educativa"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >¿Estudia Actualmente?</span
+                                >
+                                <select
+                                    required
+                                    name="actualmente_estudia"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                >
+                                    <option value="">Selecciona</option><option
+                                        value="true">Sí</option
+                                    ><option value="false">No</option>
+                                </select>
+                            </label>
+
+                            <label
+                                class="block mt-4 md:col-span-2 border-t border-[var(--color-border)] pt-4"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Ocupación Principal</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="ocupacion_principal"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Situación Laboral</span
+                                >
+                                <select
+                                    required
+                                    name="situacion_laboral"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                >
+                                    <option value="">Selecciona</option><option
+                                        value="Desempleado">Desempleado</option
+                                    ><option value="Empleado">Empleado</option
+                                    ><option value="Independiente"
+                                        >Independiente</option
+                                    ><option value="Pensionado"
+                                        >Pensionado</option
+                                    >
+                                </select>
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Última Empresa</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="nombre_empresa_ultima"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Cargo</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="cargo_oficio"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Antigüedad</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="antiguedad_empleo"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block md:col-span-2"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Motivo Retiro</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="motivo_renuncia"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                        </div>
+                        <div class="mt-8 flex justify-between">
+                            <button
+                                type="button"
+                                data-prev="2"
+                                class="px-6 py-3 font-medium text-[var(--color-text-muted)] hover:text-white transition-all"
+                                >Atrás</button
+                            >
+                            <button
+                                type="button"
+                                data-next="4"
+                                class="px-8 py-3 bg-brand-primary hover:bg-yellow-400 text-black font-bold rounded-xl transition-all"
+                                >Siguiente <i
+                                    class="fa-solid fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: Salud y Emergencia -->
+                    <div class="wizard-step hidden opacity-0" id="step-4">
+                        <h2
+                            class="text-2xl font-bold mb-8 pb-4 border-b border-[var(--color-border)]"
+                        >
+                            4. Salud y Emergencia
+                        </h2>
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-2 mt-8"
+                            style="column-gap: 3.5rem; row-gap: 2.5rem;"
+                        >
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >AFP</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="afp"
+                                    placeholder="Ej: Colpensiones"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >EPS</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="eps"
+                                    placeholder="Ej: Salud Total"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >RH / Tipo Sangre</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="tipo_sangre_rh"
+                                    placeholder="Ej O+"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Régimen</span
+                                >
+                                <select
+                                    required
+                                    name="regimen_afiliacion"
+                                    onchange="document.getElementById('otroreg').style.display=this.value==='Otros'?'block':'none'"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                >
+                                    <option value="">Selecciona</option><option
+                                        value="Contributivo"
+                                        >Contributivo</option
+                                    ><option value="Subsidiado"
+                                        >Subsidiado</option
+                                    ><option value="Especial">Especial</option
+                                    ><option value="Otros">Otros</option>
+                                </select>
+                                <input
+                                    type="text"
+                                    id="otroreg"
+                                    name="regimen_afiliacion_otros"
+                                    placeholder="Indica"
+                                    class="w-full mt-2 hidden bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block md:col-span-2"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Enfermedad Crónica</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="enfermedad_cronica"
+                                    placeholder="Escribe 'Ninguna' si no aplica"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block md:col-span-2"
+                                ><span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Discapacidad</span
+                                >
+                                <select
+                                    required
+                                    name="discapacidad"
+                                    onchange="document.getElementById('otrodisc').style.display=this.value==='Otros'?'block':'none'"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                >
+                                    <option value="">Selecciona</option><option
+                                        value="Ninguna">Ninguna</option
+                                    ><option value="Física">Física</option
+                                    ><option value="Visual">Visual</option
+                                    ><option value="Auditiva">Auditiva</option
+                                    ><option value="Cognitiva">Cognitiva</option
+                                    ><option value="Otros">Otros</option>
+                                </select>
+                                <input
+                                    type="text"
+                                    id="otrodisc"
+                                    name="discapacidad_otros"
+                                    placeholder="Indica"
+                                    class="w-full mt-2 hidden bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+
+                            <div
+                                class="md:col-span-2 border-t border-[var(--color-border)] mt-4 pt-4 mb-2"
+                            >
+                                <h3
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                >
+                                    Contacto Emergencia
+                                </h3>
+                            </div>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-[var(--color-text-muted)] uppercase"
+                                    >Nombre</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="contacto_emergencia_nombre"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-[var(--color-text-muted)] uppercase"
+                                    >Parentesco</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="contacto_emergencia_parentesco"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-[var(--color-text-muted)] uppercase"
+                                    >Teléfono</span
+                                ><input
+                                    type="number"
+                                    required
+                                    name="contacto_emergencia_telefono"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block"
+                                ><span
+                                    class="text-sm font-medium text-[var(--color-text-muted)] uppercase"
+                                    >Ciudad</span
+                                ><input
+                                    type="text"
+                                    required
+                                    name="contacto_emergencia_municipio"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                        </div>
+                        <div class="mt-10 flex justify-between">
+                            <button
+                                type="button"
+                                data-prev="3"
+                                class="px-6 py-3 font-medium text-[var(--color-text-muted)] hover:text-white transition-all"
+                                >Atrás</button
+                            >
+                            <button
+                                type="button"
+                                data-next="5"
+                                class="px-8 py-3 bg-brand-primary hover:bg-yellow-400 text-black font-bold rounded-xl transition-all"
+                                >Siguiente <i
+                                    class="fa-solid fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 5: Documentos y Antecedentes -->
+                    <div class="wizard-step hidden opacity-0" id="step-5">
+                        <h2
+                            class="text-2xl font-bold mb-8 pb-4 border-b border-[var(--color-border)]"
+                        >
+                            5. Documentos y Antecedentes
+                        </h2>
+                        <div class="space-y-6 mt-8">
+                            <label class="block">
+                                <span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Foto en fondo blanco</span
+                                >
+                                <input
+                                    type="file"
+                                    required
+                                    id="input-foto-perfil"
+                                    name="doc_foto_fondo_blanco"
+                                    accept="image/*"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                                <div
+                                    id="foto-preview-container"
+                                    class="mt-4 hidden items-center space-x-4"
+                                >
+                                    <img
+                                        id="foto-preview-img"
+                                        class="w-16 h-16 rounded-full object-cover border-2 border-brand-primary shadow-md"
+                                        alt="Previsualización"
+                                    />
+                                    <span
+                                        class="text-sm text-green-400 font-medium"
+                                        ><i
+                                            class="fa-solid fa-check-circle mr-1"
+                                        ></i> Foto ajustada y lista</span
+                                    >
+                                </div>
+                            </label>
+                            <label class="block">
+                                <span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Fotocopia cédula</span
+                                >
+                                <input
+                                    type="file"
+                                    required
+                                    name="doc_fotocopia_cedula"
+                                    accept=".pdf,image/*"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block">
+                                <span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >Certificado de pensiones</span
+                                >
+                                <p
+                                    class="text-xs text-[var(--color-text-muted)] mb-1"
+                                >
+                                    En caso de no tener, adjuntar carta de
+                                    solicitud de afiliación a Colpensiones.
+                                </p>
+                                <input
+                                    type="file"
+                                    required
+                                    name="doc_certificado_pensiones"
+                                    accept=".pdf,image/*"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+
+                            <div
+                                class="border-t border-[var(--color-border)] mt-6 pt-6 mb-2"
+                            >
+                                <h3
+                                    class="text-sm font-medium text-brand-primary uppercase mb-2"
+                                >
+                                    Antecedentes
+                                </h3>
+                                <p
+                                    class="text-sm text-[var(--color-text-muted)] mb-4"
+                                >
+                                    Por favor revise cada link, descargue el
+                                    certificado en PDF o Captura y adjúntelo.
+                                </p>
+
+                                <ul
+                                    class="list-disc pl-5 mb-6 text-sm text-[var(--color-text-muted)] space-y-2"
+                                >
+                                    <li>
+                                        <a
+                                            href="https://srvcnpc.policia.gov.co/PSC/frm_cnp_consulta.aspx"
+                                            target="_blank"
+                                            class="text-brand-primary hover:underline"
+                                            >1. Policía Nacional (Medidas
+                                            Correctivas)</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="https://antecedentes.policia.gov.co:7005/WebJudicial/"
+                                            target="_blank"
+                                            class="text-brand-primary hover:underline"
+                                            >2. Policía Nacional (Antecedentes
+                                            Judiciales)</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="https://www.procuraduria.gov.co/Pages/Consulta-de-Antecedentes.aspx"
+                                            target="_blank"
+                                            class="text-brand-primary hover:underline"
+                                            >3. Procuraduría General de la
+                                            Nación</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="https://m.www.gov.co/consulta-certificados/"
+                                            target="_blank"
+                                            class="text-brand-primary hover:underline"
+                                            >4. Contraloría General (Gov.co)</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <label class="block">
+                                <span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >1. Antecedentes Policía (Medidas
+                                    Correctivas)</span
+                                >
+                                <input
+                                    type="file"
+                                    required
+                                    name="doc_antecedentes_policia"
+                                    accept=".pdf,image/*"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block">
+                                <span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >2. Antecedentes Judiciales</span
+                                >
+                                <input
+                                    type="file"
+                                    required
+                                    name="doc_antecedentes_judiciales"
+                                    accept=".pdf,image/*"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block">
+                                <span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >3. Antecedentes Procuraduría</span
+                                >
+                                <input
+                                    type="file"
+                                    required
+                                    name="doc_antecedentes_procuraduria"
+                                    accept=".pdf,image/*"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                            <label class="block">
+                                <span
+                                    class="text-sm font-medium text-brand-primary uppercase"
+                                    >4. Antecedentes Contraloría</span
+                                >
+                                <input
+                                    type="file"
+                                    required
+                                    name="doc_antecedentes_contraloria"
+                                    accept=".pdf,image/*"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
+                                />
+                            </label>
+                        </div>
+                        <div class="mt-10 flex justify-between">
+                            <button
+                                type="button"
+                                data-prev="4"
+                                class="px-6 py-3 font-medium text-[var(--color-text-muted)] hover:text-white transition-all"
+                                >Atrás</button
+                            >
+                            <button
+                                type="submit"
+                                id="btn-submit"
+                                class="px-8 py-3 bg-brand-primary hover:bg-yellow-400 text-black font-bold rounded-xl transition-all shadow-lg hover:shadow-[0_0_20px_rgba(234,179,8,0.5)]"
+                                ><i class="fa-solid fa-paper-plane mr-2"></i> Enviar
+                                Ficha</button
+                            >
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Pantalla de Éxito -->
+                <div
+                    id="success-message"
+                    class="hidden absolute inset-0 bg-[var(--color-surface)] z-50 flex flex-col items-center justify-center p-8 text-center rounded-[2rem]"
+                >
+                    <div
+                        class="w-20 h-20 bg-brand-primary rounded-full flex items-center justify-center mb-6 text-4xl text-black shadow-[0_0_30px_rgba(234,179,8,0.6)] animate-bounce"
+                    >
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4">¡Recibido!</h3>
+                    <p class="text-[var(--color-text-muted)] mb-8">
+                        La ficha de caracterización se ha guardado exitosamente.
+                    </p>
+                    <button
+                        onclick="location.reload()"
+                        class="px-8 py-3 bg-brand-primary text-black rounded-xl font-bold"
+                        >Volver</button
+                    >
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Cropper -->
+        <div
+            id="cropper-modal"
+            class="hidden fixed inset-0 z-[100] bg-black/90 flex flex-col items-center justify-center p-4"
+        >
+            <div
+                class="bg-[var(--color-surface)] border border-[var(--color-border)] p-6 rounded-2xl w-full max-w-[400px] shadow-2xl flex flex-col items-center relative overflow-hidden"
+            >
+                <h3 class="text-2xl font-bold text-white mb-6">
+                    Ajusta tu foto
+                </h3>
+
+                <div
+                    class="w-full aspect-square bg-black rounded-xl overflow-hidden mb-6 relative"
+                >
+                    <img id="cropper-image" class="block max-w-full" />
+                </div>
+
+                <div class="w-full mb-8">
+                    <label
+                        class="text-xs font-bold text-[var(--color-text-muted)] tracking-wider mb-3 block uppercase"
+                        >Zoom</label
+                    >
+                    <input
+                        type="range"
+                        id="cropper-zoom"
+                        class="w-full accent-brand-primary"
+                        min="0"
+                        max="3"
+                        step="0.01"
+                        value="0.5"
+                    />
+                </div>
+
+                <div
+                    class="flex flex-col sm:flex-row justify-between w-full gap-4"
+                >
+                    <button
+                        type="button"
+                        id="btn-cancel-crop"
+                        class="flex-1 py-3 px-4 bg-[var(--color-card-bg)] hover:bg-[var(--color-border)] text-white font-medium rounded-xl transition-colors"
+                    >
+                        Cancelar
+                    </button>
+                    <button
+                        type="button"
+                        id="btn-save-crop"
+                        class="flex-1 py-3 px-4 bg-brand-primary hover:bg-yellow-400 text-black font-bold rounded-xl transition-colors shadow-lg shadow-brand-primary/20"
+                    >
+                        Guardar Foto
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<script>
+    import { createClient } from "@supabase/supabase-js";
+    import Cropper from "cropperjs";
+
+    let currentStep = 1;
+    const totalSteps = 5;
+
+    const steps = [
+        document.getElementById("step-1"),
+        document.getElementById("step-2"),
+        document.getElementById("step-3"),
+        document.getElementById("step-4"),
+        document.getElementById("step-5"),
+    ];
+
+    const dots = document.querySelectorAll(".step-dot");
+    const progressLine = document.getElementById("progress-line");
+    const formEl = document.getElementById(
+        "caracterizacion-form"
+    ) as HTMLFormElement;
+
+    // Gateway elements
+    const pinGateway = document.getElementById("pin-gateway");
+    const wizardProgressHeader = document.getElementById(
+        "wizard-progress-header"
+    );
+    const gatewayCedula = document.getElementById(
+        "gateway-cedula"
+    ) as HTMLInputElement;
+    const gatewayPin = document.getElementById(
+        "gateway-pin"
+    ) as HTMLInputElement;
+    const btnVerifyPin = document.getElementById(
+        "btn-verify-pin"
+    ) as HTMLButtonElement;
+
+    const fcCedula = document.getElementById("fc-cedula") as HTMLInputElement;
+    const fcNombre = document.getElementById("fc-nombre") as HTMLInputElement;
+
+    const STORAGE_KEY = "click_caracterizacion_data";
+    const AUTH_KEY = "click_caracterizacion_auth";
+
+    const supabaseUrl =
+        import.meta.env.PUBLIC_SUPABASE_URL ||
+        import.meta.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey =
+        import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
+        import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    // --- Auth Gateway Logic ---
+    function enableFormView(cedulaVal: string, nameVal: string) {
+        if (pinGateway) pinGateway.classList.add("hidden");
+        if (wizardProgressHeader) {
+            wizardProgressHeader.classList.remove("hidden");
+            // small delay to allow display block to apply before opacity transition
+            setTimeout(
+                () => wizardProgressHeader.classList.remove("opacity-0"),
+                50
+            );
+        }
+        if (formEl) {
+            formEl.classList.remove("hidden");
+            setTimeout(() => formEl.classList.remove("opacity-0"), 50);
+        }
+
+        // Lock form fields
+        if (fcCedula) {
+            fcCedula.value = cedulaVal;
+            fcCedula.readOnly = true;
+            fcCedula.classList.add("opacity-60", "cursor-not-allowed");
+        }
+        if (fcNombre && nameVal) {
+            fcNombre.value = nameVal;
+        }
+    }
+
+    if (btnVerifyPin) {
+        btnVerifyPin.addEventListener("click", async () => {
+            const cedulaVal = gatewayCedula.value.trim();
+            const pinVal = gatewayPin.value.trim();
+
+            if (!cedulaVal || !pinVal) {
+                alert("Por favor ingresa tu cédula y el PIN.");
+                return;
+            }
+
+            const originalBtnHtml = btnVerifyPin.innerHTML;
+            btnVerifyPin.innerHTML =
+                '<i class="fa-solid fa-spinner fa-spin"></i> Verificando...';
+            btnVerifyPin.disabled = true;
+
+            try {
+                // Check characters in public candidates table
+                const { data, error } = await supabase
+                    .schema("clicklandingpublic")
+                    .from("candidates")
+                    .select("full_name")
+                    .eq("cedula", cedulaVal)
+                    .eq("access_pin", pinVal)
+                    .single();
+
+                if (error || !data) {
+                    throw new Error("Credenciales inválidas.");
+                }
+
+                // Check if they already filled the form
+                const { data: formExists } = await supabase
+                    .schema("clicklandingpublic")
+                    .from("caracterizacion_candidatos")
+                    .select("id")
+                    .eq("cedula", cedulaVal)
+                    .maybeSingle();
+
+                if (formExists) {
+                    alert(
+                        "¡Atención! Ya hemos recibido tu ficha de caracterización anteriormente. Si necesitas corregir algo, por favor contáctanos."
+                    );
+                    btnVerifyPin.innerHTML = originalBtnHtml;
+                    btnVerifyPin.disabled = false;
+                    return;
+                }
+
+                // Success
+                localStorage.setItem(
+                    AUTH_KEY,
+                    JSON.stringify({ cedula: cedulaVal, name: data.full_name })
+                );
+                enableFormView(cedulaVal, data.full_name);
+            } catch (err: any) {
+                console.error(err);
+                alert("Cédula o PIN incorrecto. Por favor verifica los datos.");
+                btnVerifyPin.innerHTML = originalBtnHtml;
+                btnVerifyPin.disabled = false;
+            }
+        });
+    }
+
+    // Auto-login from localstorage auth session
+    const authSaved = localStorage.getItem(AUTH_KEY);
+    if (authSaved) {
+        try {
+            const parsedAuth = JSON.parse(authSaved);
+            if (parsedAuth.cedula) {
+                enableFormView(parsedAuth.cedula, parsedAuth.name);
+            }
+        } catch (e) {
+            console.error("Auth parse error", e);
+        }
+    }
+
+    // --- CropperJS Logic ---
+    let cropper: any = null;
+    let croppedBlob: Blob | null = null;
+    const inputFoto = document.getElementById(
+        "input-foto-perfil"
+    ) as HTMLInputElement;
+    const cropperModal = document.getElementById("cropper-modal");
+    const cropperImage = document.getElementById(
+        "cropper-image"
+    ) as HTMLImageElement;
+    const zoomSlider = document.getElementById(
+        "cropper-zoom"
+    ) as HTMLInputElement;
+    const btnCancelCrop = document.getElementById("btn-cancel-crop");
+    const btnSaveCrop = document.getElementById("btn-save-crop");
+    const previewContainer = document.getElementById("foto-preview-container");
+    const previewImg = document.getElementById(
+        "foto-preview-img"
+    ) as HTMLImageElement;
+
+    if (inputFoto && cropperModal) {
+        inputFoto.addEventListener("change", (e) => {
+            const files = (e.target as HTMLInputElement).files;
+            if (files && files.length > 0) {
+                const url = URL.createObjectURL(files[0]);
+                if (cropperImage) cropperImage.src = url;
+                cropperModal.classList.remove("hidden");
+
+                if (zoomSlider) zoomSlider.value = "0";
+
+                if (cropper) {
+                    cropper.destroy();
+                }
+
+                // Initialize in next frame
+                requestAnimationFrame(() => {
+                    cropper = new Cropper(cropperImage, {
+                        aspectRatio: 1, // Circular mask ensures 1:1 ratio crops perfectly
+                        viewMode: 1,
+                        dragMode: "move",
+                        background: false,
+                        autoCropArea: 0.8,
+                        guides: false,
+                        center: false,
+                        highlight: false,
+                        cropBoxMovable: false,
+                        cropBoxResizable: false,
+                        toggleDragModeOnDblclick: false,
+                    } as any);
+                });
+            }
+        });
+
+        zoomSlider?.addEventListener("input", (e) => {
+            if (cropper) {
+                const ratio = parseFloat((e.target as HTMLInputElement).value);
+                const imageData = cropper.getImageData();
+                cropper.zoomTo(
+                    imageData.naturalWidth / imageData.width + ratio
+                );
+            }
+        });
+
+        btnCancelCrop?.addEventListener("click", () => {
+            cropperModal.classList.add("hidden");
+            if (cropper) cropper.destroy();
+            inputFoto.value = "";
+            croppedBlob = null;
+            if (previewContainer) previewContainer.classList.add("hidden");
+        });
+
+        btnSaveCrop?.addEventListener("click", () => {
+            if (!cropper) return;
+            const canvas = cropper.getCroppedCanvas({
+                width: 800,
+                height: 800,
+                imageSmoothingEnabled: true,
+                imageSmoothingQuality: "high",
+            });
+
+            canvas.toBlob(
+                (blob) => {
+                    if (!blob) return;
+                    croppedBlob = blob;
+
+                    const objectUrl = URL.createObjectURL(blob);
+                    if (previewImg) previewImg.src = objectUrl;
+                    if (previewContainer)
+                        previewContainer.classList.remove("hidden");
+
+                    cropperModal.classList.add("hidden");
+                    cropper!.destroy();
+                },
+                "image/webp",
+                0.8
+            );
+        });
+    }
+
+    // Persistencia LocalStorage
+    if (formEl) {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+            try {
+                const parsed = JSON.parse(saved);
+                Object.keys(parsed).forEach((key) => {
+                    const el = formEl.elements.namedItem(key) as
+                        | HTMLInputElement
+                        | HTMLSelectElement;
+                    if (el) {
+                        el.value = parsed[key];
+                    }
+                });
+
+                // Disparar eventos para mostrar/ocultar los condicionales "Otros"
+                [
+                    "tipo_vivienda",
+                    "aspectos_culturales",
+                    "tiene_hijos",
+                    "regimen_afiliacion",
+                    "discapacidad",
+                ].forEach((name) => {
+                    const el = formEl.elements.namedItem(
+                        name
+                    ) as HTMLSelectElement;
+                    if (el && el.value) {
+                        el.dispatchEvent(new Event("change"));
+                    }
+                });
+
+                // Calcular edad si recuperó fecha
+                const fn = document.getElementById("fc-fecha-nac");
+                if (fn) fn.dispatchEvent(new Event("change"));
+            } catch (e) {
+                console.error("Error cargando autoguardado", e);
+            }
+        }
+
+        formEl.addEventListener("input", () => {
+            const fd = new FormData(formEl);
+            const doc = Object.fromEntries(fd.entries());
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(doc));
+        });
+    }
+
+    function updateWizardUI() {
+        // Toggle steps
+        steps.forEach((step, idx) => {
+            if (!step) return;
+            if (idx + 1 === currentStep) {
+                step.classList.remove("hidden", "opacity-0");
+            } else {
+                step.classList.add("hidden", "opacity-0");
+            }
+        });
+
+        // Toggle dots & line
+        dots.forEach((dot) => {
+            const stepNum = parseInt(dot.getAttribute("data-step") || "0");
+            if (stepNum <= currentStep) {
+                dot.classList.add(
+                    "bg-brand-primary",
+                    "text-black",
+                    "border-[var(--color-bg)]"
+                );
+                dot.classList.remove(
+                    "bg-[var(--color-surface)]",
+                    "text-[var(--color-text-muted)]",
+                    "border-[var(--color-border)]"
+                );
+            } else {
+                dot.classList.add(
+                    "bg-[var(--color-surface)]",
+                    "text-[var(--color-text-muted)]",
+                    "border-[var(--color-border)]"
+                );
+                dot.classList.remove(
+                    "bg-brand-primary",
+                    "text-black",
+                    "border-[var(--color-bg)]"
+                );
+            }
+        });
+
+        if (progressLine) {
+            progressLine.style.width = (currentStep / totalSteps) * 100 + "%";
+        }
+    }
+
+    // Validation helper
+    function validateCurrentStep() {
+        const currentEl = steps[currentStep - 1];
+        if (!currentEl) return true;
+        const inputs = Array.from(
+            currentEl.querySelectorAll("input[required], select[required]")
+        ) as (HTMLInputElement | HTMLSelectElement)[];
+
+        let valid = true;
+        inputs.forEach((inp) => {
+            if (!inp.value.trim()) {
+                inp.classList.add("border-red-500", "bg-red-500/10");
+                inp.classList.remove(
+                    "border-[var(--color-border)]",
+                    "bg-[var(--color-card-bg)]"
+                );
+                valid = false;
+            } else {
+                inp.classList.remove("border-red-500", "bg-red-500/10");
+                inp.classList.add(
+                    "border-[var(--color-border)]",
+                    "bg-[var(--color-card-bg)]"
+                );
+            }
+        });
+        return valid;
+    }
+
+    // Attach listeners
+    document.querySelectorAll("button[data-next]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            if (validateCurrentStep()) {
+                currentStep = parseInt(btn.getAttribute("data-next") || "1");
+                updateWizardUI();
+                window.scrollTo(0, 0);
+            } else {
+                alert(
+                    "Por favor completa todos los campos requeridos de este paso."
+                );
+            }
+        });
+    });
+
+    document.querySelectorAll("button[data-prev]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            currentStep = parseInt(btn.getAttribute("data-prev") || "1");
+            updateWizardUI();
+            window.scrollTo(0, 0);
+        });
+    });
+
+    // Age calculation
+    const fn = document.getElementById("fc-fecha-nac") as HTMLInputElement;
+    const fe = document.getElementById("fc-edad") as HTMLInputElement;
+    if (fn && fe) {
+        fn.addEventListener("change", () => {
+            if (fn.value) {
+                const b = new Date(fn.value);
+                const t = new Date();
+                let a = t.getFullYear() - b.getFullYear();
+                const m = t.getMonth() - b.getMonth();
+                if (m < 0 || (m === 0 && t.getDate() < b.getDate())) a--;
+                fe.value = a.toString();
+            }
+        });
+    }
+
+    // Submit
+    const form = document.getElementById("caracterizacion-form");
+    if (form) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            if (!validateCurrentStep()) {
+                alert("Por favor completa los campos requeridos.");
+                return;
+            }
+
+            const btn = document.getElementById(
+                "btn-submit"
+            ) as HTMLButtonElement;
+            const original = btn.innerHTML;
+            btn.innerHTML =
+                '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
+            btn.disabled = true;
+
+            const fd = new FormData(form as HTMLFormElement);
+            const doc: Record<string, any> = Object.fromEntries(fd.entries());
+
+            // Format numbers and booleans
+            [
+                "edad",
+                "estrato",
+                "numero_personas_hogar",
+                "numero_personas_cargo",
+            ].forEach((k) => {
+                if (doc[k]) doc[k] = parseInt(doc[k] as string);
+            });
+            doc.actualmente_estudia = doc.actualmente_estudia === "true";
+            doc.tiene_hijos = doc.tiene_hijos === "true";
+
+            try {
+                btn.innerHTML =
+                    "Subiendo archivos... <i class='fa-solid fa-spinner fa-spin ml-2'></i>";
+
+                const fileFields = [
+                    "doc_foto_fondo_blanco",
+                    "doc_fotocopia_cedula",
+                    "doc_certificado_pensiones",
+                    "doc_antecedentes_policia",
+                    "doc_antecedentes_judiciales",
+                    "doc_antecedentes_procuraduria",
+                    "doc_antecedentes_contraloria",
+                ];
+
+                for (const field of fileFields) {
+                    let file: File | Blob;
+                    let fileExt = "pdf";
+                    let isValidFile = false;
+
+                    if (field === "doc_foto_fondo_blanco" && croppedBlob) {
+                        file = croppedBlob;
+                        fileExt = "webp";
+                        isValidFile = true;
+                    } else {
+                        const fileInput = fd.get(field);
+                        if (fileInput && (fileInput as File).size > 0) {
+                            file = fileInput as File;
+                            fileExt =
+                                (file as File).name.split(".").pop() || "pdf";
+                            isValidFile = true;
+                        }
+                    }
+
+                    if (isValidFile) {
+                        const fileName = `${
+                            doc.cedula
+                        }/${field}-${Date.now()}.${fileExt}`;
+
+                        const { data, error } = await supabase.storage
+                            .from("candidatos_documentos")
+                            .upload(fileName, file!, {
+                                upsert: true,
+                                contentType:
+                                    field === "doc_foto_fondo_blanco" &&
+                                    croppedBlob
+                                        ? "image/webp"
+                                        : undefined,
+                            });
+
+                        if (error)
+                            throw new Error(
+                                "Error subiendo " + field + ": " + error.message
+                            );
+
+                        const { data: publicUrldata } = supabase.storage
+                            .from("candidatos_documentos")
+                            .getPublicUrl(fileName);
+
+                        doc[field] = publicUrldata.publicUrl;
+                    } else {
+                        delete doc[field];
+                    }
+                }
+
+                btn.innerHTML =
+                    "Guardando ficha... <i class='fa-solid fa-spinner fa-spin ml-2'></i>";
+
+                const { error } = await supabase
+                    .schema("clicklandingpublic")
+                    .from("caracterizacion_candidatos")
+                    .insert([doc]);
+                if (error) throw error;
+
+                localStorage.removeItem(STORAGE_KEY);
+                localStorage.removeItem(AUTH_KEY);
+
+                const msg = document.getElementById("success-message");
+                if (msg) msg.classList.remove("hidden");
+            } catch (err: any) {
+                console.error(err);
+                alert("Error al enviar: " + err.message);
+                btn.innerHTML = original;
+                btn.disabled = false;
+            }
+        });
+    }
+</script>
