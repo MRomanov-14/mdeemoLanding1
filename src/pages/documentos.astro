@@ -406,14 +406,27 @@ import "cropperjs/dist/cropper.css";
                                     class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
                                 />
                             </label>
-                            <label class="block"
-                                ><span
+                            <label class="block">
+                                <span
                                     class="text-sm font-medium text-brand-primary uppercase"
                                     >Departamento</span
-                                ><select
+                                >
+                                <select
                                     required
                                     name="departamento"
                                     class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none appearance-none"
+                                    onchange="
+                                        const citySelect = document.querySelector('select[name=\'municipio_ciudad\']');
+                                        const mappings = {
+                                            'Antioquia': 'Medellín',
+                                            'Atlántico': 'Barranquilla',
+                                            'Bogotá D.C.': 'Bogotá',
+                                            'Valle del Cauca': 'Cali'
+                                        };
+                                        if (mappings[this.value]) {
+                                            citySelect.value = mappings[this.value];
+                                        }
+                                    "
                                 >
                                     <option value="" disabled selected
                                         >Seleccionar...</option
@@ -428,27 +441,26 @@ import "cropperjs/dist/cropper.css";
                                     >
                                 </select>
                             </label>
-                            <label class="block"
-                                ><span
+                            <label class="block">
+                                <span
                                     class="text-sm font-medium text-brand-primary uppercase"
-                                    ><select
-                                        required
-                                        name="municipio_ciudad"
-                                        class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none appearance-none"
+                                    >Municipio/Ciudad</span
+                                >
+                                <select
+                                    required
+                                    name="municipio_ciudad"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none appearance-none"
+                                >
+                                    <option value="" disabled selected
+                                        >Seleccionar...</option
                                     >
-                                        <option value="" disabled selected
-                                            >Seleccionar...</option
-                                        >
-                                        <option value="Bogotá">Bogotá</option>
-                                        <option value="Medellín"
-                                            >Medellín</option
-                                        >
-                                        <option value="Cali">Cali</option>
-                                        <option value="Barranquilla"
-                                            >Barranquilla</option
-                                        >
-                                    </select>
-                                </span>
+                                    <option value="Bogotá">Bogotá</option>
+                                    <option value="Medellín">Medellín</option>
+                                    <option value="Cali">Cali</option>
+                                    <option value="Barranquilla"
+                                        >Barranquilla</option
+                                    >
+                                </select>
                             </label>
                             <label class="block"
                                 ><span
