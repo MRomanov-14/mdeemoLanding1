@@ -212,6 +212,7 @@ import "cropperjs/dist/cropper.css";
                                 ><input
                                     type="email"
                                     required
+                                    id="fc-correo"
                                     name="correo"
                                     class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] focus:border-brand-primary focus:ring-1 outline-none"
                                 />
@@ -223,6 +224,7 @@ import "cropperjs/dist/cropper.css";
                                 ><input
                                     type="number"
                                     required
+                                    id="fc-telefono"
                                     name="telefono_celular"
                                     class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] focus:border-brand-primary focus:ring-1 outline-none"
                                 />
@@ -1262,6 +1264,10 @@ import "cropperjs/dist/cropper.css";
 
     const fcCedula = document.getElementById("fc-cedula") as HTMLInputElement;
     const fcNombre = document.getElementById("fc-nombre") as HTMLInputElement;
+    const fcCorreo = document.getElementById("fc-correo") as HTMLInputElement;
+    const fcTelefono = document.getElementById(
+        "fc-telefono"
+    ) as HTMLInputElement;
 
     const STORAGE_KEY = "click_caracterizacion_data";
     const AUTH_KEY = "click_caracterizacion_auth";
@@ -1275,7 +1281,12 @@ import "cropperjs/dist/cropper.css";
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     // --- Auth Gateway Logic ---
-    function enableFormView(cedulaVal: string, nameVal: string) {
+    function enableFormView(
+        cedulaVal: string,
+        nameVal: string,
+        emailVal: string = "",
+        phoneVal: string = ""
+    ) {
         if (pinGateway) pinGateway.classList.add("hidden");
         if (wizardProgressHeader) {
             wizardProgressHeader.classList.remove("hidden");
@@ -1299,6 +1310,12 @@ import "cropperjs/dist/cropper.css";
         if (fcNombre && nameVal) {
             fcNombre.value = nameVal;
         }
+        if (fcCorreo && emailVal) {
+            fcCorreo.value = emailVal;
+        }
+        if (fcTelefono && phoneVal) {
+            fcTelefono.value = phoneVal;
+        }
     }
 
     if (btnVerifyPin) {
@@ -1321,13 +1338,19 @@ import "cropperjs/dist/cropper.css";
                 const { data, error } = await supabase
                     .schema("clicklandingpublic")
                     .from("candidates")
-                    .select("full_name")
+                    .select("full_name, email, phone")
                     .eq("cedula", cedulaVal)
                     .eq("access_pin", pinVal)
-                    .single();
+                    .maybeSingle();
 
-                if (error || !data) {
-                    throw new Error("Credenciales inválidas.");
+                if (error) {
+                    throw new Error(error.message || JSON.stringify(error));
+                }
+
+                if (!data) {
+                    throw new Error(
+                        "Credenciales inválidas o candidato no seleccionado."
+                    );
                 }
 
                 // Check if they already filled the form
@@ -1350,9 +1373,19 @@ import "cropperjs/dist/cropper.css";
                 // Success
                 localStorage.setItem(
                     AUTH_KEY,
-                    JSON.stringify({ cedula: cedulaVal, name: data.full_name })
+                    JSON.stringify({
+                        cedula: cedulaVal,
+                        name: data.full_name,
+                        email: data.email,
+                        phone: data.phone,
+                    })
                 );
-                enableFormView(cedulaVal, data.full_name);
+                enableFormView(
+                    cedulaVal,
+                    data.full_name,
+                    data.email,
+                    data.phone
+                );
             } catch (err: any) {
                 console.error("Gateway Auth Error:", err);
                 const errorMsg = err.message || JSON.stringify(err);
@@ -1371,7 +1404,12 @@ import "cropperjs/dist/cropper.css";
         try {
             const parsedAuth = JSON.parse(authSaved);
             if (parsedAuth.cedula) {
-                enableFormView(parsedAuth.cedula, parsedAuth.name);
+                enableFormView(
+                    parsedAuth.cedula,
+                    parsedAuth.name,
+                    parsedAuth.email,
+                    parsedAuth.phone
+                );
             }
         } catch (e) {
             console.error("Auth parse error", e);
