@@ -1176,6 +1176,101 @@ import "cropperjs/dist/cropper.css";
                                     class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
                                 />
                             </label>
+
+                            <!-- TALLAS DE DOTACIÓN -->
+                            <div
+                                class="md:col-span-2 mt-8 border-t border-[var(--color-border)] pt-8"
+                            >
+                                <h3 class="text-xl font-bold text-white mb-6">
+                                    Tallas de Dotación
+                                </h3>
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-2 gap-6"
+                                >
+                                    <label class="block">
+                                        <span
+                                            class="text-sm font-medium text-[var(--color-text-muted)] uppercase"
+                                            >Talla de Camisa</span
+                                        >
+                                        <select
+                                            required
+                                            name="talla_camisa"
+                                            class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none appearance-none"
+                                        >
+                                            <option value="" disabled selected
+                                                >Seleccionar...</option
+                                            >
+                                            <option value="XS">XS</option>
+                                            <option value="S">S</option>
+                                            <option value="M">M</option>
+                                            <option value="L">L</option>
+                                            <option value="XL">XL</option>
+                                            <option value="XXL">XXL</option>
+                                        </select>
+                                    </label>
+                                    <label class="block">
+                                        <span
+                                            class="text-sm font-medium text-[var(--color-text-muted)] uppercase"
+                                            >Talla de Pantalón</span
+                                        >
+                                        <select
+                                            required
+                                            name="talla_pantalon"
+                                            class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none appearance-none"
+                                        >
+                                            <option value="" disabled selected
+                                                >Seleccionar...</option
+                                            >
+                                            <option value="6">6</option>
+                                            <option value="8">8</option>
+                                            <option value="10">10</option>
+                                            <option value="12">12</option>
+                                            <option value="14">14</option>
+                                            <option value="16">16</option>
+                                            <option value="18">18</option>
+                                            <option value="20">20</option>
+                                            <option value="22">22</option>
+                                            <option value="24">24</option>
+                                            <option value="26">26</option>
+                                            <option value="28">28</option>
+                                            <option value="30">30</option>
+                                            <option value="32">32</option>
+                                            <option value="34">34</option>
+                                            <option value="36">36</option>
+                                            <option value="38">38</option>
+                                            <option value="40">40</option>
+                                            <option value="42">42</option>
+                                        </select>
+                                    </label>
+                                    <label class="block">
+                                        <span
+                                            class="text-sm font-medium text-[var(--color-text-muted)] uppercase"
+                                            >Talla de Calzado/Botas</span
+                                        >
+                                        <select
+                                            required
+                                            name="talla_calzado"
+                                            class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none appearance-none"
+                                        >
+                                            <option value="" disabled selected
+                                                >Seleccionar...</option
+                                            >
+                                            <option value="34">34</option>
+                                            <option value="35">35</option>
+                                            <option value="36">36</option>
+                                            <option value="37">37</option>
+                                            <option value="38">38</option>
+                                            <option value="39">39</option>
+                                            <option value="40">40</option>
+                                            <option value="41">41</option>
+                                            <option value="42">42</option>
+                                            <option value="43">43</option>
+                                            <option value="44">44</option>
+                                            <option value="45">45</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                         <div class="mt-10 flex justify-between">
                             <button
