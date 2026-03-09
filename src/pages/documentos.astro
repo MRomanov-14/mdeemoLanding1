@@ -1582,9 +1582,7 @@ import "cropperjs/dist/cropper.css";
                 const { data, error } = await supabase
                     .schema("clicklandingpublic")
                     .from("candidates")
-                    .select(
-                        "full_name, email, phone, location_address, location_neighborhood, location_city, location_department"
-                    )
+                    .select("full_name, email, phone")
                     .eq("cedula", cedulaVal)
                     .eq("access_pin", pinVal)
                     .maybeSingle();
@@ -1624,21 +1622,13 @@ import "cropperjs/dist/cropper.css";
                         name: data.full_name,
                         email: data.email,
                         phone: data.phone,
-                        address: data.location_address,
-                        city: data.location_city,
-                        department: data.location_department,
-                        neighborhood: data.location_neighborhood,
                     })
                 );
                 enableFormView(
                     cedulaVal,
                     data.full_name,
                     data.email,
-                    data.phone,
-                    data.location_address,
-                    data.location_city,
-                    data.location_department,
-                    data.location_neighborhood
+                    data.phone
                 );
             } catch (err: any) {
                 console.error("Gateway Auth Error:", err);
@@ -1662,11 +1652,7 @@ import "cropperjs/dist/cropper.css";
                     parsedAuth.cedula,
                     parsedAuth.name,
                     parsedAuth.email,
-                    parsedAuth.phone,
-                    parsedAuth.address,
-                    parsedAuth.city,
-                    parsedAuth.department,
-                    parsedAuth.neighborhood
+                    parsedAuth.phone
                 );
             }
         } catch (e) {
