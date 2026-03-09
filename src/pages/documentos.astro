@@ -1354,8 +1354,11 @@ import "cropperjs/dist/cropper.css";
                 );
                 enableFormView(cedulaVal, data.full_name);
             } catch (err: any) {
-                console.error(err);
-                alert("Cédula o PIN incorrecto. Por favor verifica los datos.");
+                console.error("Gateway Auth Error:", err);
+                const errorMsg = err.message || JSON.stringify(err);
+                alert(
+                    `Error verificando datos: ${errorMsg}\nCédula: ${cedulaVal}\nPor favor intenta nuevamente o contáctanos.`
+                );
                 btnVerifyPin.innerHTML = originalBtnHtml;
                 btnVerifyPin.disabled = false;
             }
