@@ -409,13 +409,24 @@ import "cropperjs/dist/cropper.css";
                             <label class="block"
                                 ><span
                                     class="text-sm font-medium text-brand-primary uppercase"
-                                    >Municipio/Ciudad</span
-                                ><input
-                                    type="text"
-                                    required
-                                    name="municipio_ciudad"
-                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
-                                />
+                                    ><select
+                                        required
+                                        name="municipio_ciudad"
+                                        class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none appearance-none"
+                                    >
+                                        <option value="" disabled selected
+                                            >Seleccionar...</option
+                                        >
+                                        <option value="Bogotá">Bogotá</option>
+                                        <option value="Medellín"
+                                            >Medellín</option
+                                        >
+                                        <option value="Cali">Cali</option>
+                                        <option value="Barranquilla"
+                                            >Barranquilla</option
+                                        >
+                                    </select>
+                                </span>
                             </label>
                             <label class="block"
                                 ><span
@@ -932,13 +943,24 @@ import "cropperjs/dist/cropper.css";
                             <label class="block"
                                 ><span
                                     class="text-sm font-medium text-[var(--color-text-muted)] uppercase"
-                                    >Ciudad</span
-                                ><input
-                                    type="text"
-                                    required
-                                    name="contacto_emergencia_municipio"
-                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
-                                />
+                                    ><select
+                                        required
+                                        name="contacto_emergencia_municipio"
+                                        class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none appearance-none"
+                                    >
+                                        <option value="" disabled selected
+                                            >Seleccionar...</option
+                                        >
+                                        <option value="Bogotá">Bogotá</option>
+                                        <option value="Medellín"
+                                            >Medellín</option
+                                        >
+                                        <option value="Cali">Cali</option>
+                                        <option value="Barranquilla"
+                                            >Barranquilla</option
+                                        >
+                                    </select>
+                                </span>
                             </label>
                         </div>
                         <div class="mt-10 flex justify-between">
