@@ -36,6 +36,12 @@ import "cropperjs/dist/cropper.css";
                 opacity: 1;
             }
 
+            /* Fix dropdown options visibility in dark mode */
+            option {
+                background-color: var(--color-surface);
+                color: var(--color-text);
+            }
+
             /* Circular Crop Mask */
             .cropper-view-box,
             .cropper-face {
