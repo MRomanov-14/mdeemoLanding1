@@ -1312,7 +1312,7 @@ import "cropperjs/dist/cropper.css";
                 <!-- Pantalla de Éxito -->
                 <div
                     id="success-message"
-                    class="hidden absolute inset-0 bg-black/80 backdrop-blur-sm z-50 flex flex-col items-center justify-center p-4 rounded-[2rem] transition-all duration-500 opacity-0"
+                    class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex flex-col items-center justify-center p-4 transition-all duration-500 opacity-0"
                 >
                     <div
                         class="bg-[var(--color-surface)] border border-[var(--color-border)] p-10 md:p-14 rounded-3xl w-full max-w-lg shadow-2xl flex flex-col items-center text-center relative overflow-hidden transform scale-95 transition-transform duration-500"
@@ -1388,6 +1388,40 @@ import "cropperjs/dist/cropper.css";
                 <button
                     type="button"
                     id="btn-close-submitted-modal"
+                    class="w-full py-4 px-4 bg-brand-primary hover:bg-yellow-400 text-black text-lg font-bold rounded-xl transition-all shadow-lg hover:shadow-[0_0_20px_rgba(234,179,8,0.4)]"
+                >
+                    Aceptar
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal Error -->
+        <div
+            id="error-message-modal"
+            class="hidden fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center p-4 opacity-0 transition-opacity duration-300"
+        >
+            <div
+                class="bg-[var(--color-surface)] border border-[var(--color-border)] p-8 rounded-2xl w-full max-w-[450px] shadow-2xl flex flex-col items-center relative overflow-hidden transform scale-95 transition-transform duration-300"
+                id="error-message-modal-content"
+            >
+                <div
+                    class="w-20 h-20 bg-red-500/10 rounded-full flex items-center justify-center mb-6 text-red-500 text-4xl"
+                >
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </div>
+                <h3
+                    class="text-2xl font-bold text-[var(--color-text)] mb-3 text-center"
+                >
+                    Error al enviar
+                </h3>
+                <p
+                    id="error-message-text"
+                    class="text-[var(--color-text-muted)] text-center mb-8 leading-relaxed"
+                >
+                </p>
+                <button
+                    type="button"
+                    id="btn-close-error-modal"
                     class="w-full py-4 px-4 bg-brand-primary hover:bg-yellow-400 text-black text-lg font-bold rounded-xl transition-all shadow-lg hover:shadow-[0_0_20px_rgba(234,179,8,0.4)]"
                 >
                     Aceptar
@@ -2131,7 +2165,53 @@ import "cropperjs/dist/cropper.css";
                 }
             } catch (err: any) {
                 console.error(err);
-                alert("Error al enviar: " + err.message);
+
+                const errorModal = document.getElementById(
+                    "error-message-modal"
+                );
+                const errorModalContent = document.getElementById(
+                    "error-message-modal-content"
+                );
+                const errorModalText =
+                    document.getElementById("error-message-text");
+                const btnCloseErrorModal = document.getElementById(
+                    "btn-close-error-modal"
+                );
+
+                if (
+                    errorModal &&
+                    errorModalContent &&
+                    errorModalText &&
+                    btnCloseErrorModal
+                ) {
+                    errorModalText.innerText = err.message;
+                    errorModal.classList.remove("hidden");
+                    void errorModal.offsetWidth;
+                    errorModal.classList.remove("opacity-0");
+                    errorModalContent.classList.remove("scale-95");
+                    errorModalContent.classList.add("scale-100");
+
+                    const closeErrorModal = () => {
+                        errorModal.classList.add("opacity-0");
+                        errorModalContent.classList.remove("scale-100");
+                        errorModalContent.classList.add("scale-95");
+                        setTimeout(() => {
+                            errorModal.classList.add("hidden");
+                        }, 300);
+                        btnCloseErrorModal.removeEventListener(
+                            "click",
+                            closeErrorModal
+                        );
+                    };
+
+                    btnCloseErrorModal.addEventListener(
+                        "click",
+                        closeErrorModal
+                    );
+                } else {
+                    alert("Error al enviar: " + err.message);
+                }
+
                 btn.innerHTML = original;
                 btn.disabled = false;
             }
