@@ -13,6 +13,7 @@ const firmantesCargo = "Gerente";
 <Layout
   title="Acceso a Cotización | CLICK Logística"
   description="Ingrese su PIN para acceder a su propuesta comercial confidencial."
+  hideHeader={true}
 >
   <!-- SECURITY GATEWAY -->
   <section
@@ -340,54 +341,103 @@ const firmantesCargo = "Gerente";
                     Personal especializado para operaciones de almacenamiento,
                     clasificación y distribución interna en el CEDI.
                   </p>
-                  
+
                   <!-- Tabla de tarifas -->
-                  <div class="overflow-x-auto rounded-xl border border-[var(--color-border)] mb-4 bg-[var(--color-bg)]">
+                  <div
+                    class="overflow-x-auto rounded-xl border border-[var(--color-border)] mb-4 bg-[var(--color-bg)]"
+                  >
                     <table class="w-full text-sm text-left">
-                      <thead class="text-xs uppercase bg-brand-primary/10 text-[var(--color-text)] border-b border-[var(--color-border)]">
+                      <thead
+                        class="text-xs uppercase bg-brand-primary/10 text-[var(--color-text)] border-b border-[var(--color-border)]"
+                      >
                         <tr>
-                          <th scope="col" class="px-4 py-3 font-bold">Descripción</th>
-                          <th scope="col" class="px-4 py-3 font-bold text-right">Valor</th>
+                          <th scope="col" class="px-4 py-3 font-bold"
+                            >Descripción</th
+                          >
+                          <th scope="col" class="px-4 py-3 font-bold text-right"
+                            >Valor</th
+                          >
                         </tr>
                       </thead>
-                      <tbody class="divide-y divide-[var(--color-border)] text-[var(--color-text-muted)]">
+                      <tbody
+                        class="divide-y divide-[var(--color-border)] text-[var(--color-text-muted)]"
+                      >
                         <tr class="hover:bg-brand-primary/5 transition-colors">
-                          <td class="px-4 py-3">7,33 Horas Diurno Entre Semana</td>
-                          <td class="px-4 py-3 text-right font-semibold text-[var(--color-text)]">$ 132.000,00</td>
+                          <td class="px-4 py-3"
+                            >7,33 Horas Diurno Entre Semana</td
+                          >
+                          <td
+                            class="px-4 py-3 text-right font-semibold text-[var(--color-text)]"
+                            >$ 132.000,00</td
+                          >
                         </tr>
                         <tr class="hover:bg-brand-primary/5 transition-colors">
-                          <td class="px-4 py-3">7,33 Horas Nocturno Entre Semana</td>
-                          <td class="px-4 py-3 text-right font-semibold text-[var(--color-text)]">$ 178.200,00</td>
+                          <td class="px-4 py-3"
+                            >7,33 Horas Nocturno Entre Semana</td
+                          >
+                          <td
+                            class="px-4 py-3 text-right font-semibold text-[var(--color-text)]"
+                            >$ 178.200,00</td
+                          >
                         </tr>
                         <tr class="hover:bg-brand-primary/5 transition-colors">
-                          <td class="px-4 py-3">7,33 Horas Diurno Festivo / Dominical</td>
-                          <td class="px-4 py-3 text-right font-semibold text-[var(--color-text)]">$ 237.600,00</td>
+                          <td class="px-4 py-3"
+                            >7,33 Horas Diurno Festivo / Dominical</td
+                          >
+                          <td
+                            class="px-4 py-3 text-right font-semibold text-[var(--color-text)]"
+                            >$ 237.600,00</td
+                          >
                         </tr>
                         <tr class="hover:bg-brand-primary/5 transition-colors">
-                          <td class="px-4 py-3">7,33 Horas Nocturno Festivo / Dominical</td>
-                          <td class="px-4 py-3 text-right font-semibold text-[var(--color-text)]">$ 270.600,00</td>
+                          <td class="px-4 py-3"
+                            >7,33 Horas Nocturno Festivo / Dominical</td
+                          >
+                          <td
+                            class="px-4 py-3 text-right font-semibold text-[var(--color-text)]"
+                            >$ 270.600,00</td
+                          >
                         </tr>
                         <tr class="hover:bg-brand-primary/5 transition-colors">
                           <td class="px-4 py-3">Extra Diurna Entre Semana</td>
-                          <td class="px-4 py-3 text-right font-semibold text-[var(--color-text)]">$ 21.500,00</td>
+                          <td
+                            class="px-4 py-3 text-right font-semibold text-[var(--color-text)]"
+                            >$ 21.500,00</td
+                          >
                         </tr>
                         <tr class="hover:bg-brand-primary/5 transition-colors">
                           <td class="px-4 py-3">Extra Nocturna Entre Semana</td>
-                          <td class="px-4 py-3 text-right font-semibold text-[var(--color-text)]">$ 30.400,00</td>
+                          <td
+                            class="px-4 py-3 text-right font-semibold text-[var(--color-text)]"
+                            >$ 30.400,00</td
+                          >
                         </tr>
                         <tr class="hover:bg-brand-primary/5 transition-colors">
-                          <td class="px-4 py-3">Extra Diurna Dominical y Festiva</td>
-                          <td class="px-4 py-3 text-right font-semibold text-[var(--color-text)]">$ 35.600,00</td>
+                          <td class="px-4 py-3"
+                            >Extra Diurna Dominical y Festiva</td
+                          >
+                          <td
+                            class="px-4 py-3 text-right font-semibold text-[var(--color-text)]"
+                            >$ 35.600,00</td
+                          >
                         </tr>
                         <tr class="hover:bg-brand-primary/5 transition-colors">
-                          <td class="px-4 py-3">Extra Nocturna Dominical y Festiva</td>
-                          <td class="px-4 py-3 text-right font-semibold text-[var(--color-text)]">$ 42.000,00</td>
+                          <td class="px-4 py-3"
+                            >Extra Nocturna Dominical y Festiva</td
+                          >
+                          <td
+                            class="px-4 py-3 text-right font-semibold text-[var(--color-text)]"
+                            >$ 42.000,00</td
+                          >
                         </tr>
                       </tbody>
                     </table>
                   </div>
-                  <p class="text-xs text-[var(--color-text-muted)] italic text-right mt-3">
-                    * Valores antes de IVA. Tarifa según planeación compartida y volumen de operación.
+                  <p
+                    class="text-xs text-[var(--color-text-muted)] italic text-right mt-3"
+                  >
+                    * Valores antes de IVA. Tarifa según planeación compartida y
+                    volumen de operación.
                   </p>
                 </div>
               </div>
@@ -710,7 +760,7 @@ const firmantesCargo = "Gerente";
                 },
                 {
                   num: "02",
-                  txt: "Estos precios tienen vigencia durante la prestación de los servicios en el año 2025; para el próximo año se ajustará el incremento porcentual del salario mínimo que emita el gobierno.",
+                  txt: "Estos precios tienen vigencia durante la prestación de los servicios hasta el 30 de Junio de 2026; para el próximo año se ajustará el incremento porcentual del salario mínimo que emita el gobierno.",
                 },
                 {
                   num: "03",

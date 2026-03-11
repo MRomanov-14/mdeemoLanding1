@@ -3,9 +3,10 @@ interface Props {
     title: string;
     description?: string;
     forcedTheme?: "light" | "dark";
+    hideHeader?: boolean;
 }
 
-const { title, description, forcedTheme } = Astro.props;
+const { title, description, forcedTheme, hideHeader = false } = Astro.props;
 
 import "@fontsource/inter/300.css";
 import "@fontsource/inter/400.css";
@@ -144,6 +145,8 @@ import "@fontsource/outfit/900.css";
             </script>
         </div>
 
+        {!hideHeader && (
+        <>
         <!-- Navbar Flotante -->
         <nav
             class="fixed w-full z-50 transition-all duration-300 py-6"
@@ -336,6 +339,8 @@ import "@fontsource/outfit/900.css";
                 </div>
             </nav>
         </div>
+        </>
+        )}
 
         <slot />
 
