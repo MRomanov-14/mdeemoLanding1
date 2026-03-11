@@ -4,9 +4,10 @@ interface Props {
     description?: string;
     forcedTheme?: "light" | "dark";
     hideHeader?: boolean;
+    hideFooter?: boolean;
 }
 
-const { title, description, forcedTheme, hideHeader = false } = Astro.props;
+const { title, description, forcedTheme, hideHeader = false, hideFooter = false } = Astro.props;
 
 import "@fontsource/inter/300.css";
 import "@fontsource/inter/400.css";
@@ -344,6 +345,8 @@ import "@fontsource/outfit/900.css";
 
         <slot />
 
+        {!hideFooter && (
+        <>
         <!-- WhatsApp Button -->
         <a
             id="whatsapp-float"
@@ -416,6 +419,8 @@ import "@fontsource/outfit/900.css";
                 </div>
             </div>
         </footer>
+        </>
+        )}
 
         <script is:inline define:vars={{ forcedTheme }}>
             // Menu Logic

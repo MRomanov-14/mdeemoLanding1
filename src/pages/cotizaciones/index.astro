@@ -14,6 +14,7 @@ const firmantesCargo = "Gerente";
   title="Acceso a Cotización | CLICK Logística"
   description="Ingrese su PIN para acceder a su propuesta comercial confidencial."
   hideHeader={true}
+  hideFooter={true}
 >
   <!-- SECURITY GATEWAY -->
   <section
@@ -847,28 +848,15 @@ const firmantesCargo = "Gerente";
             >
               <div>
                 <!-- Firma decorativa SVG -->
-                <div class="mb-4 opacity-70">
-                  <svg
-                    width="160"
-                    height="50"
-                    viewBox="0 0 160 50"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M5 40 Q30 5 60 25 Q90 45 120 15 Q140 5 155 20"
-                      stroke="#eab308"
-                      stroke-width="2"
-                      fill="none"
-                      stroke-linecap="round"></path>
-                    <path
-                      d="M10 45 Q40 42 80 43 Q120 44 150 42"
-                      stroke="#eab308"
-                      stroke-width="1.5"
-                      fill="none"
-                      stroke-linecap="round"
-                      opacity="0.4"></path>
-                  </svg>
+                <div class="mb-4">
+                  <img
+                    src="/rubrica-fer.png"
+                    alt="Firma"
+                    width="260"
+                    class="object-contain"
+                    style="max-height: 120px;"
+                  />
+                  <div style="height: 2px; width: 260px; background: linear-gradient(to right, #eab308, #ca8a04, transparent); border-radius: 2px; margin-top: 2px;"></div>
                 </div>
                 <p
                   class="font-black text-[var(--color-text)] text-lg font-[Outfit]"
