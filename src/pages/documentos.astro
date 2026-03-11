@@ -1666,32 +1666,32 @@ import "cropperjs/dist/cropper.css";
             btnVerifyPin.disabled = true;
 
             try {
-                // Check characters in public candidates table
+                // Verify candidate via RPC (bypasses schema exposure requirement)
                 const { data, error } = await supabase
-                    .schema("clicklandingpublic")
-                    .from("candidates")
-                    .select("full_name, email, phone")
-                    .eq("cedula", cedulaVal)
-                    .eq("access_pin", pinVal)
-                    .maybeSingle();
+                    .rpc("cl_verify_candidate", {
+                        p_cedula: cedulaVal,
+                        p_pin: pinVal,
+                    });
 
                 if (error) {
                     throw new Error(error.message || JSON.stringify(error));
                 }
 
-                if (!data) {
+                const candidateRow = data && data.length > 0 ? data[0] : null;
+
+                if (!candidateRow) {
                     throw new Error(
                         "Credenciales inválidas o candidato no seleccionado."
                     );
                 }
 
                 // Check if they already filled the form
-                const { data: formExists } = await supabase
-                    .schema("clicklandingpublic")
-                    .from("caracterizacion_candidatos")
-                    .select("id")
-                    .eq("cedula", cedulaVal)
-                    .maybeSingle();
+                const { data: formExists, error: checkError } = await supabase
+                    .rpc("cl_check_form_submitted", { p_cedula: cedulaVal });
+
+                if (checkError) {
+                    throw new Error(checkError.message || JSON.stringify(checkError));
+                }
 
                 if (formExists) {
                     const submittedModal = document.getElementById(
@@ -1745,16 +1745,16 @@ import "cropperjs/dist/cropper.css";
                     AUTH_KEY,
                     JSON.stringify({
                         cedula: cedulaVal,
-                        name: data.full_name,
-                        email: data.email,
-                        phone: data.phone,
+                        name: candidateRow.full_name,
+                        email: candidateRow.email,
+                        phone: candidateRow.phone,
                     })
                 );
                 enableFormView(
                     cedulaVal,
-                    data.full_name,
-                    data.email,
-                    data.phone
+                    candidateRow.full_name,
+                    candidateRow.email,
+                    candidateRow.phone
                 );
             } catch (err: any) {
                 console.error("Gateway Auth Error:", err);
@@ -2144,9 +2144,7 @@ import "cropperjs/dist/cropper.css";
                     "Guardando ficha... <i class='fa-solid fa-spinner fa-spin ml-2'></i>";
 
                 const { error } = await supabase
-                    .schema("clicklandingpublic")
-                    .from("caracterizacion_candidatos")
-                    .insert([doc]);
+                    .rpc("cl_insert_caracterizacion", { data: doc });
                 if (error) throw error;
 
                 localStorage.removeItem(STORAGE_KEY);
