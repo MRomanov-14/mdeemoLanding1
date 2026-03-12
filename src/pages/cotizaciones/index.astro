@@ -1024,126 +1024,137 @@ const firmantesCargo = "Gerente";
     }
 
     @media print {
-      /* -------- Ocultar elementos no deseados -------- */
-      nav,
-      footer,
-      #whatsapp-float,
-      #pin-gateway,
-      .no-print,
-      .fixed {
+      /* -------- Ocultar -------- */
+      nav, footer, #whatsapp-float, #pin-gateway, .no-print, .fixed {
         display: none !important;
       }
 
-      /* -------- Variables light mode para impresión -------- */
-      :root,
-      html,
-      body,
+      /* -------- Exactitud de color -------- */
       * {
-        --color-bg: #ffffff !important;
-        --color-surface: #f8f9fa !important;
-        --color-text: #111827 !important;
-        --color-text-muted: #6b7280 !important;
-        --color-border: rgba(0, 0, 0, 0.12) !important;
-        --navbar-bg: transparent !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+      }
+
+      /* -------- Variables CSS en light mode -------- */
+      :root {
+        --color-bg: #ffffff !important;
+        --color-surface: #f7f8fa !important;
+        --color-text: #111827 !important;
+        --color-text-muted: #6b7280 !important;
+        --color-border: #e5e7eb !important;
       }
 
       /* -------- Base -------- */
       html, body {
         background: #ffffff !important;
         color: #111827 !important;
-        font-size: 11pt;
+        font-size: 10.5pt;
         line-height: 1.5;
-      }
-
-      /* -------- Hero -------- */
-      .cotiz-hero {
-        padding-top: 1.5rem !important;
-        padding-bottom: 1.5rem !important;
-        background: #ffffff !important;
-      }
-
-      /* -------- Grids de fondo decorativos -------- */
-      .cotiz-hero .absolute,
-      section .absolute {
-        display: none !important;
-      }
-
-      /* -------- Superficies y tarjetas -------- */
-      [class*="bg-[var(--color-surface)]"],
-      [class*="bg-[var(--color-bg)]"] {
-        background: #f8f9fa !important;
-      }
-
-      /* -------- Borders -------- */
-      [class*="border-[var(--color-border)]"] {
-        border-color: #e5e7eb !important;
-      }
-
-      /* -------- Texto -------- */
-      [class*="text-[var(--color-text)]"],
-      .font-black,
-      .font-bold,
-      h1, h2, h3, h4, p, td, th, span {
-        color: #111827 !important;
-      }
-
-      [class*="text-[var(--color-text-muted)]"] {
-        color: #6b7280 !important;
-      }
-
-      /* -------- Marca amarillo/dorado — mantener -------- */
-      .text-brand-primary,
-      [class*="text-brand-primary"] {
-        color: #b45309 !important; /* ámbar oscuro para impresión */
-      }
-
-      /* -------- Fondo de cabeceras de tabla -------- */
-      [class*="bg-brand-primary/10"],
-      [class*="bg-brand-primary/20"] {
-        background: #fef3c7 !important;
-      }
-
-      /* -------- Logo C -------- */
-      [class*="bg-brand-primary"] {
-        background: #eab308 !important;
-        box-shadow: none !important;
       }
 
       /* -------- Secciones -------- */
       section {
         background: #ffffff !important;
-        padding-top: 1.2rem !important;
-        padding-bottom: 1.2rem !important;
+        padding-top: 0.8rem !important;
+        padding-bottom: 0.8rem !important;
       }
 
-      /* -------- Tarjetas de precios -------- */
-      .pricing-card {
-        border: 1px solid #e5e7eb !important;
-        box-shadow: none !important;
-        break-inside: avoid;
+      /* -------- Hero -------- */
+      .cotiz-hero {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+        background: #ffffff !important;
       }
 
-      /* -------- Gradientes de encabezado de tarjeta -------- */
+      /* -------- Decoraciones del fondo -------- */
+      .cotiz-hero > div:first-child,
+      section > div > div[class*="absolute"] {
+        display: none !important;
+      }
+
+      /* -------- Texto general oscuro -------- */
+      h1, h2, h3, h4, p, td, th, span, strong, li {
+        color: #111827 !important;
+      }
+
+      /* -------- Texto muted -------- */
+      .text-\[\(var\(--color-text-muted\)\)\],
+      [class~="text-[var(--color-text-muted)]"] {
+        color: #6b7280 !important;
+      }
+
+      /* -------- Marca: SOLO clase exacta sin hover -------- */
+      p.text-brand-primary,
+      span.text-brand-primary,
+      h3.text-brand-primary,
+      h2.text-brand-primary {
+        color: #92400e !important;
+      }
+
+      /* -------- Fondos de tarjetas -------- */
+      [class*="rounded-2xl"],
+      [class*="rounded-3xl"] {
+        background: #f7f8fa !important;
+        border-color: #e5e7eb !important;
+      }
+
+      /* -------- Encabezados de tarjeta con gradiente -------- */
       [class*="bg-gradient-to-r"] {
         background: #fef9e7 !important;
       }
 
-      /* -------- Firma -------- */
-      #cta-contacto { display: none !important; }
+      /* -------- Fondos amarillo ligero (bg-brand-primary/10 etc.) -------- */
+      [class*="bg-brand-primary\/10"],
+      [class*="bg-brand-primary\/20"] {
+        background: #fef3c7 !important;
+      }
 
-      /* -------- Saltos de página -------- */
-      h2 { break-after: avoid !important; }
-      .pricing-card { break-inside: avoid !important; }
+      /* -------- Icono cuadrados amarillos (w-10 h-10 / w-9 h-9) con icon negro -------- */
+      [class*="bg-brand-primary\/10"] i,
+      [class*="bg-brand-primary\/20"] i {
+        color: #92400e !important;
+      }
 
-      /* -------- Sombras — eliminar -------- */
+      /* -------- Logo C y elementos con bg-brand-primary directo -------- */
+      .bg-brand-primary {
+        background: #eab308 !important;
+        color: #000000 !important;
+      }
+
+      /* -------- Tabla -------- */
+      table { border-collapse: collapse !important; width: 100% !important; }
+      th { background: #fef3c7 !important; color: #111827 !important; }
+      td { color: #111827 !important; }
+      tr { border-bottom: 1px solid #e5e7eb !important; }
+
+      /* -------- Precio badge -------- */
+      .text-brand-primary.text-2xl,
+      .text-brand-primary.font-black {
+        color: #92400e !important;
+      }
+
+      /* -------- Sombras eliminadas -------- */
       * { box-shadow: none !important; text-shadow: none !important; }
 
-      /* -------- Rubber stamp glow -------- */
-      .shadow-\\[0_0_30px_rgba\\(234\\,179\\,8\\,0\\.4\\)\\] {
-        box-shadow: 0 0 0 2px #eab308 !important;
+      /* -------- Break-inside en TODOS los bloques de contenido -------- */
+      .pricing-card,
+      [class*="rounded-2xl"],
+      [class*="rounded-xl"],
+      .grid > div,
+      .space-y-4 > div,
+      .space-y-6 > div {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
       }
+
+      h2, h3 {
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+      }
+
+      /* -------- Firma -------- */
+      #cta-contacto { display: none !important; }
     }
+
   </style>
 </Layout>
