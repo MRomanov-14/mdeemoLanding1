@@ -2067,6 +2067,9 @@ import "cropperjs/dist/cropper.css";
             if (!doc.id) {
                 doc.id = crypto.randomUUID();
             }
+            if (!doc.created_at) {
+                doc.created_at = new Date().toISOString();
+            }
 
             // Format numbers and booleans
             [
