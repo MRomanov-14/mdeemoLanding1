@@ -888,18 +888,27 @@ const firmantesCargo = "Gerente";
           </div>
 
           <!-- CTA de contacto -->
-          <div class="mt-10 text-center">
+          <div id="cta-contacto" class="mt-10 text-center no-print">
             <p class="text-[var(--color-text-muted)] text-sm mb-4">
               ¿Tiene preguntas sobre esta propuesta?
             </p>
-            <a
-              href="https://wa.me/573167421490?text=Hola,%20soy%20de%20ALCOMEX%20y%20tengo%20preguntas%20sobre%20la%20propuesta%20comercial%202026"
-              target="_blank"
-              class="inline-flex items-center gap-3 px-8 py-4 bg-brand-primary hover:bg-yellow-400 text-black font-bold rounded-full transition-all shadow-[0_4px_20px_rgba(234,179,8,0.3)] hover:shadow-[0_4px_30px_rgba(234,179,8,0.5)] transform hover:-translate-y-0.5"
-            >
-              <i class="fa-brands fa-whatsapp text-xl"></i>
-              Contáctanos por WhatsApp
-            </a>
+            <div class="flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="https://wa.me/573167421490?text=Hola,%20soy%20de%20ALCOMEX%20y%20tengo%20preguntas%20sobre%20la%20propuesta%20comercial%202026"
+                target="_blank"
+                class="inline-flex items-center gap-3 px-8 py-4 bg-brand-primary hover:bg-yellow-400 text-black font-bold rounded-full transition-all shadow-[0_4px_20px_rgba(234,179,8,0.3)] hover:shadow-[0_4px_30px_rgba(234,179,8,0.5)] transform hover:-translate-y-0.5"
+              >
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                Contáctanos por WhatsApp
+              </a>
+              <button
+                id="btn-download-pdf"
+                class="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-brand-primary/50 hover:border-brand-primary text-brand-primary hover:text-yellow-300 font-bold rounded-full transition-all hover:shadow-[0_4px_20px_rgba(234,179,8,0.2)] transform hover:-translate-y-0.5"
+              >
+                <i class="fa-solid fa-file-pdf text-xl"></i>
+                Descargar Propuesta
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -987,6 +996,12 @@ const firmantesCargo = "Gerente";
         btnVerify?.click();
       }
     });
+
+    // PDF Download button
+    const btnPdf = document.getElementById("btn-download-pdf");
+    btnPdf?.addEventListener("click", () => {
+      window.print();
+    });
   </script>
 
   <style>
@@ -1012,11 +1027,24 @@ const firmantesCargo = "Gerente";
       nav,
       footer,
       #whatsapp-float,
+      .no-print,
       .fixed {
         display: none !important;
       }
       .cotiz-hero {
         padding-top: 2rem;
+      }
+      body {
+        background: #ffffff !important;
+        color: #111111 !important;
+      }
+      .bg-\[var\(--color-bg\)\],
+      .bg-\[var\(--color-surface\)\] {
+        background: #ffffff !important;
+      }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
     }
   </style>
