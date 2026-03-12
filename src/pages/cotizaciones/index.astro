@@ -915,6 +915,319 @@ const firmantesCargo = "Gerente";
     </div>
   </div>
 
+    <!-- ==========================================
+         PROPUESTA GEODIS (PIN: 8877)
+         ========================================== -->
+    <div id="content-geodis" class="hidden proposal-block">
+      <!-- Hero / Header de Propuesta -->
+      <section class="cotiz-hero relative overflow-hidden pt-24 sm:pt-36 pb-12 sm:pb-20">
+        <!-- Fondo decorativo -->
+        <div class="absolute inset-0 pointer-events-none">
+          <div class="absolute top-0 left-0 w-2/3 h-full bg-brand-primary/5 blur-[120px]"></div>
+          <div class="absolute bottom-0 right-0 w-1/2 h-1/2 bg-brand-primary/8 blur-[100px]"></div>
+          <div class="absolute inset-0 opacity-[0.03]" style="background-image: repeating-linear-gradient(0deg, #eab308 0px, #eab308 1px, transparent 1px, transparent 60px), repeating-linear-gradient(90deg, #eab308 0px, #eab308 1px, transparent 1px, transparent 60px);"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+          <!-- TOP BADGE -->
+          <div class="flex items-center gap-3 mb-10">
+            <div class="w-14 h-14 bg-brand-primary rounded-2xl flex items-center justify-center text-black font-black text-3xl shadow-[0_0_30px_rgba(234,179,8,0.4)] flex-shrink-0">C</div>
+            <div>
+              <p class="text-xs font-bold text-brand-primary uppercase tracking-widest">Click Operaciones Logísticas S.A.S.</p>
+              <p class="text-[var(--color-text-muted)] text-sm">NIT: 901.408.435-1 · Bogotá, Colombia</p>
+            </div>
+            <div class="ml-auto hidden sm:block">
+              <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/30 text-brand-primary text-xs font-bold uppercase tracking-wider">
+                <span class="w-2 h-2 rounded-full bg-brand-primary animate-pulse"></span>
+                Oferta Vigente hasta Junio 30 2026
+              </span>
+            </div>
+          </div>
+
+          <!-- Destinatario card -->
+          <div class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 mb-8 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-60"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+              <div>
+                <p class="text-[var(--color-text-muted)] text-xs uppercase tracking-widest mb-1">Para</p>
+                <p class="font-bold text-[var(--color-text)] text-lg">GEODIS</p>
+                <p class="text-[var(--color-text-muted)]">Responsable de Operaciones</p>
+                <p class="text-brand-primary text-xs font-semibold">Cargo por definir</p>
+              </div>
+              <div class="sm:text-right">
+                <p class="text-[var(--color-text-muted)] text-xs uppercase tracking-widest mb-1">Fecha</p>
+                <p class="font-semibold text-[var(--color-text)]">Bogotá, 12 de marzo del 2026</p>
+                <p class="text-[var(--color-text-muted)] text-xs mt-2">Ref: Cotización – Condiciones comerciales</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Título principal -->
+          <h1 class="text-3xl sm:text-4xl md:text-6xl font-black text-[var(--color-text)] leading-tight mb-4 sm:mb-6 font-[Outfit]">
+            PROPUESTA<br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#eab308] via-[#fef08a] to-[#eab308]">COMERCIAL</span>
+          </h1>
+          <p class="text-[var(--color-text-muted)] text-lg leading-relaxed max-w-2xl text-justify">
+            Estimado equipo de <strong class="text-brand-primary">GEODIS</strong>, en nombre de <strong class="text-brand-primary">Click Operaciones Logísticas S.A.S.</strong> nos complace presentar nuestra propuesta de servicios de posicionamiento de personal para su operación logística.
+          </p>
+        </div>
+      </section>
+
+      <!-- Descripción del Servicio -->
+      <section class="py-16 bg-[var(--color-bg)]">
+        <div class="max-w-4xl mx-auto px-6">
+          <div class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-xl bg-brand-primary/10 border border-brand-primary/30 flex items-center justify-center">
+                <i class="fa-solid fa-users text-brand-primary"></i>
+              </div>
+              <h2 class="text-2xl font-bold text-[var(--color-text)] font-[Outfit]">Alcance de los Servicios</h2>
+            </div>
+            <div class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 md:p-8 space-y-4 text-justify">
+              <p class="text-[var(--color-text)] font-semibold text-lg">
+                Servicio de posicionamiento de personal para <span class="text-brand-primary">auxiliar logístico</span> en operaciones misionales del CEDI y eventos de cargue y descargue de contenedores.
+              </p>
+              <p class="text-[var(--color-text-muted)] leading-relaxed">
+                Estas operaciones se llevarán a cabo en las instalaciones de <strong class="text-[var(--color-text)]">GEODIS</strong> o la ubicación asignada localmente por el cliente, en horario de <strong class="text-[var(--color-text)]">Domingo a Domingo</strong>.
+              </p>
+            </div>
+          </div>
+
+          <!-- SEDES KPI Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16">
+            {[
+              { icon: "fa-plane-departure", nombre: "Zona Franca Aeropuerto", detalle: "Sede Principal" },
+              { icon: "fa-industry", nombre: "Parque Empresarial Siberia", detalle: "Sede 2" },
+              { icon: "fa-warehouse", nombre: "Intexzona", detalle: "Sede 3" },
+            ].map((sede) => (
+              <div class="group bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/50 rounded-2xl p-5 flex flex-col items-center text-center transition-all hover:shadow-[0_0_25px_rgba(234,179,8,0.1)] cursor-default">
+                <div class="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center mb-3 group-hover:bg-brand-primary group-hover:text-black transition-all">
+                  <i class={`fa-solid ${sede.icon} text-brand-primary group-hover:text-black text-lg`} />
+                </div>
+                <p class="font-bold text-[var(--color-text)] text-sm leading-tight">{sede.nombre}</p>
+                <p class="text-brand-primary text-xs font-semibold mt-1">{sede.detalle}</p>
+              </div>
+            ))}
+          </div>
+
+          <!-- Propuesta Económica -->
+          <div class="mb-4">
+            <div class="flex items-center gap-3 mb-8">
+              <div class="w-10 h-10 rounded-xl bg-brand-primary/10 border border-brand-primary/30 flex items-center justify-center">
+                <i class="fa-solid fa-dollar-sign text-brand-primary"></i>
+              </div>
+              <h2 class="text-2xl font-bold text-[var(--color-text)] font-[Outfit]">Propuesta Económica</h2>
+            </div>
+            <div class="space-y-6">
+              <!-- TARJETA: Auxiliar Logístico CEDI -->
+              <div id="geodis-item-auxiliar" class="pricing-card bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl overflow-hidden">
+                <div class="bg-gradient-to-r from-brand-primary/10 to-transparent border-b border-[var(--color-border)] px-6 py-4 flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-lg bg-brand-primary/20 flex items-center justify-center flex-shrink-0">
+                    <i class="fa-solid fa-person-digging text-brand-primary"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-[var(--color-text)]">Auxiliar Logístico</h3>
+                    <p class="text-brand-primary text-xs font-semibold">Operaciones misionales del CEDI</p>
+                  </div>
+                </div>
+                <div class="px-6 py-5">
+                  <p class="text-[var(--color-text-muted)] text-sm mb-6">Personal especializado para operaciones de almacenamiento, clasificación y distribución interna en el CEDI.</p>
+                  <div class="overflow-x-auto rounded-xl border border-[var(--color-border)] mb-4 bg-[var(--color-bg)]">
+                    <table class="w-full text-sm text-left">
+                      <thead class="text-xs uppercase bg-brand-primary/10 text-[var(--color-text)] border-b border-[var(--color-border)]">
+                        <tr>
+                          <th scope="col" class="px-4 py-3 font-bold">Descripción</th>
+                          <th scope="col" class="px-4 py-3 font-bold text-right">Valor</th>
+                        </tr>
+                      </thead>
+                      <tbody class="divide-y divide-[var(--color-border)] text-[var(--color-text-muted)]">
+                        <tr class="hover:bg-brand-primary/5 transition-colors"><td class="px-4 py-3">7,33 Horas Diurno Entre Semana</td><td class="px-4 py-3 text-right font-semibold text-[var(--color-text)]"><span class="whitespace-nowrap">$ 132.000,00</span></td></tr>
+                        <tr class="hover:bg-brand-primary/5 transition-colors"><td class="px-4 py-3">7,33 Horas Nocturno Entre Semana</td><td class="px-4 py-3 text-right font-semibold text-[var(--color-text)]"><span class="whitespace-nowrap">$ 178.200,00</span></td></tr>
+                        <tr class="hover:bg-brand-primary/5 transition-colors"><td class="px-4 py-3">7,33 Horas Diurno Festivo / Dominical</td><td class="px-4 py-3 text-right font-semibold text-[var(--color-text)]"><span class="whitespace-nowrap">$ 237.600,00</span></td></tr>
+                        <tr class="hover:bg-brand-primary/5 transition-colors"><td class="px-4 py-3">7,33 Horas Nocturno Festivo / Dominical</td><td class="px-4 py-3 text-right font-semibold text-[var(--color-text)]"><span class="whitespace-nowrap">$ 270.600,00</span></td></tr>
+                        <tr class="hover:bg-brand-primary/5 transition-colors"><td class="px-4 py-3">Extra Diurna Entre Semana</td><td class="px-4 py-3 text-right font-semibold text-[var(--color-text)]"><span class="whitespace-nowrap">$ 21.500,00</span></td></tr>
+                        <tr class="hover:bg-brand-primary/5 transition-colors"><td class="px-4 py-3">Extra Nocturna Entre Semana</td><td class="px-4 py-3 text-right font-semibold text-[var(--color-text)]"><span class="whitespace-nowrap">$ 30.400,00</span></td></tr>
+                        <tr class="hover:bg-brand-primary/5 transition-colors"><td class="px-4 py-3">Extra Diurna Dominical y Festiva</td><td class="px-4 py-3 text-right font-semibold text-[var(--color-text)]"><span class="whitespace-nowrap">$ 35.600,00</span></td></tr>
+                        <tr class="hover:bg-brand-primary/5 transition-colors"><td class="px-4 py-3">Extra Nocturna Dominical y Festiva</td><td class="px-4 py-3 text-right font-semibold text-[var(--color-text)]"><span class="whitespace-nowrap">$ 42.000,00</span></td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p class="text-xs text-[var(--color-text-muted)] italic text-right mt-3">* Valores antes de IVA. Tarifa según planeación compartida y volumen de operación.</p>
+                </div>
+              </div>
+
+              <!-- Contenedor 40 pies -->
+              <div class="pricing-card bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl overflow-hidden hover:border-brand-primary/40 transition-all">
+                <div class="bg-gradient-to-r from-brand-primary/10 to-transparent border-b border-[var(--color-border)] px-6 py-4 flex items-center justify-between flex-wrap gap-4">
+                  <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-lg bg-brand-primary/20 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-box text-brand-primary"></i></div>
+                    <div><h3 class="font-bold text-[var(--color-text)]">Contenedor de 40 pies</h3><p class="text-brand-primary text-xs font-semibold">Cargue y/o descargue · mercancía seca</p></div>
+                  </div>
+                  <div class="price-badge text-right">
+                    <p class="text-xs text-[var(--color-text-muted)] uppercase tracking-wider">Valor por servicio</p>
+                    <p class="text-2xl font-black text-brand-primary">$350.000<span class="text-base font-normal">.oo</span></p>
+                    <p class="text-xs text-[var(--color-text-muted)]">+ IVA</p>
+                  </div>
+                </div>
+                <div class="px-6 py-5">
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm">
+                    <div class="spec-item"><i class="fa-solid fa-users text-brand-primary mr-2 text-xs"></i><span class="text-[var(--color-text-muted)]">Personas: </span><span class="font-semibold text-[var(--color-text)]">4 máx.</span></div>
+                    <div class="spec-item"><i class="fa-solid fa-cube text-brand-primary mr-2 text-xs"></i><span class="text-[var(--color-text-muted)]">Capacidad: </span><span class="font-semibold text-[var(--color-text)]">67.7 m³</span></div>
+                    <div class="spec-item"><i class="fa-solid fa-weight-hanging text-brand-primary mr-2 text-xs"></i><span class="text-[var(--color-text-muted)]">Peso:</span><span class="font-semibold text-[var(--color-text)]">32 ton. máx.</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Contenedor 20 pies -->
+              <div class="pricing-card bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl overflow-hidden hover:border-brand-primary/40 transition-all">
+                <div class="bg-gradient-to-r from-brand-primary/10 to-transparent border-b border-[var(--color-border)] px-6 py-4 flex items-center justify-between flex-wrap gap-4">
+                  <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-lg bg-brand-primary/20 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-boxes-stacked text-brand-primary"></i></div>
+                    <div><h3 class="font-bold text-[var(--color-text)]">Contenedor de 20 pies</h3><p class="text-brand-primary text-xs font-semibold">Cargue y/o descargue · mercancía seca</p></div>
+                  </div>
+                  <div class="price-badge text-right">
+                    <p class="text-xs text-[var(--color-text-muted)] uppercase tracking-wider">Valor por servicio</p>
+                    <p class="text-2xl font-black text-brand-primary">$270.000<span class="text-base font-normal">.oo</span></p>
+                    <p class="text-xs text-[var(--color-text-muted)]">+ IVA</p>
+                  </div>
+                </div>
+                <div class="px-6 py-5">
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm">
+                    <div class="spec-item"><i class="fa-solid fa-users text-brand-primary mr-2 text-xs"></i><span class="text-[var(--color-text-muted)]">Personas: </span><span class="font-semibold text-[var(--color-text)]">3 máx.</span></div>
+                    <div class="spec-item"><i class="fa-solid fa-cube text-brand-primary mr-2 text-xs"></i><span class="text-[var(--color-text-muted)]">Capacidad: </span><span class="font-semibold text-[var(--color-text)]">33 m³</span></div>
+                    <div class="spec-item"><i class="fa-solid fa-weight-hanging text-brand-primary mr-2 text-xs"></i><span class="text-[var(--color-text-muted)]">Peso:</span><span class="font-semibold text-[var(--color-text)]">24 ton. máx.</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Camión Sencillo -->
+              <div class="pricing-card bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl overflow-hidden hover:border-brand-primary/40 transition-all">
+                <div class="bg-gradient-to-r from-brand-primary/10 to-transparent border-b border-[var(--color-border)] px-6 py-4 flex items-center justify-between flex-wrap gap-4">
+                  <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-lg bg-brand-primary/20 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-truck text-brand-primary"></i></div>
+                    <div><h3 class="font-bold text-[var(--color-text)]">Camión Sencillo</h3><p class="text-brand-primary text-xs font-semibold">Cargue y/o descargue · mercancía seca</p></div>
+                  </div>
+                  <div class="price-badge text-right">
+                    <p class="text-xs text-[var(--color-text-muted)] uppercase tracking-wider">Valor por servicio</p>
+                    <p class="text-2xl font-black text-brand-primary">$240.000<span class="text-base font-normal">.oo</span></p>
+                    <p class="text-xs text-[var(--color-text-muted)]">+ IVA</p>
+                  </div>
+                </div>
+                <div class="px-6 py-5">
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm">
+                    <div class="spec-item"><i class="fa-solid fa-users text-brand-primary mr-2 text-xs"></i><span class="text-[var(--color-text-muted)]">Personas: </span><span class="font-semibold text-[var(--color-text)]">2 máx.</span></div>
+                    <div class="spec-item"><i class="fa-solid fa-cube text-brand-primary mr-2 text-xs"></i><span class="text-[var(--color-text-muted)]">Capacidad: </span><span class="font-semibold text-[var(--color-text)]">35 m³</span></div>
+                    <div class="spec-item"><i class="fa-solid fa-weight-hanging text-brand-primary mr-2 text-xs"></i><span class="text-[var(--color-text-muted)]">Peso:</span><span class="font-semibold text-[var(--color-text)]">10 ton. máx.</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Camión Turbo -->
+              <div class="pricing-card bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl overflow-hidden hover:border-brand-primary/40 transition-all">
+                <div class="bg-gradient-to-r from-brand-primary/10 to-transparent border-b border-[var(--color-border)] px-6 py-4 flex items-center justify-between flex-wrap gap-4">
+                  <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-lg bg-brand-primary/20 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-truck-fast text-brand-primary"></i></div>
+                    <div><h3 class="font-bold text-[var(--color-text)]">Camión Turbo</h3><p class="text-brand-primary text-xs font-semibold">Cargue y/o descargue · mercancía seca</p></div>
+                  </div>
+                  <div class="price-badge text-right">
+                    <p class="text-xs text-[var(--color-text-muted)] uppercase tracking-wider">Valor por servicio</p>
+                    <p class="text-2xl font-black text-brand-primary">$200.000<span class="text-base font-normal">.oo</span></p>
+                    <p class="text-xs text-[var(--color-text-muted)]">+ IVA</p>
+                  </div>
+                </div>
+                <div class="px-6 py-5">
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm">
+                    <div class="spec-item"><i class="fa-solid fa-users text-brand-primary mr-2 text-xs"></i><span class="text-[var(--color-text-muted)]">Personas: </span><span class="font-semibold text-[var(--color-text)]">2 máx.</span></div>
+                    <div class="spec-item"><i class="fa-solid fa-cube text-brand-primary mr-2 text-xs"></i><span class="text-[var(--color-text-muted)]">Capacidad: </span><span class="font-semibold text-[var(--color-text)]">21.5 m³</span></div>
+                    <div class="spec-item"><i class="fa-solid fa-weight-hanging text-brand-primary mr-2 text-xs"></i><span class="text-[var(--color-text-muted)]">Peso:</span><span class="font-semibold text-[var(--color-text)]">4.5 – 5 ton.</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Notas y condiciones -->
+      <section class="py-16 bg-[var(--color-bg)]">
+        <div class="max-w-4xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-xl bg-brand-primary/10 border border-brand-primary/30 flex items-center justify-center"><i class="fa-solid fa-circle-info text-brand-primary"></i></div>
+            <h2 class="text-2xl font-bold text-[var(--color-text)] font-[Outfit]">Notas y Condiciones</h2>
+          </div>
+
+          <div class="space-y-4 mb-12">
+            {[
+              { num: "01", txt: "La cantidad de auxiliares para el descargue o cargue está descrita en cada uno de los ítems, en condiciones normales, sin embargo, las excepciones pueden sufrir variaciones (más o menos personas) previa comunicación por parte del cliente frente a los volúmenes y tipo de mercancía, y esto afectaría la tarifa." },
+              { num: "02", txt: "Estos precios tienen vigencia durante la prestación de los servicios hasta el 30 de Junio de 2026; para el próximo año se ajustará el incremento porcentual del salario mínimo que emita el gobierno." },
+              { num: "03", txt: "La factura se enviará de manera electrónica a nombre de GEODIS, máximo 5 días después del corte semanal de haber prestado el servicio, para pago a 30 días calendario." },
+            ].map((nota) => (
+              <div class="flex gap-5 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-5">
+                <div class="text-brand-primary font-black text-3xl opacity-30 leading-none select-none flex-shrink-0 font-[Outfit]">{nota.num}</div>
+                <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">{nota.txt}</p>
+              </div>
+            ))}
+          </div>
+
+          <!-- Protección y Confidencialidad -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+            <div class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-9 h-9 rounded-lg bg-brand-primary/10 flex items-center justify-center"><i class="fa-solid fa-shield-halved text-brand-primary text-sm"></i></div>
+                <h3 class="font-bold text-[var(--color-text)]">Protección de Datos</h3>
+              </div>
+              <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">En atención a las normas vigentes sobre el tratamiento de datos personales, Ley Estatutaria 1581 de 2012 y Decreto 1377 de 2013 y sus modificaciones, las partes manifiestan dar pleno cumplimiento a la normatividad citada y cuentan con políticas de privacidad para el tratamiento de datos personales.</p>
+            </div>
+            <div class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-9 h-9 rounded-lg bg-brand-primary/10 flex items-center justify-center"><i class="fa-solid fa-lock text-brand-primary text-sm"></i></div>
+                <h3 class="font-bold text-[var(--color-text)]">Confidencialidad</h3>
+              </div>
+              <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">Click Operaciones Logísticas S.A.S. se compromete a guardar estricta confidencialidad sobre la información escrita u oral que reciba en el desarrollo o ejecución de este trabajo.</p>
+            </div>
+          </div>
+
+          <!-- Firma / Cierre -->
+          <div class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-8 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-60"></div>
+            <div class="absolute bottom-0 right-0 w-48 h-48 bg-brand-primary/5 rounded-full blur-[60px] pointer-events-none"></div>
+            <p class="text-[var(--color-text-muted)] text-sm mb-8">Atentamente,</p>
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative z-10">
+              <div>
+                <div class="mb-4">
+                  <img src="/rubrica-fer.png" alt="Firma" width="260" class="object-contain" style="max-height: 120px;" />
+                  <div style="height: 2px; width: 260px; background: linear-gradient(to right, #eab308, #ca8a04, transparent); border-radius: 2px; margin-top: 2px;"></div>
+                </div>
+                <p class="font-black text-[var(--color-text)] text-lg font-[Outfit]">Fernando E. Rodas Diazgranados</p>
+                <p class="text-brand-primary text-sm font-semibold">Gerente</p>
+                <p class="text-[var(--color-text-muted)] text-xs mt-1">Click Operaciones Logísticas S.A.S.</p>
+              </div>
+              <div class="flex flex-col items-center w-full sm:w-auto">
+                <div class="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center text-black font-black text-4xl shadow-[0_0_30px_rgba(234,179,8,0.4)] mb-2">C</div>
+                <p class="text-xs text-[var(--color-text-muted)] uppercase tracking-widest text-center">Click Logística</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA GEODIS -->
+          <div id="cta-geodis" class="mt-10 text-center no-print">
+            <p class="text-[var(--color-text-muted)] text-sm mb-4">¿Tiene preguntas sobre esta propuesta?</p>
+            <div class="flex flex-wrap items-center justify-center gap-4">
+              <a href="https://wa.me/573167421490?text=Hola,%20soy%20de%20GEODIS%20y%20tengo%20preguntas%20sobre%20la%20propuesta%20comercial%202026" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-brand-primary hover:bg-yellow-400 text-black font-bold rounded-full transition-all shadow-[0_4px_20px_rgba(234,179,8,0.3)] hover:shadow-[0_4px_30px_rgba(234,179,8,0.5)] transform hover:-translate-y-0.5">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                Contáctanos por WhatsApp
+              </a>
+              <button id="btn-download-pdf-geodis" class="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-brand-primary/50 hover:border-brand-primary text-brand-primary hover:text-yellow-300 font-bold rounded-full transition-all hover:shadow-[0_4px_20px_rgba(234,179,8,0.2)] transform hover:-translate-y-0.5">
+                <i class="fa-solid fa-file-pdf text-xl"></i>
+                Descargar Propuesta
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
   <!-- SCRIPT PARA MANEJAR EL ACCESO CON PIN -->
   <script>
     const btnVerify = document.getElementById("btn-verify-pin");
@@ -929,6 +1242,7 @@ const firmantesCargo = "Gerente";
     // Diccionario de PINs y sus respectivos contenedores
     const validPinsElementMap: Record<string, string> = {
       "7766": "content-alcomex",
+      "8877": "content-geodis",
     };
 
     const unlockProposal = (pin: string) => {
@@ -997,9 +1311,15 @@ const firmantesCargo = "Gerente";
       }
     });
 
-    // PDF Download button
+    // PDF Download button (ALCOMEX)
     const btnPdf = document.getElementById("btn-download-pdf");
     btnPdf?.addEventListener("click", () => {
+      window.print();
+    });
+
+    // PDF Download button (GEODIS)
+    const btnPdfGeodis = document.getElementById("btn-download-pdf-geodis");
+    btnPdfGeodis?.addEventListener("click", () => {
       window.print();
     });
   </script>
