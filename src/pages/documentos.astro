@@ -2063,6 +2063,11 @@ import "cropperjs/dist/cropper.css";
             const fd = new FormData(form as HTMLFormElement);
             const doc: Record<string, any> = Object.fromEntries(fd.entries());
 
+            // Agregar un ID único para evitar restricciones "not-null" en la base de datos
+            if (!doc.id) {
+                doc.id = crypto.randomUUID();
+            }
+
             // Format numbers and booleans
             [
                 "edad",
