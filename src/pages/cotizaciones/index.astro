@@ -1184,7 +1184,7 @@ const firmantesCargo = "Gerente";
                   mercancía.
                 </p>
                 <div
-                  class="overflow-hidden rounded-xl border border-[var(--color-border)] mb-4 bg-[#F2F2F2]"
+                  class="geodis-tarifa-wrap overflow-x-auto rounded-xl border border-[var(--color-border)] mb-4 bg-[#F2F2F2]"
                 >
                   <table class="w-full text-sm text-left">
                     <thead
@@ -1316,7 +1316,7 @@ const firmantesCargo = "Gerente";
                 </p>
 
                 <div
-                  class="overflow-hidden rounded-xl border border-[var(--color-border)] mb-4 bg-[#F2F2F2]"
+                  class="geodis-tarifa-wrap overflow-x-auto rounded-xl border border-[var(--color-border)] mb-4 bg-[#F2F2F2]"
                 >
                   <table class="w-full text-sm text-left">
                     <thead
@@ -1403,11 +1403,11 @@ const firmantesCargo = "Gerente";
                     ></i> Cronograma de Posicionamiento
                   </h4>
                   <div
-                    class="overflow-hidden rounded-2xl border border-[var(--color-border)] mb-4 shadow-sm"
+                    class="cronograma-table-wrap overflow-hidden rounded-2xl border border-[var(--color-border)] mb-4 shadow-sm"
                   >
                     <!-- Header moderno: solo logos -->
                     <div
-                      class="bg-[#0B0B0F] px-6 py-5 flex items-center justify-center gap-8"
+                      class="cronograma-logo-header bg-[#0B0B0F] px-6 py-5 flex items-center justify-center gap-8"
                     >
                       <!-- Logo Click -->
                       <div class="flex items-center gap-3">
@@ -2265,11 +2265,11 @@ const firmantesCargo = "Gerente";
                     ></i> Cronograma de Posicionamiento
                   </h4>
                   <div
-                    class="overflow-hidden rounded-2xl border border-[var(--color-border)] mb-4 shadow-sm"
+                    class="cronograma-table-wrap overflow-hidden rounded-2xl border border-[var(--color-border)] mb-4 shadow-sm"
                   >
                     <!-- Header moderno: solo logos -->
                     <div
-                      class="bg-[#0B0B0F] px-6 py-5 flex items-center justify-center gap-8"
+                      class="cronograma-logo-header bg-[#0B0B0F] px-6 py-5 flex items-center justify-center gap-8"
                     >
                       <!-- Logo Click -->
                       <div class="flex items-center gap-3">
@@ -2795,6 +2795,71 @@ const firmantesCargo = "Gerente";
 
     .pricing-card:hover {
       box-shadow: 0 0 30px rgba(234, 179, 8, 0.08);
+    }
+
+    /* -------- TABLAS: scroll horizontal siempre en mobile -------- */
+    .cronograma-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* -------- MOBILE OPTIMIZATIONS -------- */
+    @media (max-width: 639px) {
+      /* Reducir padding de secciones */
+      .max-w-4xl.mx-auto.px-6 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      /* Hero: menos espacio vertical */
+      .cotiz-hero {
+        padding-top: 5rem !important;
+        padding-bottom: 2rem !important;
+      }
+
+      /* Secciones py-16 → py-8 en mobile */
+      section.py-16 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+      }
+
+      /* Cards de precios: padding interno reducido */
+      .pricing-card .px-6.py-5 {
+        padding: 1rem !important;
+      }
+
+      /* Tabla del cronograma: fuente más pequeña */
+      .cronograma-table-wrap table {
+        font-size: 11px;
+        min-width: 520px;
+      }
+
+      /* Cronograma header logo: apilado en mobile si muy estrecho */
+      .cronograma-logo-header {
+        gap: 1rem !important;
+        padding: 0.875rem 1rem !important;
+      }
+
+      /* Reducir padding en th/td del cronograma */
+      .cronograma-table-wrap th,
+      .cronograma-table-wrap td {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+      }
+
+      /* Tarifas GEODIS (tabla dorada): scroll */
+      .geodis-tarifa-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .geodis-tarifa-wrap table {
+        min-width: 380px;
+      }
+
+      /* Price badge en mobile: apilado */
+      .price-badge {
+        text-align: left !important;
+      }
     }
 
     @media print {
