@@ -854,33 +854,6 @@ import "cropperjs/dist/cropper.css";
                                     <option value="AB-">AB-</option>
                                 </select>
                             </label>
-                            <label class="block"
-                                ><span
-                                    class="text-sm font-medium text-brand-primary uppercase"
-                                    >Régimen</span
-                                >
-                                <select
-                                    required
-                                    name="regimen_afiliacion"
-                                    onchange="document.getElementById('otroreg').style.display=this.value==='Otros'?'block':'none'"
-                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
-                                >
-                                    <option value="">Selecciona</option><option
-                                        value="Contributivo"
-                                        >Contributivo</option
-                                    ><option value="Subsidiado"
-                                        >Subsidiado</option
-                                    ><option value="Especial">Especial</option
-                                    ><option value="Otros">Otros</option>
-                                </select>
-                                <input
-                                    type="text"
-                                    id="otroreg"
-                                    name="regimen_afiliacion_otros"
-                                    placeholder="Indica"
-                                    class="w-full mt-2 hidden bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
-                                />
-                            </label>
                             <label class="block md:col-span-2"
                                 ><span
                                     class="text-sm font-medium text-brand-primary uppercase"
@@ -1884,7 +1857,6 @@ import "cropperjs/dist/cropper.css";
                     "tipo_vivienda",
                     "aspectos_culturales",
                     "tiene_hijos",
-                    "regimen_afiliacion",
                     "discapacidad",
                 ].forEach((name) => {
                     const el = formEl.elements.namedItem(

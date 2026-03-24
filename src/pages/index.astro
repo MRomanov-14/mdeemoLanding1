@@ -238,12 +238,13 @@ import Layout from '../layouts/Layout.astro';
     </section>
 
     <!-- Sección Reclutamiento (El Wizard Tecnológico) -->
-    <section id="reclutamiento" class="py-32 bg-[var(--color-bg)] relative overflow-hidden">
+    <section id="reclutamiento" class="py-32 bg-[var(--color-bg)] relative">
         <!-- Fondos decorativos -->
-        <div class="absolute top-0 right-0 w-2/3 h-full bg-brand-primary/5 opacity-50 blur-[120px] pointer-events-none">
-        </div>
-        <div
-            class="absolute bottom-0 left-0 w-2/3 h-full bg-brand-primary/5 opacity-30 blur-[120px] pointer-events-none">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+            <div class="absolute top-0 right-0 w-2/3 h-full bg-brand-primary/5 opacity-50 blur-[120px] pointer-events-none">
+            </div>
+            <div class="absolute bottom-0 left-0 w-2/3 h-full bg-brand-primary/5 opacity-30 blur-[120px] pointer-events-none">
+            </div>
         </div>
 
         <div class="max-w-4xl mx-auto px-6 relative z-10">
@@ -334,7 +335,7 @@ import Layout from '../layouts/Layout.astro';
                                     </button>
 
                                     <div id="city-dropdown-menu" 
-                                        class="absolute top-full left-0 w-full mt-2 border border-[var(--color-border)] rounded-xl shadow-2xl overflow-hidden z-50 hidden opacity-0 translate-y-2 transition-all duration-300"
+                                        class="absolute top-full left-0 w-full mt-2 border border-[var(--color-border)] rounded-xl shadow-2xl overflow-hidden z-[100] hidden opacity-0 translate-y-2 transition-all duration-300"
                                         style="background-color: var(--color-bg, #0a0a0a)">
                                         
                                         <div class="p-1 space-y-1">
@@ -364,6 +365,20 @@ import Layout from '../layouts/Layout.astro';
                                                     <i class="fa-solid fa-water"></i>
                                                 </div>
                                                 <span class="font-medium">Barranquilla</span>
+                                            </button>
+
+                                            <button type="button" class="city-dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-[var(--color-text-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] rounded-lg transition-colors group" data-value="Rionegro">
+                                                <div class="w-10 h-10 rounded-lg bg-[var(--color-surface)] flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
+                                                    <i class="fa-solid fa-plane"></i>
+                                                </div>
+                                                <span class="font-medium">Rionegro</span>
+                                            </button>
+
+                                            <button type="button" class="city-dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-[var(--color-text-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] rounded-lg transition-colors group" data-value="Cartagena">
+                                                <div class="w-10 h-10 rounded-lg bg-[var(--color-surface)] flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
+                                                    <i class="fa-solid fa-ship"></i>
+                                                </div>
+                                                <span class="font-medium">Cartagena</span>
                                             </button>
                                         </div>
                                     </div>
@@ -407,10 +422,20 @@ import Layout from '../layouts/Layout.astro';
                                         </button>
 
                                         <div id="dropdown-menu" 
-                                            class="absolute top-full left-0 w-full mt-2 border border-[var(--color-border)] rounded-xl shadow-2xl overflow-hidden z-50 hidden opacity-0 translate-y-2 transition-all duration-300"
+                                            class="absolute top-full left-0 w-full mt-2 border border-[var(--color-border)] rounded-xl shadow-2xl overflow-hidden z-[100] hidden opacity-0 translate-y-2 transition-all duration-300"
                                             style="background-color: var(--color-bg, #0a0a0a)">
                                             
                                             <div class="p-1 space-y-1">
+                                                <button type="button" class="dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-[var(--color-text-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] rounded-lg transition-colors group" data-value="Montacarguista Certificado">
+                                                    <div class="w-10 h-10 rounded-lg bg-[var(--color-surface)] flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
+                                                        <i class="fa-solid fa-truck-ramp-box"></i>
+                                                    </div>
+                                                    <div>
+                                                        <span class="block font-medium">Montacarguista Certificado</span>
+                                                        <span class="text-xs text-[var(--color-text-muted)] group-hover:text-[var(--color-text)]">Operación, Distribución, Almacén</span>
+                                                    </div>
+                                                </button>
+
                                                 <button type="button" class="dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-[var(--color-text-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] rounded-lg transition-colors group" data-value="Operario Logístico">
                                                     <div class="w-10 h-10 rounded-lg bg-[var(--color-surface)] flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
                                                         <i class="fa-solid fa-box-open"></i>
