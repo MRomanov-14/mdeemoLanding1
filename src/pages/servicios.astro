@@ -79,7 +79,33 @@ import Layout from '../layouts/Layout.astro';
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Service 1: Inventarios -->
+                <!-- Service 1: Posicionamiento -->
+                <div class="svc-reveal group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 md:p-10 hover:border-brand-primary/50 transition-all duration-500 overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:bg-brand-primary group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-lg">
+                            <i class="fa-solid fa-users-gear text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[var(--color-text)] mb-3 font-[Outfit]">Servicio de Posicionamiento</h3>
+                        <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
+                            Potenciamos su operación integrando personal altamente capacitado. Garantizamos eficiencia, agilidad y excelencia operativa en cada eslabón de su cadena logística.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Auxiliares Logísticos y de Ruta</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Picking y Packing</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Cargue y Descargue</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Maquila</span>
+                        </div>
+                        <div class="mt-8">
+                            <a href="/servicios/posicionamiento" class="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary/10 text-brand-primary rounded-xl font-bold hover:bg-brand-primary hover:text-black transition-all duration-300 w-full justify-center md:w-auto">
+                                Conocer Más <i class="fa-solid fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2: Inventarios -->
                 <div class="svc-reveal group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 md:p-10 hover:border-brand-primary/50 transition-all duration-500 overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
@@ -96,10 +122,15 @@ import Layout from '../layouts/Layout.astro';
                             <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Producto Terminado</span>
                             <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Partes</span>
                         </div>
+                        <div class="mt-8">
+                            <a href="/servicios/inventarios" class="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary/10 text-brand-primary rounded-xl font-bold hover:bg-brand-primary hover:text-black transition-all duration-300 w-full justify-center md:w-auto">
+                                Conocer Más <i class="fa-solid fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Service 2: Operación CD -->
+                <!-- Service 3: Operación CD -->
                 <div class="svc-reveal group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 md:p-10 hover:border-brand-primary/50 transition-all duration-500 overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
@@ -128,10 +159,15 @@ import Layout from '../layouts/Layout.astro';
                                 <i class="fa-solid fa-chart-line text-brand-primary"></i> Mejore KPIs
                             </div>
                         </div>
+                        <div class="mt-8">
+                            <a href="/servicios/operacion-cd" class="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary/10 text-brand-primary rounded-xl font-bold hover:bg-brand-primary hover:text-black transition-all duration-300 w-full justify-center md:w-auto">
+                                Conocer Más <i class="fa-solid fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Service 3: Diagnóstico -->
+                <!-- Service 4: Diagnóstico -->
                 <div class="svc-reveal group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 md:p-10 hover:border-brand-primary/50 transition-all duration-500 overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
@@ -157,49 +193,13 @@ import Layout from '../layouts/Layout.astro';
                                 <div class="text-xs text-[var(--color-text-muted)] mt-1">Informe</div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Service 4: Posicionamiento -->
-                <div class="svc-reveal group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 md:p-10 hover:border-brand-primary/50 transition-all duration-500 overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:bg-brand-primary group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-lg">
-                            <i class="fa-solid fa-users-gear text-3xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-[var(--color-text)] mb-3 font-[Outfit]">Servicio de Posicionamiento</h3>
-                        <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
-                            Potenciamos su operación integrando personal altamente capacitado. Garantizamos eficiencia, agilidad y excelencia operativa en cada eslabón de su cadena logística.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Auxiliares Logísticos y de Ruta</span>
-                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Picking y Packing</span>
-                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Cargue y Descargue</span>
-                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Maquila</span>
+                        <div class="mt-8">
+                            <a href="/servicios/diagnostico" class="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary/10 text-brand-primary rounded-xl font-bold hover:bg-brand-primary hover:text-black transition-all duration-300 w-full justify-center md:w-auto">
+                                Conocer Más <i class="fa-solid fa-arrow-right text-sm"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Network Connectivity Visualization -->
-    <section class="py-24 md:py-32 bg-[var(--color-bg)] relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 svc-reveal">
-                <h2 class="text-4xl md:text-6xl font-black text-[var(--color-text)] mb-6 font-[Outfit]">
-                    CONECTAMOS SU <span class="text-brand-primary">CADENA DE VALOR</span>
-                </h2>
-                <p class="text-[var(--color-text-muted)] text-lg max-w-2xl mx-auto">
-                    Nuestra red logística integra cada eslabón de su operación
-                </p>
-            </div>
-
-            <div class="relative w-full h-[500px] md:h-[600px] rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] overflow-hidden svc-reveal">
-                <canvas id="networkVisualization" class="absolute inset-0 w-full h-full"></canvas>
-                <!-- Floating Labels -->
-                <div class="absolute inset-0 pointer-events-none" id="networkLabels"></div>
             </div>
         </div>
     </section>
@@ -489,10 +489,10 @@ import Layout from '../layouts/Layout.astro';
 
         // ===== Hero Network Canvas =====
         function initHeroNetwork() {
-            const canvas = document.getElementById('servicesNetworkCanvas');
+            const canvas = document.getElementById('servicesNetworkCanvas') as HTMLCanvasElement;
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
-            let w, h, particles = [];
+            let w: number, h: number, particles: Particle[] = [];
 
             function resize() {
                 w = canvas.parentElement.clientWidth;
@@ -503,6 +503,12 @@ import Layout from '../layouts/Layout.astro';
             }
 
             class Particle {
+                x: number;
+                y: number;
+                vx: number;
+                vy: number;
+                size: number;
+
                 constructor() {
                     this.x = Math.random() * w;
                     this.y = Math.random() * h;
@@ -558,10 +564,10 @@ import Layout from '../layouts/Layout.astro';
 
         // ===== Network Visualization (Service Nodes) =====
         function initNetworkViz() {
-            const canvas = document.getElementById('networkVisualization');
+            const canvas = document.getElementById('networkVisualization') as HTMLCanvasElement;
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
-            let w, h;
+            let w: number, h: number;
 
             const serviceNodes = [
                 { label: 'Inventarios', iconKey: 'clipboard', x: 0, y: 0, targetX: 0, targetY: 0 },
