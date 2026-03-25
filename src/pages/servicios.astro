@@ -160,22 +160,23 @@ import Layout from '../layouts/Layout.astro';
                     </div>
                 </div>
 
-                <!-- Service 4: Consultoría -->
+                <!-- Service 4: Posicionamiento -->
                 <div class="svc-reveal group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 md:p-10 hover:border-brand-primary/50 transition-all duration-500 overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
                     <div class="relative z-10">
                         <div class="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:bg-brand-primary group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-lg">
-                            <i class="fa-solid fa-lightbulb text-3xl"></i>
+                            <i class="fa-solid fa-users-gear text-3xl"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-[var(--color-text)] mb-3 font-[Outfit]">Consultoría Logística</h3>
+                        <h3 class="text-2xl font-bold text-[var(--color-text)] mb-3 font-[Outfit]">Servicio de Posicionamiento</h3>
                         <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
-                            Entregamos resultados sostenibles y transferimos beneficios de negocio tangibles. Implementamos las mejores prácticas de desempeño.
+                            Potenciamos su operación integrando personal altamente capacitado. Garantizamos eficiencia, agilidad y excelencia operativa en cada eslabón de su cadena logística.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Planificación de Demanda</span>
-                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Redes de Abastecimiento</span>
-                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Centros de Distribución</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Auxiliares Logísticos y de Ruta</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Picking y Packing</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Cargue y Descargue</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Maquila</span>
                         </div>
                     </div>
                 </div>
@@ -566,7 +567,7 @@ import Layout from '../layouts/Layout.astro';
                 { label: 'Inventarios', iconKey: 'clipboard', x: 0, y: 0, targetX: 0, targetY: 0 },
                 { label: 'Operación CD', iconKey: 'warehouse', x: 0, y: 0, targetX: 0, targetY: 0 },
                 { label: 'Diagnóstico', iconKey: 'search', x: 0, y: 0, targetX: 0, targetY: 0 },
-                { label: 'Consultoría', iconKey: 'bulb', x: 0, y: 0, targetX: 0, targetY: 0 },
+                { label: 'Posicionamiento', iconKey: 'user', x: 0, y: 0, targetX: 0, targetY: 0 },
                 { label: 'CLICK OPL', iconKey: 'bolt', x: 0, y: 0, targetX: 0, targetY: 0, isCenter: true },
                 { label: 'Demanda', iconKey: 'chart', x: 0, y: 0, targetX: 0, targetY: 0 },
                 { label: 'Abastecimiento', iconKey: 'chain', x: 0, y: 0, targetX: 0, targetY: 0 },
@@ -666,6 +667,15 @@ import Layout from '../layouts/Layout.astro';
                             ctx.stroke();
                         });
                         ctx.lineWidth = 2.5;
+                        break;
+                    }
+                    case 'user': {
+                        ctx.beginPath();
+                        ctx.arc(0, -s * 0.3, s * 0.3, 0, Math.PI * 2);
+                        ctx.stroke();
+                        ctx.beginPath();
+                        ctx.arc(0, s * 0.6, s * 0.5, Math.PI, Math.PI * 2);
+                        ctx.stroke();
                         break;
                     }
                     case 'bolt': {

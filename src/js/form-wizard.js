@@ -358,9 +358,12 @@ export function initFormWizard() {
             const icon = document.getElementById('file-upload-icon');
             
             if (file) {
-                // Validate PDF only here visually as well
-                if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
-                    showModal('Solo se permiten archivos PDF', 'error');
+                // Validate PDF and Word visually as well
+                const validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+                const validExtensions = ['.pdf', '.doc', '.docx'];
+                const hasValidExtension = validExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
+                if (!validTypes.includes(file.type) && !hasValidExtension) {
+                    showModal('Solo se permiten archivos PDF y Word (.doc, .docx)', 'error');
                     fileInput.value = ''; // Reset
                     
                     // Reset UI
@@ -368,7 +371,7 @@ export function initFormWizard() {
                     mainText.classList.remove('text-brand-primary');
                     mainText.classList.add('text-[var(--color-text)]');
                     
-                    subText.innerText = 'Formato: PDF (Máx 5MB)';
+                    subText.innerText = 'Formato: PDF o Word (Máx 5MB)';
                     subText.classList.remove('text-[var(--color-text)]', 'font-bold', 'bg-[var(--color-surface)]', 'px-3', 'py-1', 'rounded-lg', 'inline-block');
                     subText.classList.add('text-[var(--color-text-muted)]');
 
@@ -520,14 +523,14 @@ export function initFormWizard() {
                 } else {
                     // Validate file type
                     const file = input.files[0];
-                    const validTypes = ['application/pdf'];
-                    const validExtensions = ['.pdf'];
+                    const validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+                    const validExtensions = ['.pdf', '.doc', '.docx'];
                     const fileName = file.name.toLowerCase();
                     const hasValidExtension = validExtensions.some(ext => fileName.endsWith(ext));
                     
                     if (!validTypes.includes(file.type) && !hasValidExtension) {
-                        showError(input, 'Solo se permiten archivos PDF');
-                        if (!firstError) firstError = 'El archivo debe ser PDF';
+                        showError(input, 'Archivos PDF, DOC o DOCX permitidos');
+                        if (!firstError) firstError = 'El archivo debe ser formato PDF o Word';
                         isValid = false;
                     }
                     
