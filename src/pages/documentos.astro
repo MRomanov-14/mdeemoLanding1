@@ -2080,7 +2080,7 @@ import "cropperjs/dist/cropper.css";
                                     field === "doc_foto_fondo_blanco" &&
                                     croppedBlob
                                         ? "image/webp"
-                                        : undefined,
+                                        : (file as File).type || undefined,
                             });
 
                         if (error)
