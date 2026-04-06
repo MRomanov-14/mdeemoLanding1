@@ -759,10 +759,14 @@ const firmantesCargo = "Gerente";
               [
                 {
                   num: "01",
-                  txt: "La cantidad de auxiliares para el descargue o cargue está descrita en cada uno de los ítems, en condiciones normales, sin embargo, las excepciones pueden sufrir variaciones (más o menos personas) previa comunicación por parte del cliente frente a los volúmenes y tipo de mercancía, y esto afectaría la tarifa: Las anteriores tendrán una vigencia hasta el 30 de junio del 2026. El reajuste será sujeto a aplicabilidad de la reducción horaria por normativa nacional.",
+                  txt: "La cantidad de auxiliares para el descargue o cargue está descrita en cada uno de los ítems, en condiciones normales, sin embargo, las excepciones pueden sufrir variaciones (más o menos personas) previa comunicación por parte del cliente frente a los volúmenes y tipo de mercancía, y esto afectaría la tarifa.",
                 },
                 {
                   num: "02",
+                  txt: "Las anteriores tendrán una vigencia hasta el 30 de junio del 2026. El reajuste será sujeto a aplicabilidad de la reducción horaria por normativa nacional.",
+                },
+                {
+                  num: "03",
                   txt: "La factura se enviará de manera electrónica a nombre de ALCOMEX, máximo 5 días después del corte semanal de haber prestado el servicio, para pago a 30 días calendario.",
                 },
               ].map((nota) => (
@@ -4357,10 +4361,7 @@ const firmantesCargo = "Gerente";
                 descrita en cada uno de los ítems, en condiciones normales, sin
                 embargo, las excepciones pueden sufrir variaciones (más o menos
                 personas) previa comunicación por parte del cliente frente a los
-                volúmenes y tipo de mercancía, y esto afectaría la tarifa: Las
-                anteriores tendrán una vigencia hasta el 30 de junio del 2026.
-                El reajuste será sujeto a aplicabilidad de la reducción horaria
-                por normativa nacional.
+                volúmenes y tipo de mercancía, y esto afectaría la tarifa.
               </p>
             </div>
             <div
@@ -4370,6 +4371,20 @@ const firmantesCargo = "Gerente";
                 class="text-brand-primary font-black text-3xl opacity-30 leading-none select-none flex-shrink-0 font-[Outfit]"
               >
                 02
+              </div>
+              <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">
+                Las anteriores tendrán una vigencia hasta el 30 de junio del
+                2026. El reajuste será sujeto a aplicabilidad de la reducción
+                horaria por normativa nacional.
+              </p>
+            </div>
+            <div
+              class="flex gap-5 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-5"
+            >
+              <div
+                class="text-brand-primary font-black text-3xl opacity-30 leading-none select-none flex-shrink-0 font-[Outfit]"
+              >
+                03
               </div>
               <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">
                 La factura se enviará de manera electrónica a nombre de Grupo
