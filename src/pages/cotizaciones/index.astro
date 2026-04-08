@@ -5830,10 +5830,18 @@ const firmantesCargo = "Gerente";
               tr.bg-black\/40 {
                 background-color: #f3f4f6 !important;
               }
-              .bg-black\/40 {
-                background: #f3f4f6 !important;
+              .bg-black\/40,
+              .bg-black\/80 {
+                background: #ffffff !important;
+                color: #111827 !important;
+                border: 1px solid #d1d5db !important;
               }
               
+              /* Map container height reducers for print */
+              .min-h-\[400px\] {
+                min-height: 250px !important;
+              }
+
               /* Círculos de Progreso (85% Cumplimiento) */
               div[class*="from-\n#222222\n"], div[class*="from-[#222222]"] {
                  background-image: none !important;
