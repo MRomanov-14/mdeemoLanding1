@@ -5752,16 +5752,7 @@ const firmantesCargo = "Gerente";
               }
 
               /* -------- Texto general oscuro -------- */
-              h1:not(.text-white):not([class*="text-white"]),
-              h2:not(.text-white):not([class*="text-white"]),
-              h3:not(.text-white):not([class*="text-white"]),
-              h4:not(.text-white):not([class*="text-white"]),
-              p:not(.text-white):not([class*="text-white"]),
-              td:not(.text-white):not([class*="text-white"]),
-              th:not(.text-white):not([class*="text-white"]),
-              span:not(.text-white):not([class*="text-white"]),
-              strong:not(.text-white):not([class*="text-white"]),
-              li:not(.text-white):not([class*="text-white"]) {
+              h1, h2, h3, h4, p, td, th, span, strong, li, .text-white, .text-white\/80 {
                 color: #111827 !important;
               }
 
@@ -5769,16 +5760,6 @@ const firmantesCargo = "Gerente";
               .text-\[\(var\(--color-text-muted\)\)\],
               [class~="text-[var(--color-text-muted)]"] {
                 color: #4b5563 !important;
-              }
-
-              /* -------- Casos específicos de .text-white (Tablas, Specs) -------- */
-              /* La tabla de precios tiene valores en blanco que deben oscurecerse en print */
-              td.text-white {
-                color: #111827 !important;
-              }
-              /* Atributos del contenedor (`text-white/80` nativo) */
-              .text-white\/80 {
-                color: #4b5563 !important; 
               }
 
               /* -------- Marca: SOLO clase exacta sin hover -------- */
