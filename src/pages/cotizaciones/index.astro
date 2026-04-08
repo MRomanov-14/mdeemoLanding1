@@ -5722,24 +5722,43 @@ const firmantesCargo = "Gerente";
                 display: none !important;
               }
 
+              /* -------- Fix Overlay Gradients -------- */
+              /* Ensure maps or images that use dark overlays keep their white text */
+              [class*="from-black"] p,
+              [class*="from-black"] span,
+              [class*="from-black"] div {
+                color: #ffffff !important;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important;
+              }
+
               /* -------- Texto general oscuro -------- */
-              h1,
-              h2,
-              h3,
-              h4,
-              p,
-              td,
-              th,
-              span,
-              strong,
-              li {
+              h1:not(.text-white):not([class*="text-white"]),
+              h2:not(.text-white):not([class*="text-white"]),
+              h3:not(.text-white):not([class*="text-white"]),
+              h4:not(.text-white):not([class*="text-white"]),
+              p:not(.text-white):not([class*="text-white"]),
+              td:not(.text-white):not([class*="text-white"]),
+              th:not(.text-white):not([class*="text-white"]),
+              span:not(.text-white):not([class*="text-white"]),
+              strong:not(.text-white):not([class*="text-white"]),
+              li:not(.text-white):not([class*="text-white"]) {
                 color: #111827 !important;
               }
 
               /* -------- Texto muted -------- */
               .text-\[\(var\(--color-text-muted\)\)\],
               [class~="text-[var(--color-text-muted)]"] {
-                color: #6b7280 !important;
+                color: #4b5563 !important;
+              }
+
+              /* -------- Casos específicos de .text-white (Tablas, Specs) -------- */
+              /* La tabla de precios tiene valores en blanco que deben oscurecerse en print */
+              td.text-white {
+                color: #111827 !important;
+              }
+              /* Atributos del contenedor (`text-white/80` nativo) */
+              .text-white\/80 {
+                color: #4b5563 !important; 
               }
 
               /* -------- Marca: SOLO clase exacta sin hover -------- */
@@ -5755,6 +5774,12 @@ const firmantesCargo = "Gerente";
               [class*="rounded-3xl"] {
                 background: #f7f8fa !important;
                 border-color: #e5e7eb !important;
+              }
+
+              /* Icon boxes natively dark */
+              .bg-\[\#2a2312\] {
+                 background-color: #fef3c7 !important;
+                 border-color: #fde68a !important;
               }
 
               /* -------- Encabezados de tarjeta con gradiente -------- */
@@ -5781,18 +5806,23 @@ const firmantesCargo = "Gerente";
               }
 
               /* -------- Elementos oscuros específicos -------- */
+              /* Encabezados de Tabla */
+              tr.bg-black\/40 {
+                background-color: #f3f4f6 !important;
+              }
               .bg-black\/40 {
-                background: #f7f8fa !important;
+                background: #f3f4f6 !important;
               }
               
+              /* Círculos de Progreso (85% Cumplimiento) */
               div[class*="from-\n#222222\n"], div[class*="from-[#222222]"] {
-                 background: #ffffff !important;
-                 border-color: #e5e7eb !important;
+                 background-image: none !important;
+                 background-color: #ffffff !important;
+                 border: 2px solid #eab308 !important;
                  box-shadow: none !important;
               }
-              
-              .text-white, .text-white\/80 {
-                color: #111827 !important;
+              div[class*="from-[#222222]"] span {
+                 color: #111827 !important;
               }
 
               /* -------- Tabla -------- */
