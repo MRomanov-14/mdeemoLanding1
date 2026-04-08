@@ -5332,6 +5332,18 @@ const firmantesCargo = "Gerente";
                   </div>
                 </div>
               </div>
+
+              <div class="flex flex-col sm:flex-row items-center gap-4 border-t border-[var(--color-border)] pt-8 no-print pb-8">
+                <p class="text-[var(--color-text-muted)] text-sm m-0">¿Necesita una copia para presentar o analizar internamente?</p>
+                <button
+                  id="btn-download-pdf-imbocar"
+                  class="sm:ml-auto w-full sm:w-auto px-6 py-2.5 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary text-[var(--color-text)] font-semibold transition-all shadow-sm flex items-center justify-center gap-2"
+                >
+                  <i class="fa-solid fa-file-pdf text-[var(--color-text-muted)]"></i>
+                  Descargar PDF / Imprimir
+                </button>
+              </div>
+
             </div>
           </div>
 
@@ -5450,6 +5462,14 @@ const firmantesCargo = "Gerente";
               "btn-download-pdf-distri",
             );
             btnPdfDistri?.addEventListener("click", () => {
+              window.print();
+            });
+
+            // PDF Download button (IMBOCAR)
+            const btnPdfImbocar = document.getElementById(
+              "btn-download-pdf-imbocar",
+            );
+            btnPdfImbocar?.addEventListener("click", () => {
               window.print();
             });
 
