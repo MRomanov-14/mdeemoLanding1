@@ -5718,6 +5718,24 @@ const firmantesCargo = "Gerente";
         </div>
       </div>
     </section>
+
+  </div>
+
+  <!-- ==========================================
+       OVERLAY FULL-PAGE — CLICK DEV (PIN: 1126)
+       Fuera del proposals-container para evitar
+       restricciones de height/overflow del Layout
+       ========================================== -->
+  <div
+    id="overlay-clickdev"
+    class="hidden"
+    style="position:fixed;inset:0;z-index:9999;background:#0b0b0d;"
+  >
+    <iframe
+      id="iframe-clickdev"
+      title="Propuesta Click Dev"
+      style="width:100%;height:100%;border:none;display:block;"
+    ></iframe>
   </div>
 
           <!-- SCRIPT PARA MANEJAR EL ACCESO CON PIN -->
@@ -5742,18 +5760,28 @@ const firmantesCargo = "Gerente";
               "1124": "content-imbocar",
               "1125": "content-jason",
             };
-            
-            const externalPinsMap: Record<string, string> = {
+
+            // PINs que abren un overlay full-page con iframe
+            const overlayPinsMap: Record<string, string> = {
               "1126": "/cotizaciones/1126.html",
             };
 
             const unlockProposal = (pin: string) => {
-              if (externalPinsMap[pin]) {
-                sessionStorage.setItem(sessionKey, pin);
-                window.location.href = externalPinsMap[pin];
-                return true;
+              // Overlay full-page (iframe fuera del Layout)
+              if (overlayPinsMap[pin]) {
+                const overlay = document.getElementById("overlay-clickdev");
+                const iframe = document.getElementById("iframe-clickdev") as HTMLIFrameElement | null;
+                if (overlay && iframe) {
+                  if (!iframe.src || !iframe.src.includes("1126")) {
+                    iframe.src = overlayPinsMap[pin];
+                  }
+                  overlay.classList.remove("hidden");
+                  pinGateway?.classList.add("hidden");
+                  sessionStorage.setItem(sessionKey, pin);
+                  return true;
+                }
               }
-              
+
               const contentId = validPinsElementMap[pin];
               if (contentId) {
                 // Hide gateway
