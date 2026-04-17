@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;700;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0d;
+      --bg-elev: #131318;
+      --bg-card: #18181f;
+      --border: #24242c;
+      --border-strong: #2e2e38;
+      --text: #f3f2ef;
+      --text-muted: #9a9aa5;
+      --text-dim: #5e5e6a;
+      --accent: #f5b800;
+      --accent-soft: #f5b80015;
+      --accent-hover: #ffc933;
+      --danger: #ff4d4d;
+      --ok: #4ade80;
+      --display: 'Outfit', sans-serif;
+      --body: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 1000;
+      mix-blend-mode: overlay;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ============ NAV ============ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      background: rgba(11, 11, 13, 0.75);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--display);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #000;
+      font-weight: 800;
+      font-size: 18px;
+      font-family: var(--body);
+      box-shadow: 0 6px 20px -6px var(--accent);
+    }
+
+    .nav-meta {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      padding: 100px 0 80px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(ellipse at center, var(--accent-soft) 0%, transparent 60%);
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 8px 14px;
+      border: 1px solid var(--border-strong);
+      border-radius: 100px;
+      background: var(--bg-card);
+      margin-bottom: 36px;
+    }
+
+    .eyebrow .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(1.3);
+      }
+    }
+
+    h1 {
+      font-family: var(--display);
+      font-size: clamp(44px, 7vw, 84px);
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+      font-weight: 400;
+      max-width: 900px;
+      margin-bottom: 32px;
+    }
+
+    h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--accent);
+    }
+
+    h1 .underline {
+      position: relative;
+      display: inline-block;
+      font-weight: 500;
+    }
+
+    h1 .underline::after {
+      content: '';
+      position: absolute;
+      bottom: 0.08em;
+      left: 0;
+      right: 0;
+      height: 0.08em;
+      background: var(--accent);
+      opacity: 0.35;
+    }
+
+    .hero-sub {
+      font-size: 19px;
+      color: var(--text-muted);
+      max-width: 620px;
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-meta-item .label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+
+    .hero-meta-item .value {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    /* ============ SECTION BASE ============ */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(32px, 4.5vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      font-weight: 400;
+      margin-bottom: 24px;
+      max-width: 780px;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 300;
+    }
+
+    .section-desc {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 640px;
+      line-height: 1.7;
+      margin-bottom: 56px;
+    }
+
+    /* ============ PROOF / CASE STUDY ============ */
+    .proof {
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-elev) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .case-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .case-header {
+      padding: 40px 48px 32px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: start;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .case-title {
+      font-family: var(--display);
+      font-size: 32px;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .case-subtitle {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    .case-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 100px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--accent);
+    }
+
+    .case-body {
+      padding: 40px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .case-impact h4 {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+    }
+
+    .impact-list {
+      list-style: none;
+    }
+
+    .impact-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .impact-list li:last-child {
+      border-bottom: none;
+    }
+
+    .impact-list .check {
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .stack-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .stack-chip {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 6px 10px;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-muted);
+    }
+
+    /* ============ PLANS ============ */
+    .plans-section {
+      padding: 100px 0;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .plan {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(.2, .8, .2, 1), border-color 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .plan:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-strong);
+    }
+
+    .plan.featured {
+      background: linear-gradient(180deg, var(--bg-card) 0%, #1c1a12 100%);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent), 0 20px 60px -20px var(--accent-soft);
+    }
+
+    .plan.featured::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .plan-tag {
+      position: absolute;
+      top: 32px;
+      right: 32px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 6px 12px;
+      background: var(--accent-soft);
+      border-radius: 100px;
+      border: 1px solid var(--accent);
+    }
+
+    .plan-name {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+
+    .plan-title {
+      font-family: var(--display);
+      font-size: 30px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .plan-subtitle {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .plan-price {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 28px;
+    }
+
+    .plan-price .currency {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .plan-price .amount {
+      font-family: var(--display);
+      font-size: 40px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .plan.featured .plan-price .amount {
+      color: var(--accent);
+    }
+
+    .plan-price .period {
+      color: var(--text-dim);
+      font-size: 13px;
+      margin-left: 4px;
+    }
+
+    .plan-features {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .plan-features li {
+      padding: 12px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 14.5px;
+      color: var(--text);
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .plan-features li:last-child {
+      border-bottom: none;
+    }
+
+    .plan-features .icon {
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .plan-features .muted {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .plan-extras {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      margin-top: 20px;
+    }
+
+    .plan-extras-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .plan-extras-value {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .plan-extras-value small {
+      font-family: var(--body);
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* ============ ADDON ============ */
+    .addon {
+      margin-top: 24px;
+      padding: 28px 32px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .addon-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+    }
+
+    .addon-text h4 {
+      font-family: var(--display);
+      font-size: 19px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .addon-text p {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .addon-price {
+      font-family: var(--display);
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .addon-price small {
+      font-family: var(--body);
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 400;
+      display: block;
+      letter-spacing: 0.05em;
+    }
+
+    /* ============ HOW IT WORKS ============ */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      counter-reset: step;
+    }
+
+    .step {
+      padding: 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+
+    .step:hover {
+      border-color: var(--accent);
+    }
+
+    .step-num {
+      font-family: var(--display);
+      font-size: 40px;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .step h4 {
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .step p {
+      color: var(--text-muted);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    /* ============ CONDITIONS ============ */
+    .conditions {
+      padding: 80px 0;
+      background: var(--bg-elev);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cond-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .cond {
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .cond-icon {
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .cond h5 {
+      font-family: var(--display);
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .cond p {
+      color: var(--text-muted);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    /* ============ CTA ============ */
+    .cta {
+      padding: 120px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse at center, var(--accent-soft) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .cta h2 {
+      font-family: var(--display);
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      font-weight: 400;
+      margin-bottom: 20px;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta h2 em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 300;
+    }
+
+    .cta p {
+      color: var(--text-muted);
+      font-size: 18px;
+      max-width: 540px;
+      margin: 0 auto 40px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 32px;
+      background: var(--accent);
+      color: #000;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+      transition: all 0.3s cubic-bezier(.2, .8, .2, 1);
+      box-shadow: 0 10px 40px -10px var(--accent);
+    }
+
+    .cta-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 50px -10px var(--accent);
+    }
+
+    .cta-btn svg {
+      transition: transform 0.3s;
+    }
+
+    .cta-btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1000px) {
+      .plans {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .case-body {
+        grid-template-columns: 1fr;
+      }
+
+      .case-header {
+        grid-template-columns: 1fr;
+        padding: 32px;
+      }
+
+      .case-body {
+        padding: 32px;
+      }
+
+      .how-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cond-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .addon {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+
+      .addon-price {
+        text-align: left;
+      }
+
+      .hero-meta {
+        gap: 28px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .how-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        padding: 0 20px;
+      }
+
+      .plan {
+        padding: 32px 24px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+    }
+
+    /* animation reveal */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      animation: fadeUp 0.8s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    .reveal-1 {
+      animation-delay: 0.1s;
+    }
+
+    .reveal-2 {
+      animation-delay: 0.2s;
+    }
+
+    .reveal-3 {
+      animation-delay: 0.3s;
+    }
+
+    .reveal-4 {
+      animation-delay: 0.4s;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo">
+        <div class="logo-mark">C</div>
+        <span>Click <span style="color:var(--text-muted);font-weight:400;">Dev</span></span>
+      </div>
+      <div class="nav-meta">Propuesta · Q2 · 2026</div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow reveal reveal-1">
+        <span class="dot"></span>
+        Software a la medida · Por suscripción
+      </div>
+      <h1 class="reveal reveal-2">
+        Un equipo de producto<br>
+        <em>dentro de tu empresa.</em><br>
+        <span class="underline">Sin contratar uno.</span>
+      </h1>
+      <p class="hero-sub reveal reveal-3">
+        Construimos, evolucionamos y acompañamos tu software como si fuéramos
+        tu equipo interno. Horas garantizadas cada mes, con reuniones de seguimiento,
+        cumplimiento y <strong style="color:var(--text);">entregas reales</strong> — no promesas.
+      </p>
+      <div class="hero-meta reveal reveal-4">
+        <div class="hero-meta-item">
+          <div class="label">Experiencia comprobada</div>
+          <div class="value">SaaS en producción</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="label">Stack</div>
+          <div class="value">Full-stack moderno</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="label">Compromiso mínimo</div>
+          <div class="value">3 meses</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF / CASE STUDY -->
+  <section class="proof">
+    <div class="container">
+      <div class="section-label">Lo que hemos construido</div>
+      <h2 class="section-title">
+        Un SaaS completo de gestión de talento<br>
+        operativo, <em>listo para escalar.</em>
+      </h2>
+      <p class="section-desc">
+        ClickApp es nuestra vitrina: una plataforma multi-tenant que reemplaza Excel y
+        WhatsApp por un flujo único, con cumplimiento legal colombiano y operación real en campo.
+      </p>
+
+      <div class="case-card">
+        <div class="case-header">
+          <div>
+            <div class="case-title">ClickApp</div>
+            <div class="case-subtitle">Plataforma SaaS de gestión de talento para empresas de outsourcing y staffing.
+            </div>
+          </div>
+          <div class="case-badge">
+            <span
+              style="width:6px;height:6px;background:var(--accent);border-radius:50%;box-shadow:0 0 8px var(--accent);"></span>
+            En producción
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-impact">
+            <h4>Impacto real</h4>
+            <ul class="impact-list">
+              <li>
+                <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                <span>Reemplaza Excel y WhatsApp por un flujo único con trazabilidad completa</span>
+              </li>
+              <li>
+                <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                <span>Nómina automática con recargos nocturnos, dominicales y ley 2466 (44h)</span>
+              </li>
+              <li>
+                <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                <span>Verificación biométrica en navegador — sin apps nativas ni hardware</span>
+              </li>
+              <li>
+                <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                <span>Programación inteligente con detección de duplicados y límites</span>
+              </li>
+              <li>
+                <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                <span>Portales diferenciados: admin, clickers, candidatos y clientes</span>
+              </li>
+            </ul>
+          </div>
+          <div class="case-impact">
+            <h4>Arquitectura</h4>
+            <ul class="impact-list">
+              <li>
+                <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                <span><strong>139+ endpoints REST</strong> organizados por dominio de negocio</span>
+              </li>
+              <li>
+                <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                <span>Monolito serverless desplegado en Vercel con Supabase</span>
+              </li>
+              <li>
+                <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                <span>Multi-tenant con Row Level Security en PostgreSQL</span>
+              </li>
+              <li>
+                <svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                <span>JWT con cookies HttpOnly + permisos granulares por módulo</span>
+              </li>
+            </ul>
+            <div class="stack-grid">
+              <span class="stack-chip">Astro 5</span>
+              <span class="stack-chip">React 19</span>
+              <span class="stack-chip">Tailwind v4</span>
+              <span class="stack-chip">PostgreSQL</span>
+              <span class="stack-chip">Supabase</span>
+              <span class="stack-chip">Cloudflare R2</span>
+              <span class="stack-chip">face-api</span>
+              <span class="stack-chip">Web Push</span>
+              <span class="stack-chip">jsPDF</span>
+              <span class="stack-chip">Google Maps</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANS -->
+  <section class="plans-section">
+    <div class="container">
+      <div class="section-label">Los planes</div>
+      <h2 class="section-title">
+        Elige la cadencia.<br>
+        <em>Las horas son tuyas.</em>
+      </h2>
+      <p class="section-desc">
+        Dos planes pensados para acompañamiento continuo: desarrollo + reuniones de checkpoint incluidas.
+        Horas no acumulables — el valor está en la evolución constante, no en acumular trabajo.
+      </p>
+
+      <div class="plans">
+        <!-- PLAN 1 -->
+        <div class="plan">
+          <div class="plan-name">Plan · 01</div>
+          <h3 class="plan-title">Evolución<br>mensual</h3>
+          <p class="plan-subtitle">Mantenimiento y mejoras iterativas para productos en operación.</p>
+          <div class="plan-price">
+            <span class="currency">COP$</span>
+            <span class="amount">1.300.000</span>
+            <span class="period">/ mes</span>
+          </div>
+          <ul class="plan-features">
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span><strong>13 h</strong> de desarrollo + <strong>3 h</strong> de reuniones</span>
+            </li>
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span>Cadencia <strong>mensual</strong></span>
+            </li>
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span>SLA de respuesta <strong>72 h</strong> hábiles</span>
+            </li>
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span>Canal directo con el equipo</span>
+            </li>
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span class="muted">Reporte mensual de horas</span>
+            </li>
+          </ul>
+          <div class="plan-extras">
+            <div class="plan-extras-label">Hora extra</div>
+            <div class="plan-extras-value">$95.000 <small>COP / hora</small></div>
+          </div>
+        </div>
+
+        <!-- PLAN 2 · FEATURED -->
+        <div class="plan featured">
+          <div class="plan-tag">Recomendado</div>
+          <div class="plan-name">Plan · 02</div>
+          <h3 class="plan-title">Sprint<br>quincenal</h3>
+          <p class="plan-subtitle">Ciclos cortos de desarrollo activo con demos y decisiones rápidas.</p>
+          <div class="plan-price">
+            <span class="currency">COP$</span>
+            <span class="amount">2.400.000</span>
+            <span class="period">/ mes</span>
+          </div>
+          <ul class="plan-features">
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span><strong>20 h</strong> de desarrollo + <strong>4 h</strong> de reuniones</span>
+            </li>
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span>Cadencia <strong>quincenal</strong> con demo</span>
+            </li>
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span>SLA de respuesta <strong>24 h</strong> hábiles</span>
+            </li>
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span><strong>Prioridad</strong> en cola de desarrollo</span>
+            </li>
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span>Tablero de avance en tiempo real</span>
+            </li>
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span class="muted">Reporte quincenal detallado</span>
+            </li>
+          </ul>
+          <div class="plan-extras">
+            <div class="plan-extras-label">Hora extra</div>
+            <div class="plan-extras-value" style="color:var(--accent);">$80.000 <small>COP / hora</small></div>
+          </div>
+        </div>
+
+        <!-- PLAN 3 · ENTERPRISE -->
+        <div class="plan">
+          <div class="plan-name">Plan · 03</div>
+          <h3 class="plan-title">Partner<br>estratégico</h3>
+          <p class="plan-subtitle">Equipo extendido para productos en crecimiento o áreas de innovación.</p>
+          <div class="plan-price">
+            <span class="currency">COP$</span>
+            <span class="amount">3.800.000</span>
+            <span class="period">/ mes</span>
+          </div>
+          <ul class="plan-features">
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span><strong>32 h</strong> de desarrollo + <strong>6 h</strong> de reuniones</span>
+            </li>
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span>Cadencia <strong>semanal</strong> con stand-up</span>
+            </li>
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span>SLA de respuesta <strong>4 h</strong> hábiles</span>
+            </li>
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span><strong>1 jornada on-site</strong> incluida / mes</span>
+            </li>
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span>Arquitecto asignado al proyecto</span>
+            </li>
+            <li>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <span class="muted">Roadmap trimestral + OKRs</span>
+            </li>
+          </ul>
+          <div class="plan-extras">
+            <div class="plan-extras-label">Hora extra</div>
+            <div class="plan-extras-value">$65.000 <small>COP / hora</small></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADDON ON-SITE -->
+      <div class="addon">
+        <div class="addon-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+        </div>
+        <div class="addon-text">
+          <h4>Acompañamiento on-site en Bogotá</h4>
+          <p>Levantamiento de procesos, capacitación técnica en sede, o trabajo presencial con el equipo del cliente. Se
+            cobra por jornada — cubre desplazamiento, setup y dedicación completa.</p>
+        </div>
+        <div class="addon-price">
+          $450.000 · $800.000
+          <small>COP · Media jornada / jornada completa</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="container">
+      <div class="section-label">Cómo funciona</div>
+      <h2 class="section-title">
+        Menos fricción.<br>
+        <em>Más entregas.</em>
+      </h2>
+      <div class="how-grid">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h4>Kickoff</h4>
+          <p>Mapeamos tu operación y definimos backlog priorizado. En una sola sesión quedan claros los siguientes 30
+            días.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h4>Desarrollo</h4>
+          <p>Ejecutamos las horas del plan con stand-ups asíncronos. Ves avances reales, no PowerPoints.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h4>Checkpoint</h4>
+          <p>Reunión de seguimiento — mensual o quincenal — con demo funcional y decisiones para el siguiente ciclo.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h4>Evolución</h4>
+          <p>Tu producto crece mes a mes. Sin contratos ambiguos. Sin sorpresas en la factura.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONDITIONS -->
+  <section class="conditions">
+    <div class="container">
+      <div class="section-label">Reglas del juego</div>
+      <h2 class="section-title" style="font-size: clamp(28px,3.5vw,42px);">
+        Claridad desde el <em>día uno.</em>
+      </h2>
+
+      <div class="cond-grid">
+        <div class="cond">
+          <svg class="cond-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          <div>
+            <h5>Horas no acumulables</h5>
+            <p>Las horas del mes se usan en el mes. Esto garantiza cadencia real de entrega y no "guardar trabajo para
+              después".</p>
+          </div>
+        </div>
+        <div class="cond">
+          <svg class="cond-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+            <path d="M2 17l10 5 10-5" />
+            <path d="M2 12l10 5 10-5" />
+          </svg>
+          <div>
+            <h5>El código es tuyo</h5>
+            <p>Propiedad intelectual 100% del cliente. Entregamos repositorio, documentación y accesos desde el primer
+              día.</p>
+          </div>
+        </div>
+        <div class="cond">
+          <svg class="cond-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+          </svg>
+          <div>
+            <h5>Reporte transparente</h5>
+            <p>Cada hora ejecutada queda registrada con descripción técnica. Sin zonas grises, sin facturas infladas.
+            </p>
+          </div>
+        </div>
+        <div class="cond">
+          <svg class="cond-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 8v4l2 2" />
+          </svg>
+          <div>
+            <h5>Compromiso 3 meses</h5>
+            <p>Tiempo mínimo para generar impacto real. Luego del tercer mes, cancelación con 30 días de aviso.</p>
+          </div>
+        </div>
+        <div class="cond">
+          <svg class="cond-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="M22 7l-10 5L2 7" />
+          </svg>
+          <div>
+            <h5>Facturación mensual anticipada</h5>
+            <p>Pago al inicio del ciclo. Horas extras se facturan al cierre del mes con reporte detallado adjunto.</p>
+          </div>
+        </div>
+        <div class="cond">
+          <svg class="cond-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+          <div>
+            <h5>Confidencialidad</h5>
+            <p>NDA incluido. Tu información de negocio, datos de clientes y código son tratados como activos críticos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2>¿Conversamos<br>sobre tu <em>próxima iteración?</em></h2>
+      <p>Agenda una sesión de 30 minutos. Sin compromiso. Salimos con un plan, o no trabajamos juntos.</p>
+      <a href="#" class="cta-btn">
+        Agendar kickoff
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M13 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+</body>
+
+</html>

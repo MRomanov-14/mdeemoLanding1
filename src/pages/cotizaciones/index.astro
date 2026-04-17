@@ -5742,8 +5742,18 @@ const firmantesCargo = "Gerente";
               "1124": "content-imbocar",
               "1125": "content-jason",
             };
+            
+            const externalPinsMap: Record<string, string> = {
+              "1126": "/cotizaciones/1126.html",
+            };
 
             const unlockProposal = (pin: string) => {
+              if (externalPinsMap[pin]) {
+                sessionStorage.setItem(sessionKey, pin);
+                window.location.href = externalPinsMap[pin];
+                return true;
+              }
+              
               const contentId = validPinsElementMap[pin];
               if (contentId) {
                 // Hide gateway
