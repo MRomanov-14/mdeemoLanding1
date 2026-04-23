@@ -16,7 +16,8 @@ export const POST = async ({ request }) => {
             address,
             areaInterest,
             experienceYears,
-            cvUrl 
+            cvUrl,
+            extraDocUrl
         } = data;
 
         if (!fullName || !email || !cedula) {
@@ -27,8 +28,8 @@ export const POST = async ({ request }) => {
         }
 
         await sql`
-            INSERT INTO clicklandingpublic.candidates (full_name, cedula, email, phone, city, address, area_interest, experience_years, cv_url)
-            VALUES (${fullName}, ${cedula}, ${email}, ${phone}, ${city}, ${address}, ${areaInterest}, ${experienceYears}, ${cvUrl})
+            INSERT INTO clicklandingpublic.candidates (full_name, cedula, email, phone, city, address, area_interest, experience_years, cv_url, extra_doc_url)
+            VALUES (${fullName}, ${cedula}, ${email}, ${phone}, ${city}, ${address}, ${areaInterest}, ${experienceYears}, ${cvUrl}, ${extraDocUrl || null})
         `;
 
         return new Response(JSON.stringify({ success: true, message: 'Postulación recibida' }), {

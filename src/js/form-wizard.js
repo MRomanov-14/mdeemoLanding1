@@ -546,6 +546,18 @@ export function initFormWizard() {
         }
     }
 
+    // Upload extra document (cert / license)
+    async function uploadExtraDoc(file, folder) {
+        if (!supabase) throw new Error('Supabase no inicializado.');
+        const timestamp = new Date().getTime();
+        const safeName = file.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '_').replace(/[^a-zA-Z0-9._-]/g, '');
+        const filePath = `${folder}/${timestamp}_${safeName}`;
+        const { data, error } = await supabase.storage.from('mdeemolanding').upload(filePath, file);
+        if (error) throw new Error(`Error Supabase: ${error.message}`);
+        const { data: { publicUrl } } = supabase.storage.from('mdeemolanding').getPublicUrl(filePath);
+        return publicUrl;
+    }
+
     // Upload CV Function
     async function uploadCV(file) {
         if (!supabase) {
@@ -672,6 +684,13 @@ export function initFormWizard() {
             transitionStep(`step-${currentStep}`, `step-${next}`, 'next');
             currentStep = next;
             updateProgress(currentStep);
+
+            // Show/hide conditional doc uploads when entering Step 3
+            if (next === 3) {
+                const area = document.getElementById('candidate-area').value;
+                document.getElementById('block-cert-montacarguista').classList.toggle('hidden', area !== 'Montacarguista Certificado');
+                document.getElementById('block-cert-conductor').classList.toggle('hidden', area !== 'Conductor');
+            }
         });
     });
 
@@ -724,11 +743,29 @@ export function initFormWizard() {
                  return;
             }
 
+            const area = document.getElementById('candidate-area').value;
+
+            // Validate conditional docs before uploading
+            if (area === 'Montacarguista Certificado') {
+                const certFile = document.getElementById('cert-montacarguista')?.files[0];
+                if (!certFile) {
+                    showModal('Debes adjuntar el certificado de montacarguista para continuar.');
+                    btn.innerHTML = originalText; btn.disabled = false; return;
+                }
+            }
+            if (area === 'Conductor') {
+                const licFile = document.getElementById('cert-conductor')?.files[0];
+                if (!licFile) {
+                    showModal('Debes adjuntar tu licencia de conducción para continuar.');
+                    btn.innerHTML = originalText; btn.disabled = false; return;
+                }
+            }
+
             try {
                 // 1. Upload CV
                 let cvUrl = '';
                 btn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up fa-fade"></i> Subiendo CV...';
-                
+
                 try {
                     cvUrl = await uploadCV(file);
                 } catch (uploadError) {
@@ -739,9 +776,30 @@ export function initFormWizard() {
                      return;
                 }
 
-                // 2. Submit Data
+                // 2. Upload extra doc if required
+                let extraDocUrl = '';
+                if (area === 'Montacarguista Certificado') {
+                    btn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up fa-fade"></i> Subiendo certificado...';
+                    try {
+                        extraDocUrl = await uploadExtraDoc(document.getElementById('cert-montacarguista').files[0], 'Certificados montacarguistas');
+                    } catch (e) {
+                        showModal('Error al subir el certificado. Intenta de nuevo.');
+                        btn.innerHTML = originalText; btn.disabled = false; return;
+                    }
+                }
+                if (area === 'Conductor') {
+                    btn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up fa-fade"></i> Subiendo licencia...';
+                    try {
+                        extraDocUrl = await uploadExtraDoc(document.getElementById('cert-conductor').files[0], 'Licencias de conduccion');
+                    } catch (e) {
+                        showModal('Error al subir la licencia. Intenta de nuevo.');
+                        btn.innerHTML = originalText; btn.disabled = false; return;
+                    }
+                }
+
+                // 3. Submit Data
                 btn.innerHTML = '<i class="fa-solid fa-paper-plane fa-fade"></i> Finalizando...';
-                
+
                 const data = {
                     fullName: document.getElementById('candidate-name').value,
                     cedula: document.getElementById('candidate-cedula').value,
@@ -751,7 +809,8 @@ export function initFormWizard() {
                     address: document.getElementById('candidate-address').value,
                     areaInterest: document.getElementById('candidate-area').value,
                     experienceYears: expInput ? expInput.value : '',
-                    cvUrl: cvUrl
+                    cvUrl: cvUrl,
+                    extraDocUrl: extraDocUrl
                 };
 
                 const response = await fetch('/api/candidates', {

@@ -440,13 +440,23 @@ import Layout from '../layouts/Layout.astro';
                                                     </div>
                                                 </button>
 
-                                                <button type="button" class="dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-[var(--color-text-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] rounded-lg transition-colors group" data-value="Conductor / Distribución">
+                                                <button type="button" class="dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-[var(--color-text-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] rounded-lg transition-colors group" data-value="Conductor">
+                                                    <div class="w-10 h-10 rounded-lg bg-[var(--color-surface)] flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
+                                                        <i class="fa-solid fa-id-card"></i>
+                                                    </div>
+                                                    <div>
+                                                        <span class="block font-medium">Conductor</span>
+                                                        <span class="text-xs text-[var(--color-text-muted)] group-hover:text-[var(--color-text)]">Rutas, Vehículo, Licencia de conducción</span>
+                                                    </div>
+                                                </button>
+
+                                                <button type="button" class="dropdown-item w-full px-4 py-3 flex items-center gap-4 text-left text-[var(--color-text-muted)] hover:bg-[var(--color-surface)] hover:text-[var(--color-text)] rounded-lg transition-colors group" data-value="Auxiliar de Distribución">
                                                     <div class="w-10 h-10 rounded-lg bg-[var(--color-surface)] flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-colors">
                                                         <i class="fa-solid fa-truck-fast"></i>
                                                     </div>
                                                     <div>
-                                                        <span class="block font-medium">Conductor / Distribución</span>
-                                                        <span class="text-xs text-[var(--color-text-muted)] group-hover:text-[var(--color-text)]">Entrega, Rutas, Vehículo</span>
+                                                        <span class="block font-medium">Auxiliar de Distribución</span>
+                                                        <span class="text-xs text-[var(--color-text-muted)] group-hover:text-[var(--color-text)]">Entrega, Reparto, Despachos</span>
                                                     </div>
                                                 </button>
 
@@ -539,6 +549,46 @@ import Layout from '../layouts/Layout.astro';
                             </div>
                             <p id="upload-main-text" class="font-bold text-lg text-[var(--color-text)] transition-colors">Haz clic para subir tu CV</p>
                             <p id="file-upload-text" class="text-sm text-[var(--color-text-muted)] mt-2 transition-all">Formato: PDF o Word (Máx 5MB)</p>
+                        </div>
+
+                        <!-- Certificado Montacarguista (condicional) -->
+                        <div id="block-cert-montacarguista" class="hidden mt-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-lg bg-brand-primary/10 flex items-center justify-center">
+                                    <i class="fa-solid fa-certificate text-brand-primary text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-[var(--color-text)] text-sm">Certificado de Montacarguista <span class="text-brand-primary">*</span></p>
+                                    <p class="text-xs text-[var(--color-text-muted)]">Sube tu certificado vigente en formato PDF</p>
+                                </div>
+                            </div>
+                            <label for="cert-montacarguista"
+                                class="flex items-center justify-center gap-3 w-full border-2 border-dashed border-brand-primary/40 hover:border-brand-primary rounded-xl px-5 py-4 cursor-pointer hover:bg-brand-primary/5 transition-all group">
+                                <i class="fa-solid fa-cloud-arrow-up text-brand-primary group-hover:scale-110 transition-transform text-xl"></i>
+                                <span id="cert-montacarguista-label" class="text-sm text-[var(--color-text-muted)]">Haz clic para subir el certificado (PDF)</span>
+                                <input type="file" id="cert-montacarguista" accept=".pdf,application/pdf" class="hidden"
+                                    onchange="document.getElementById('cert-montacarguista-label').textContent = this.files[0]?.name || 'Haz clic para subir el certificado (PDF)'" />
+                            </label>
+                        </div>
+
+                        <!-- Licencia de Conducción (condicional) -->
+                        <div id="block-cert-conductor" class="hidden mt-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-lg bg-brand-primary/10 flex items-center justify-center">
+                                    <i class="fa-solid fa-id-card text-brand-primary text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-[var(--color-text)] text-sm">Licencia de Conducción <span class="text-brand-primary">*</span></p>
+                                    <p class="text-xs text-[var(--color-text-muted)]">Sube una copia de tu licencia vigente (PDF)</p>
+                                </div>
+                            </div>
+                            <label for="cert-conductor"
+                                class="flex items-center justify-center gap-3 w-full border-2 border-dashed border-brand-primary/40 hover:border-brand-primary rounded-xl px-5 py-4 cursor-pointer hover:bg-brand-primary/5 transition-all group">
+                                <i class="fa-solid fa-cloud-arrow-up text-brand-primary group-hover:scale-110 transition-transform text-xl"></i>
+                                <span id="cert-conductor-label" class="text-sm text-[var(--color-text-muted)]">Haz clic para subir la licencia (PDF)</span>
+                                <input type="file" id="cert-conductor" accept=".pdf,application/pdf" class="hidden"
+                                    onchange="document.getElementById('cert-conductor-label').textContent = this.files[0]?.name || 'Haz clic para subir la licencia (PDF)'" />
+                            </label>
                         </div>
 
                         <div class="mt-6 flex items-center justify-center gap-2">
