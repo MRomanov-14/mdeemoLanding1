@@ -102,9 +102,7 @@ export function initFormWizard() {
         if (input.type === 'hidden' && input.id === 'candidate-area') {
             target = document.getElementById('dropdown-trigger');
         }
-        if (input.type === 'hidden' && input.id === 'candidate-city') {
-            target = document.getElementById('city-dropdown-trigger');
-        }
+
         // Handle file input container
         if (input.type === 'file') {
              target = input.closest('div');
@@ -218,80 +216,7 @@ export function initFormWizard() {
     // Initialize Custom Dropdown
     initCustomDropdown();
 
-    // Helper: Init City Dropdown logic
-    function initCityDropdown() {
-        const trigger = document.getElementById('city-dropdown-trigger');
-        const menu = document.getElementById('city-dropdown-menu');
-        const hiddenInput = document.getElementById('candidate-city');
-        const label = document.getElementById('city-dropdown-label');
-        const arrow = document.getElementById('city-dropdown-arrow');
-        const container = document.getElementById('dropdown-city-container');
-
-        if (!trigger || !menu || !hiddenInput) return;
-
-        // Toggle state
-        trigger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isClosed = menu.classList.contains('hidden');
-            
-            if (isClosed) {
-                menu.classList.remove('hidden');
-                requestAnimationFrame(() => {
-                    menu.classList.remove('opacity-0', 'translate-y-2');
-                });
-                arrow.classList.add('rotate-180');
-                trigger.setAttribute('aria-expanded', 'true');
-            } else {
-                menu.classList.add('opacity-0', 'translate-y-2');
-                arrow.classList.remove('rotate-180');
-                trigger.setAttribute('aria-expanded', 'false');
-                setTimeout(() => {
-                    menu.classList.add('hidden');
-                }, 300);
-            }
-        });
-
-        // Outside click
-        document.addEventListener('click', (e) => {
-            if (!container.contains(e.target)) {
-                menu.classList.add('opacity-0', 'translate-y-2');
-                arrow.classList.remove('rotate-180');
-                trigger.setAttribute('aria-expanded', 'false');
-                setTimeout(() => {
-                     menu.classList.add('hidden');
-                }, 300);
-            }
-        });
-
-        // Item selection
-        menu.querySelectorAll('.city-dropdown-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-
-                const value = item.getAttribute('data-value');
-                const iconClass = item.querySelector('i').className;
-                const text = item.querySelector('span.font-medium').textContent || value;
-
-                hiddenInput.value = value;
-
-                label.innerHTML = `<i class="${iconClass} text-brand-primary"></i> ${text}`;
-                
-                trigger.classList.remove('text-[var(--color-text-muted)]');
-                trigger.classList.add('text-[var(--color-text)]');
-
-                menu.classList.add('opacity-0', 'translate-y-2');
-                arrow.classList.remove('rotate-180');
-                trigger.setAttribute('aria-expanded', 'false');
-                setTimeout(() => {
-                     menu.classList.add('hidden');
-                }, 300);
-            });
-        });
-    }
-
-    // Initialize City Dropdown
-    initCityDropdown();
+    // City field: native <select> — no custom init needed
 
     // Initialize File Upload Logic (Drag & Drop + Click)
     function initFileUpload() {
