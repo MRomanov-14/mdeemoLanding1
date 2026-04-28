@@ -6795,7 +6795,7 @@ const firmantesCargo = "Gerente";
         <div class="overflow-x-auto rounded-2xl border border-[var(--color-border)]">
           <table class="w-full text-sm">
             <tbody class="divide-y divide-[var(--color-border)]">
-              <tr class="hover:bg-brand-primary/5"><td class="px-3 sm:px-4 py-3 font-semibold text-[var(--color-text-muted)] w-36 sm:w-48">Implementación (única vez)</td><td class="px-3 sm:px-4 py-3 font-bold text-brand-primary tabular-nums whitespace-nowrap">$4.700.000 COP — exento IVA</td></tr>
+              <tr class="hover:bg-brand-primary/5"><td class="px-3 sm:px-4 py-3 font-semibold text-[var(--color-text-muted)] w-36 sm:w-48">Implementación</td><td class="px-3 sm:px-4 py-3 font-bold text-brand-primary tabular-nums whitespace-nowrap">$4.700.000 COP — pago único o amortizado (ver opciones)</td></tr>
               <tr class="hover:bg-brand-primary/5"><td class="px-3 sm:px-4 py-3 font-semibold text-[var(--color-text-muted)]">Fee mensual</td><td class="px-3 sm:px-4 py-3 font-bold text-brand-primary tabular-nums whitespace-nowrap">USD 112 — facturado a TRM del día</td></tr>
               <tr class="hover:bg-brand-primary/5"><td class="px-3 sm:px-4 py-3 font-semibold text-[var(--color-text-muted)]">Horas de proyecto</td><td class="px-3 sm:px-4 py-3 text-[var(--color-text)]">$120.000 / h — facturadas al cierre del proyecto aprobado</td></tr>
               <tr class="hover:bg-brand-primary/5"><td class="px-3 sm:px-4 py-3 font-semibold text-[var(--color-text-muted)]">Día de corte (Fee)</td><td class="px-3 sm:px-4 py-3 text-[var(--color-text)]">1 de cada mes</td></tr>
@@ -6805,6 +6805,28 @@ const firmantesCargo = "Gerente";
               <tr class="hover:bg-brand-primary/5"><td class="px-3 sm:px-4 py-3 font-semibold text-[var(--color-text-muted)]">Mora</td><td class="px-3 sm:px-4 py-3 text-[var(--color-text)]">1,5 % mensual sobre saldo vencido</td></tr>
             </tbody>
           </table>
+        </div>
+
+        <!-- Opciones de pago de la implementación -->
+        <p class="text-xs font-bold text-brand-primary uppercase tracking-widest mt-8 mb-3">Opciones para el pago de la implementación</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-5">
+            <div class="flex items-start justify-between mb-3">
+              <p class="font-bold text-[var(--color-text)] text-sm">Opción A · Pago único</p>
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[var(--color-border)]/50 text-[var(--color-text-muted)]">Estándar</span>
+            </div>
+            <p class="text-2xl font-black text-brand-primary font-[Outfit] tabular-nums mb-2">$4.700.000</p>
+            <p class="text-xs text-[var(--color-text-muted)] leading-snug">Pago al firmar el contrato. Habilita el inicio inmediato de la implementación y el cobro del Fee mensual desde el 1 de mayo.</p>
+          </div>
+          <div class="bg-gradient-to-br from-brand-primary/10 via-[var(--color-surface)] to-[var(--color-surface)] border border-brand-primary/40 rounded-2xl p-5">
+            <div class="flex items-start justify-between mb-3">
+              <p class="font-bold text-[var(--color-text)] text-sm">Opción B · Amortizada</p>
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-brand-primary/15 border border-brand-primary/40 text-brand-primary">Flexible</span>
+            </div>
+            <p class="text-2xl font-black text-brand-primary font-[Outfit] tabular-nums mb-1">$391.667 <span class="text-sm font-bold text-[var(--color-text-muted)]">/ mes</span></p>
+            <p class="text-[10px] text-[var(--color-text-muted)] mb-2">12 cuotas mensuales · sin intereses</p>
+            <p class="text-xs text-[var(--color-text-muted)] leading-snug">Las cuotas se suman al Fee mensual durante los primeros 12 meses. Total final igual: <strong class="text-[var(--color-text)]">$4.700.000 COP</strong>.</p>
+          </div>
         </div>
 
       </div>
