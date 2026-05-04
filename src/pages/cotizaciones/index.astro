@@ -8,6 +8,7 @@ const cargo = "Gerente de Operaciones";
 const empresa = "ALCOMEX";
 const firmante = "Fernando E. Rodas Diazgranados";
 const firmantesCargo = "Gerente";
+
 ---
 
 <Layout
@@ -3444,8 +3445,8 @@ const firmantesCargo = "Gerente";
             class="text-[var(--color-text-muted)] leading-relaxed bg-[var(--color-surface)] border border-[var(--color-border)] p-6 rounded-2xl"
           >
             Servicio de posicionamiento de personal para <strong
-              >auxiliar logístico y operaciones misionales de cargue/descargue</strong
-            > en el CEDI, así como eventos de cargue y descargue de contenedores.<br
+              >auxiliar logístico con experiencia en manejo de procesos de Picking, Packing, maquila, segregación y distribución</strong
+            > en sus CEDI, así como eventos de cargue y descargue de contenedores.<br
             /><br />
             <span class="text-sm text-brand-primary/80"
               ><i class="fa-solid fa-circle-info mr-1"></i> Las solicitudes se realizarán
@@ -3706,14 +3707,14 @@ const firmantesCargo = "Gerente";
                   >
                     <img
                       src="/images/mapa_candidatos_distri.png"
-                      alt="Mapa de Candidatos"
+                      alt="Mapa de Clickers activos en Bogotá"
                       class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.03]"
                     />
                     <div
                       class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
                     >
                       <p class="text-white font-semibold text-sm">
-                        Mapa de Candidatos Activos
+                        Mapa de Clickers activos · ejemplo Bogotá
                       </p>
                     </div>
                   </div>
@@ -3722,142 +3723,194 @@ const firmantesCargo = "Gerente";
                   >
                     <img
                       src="/images/mapa_clickers_distri.png"
-                      alt="Mapa de Clickers"
+                      alt="Mapa de candidatos disponibles en Bogotá"
                       class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.03]"
                     />
                     <div
                       class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
                     >
                       <p class="text-white font-semibold text-sm">
-                        Mapa de Clickers (Personal Vigente)
+                        Mapa de candidatos disponibles en Bogotá
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- RRHH -->
-            <div
-              class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 md:p-8"
-            >
-              <div
-                class="w-10 h-10 bg-brand-primary/10 rounded-xl flex items-center justify-center mb-4"
-              >
-                <i class="fa-solid fa-users-gear text-brand-primary text-xl"
-                ></i>
-              </div>
-              <h3 class="text-xl font-bold text-[var(--color-text)] mb-4">
-                2. RRHH
-              </h3>
-              <ul
-                class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-[var(--color-text-muted)]"
-              >
-                <li
-                  class="col-span-1 md:col-span-2 bg-gradient-to-r from-brand-primary/20 to-[var(--color-bg)] p-6 rounded-xl border border-brand-primary/30 flex items-center gap-6 relative overflow-hidden shadow-[0_4px_20px_rgba(234,179,8,0.1)]"
-                >
-                  <div class="absolute top-0 right-0 p-4 opacity-10">
-                    <svg
-                      class="w-24 h-24 text-brand-primary"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      ><path
-                        d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"
-                      ></path><path
-                        d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"
-                      ></path></svg
-                    >
+              <!-- Proceso de Reclutamiento -->
+              <div class="mt-10 pt-8 border-t border-[var(--color-border)] relative z-10">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-10 h-10 bg-brand-primary/10 rounded-xl flex items-center justify-center">
+                    <i class="fa-solid fa-heart text-brand-primary text-lg"></i>
                   </div>
-                  <div
-                    class="w-14 h-14 bg-brand-primary rounded-2xl flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(234,179,8,0.5)] relative z-10 transition-transform duration-300 hover:scale-110"
-                  >
-                    <svg
-                      class="w-7 h-7 text-black animate-[spin_4s_linear_infinite]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                  </div>
-                  <div class="relative z-10">
-                    <strong
-                      class="text-[var(--color-text)] text-lg block mb-1 font-bold"
-                      >Posicionamiento en <span class="text-brand-primary"
-                        >&lt; 72H</span
-                      ></strong
-                    >
-                    <p class="text-[var(--color-text-muted)] text-sm">
-                      Garantizamos el posicionamiento en <span
-                        class="text-white font-semibold flex-inline items-center gap-1"
-                        ><i class="fa-solid fa-bolt text-brand-primary"></i> menos
-                        de 72 horas</span
-                      > para perfil básico. Perfiles especializados requerirán hasta
-                      72h adicionales.
-                    </p>
-                  </div>
-                </li>
-                <li
-                  class="bg-[var(--color-bg)] p-4 rounded-xl border border-[var(--color-border)]"
-                >
-                  <strong class="text-[var(--color-text)] block mb-1"
-                    ><i
-                      class="fa-solid fa-shield-halved mr-1 text-brand-primary"
-                    ></i> Antecedentes:</strong
-                  > Verificación estricta en RNMC, Procuraduría, Policía y Contraloría.
-                </li>
-                <li
-                  class="bg-[var(--color-bg)] p-4 rounded-xl border border-[var(--color-border)]"
-                >
-                  <strong class="text-[var(--color-text)] block mb-1"
-                    ><i class="fa-solid fa-user-ninja mr-1 text-brand-primary"
-                    ></i> Perfiles Ocultos:</strong
-                  > Mapeo de edad, género y habilidades.
-                </li>
-                <li
-                  class="bg-[var(--color-bg)] p-4 rounded-xl border border-[var(--color-border)]"
-                >
-                  <strong class="text-[var(--color-text)] block mb-1"
-                    ><i
-                      class="fa-solid fa-file-signature mr-1 text-brand-primary"
-                    ></i> Contrato:</strong
-                  > Nos hacemos responsables de todas las compensaciones provenientes
-                  de la relación laboral con el colaborador.
-                </li>
-                <li
-                  class="col-span-1 md:col-span-2 bg-[var(--color-bg)] p-5 rounded-xl border border-brand-primary/30 relative overflow-hidden"
-                >
-                  <div class="flex items-start gap-4">
-                    <div class="w-10 h-10 bg-brand-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <i class="fa-solid fa-stethoscope text-brand-primary text-base"></i>
-                    </div>
-                    <div class="flex-1">
-                      <strong class="text-[var(--color-text)] block mb-2">
-                        Exámenes Médicos de Ingreso — <span class="text-brand-primary">Incluidos en la tarifa</span>
-                      </strong>
-                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                        <div class="flex items-center gap-2 text-[var(--color-text-muted)]">
-                          <i class="fa-solid fa-circle-check text-brand-primary text-xs"></i>
-                          Examen Osteomuscular
-                        </div>
-                        <div class="flex items-center gap-2 text-[var(--color-text-muted)]">
-                          <i class="fa-solid fa-circle-check text-brand-primary text-xs"></i>
-                          Hemoclasificación <span class="text-xs opacity-70">(mujeres)</span>
-                        </div>
+                  <h4 class="text-lg font-bold text-[var(--color-text)]">
+                    Nuestro proceso de reclutamiento — humano y cercano
+                  </h4>
+                </div>
+                <p class="text-sm text-[var(--color-text-muted)] mb-6 text-justify sm:text-left hyphens-auto">
+                  Cada Clicker que llega a su operación pasa por un proceso pensado para cuidar a las personas y, al mismo tiempo, asegurar que su equipo reciba el talento idóneo. Trabajamos con cercanía, transparencia y respeto en cada paso.
+                </p>
+
+                <ol class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <!-- Paso 1 -->
+                  <li class="bg-[var(--color-bg)] p-5 rounded-xl border border-[var(--color-border)]">
+                    <div class="flex items-start gap-4">
+                      <div class="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center text-black font-black text-base flex-shrink-0 shadow-[0_0_15px_rgba(234,179,8,0.3)]">
+                        1
                       </div>
-                      <p class="text-xs text-[var(--color-text-muted)] mt-3 border-t border-[var(--color-border)] pt-3">
-                        <i class="fa-solid fa-circle-info mr-1 text-brand-primary/60"></i>
-                        Exámenes adicionales según perfil o requerimiento del cliente se gestionan conjuntamente, revisando costos y periodicidad.
+                      <div>
+                        <strong class="text-[var(--color-text)] block mb-1.5">Revisión inicial</strong>
+                        <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">
+                          Nuestro equipo de Recursos Humanos selecciona con cuidado del Pool de candidatos previamente registrados en <a href="https://clicklogistica.com.co" target="_blank" rel="noopener" class="text-brand-primary hover:underline">clicklogistica.com.co</a>.
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- Paso 2 -->
+                  <li class="bg-[var(--color-bg)] p-5 rounded-xl border border-[var(--color-border)]">
+                    <div class="flex items-start gap-4">
+                      <div class="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center text-black font-black text-base flex-shrink-0 shadow-[0_0_15px_rgba(234,179,8,0.3)]">
+                        2
+                      </div>
+                      <div>
+                        <strong class="text-[var(--color-text)] block mb-1.5">Entrevista</strong>
+                        <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">
+                          Conversamos con cada candidato preseleccionado para conocer su trayectoria, motivaciones y asegurarnos de que el rol sea una buena oportunidad para ambas partes.
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- Paso 3 -->
+                  <li class="bg-[var(--color-bg)] p-5 rounded-xl border border-[var(--color-border)]">
+                    <div class="flex items-start gap-4">
+                      <div class="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center text-black font-black text-base flex-shrink-0 shadow-[0_0_15px_rgba(234,179,8,0.3)]">
+                        3
+                      </div>
+                      <div>
+                        <strong class="text-[var(--color-text)] block mb-1.5">Documentos</strong>
+                        <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">
+                          Validamos con cuidado toda la documentación necesaria para garantizar el cumplimiento legal y formal — un paso transparente que protege tanto al colaborador como a su empresa.
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- Paso 4 -->
+                  <li class="bg-[var(--color-bg)] p-5 rounded-xl border border-[var(--color-border)]">
+                    <div class="flex items-start gap-4">
+                      <div class="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center text-black font-black text-base flex-shrink-0 shadow-[0_0_15px_rgba(234,179,8,0.3)]">
+                        4
+                      </div>
+                      <div>
+                        <strong class="text-[var(--color-text)] block mb-1.5">Selección</strong>
+                        <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">
+                          Con todo en orden, confirmamos al talento idóneo, le damos la bienvenida y le acompañamos en cada paso siguiente con cercanía, claridad y vocación de servicio.
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </ol>
+
+                <div class="mt-5 bg-gradient-to-r from-brand-primary/10 to-transparent border border-brand-primary/20 rounded-xl p-4 flex items-start gap-3">
+                  <i class="fa-solid fa-circle-check text-brand-primary mt-0.5"></i>
+                  <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
+                    Al finalizar este proceso confirmamos la <strong class="text-[var(--color-text)]">aceptación o el rechazo</strong> del candidato, siempre comunicando con respeto y transparencia el resultado para mantener una experiencia cálida con cada persona.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Compromisos del equipo Click -->
+              <div class="mt-10 pt-8 border-t border-[var(--color-border)] relative z-10">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-10 h-10 bg-brand-primary/10 rounded-xl flex items-center justify-center">
+                    <i class="fa-solid fa-users-gear text-brand-primary text-lg"></i>
+                  </div>
+                  <h4 class="text-lg font-bold text-[var(--color-text)]">
+                    Compromisos del equipo Click con cada Clicker
+                  </h4>
+                </div>
+                <p class="text-sm text-[var(--color-text-muted)] mb-6 text-justify sm:text-left hyphens-auto">
+                  Acompañamos cada posicionamiento con garantías concretas de talento, cumplimiento legal y bienestar — porque detrás de cada turno hay una persona y una operación que confía en nosotros.
+                </p>
+
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-[var(--color-text-muted)]">
+                  <li class="col-span-1 md:col-span-2 bg-gradient-to-r from-brand-primary/20 to-[var(--color-bg)] p-6 rounded-xl border border-brand-primary/30 flex items-center gap-6 relative overflow-hidden shadow-[0_4px_20px_rgba(234,179,8,0.1)]">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                      <svg class="w-24 h-24 text-brand-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"></path></svg>
+                    </div>
+                    <div class="w-14 h-14 bg-brand-primary rounded-2xl flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(234,179,8,0.5)] relative z-10 transition-transform duration-300 hover:scale-110">
+                      <svg class="w-7 h-7 text-black animate-[spin_4s_linear_infinite]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                    </div>
+                    <div class="relative z-10">
+                      <strong class="text-[var(--color-text)] text-lg block mb-1 font-bold">Posicionamiento en <span class="text-brand-primary">&lt; 72H</span></strong>
+                      <p class="text-[var(--color-text-muted)] text-sm">
+                        Garantizamos el posicionamiento en <span class="text-white font-semibold flex-inline items-center gap-1"><i class="fa-solid fa-bolt text-brand-primary"></i> menos de 72 horas</span> para perfil básico. Perfiles especializados requerirán hasta 72h adicionales.
                       </p>
                     </div>
-                  </div>
-                </li>
-              </ul>
+                  </li>
+                  <li class="bg-[var(--color-bg)] p-4 rounded-xl border border-[var(--color-border)]">
+                    <strong class="text-[var(--color-text)] block mb-1"><i class="fa-solid fa-shield-halved mr-1 text-brand-primary"></i> Antecedentes:</strong> Verificación estricta en RNMC, Procuraduría, Policía y Contraloría.
+                  </li>
+                  <li class="bg-[var(--color-bg)] p-4 rounded-xl border border-[var(--color-border)]">
+                    <strong class="text-[var(--color-text)] block mb-1"><i class="fa-solid fa-user-ninja mr-1 text-brand-primary"></i> Perfiles Adaptados:</strong> Mapeo de edad, género y habilidades.
+                  </li>
+                  <li class="bg-[var(--color-bg)] p-4 rounded-xl border border-[var(--color-border)]">
+                    <strong class="text-[var(--color-text)] block mb-1"><i class="fa-solid fa-file-signature mr-1 text-brand-primary"></i> Contrato:</strong> Nos hacemos responsables de todas las compensaciones provenientes de la relación laboral con el colaborador.
+                  </li>
+                  <li class="col-span-1 md:col-span-2 bg-[var(--color-bg)] p-5 rounded-xl border border-brand-primary/30 relative overflow-hidden">
+                    <div class="flex items-start gap-4">
+                      <div class="w-10 h-10 bg-brand-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i class="fa-solid fa-stethoscope text-brand-primary text-base"></i>
+                      </div>
+                      <div class="flex-1">
+                        <strong class="text-[var(--color-text)] block mb-1">
+                          Exámenes Médicos de Ingreso
+                        </strong>
+                        <p class="text-xs text-[var(--color-text-muted)] mb-3">
+                          Para el cargo de <strong class="text-[var(--color-text)]">auxiliar logístico</strong> con énfasis en distribución, cargue y descargue.
+                        </p>
+                        <div class="overflow-x-auto rounded-xl border border-[var(--color-border)]">
+                          <table class="w-full text-sm">
+                            <thead>
+                              <tr class="bg-black/40 text-[var(--color-text-muted)]">
+                                <th class="text-left px-4 py-2.5 font-semibold text-xs uppercase tracking-wider">Examen</th>
+                                <th class="text-right px-4 py-2.5 font-semibold text-xs uppercase tracking-wider whitespace-nowrap">Estado</th>
+                              </tr>
+                            </thead>
+                            <tbody class="divide-y divide-[var(--color-border)]">
+                              <tr class="hover:bg-brand-primary/5 transition-colors">
+                                <td class="px-4 py-3 text-[var(--color-text)]">Examen Osteomuscular</td>
+                                <td class="px-4 py-3 text-right whitespace-nowrap"><span class="inline-flex items-center gap-1.5 text-brand-primary font-semibold text-xs"><i class="fa-solid fa-circle-check"></i> Incluido</span></td>
+                              </tr>
+                              <tr class="hover:bg-brand-primary/5 transition-colors">
+                                <td class="px-4 py-3 text-[var(--color-text)]">Hemoclasificación</td>
+                                <td class="px-4 py-3 text-right whitespace-nowrap"><span class="inline-flex items-center gap-1.5 text-brand-primary font-semibold text-xs"><i class="fa-solid fa-circle-check"></i> Incluido</span></td>
+                              </tr>
+                              <tr class="hover:bg-white/5 transition-colors">
+                                <td class="px-4 py-3 text-[var(--color-text-muted)]">Radiografía de columna lumbosacra</td>
+                                <td class="px-4 py-3 text-right whitespace-nowrap"><span class="inline-flex items-center gap-1.5 text-[var(--color-text-muted)] font-semibold text-xs opacity-80"><i class="fa-solid fa-circle-xmark"></i> No incluido</span></td>
+                              </tr>
+                              <tr class="hover:bg-white/5 transition-colors">
+                                <td class="px-4 py-3 text-[var(--color-text-muted)]">Audiometría</td>
+                                <td class="px-4 py-3 text-right whitespace-nowrap"><span class="inline-flex items-center gap-1.5 text-[var(--color-text-muted)] font-semibold text-xs opacity-80"><i class="fa-solid fa-circle-xmark"></i> No incluido</span></td>
+                              </tr>
+                              <tr class="hover:bg-white/5 transition-colors">
+                                <td class="px-4 py-3 text-[var(--color-text-muted)]">Prueba de trabajo en alturas</td>
+                                <td class="px-4 py-3 text-right whitespace-nowrap"><span class="inline-flex items-center gap-1.5 text-[var(--color-text-muted)] font-semibold text-xs opacity-80"><i class="fa-solid fa-circle-xmark"></i> No incluido</span></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <p class="text-xs text-[var(--color-text-muted)] mt-3 border-t border-[var(--color-border)] pt-3">
+                          <i class="fa-solid fa-circle-info mr-1 text-brand-primary/60"></i>
+                          Los exámenes no incluidos se gestionan conjuntamente según perfil o requerimiento del cliente, revisando costos y periodicidad.
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             <!-- Click App -->
@@ -3876,7 +3929,7 @@ const firmantesCargo = "Gerente";
                   <h3
                     class="text-3xl font-black text-[var(--color-text)] mb-6 font-[Outfit]"
                   >
-                    3. Click <span class="text-brand-primary"
+                    2. Click <span class="text-brand-primary"
                       >App Clientes</span>
                   </h3>
                   <div
@@ -3976,92 +4029,6 @@ const firmantesCargo = "Gerente";
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ¿Qué incluye nuestra tarifa? -->
-        <div class="mb-12">
-          <div class="flex items-center gap-3 mb-6">
-            <div
-              class="w-8 h-8 rounded-lg bg-brand-primary flex items-center justify-center shadow-[0_0_15px_rgba(234,179,8,0.3)]"
-            >
-              <i class="fa-solid fa-star text-black text-sm"></i>
-            </div>
-            <h2
-              class="text-2xl font-bold text-[var(--color-text)] font-[Outfit]"
-            >
-              ¿Qué incluye nuestra tarifa?
-            </h2>
-          </div>
-
-          <div
-            class="bg-[var(--color-surface)] border border-brand-primary/20 rounded-2xl p-6 md:p-8 relative overflow-hidden mb-6"
-          >
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-40"></div>
-            <p class="text-[var(--color-text-muted)] text-sm leading-relaxed mb-6">
-              A diferencia de otros proveedores, <strong class="text-[var(--color-text)]">en CLICK la tarifa es todo-incluido.</strong>
-              No hay costos ocultos ni cobros separados por servicios que forman parte del estándar operativo.
-            </p>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="flex items-start gap-3 bg-[var(--color-bg)] rounded-xl p-4 border border-[var(--color-border)]">
-                <i class="fa-solid fa-circle-check text-brand-primary mt-0.5 flex-shrink-0"></i>
-                <div>
-                  <strong class="text-[var(--color-text)] text-sm block">Exámenes médicos de ingreso</strong>
-                  <span class="text-[var(--color-text-muted)] text-xs">Osteomuscular + Hemoclasificación (mujeres)</span>
-                </div>
-              </div>
-              <div class="flex items-start gap-3 bg-[var(--color-bg)] rounded-xl p-4 border border-[var(--color-border)]">
-                <i class="fa-solid fa-circle-check text-brand-primary mt-0.5 flex-shrink-0"></i>
-                <div>
-                  <strong class="text-[var(--color-text)] text-sm block">Verificación de antecedentes</strong>
-                  <span class="text-[var(--color-text-muted)] text-xs">RNMC, Procuraduría, Policía y Contraloría</span>
-                </div>
-              </div>
-              <div class="flex items-start gap-3 bg-[var(--color-bg)] rounded-xl p-4 border border-[var(--color-border)]">
-                <i class="fa-solid fa-circle-check text-brand-primary mt-0.5 flex-shrink-0"></i>
-                <div>
-                  <strong class="text-[var(--color-text)] text-sm block">Onboarding paramétrico</strong>
-                  <span class="text-[var(--color-text-muted)] text-xs">Inducción completa vía App Mobile antes del primer turno</span>
-                </div>
-              </div>
-              <div class="flex items-start gap-3 bg-[var(--color-bg)] rounded-xl p-4 border border-[var(--color-border)]">
-                <i class="fa-solid fa-circle-check text-brand-primary mt-0.5 flex-shrink-0"></i>
-                <div>
-                  <strong class="text-[var(--color-text)] text-sm block">Responsabilidad laboral total</strong>
-                  <span class="text-[var(--color-text-muted)] text-xs">Compensaciones, nómina y cargas sociales a cargo de CLICK</span>
-                </div>
-              </div>
-              <div class="flex items-start gap-3 bg-[var(--color-bg)] rounded-xl p-4 border border-[var(--color-border)]">
-                <i class="fa-solid fa-circle-check text-brand-primary mt-0.5 flex-shrink-0"></i>
-                <div>
-                  <strong class="text-[var(--color-text)] text-sm block">Dashboard de cumplimiento en tiempo real</strong>
-                  <span class="text-[var(--color-text-muted)] text-xs">Acceso completo al Click App Clientes sin costo adicional</span>
-                </div>
-              </div>
-              <div class="flex items-start gap-3 bg-[var(--color-bg)] rounded-xl p-4 border border-[var(--color-border)]">
-                <i class="fa-solid fa-circle-check text-brand-primary mt-0.5 flex-shrink-0"></i>
-                <div>
-                  <strong class="text-[var(--color-text)] text-sm block">Gestor de cuenta dedicado</strong>
-                  <span class="text-[var(--color-text-muted)] text-xs">Punto de contacto directo con el equipo CLICK para resolución ágil</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Diferenciador highlight -->
-            <div class="mt-6 bg-gradient-to-r from-brand-primary/15 to-brand-primary/5 border border-brand-primary/30 rounded-xl p-5 flex items-start gap-4">
-              <div class="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center flex-shrink-0">
-                <i class="fa-solid fa-bolt text-black text-base"></i>
-              </div>
-              <div>
-                <strong class="text-[var(--color-text)] block mb-1">Posicionamiento garantizado en &lt; 72 horas</strong>
-                <p class="text-[var(--color-text-muted)] text-sm">
-                  Con una <strong class="text-white">amplia base de Clickers activos en Bogotá</strong> y candidatos zonificados por CEDI,
-                  garantizamos respuesta operativa sin ensayos ni tiempos muertos. La tecnología de mapa en tiempo real nos permite anticipar
-                  picos de demanda antes de que impacten su operación.
-                </p>
               </div>
             </div>
           </div>
