@@ -725,8 +725,9 @@ import Layout from '../layouts/Layout.astro';
         } else {
             initFormWizard();
         }
-        
-        // Re-init on Astro transitions (if enabled)
+
+        // Re-init on Astro transitions (if enabled). The form attribute guard
+        // inside initFormWizard makes this idempotent across paths.
         document.addEventListener('astro:page-load', initFormWizard);
     </script>
     <style>
