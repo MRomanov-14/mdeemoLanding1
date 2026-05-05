@@ -24,8 +24,17 @@ export function initFormWizard() {
     const form = document.getElementById('recruitment-form');
     if (!form) return;
 
-    // Prevent double init
+    // Idempotency guard: if this exact form has already been wired, bail.
+    // Prevents duplicate handlers from main.js + index.astro inline script +
+    // astro:page-load all calling init for the same form.
     if (form.hasAttribute('data-wizard-initialized')) return;
+
+    // Defense in depth: clone action buttons to drop any pre-existing listeners
+    // (e.g. from a previous init that crashed before setting the flag).
+    form.querySelectorAll('[data-action]').forEach(btn => {
+        btn.replaceWith(btn.cloneNode(true));
+    });
+
     form.setAttribute('data-wizard-initialized', 'true');
 
     console.log('Form Wizard Initialized');
@@ -685,11 +694,28 @@ export function initFormWizard() {
             currentStep = next;
             updateProgress(currentStep);
 
-            // Show/hide conditional doc uploads when entering Step 3
+            // Show/hide conditional doc uploads when entering Step 3,
+            // and clear any file/label state from a previous profile so we
+            // never upload an orphaned file from a hidden block.
             if (next === 3) {
                 const area = document.getElementById('candidate-area').value;
-                document.getElementById('block-cert-montacarguista').classList.toggle('hidden', area !== 'Montacarguista Certificado');
-                document.getElementById('block-cert-conductor').classList.toggle('hidden', area !== 'Conductor');
+                const isMont = area === 'Montacarguista Certificado';
+                const isDriver = area === 'Conductor';
+                document.getElementById('block-cert-montacarguista').classList.toggle('hidden', !isMont);
+                document.getElementById('block-cert-conductor').classList.toggle('hidden', !isDriver);
+
+                if (!isMont) {
+                    const inp = document.getElementById('cert-montacarguista');
+                    if (inp) inp.value = '';
+                    const lbl = document.getElementById('cert-montacarguista-label');
+                    if (lbl) lbl.textContent = 'Haz clic para subir el certificado (PDF)';
+                }
+                if (!isDriver) {
+                    const inp = document.getElementById('cert-conductor');
+                    if (inp) inp.value = '';
+                    const lbl = document.getElementById('cert-conductor-label');
+                    if (lbl) lbl.textContent = 'Haz clic para subir la licencia (PDF)';
+                }
             }
         });
     });
@@ -737,28 +763,43 @@ export function initFormWizard() {
             const file = fileInput ? fileInput.files[0] : null;
 
             if(!file) {
-                 showModal('Por favor, adjunta tu hoja de vida.'); // Custom Modal replaced alert
+                 showModal('Por favor, adjunta tu hoja de vida.');
                  btn.innerHTML = originalText;
                  btn.disabled = false;
                  return;
             }
 
+            // Validate CV file type and size at submit time
+            const cvValidExtensions = ['.pdf', '.doc', '.docx'];
+            const cvValidTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+            const cvHasValidExt = cvValidExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
+            if (!cvValidTypes.includes(file.type) && !cvHasValidExt) {
+                showModal('La hoja de vida debe ser PDF o Word (.pdf, .doc, .docx).');
+                btn.innerHTML = originalText; btn.disabled = false; return;
+            }
+            if (file.size > 5 * 1024 * 1024) {
+                showModal('La hoja de vida supera 5MB. Comprime el archivo o usa otro formato.');
+                btn.innerHTML = originalText; btn.disabled = false; return;
+            }
+
             const area = document.getElementById('candidate-area').value;
 
-            // Validate conditional docs before uploading
+            // Validate conditional docs (only the one matching the selected profile)
+            const validatePdf = (input, label, sizeMB = 5) => {
+                const f = input?.files[0];
+                if (!f) return `Debes adjuntar ${label} para continuar.`;
+                const okExt = f.name.toLowerCase().endsWith('.pdf');
+                if (f.type !== 'application/pdf' && !okExt) return `${label} debe ser un archivo PDF.`;
+                if (f.size > sizeMB * 1024 * 1024) return `${label} supera ${sizeMB}MB.`;
+                return null;
+            };
             if (area === 'Montacarguista Certificado') {
-                const certFile = document.getElementById('cert-montacarguista')?.files[0];
-                if (!certFile) {
-                    showModal('Debes adjuntar el certificado de montacarguista para continuar.');
-                    btn.innerHTML = originalText; btn.disabled = false; return;
-                }
+                const err = validatePdf(document.getElementById('cert-montacarguista'), 'el certificado de montacarguista');
+                if (err) { showModal(err); btn.innerHTML = originalText; btn.disabled = false; return; }
             }
             if (area === 'Conductor') {
-                const licFile = document.getElementById('cert-conductor')?.files[0];
-                if (!licFile) {
-                    showModal('Debes adjuntar tu licencia de conducción para continuar.');
-                    btn.innerHTML = originalText; btn.disabled = false; return;
-                }
+                const err = validatePdf(document.getElementById('cert-conductor'), 'tu licencia de conducción');
+                if (err) { showModal(err); btn.innerHTML = originalText; btn.disabled = false; return; }
             }
 
             try {
