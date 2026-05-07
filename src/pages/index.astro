@@ -2,14 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Click Operaciones Logísticas | Soluciones Logísticas" description="Click Operaciones Logísticas: Soluciones Logísticas. Optimizamos tu operación con talento humano especializado.">
+<Layout title="Click Operaciones Logísticas | Soluciones Logísticas" description="Click Operaciones Logísticas: Soluciones Logísticas. Optimizamos tu operación con talento humano especializado." forcedTheme="light">
     <!-- Hero Section con Canvas Interactivo -->
     <section class="hero-critical relative h-screen flex items-center justify-center overflow-hidden bg-[var(--color-bg)]">
         <canvas id="networkCanvas" class="hero-canvas"></canvas>
 
-        <!-- Radial Gradient Overlay -->
+        <!-- Radial Gradient Overlay (solo dark mode — en light mancha la experiencia) -->
         <div
-            class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-primary/10 via-[var(--color-bg)] to-[var(--color-bg)] pointer-events-none">
+            class="hero-radial absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-primary/10 via-[var(--color-bg)] to-[var(--color-bg)] pointer-events-none">
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
@@ -43,9 +43,9 @@ import Layout from '../layouts/Layout.astro';
                     <!-- <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i> -->
                 </button>
                 <a href="/empresas"
-                    class="group relative px-10 py-5 bg-white text-black border border-[var(--color-border)] rounded-full font-bold text-lg hover:bg-gray-200 transition-all backdrop-blur-sm min-w-[250px] flex flex-col items-center justify-center">
+                    class="group relative px-10 py-5 bg-[var(--color-text)] text-[var(--color-bg)] border border-[var(--color-border)] rounded-full font-bold text-lg hover:bg-[var(--color-text)]/90 transition-all backdrop-blur-sm min-w-[250px] flex flex-col items-center justify-center">
                     <span>Soy Empresa</span>
-                    <span class="block text-xs font-normal opacity-70 mt-1 text-black">Busco Personal</span>
+                    <span class="block text-xs font-normal opacity-70 mt-1">Busco Personal</span>
                 </a>
             </div>
         </div>
@@ -230,16 +230,16 @@ import Layout from '../layouts/Layout.astro';
                 </script>
             </div>
             
-            <!-- Decorative Glows -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-primary/10 rounded-full blur-[100px] -z-10"></div>
+            <!-- Decorative Glows (solo dark) -->
+            <div class="decorative-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-primary/10 rounded-full blur-[100px] -z-10"></div>
         </div>
             </div>
     </section>
 
     <!-- Sección Reclutamiento (El Wizard Tecnológico) -->
     <section id="reclutamiento" class="py-32 bg-[var(--color-bg)] relative">
-        <!-- Fondos decorativos -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <!-- Fondos decorativos (solo dark) -->
+        <div class="decorative-glow absolute inset-0 overflow-hidden pointer-events-none z-0">
             <div class="absolute top-0 right-0 w-2/3 h-full bg-brand-primary/5 opacity-50 blur-[120px] pointer-events-none">
             </div>
             <div class="absolute bottom-0 left-0 w-2/3 h-full bg-brand-primary/5 opacity-30 blur-[120px] pointer-events-none">
@@ -482,21 +482,21 @@ import Layout from '../layouts/Layout.astro';
                                     <label class="flex-1 cursor-pointer">
                                         <input type="radio" name="exp" value="0-1" required class="peer sr-only">
                                         <div
-                                            class="text-center p-4 rounded-xl border border-[var(--color-border)] hover:bg-[var(--color-card-bg)] peer-checked:bg-white peer-checked:text-black peer-checked:border-white peer-checked:font-bold transition-all">
+                                            class="text-center p-4 rounded-xl border border-[var(--color-border)] hover:bg-[var(--color-card-bg)] peer-checked:bg-[var(--color-text)] peer-checked:text-[var(--color-bg)] peer-checked:border-[var(--color-text)] peer-checked:font-bold transition-all">
                                             0-1
                                         </div>
                                     </label>
                                     <label class="flex-1 cursor-pointer">
                                         <input type="radio" name="exp" value="1-3" class="peer sr-only">
                                         <div
-                                            class="text-center p-4 rounded-xl border border-[var(--color-border)] hover:bg-[var(--color-card-bg)] peer-checked:bg-white peer-checked:text-black peer-checked:border-white peer-checked:font-bold transition-all">
+                                            class="text-center p-4 rounded-xl border border-[var(--color-border)] hover:bg-[var(--color-card-bg)] peer-checked:bg-[var(--color-text)] peer-checked:text-[var(--color-bg)] peer-checked:border-[var(--color-text)] peer-checked:font-bold transition-all">
                                             1-3
                                         </div>
                                     </label>
                                     <label class="flex-1 cursor-pointer">
                                         <input type="radio" name="exp" value="+3" class="peer sr-only">
                                         <div
-                                            class="text-center p-4 rounded-xl border border-[var(--color-border)] hover:bg-[var(--color-card-bg)] peer-checked:bg-white peer-checked:text-black peer-checked:border-white peer-checked:font-bold transition-all">
+                                            class="text-center p-4 rounded-xl border border-[var(--color-border)] hover:bg-[var(--color-card-bg)] peer-checked:bg-[var(--color-text)] peer-checked:text-[var(--color-bg)] peer-checked:border-[var(--color-text)] peer-checked:font-bold transition-all">
                                             +3
                                         </div>
                                     </label>
@@ -730,7 +730,7 @@ import Layout from '../layouts/Layout.astro';
         // inside initFormWizard makes this idempotent across paths.
         document.addEventListener('astro:page-load', initFormWizard);
     </script>
-    <style>
+    <style is:global>
         .hero-critical {
             display: flex;
             align-items: center;
@@ -739,6 +739,14 @@ import Layout from '../layouts/Layout.astro';
             overflow: hidden;
             position: relative;
             background-color: var(--color-bg);
+        }
+
+        /* En light mode, los overlays decorativos amarillos manchan la experiencia.
+           Brand: gris plano + acento amarillo solo en CTAs/identidad. */
+        [data-theme="light"] .hero-radial,
+        [data-theme="light"] #networkCanvas,
+        [data-theme="light"] .decorative-glow {
+            display: none;
         }
 
         .h1-critical {

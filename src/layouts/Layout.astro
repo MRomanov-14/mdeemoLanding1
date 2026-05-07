@@ -26,7 +26,7 @@ import "@fontsource/outfit/900.css";
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
-        <meta name="theme-color" content="#030303" />
+        <meta name="theme-color" content={forcedTheme === "light" ? "#e9e9ec" : "#030303"} />
         <title>{title}</title>
         <meta name="description" content={description || "Click Operaciones Logísticas"} />
         <meta name="description" content={description || "Click Operaciones Logísticas"} />
@@ -48,17 +48,17 @@ import "@fontsource/outfit/900.css";
             }
 
             [data-theme="light"] {
-                --color-bg: #ffffff;
-                --color-text: #000000;
-                --color-surface: #f3f4f6;
-                --navbar-bg: rgba(255, 255, 255, 0.95);
-                --color-text-muted: #4b5563; /* gray-600 */
-                --color-border: rgba(0, 0, 0, 0.1);
-                --color-card-bg: rgba(0, 0, 0, 0.05);
-                --color-input-bg: rgba(243, 244, 246, 0.8);
-                --gradient-from: #c27803;
-                --gradient-via: #eab308;
-                --gradient-to: #c27803;
+                --color-bg: #e9e9ec;          /* Gris marcado de marca — separa claramente del blanco */
+                --color-text: #0a0a0a;        /* Click Black — autoridad, contraste base */
+                --color-surface: #ffffff;     /* Click White puro — tarjetas elevadas */
+                --navbar-bg: rgba(255, 255, 255, 0.85);
+                --color-text-muted: #71717a;  /* Zinc 500 — secundario suave como en brand */
+                --color-border: rgba(10, 10, 10, 0.10);
+                --color-card-bg: #ffffff;     /* Tarjetas blancas sobre fondo gris */
+                --color-input-bg: #ffffff;
+                --gradient-from: #ca8a04;     /* Yellow 600 — legibilidad sobre claro */
+                --gradient-via: #eab308;      /* Click Yellow — identidad */
+                --gradient-to: #ca8a04;
             }
 
             body {
@@ -92,7 +92,7 @@ import "@fontsource/outfit/900.css";
         <!-- Preloader -->
         <div
             id="preloader"
-            style="position: fixed; inset: 0; z-index: 9999; background-color: #030303; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.05s ease-out;"
+            style={`position: fixed; inset: 0; z-index: 9999; background-color: ${forcedTheme === "light" ? "#e9e9ec" : "#030303"}; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.05s ease-out;`}
         >
             <div
                 class="animate-pulse"
@@ -104,7 +104,7 @@ import "@fontsource/outfit/900.css";
                 >
             </div>
             <div
-                style="width: 120px; height: 2px; background: rgba(255,255,255,0.1); border-radius: 99px; overflow: hidden;"
+                style={`width: 120px; height: 2px; background: ${forcedTheme === "light" ? "rgba(10,10,10,0.1)" : "rgba(255,255,255,0.1)"}; border-radius: 99px; overflow: hidden;`}
             >
                 <div
                     style="width: 50%; height: 100%; background: #EAB308; animation: loading 0.5s infinite ease-in-out;"
