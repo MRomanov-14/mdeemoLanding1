@@ -23,12 +23,10 @@ import Layout from "../../layouts/Layout.astro";
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <!-- Left Content -->
                 <div class="max-w-xl">
-                    <div
-                        class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-brand-primary/10 border border-brand-primary/30 text-brand-primary font-semibold mb-8 shadow-[0_0_20px_rgba(234,179,8,0.15)]"
-                    >
-                        <span
-                            class="w-2.5 h-2.5 rounded-full bg-brand-primary animate-pulse"
-                        ></span>
+                    <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-[var(--color-text)] text-[var(--color-surface)] font-bold mb-8 text-sm md:text-base shadow-xl border border-[var(--color-text)]">
+                        <div class="bg-brand-primary text-black w-8 h-8 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
                         Talento de Élite a tu Disposición
                     </div>
 
@@ -64,7 +62,7 @@ import Layout from "../../layouts/Layout.astro";
                 <div class="relative w-full mx-auto lg:max-w-none">
                     <!-- Glow effect behind image -->
                     <div
-                        class="absolute inset-0 bg-brand-primary/20 blur-[80px] rounded-full scale-90 -z-10"
+                        class="hidden absolute inset-0 bg-brand-primary/20 blur-[80px] rounded-full scale-90 -z-10"
                     >
                     </div>
 
@@ -114,7 +112,7 @@ import Layout from "../../layouts/Layout.astro";
                     class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 hover:border-brand-primary/50 transition-colors group relative overflow-hidden shadow-lg"
                 >
                     <div
-                        class="absolute -top-10 -right-10 w-40 h-40 bg-brand-primary/5 rounded-full blur-[40px] group-hover:bg-brand-primary/20 transition-colors duration-500 pointer-events-none"
+                        class="hidden absolute -top-10 -right-10 w-40 h-40 bg-brand-primary/5 rounded-full blur-[40px] group-hover:bg-brand-primary/20 transition-colors duration-500 pointer-events-none"
                     >
                     </div>
                     <div
@@ -139,7 +137,7 @@ import Layout from "../../layouts/Layout.astro";
                     class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 hover:border-brand-primary/50 transition-colors group relative overflow-hidden shadow-lg"
                 >
                     <div
-                        class="absolute -top-10 -right-10 w-40 h-40 bg-brand-primary/5 rounded-full blur-[40px] group-hover:bg-brand-primary/20 transition-colors duration-500 pointer-events-none"
+                        class="hidden absolute -top-10 -right-10 w-40 h-40 bg-brand-primary/5 rounded-full blur-[40px] group-hover:bg-brand-primary/20 transition-colors duration-500 pointer-events-none"
                     >
                     </div>
                     <div
@@ -164,7 +162,7 @@ import Layout from "../../layouts/Layout.astro";
                     class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 hover:border-brand-primary/50 transition-colors group relative overflow-hidden shadow-lg"
                 >
                     <div
-                        class="absolute -top-10 -right-10 w-40 h-40 bg-brand-primary/5 rounded-full blur-[40px] group-hover:bg-brand-primary/20 transition-colors duration-500 pointer-events-none"
+                        class="hidden absolute -top-10 -right-10 w-40 h-40 bg-brand-primary/5 rounded-full blur-[40px] group-hover:bg-brand-primary/20 transition-colors duration-500 pointer-events-none"
                     >
                     </div>
                     <div
@@ -189,7 +187,7 @@ import Layout from "../../layouts/Layout.astro";
                     class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 hover:border-brand-primary/50 transition-colors group relative overflow-hidden shadow-lg"
                 >
                     <div
-                        class="absolute -top-10 -right-10 w-40 h-40 bg-brand-primary/5 rounded-full blur-[40px] group-hover:bg-brand-primary/20 transition-colors duration-500 pointer-events-none"
+                        class="hidden absolute -top-10 -right-10 w-40 h-40 bg-brand-primary/5 rounded-full blur-[40px] group-hover:bg-brand-primary/20 transition-colors duration-500 pointer-events-none"
                     >
                     </div>
                     <div
@@ -214,359 +212,245 @@ import Layout from "../../layouts/Layout.astro";
     </section>
 
     <!-- EL PROCESO (TIMELINE) SECTION -->
-    <section class="py-32 bg-[var(--color-bg)] relative overflow-hidden">
-        <!-- Background accents -->
-        <div
-            class="absolute top-1/2 left-0 w-[500px] h-[500px] -translate-y-1/2 -translate-x-1/2 bg-brand-primary/5 blur-[120px] rounded-full pointer-events-none"
-        >
-        </div>
-        <div
-            class="absolute bottom-0 right-0 w-[500px] h-[500px] translate-x-1/3 translate-y-1/3 bg-brand-primary/5 blur-[120px] rounded-full pointer-events-none"
-        >
-        </div>
-
+    <section class="py-24 bg-[var(--color-bg)] relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <h3
-                class="text-4xl md:text-5xl font-black mb-20 text-center text-[var(--color-text)] font-[Outfit] tracking-tight"
-            >
-                El Proceso <span class="text-brand-primary">Paso a Paso</span>
-            </h3>
+            <div class="text-center mb-16 md:mb-20">
+                <h3 class="text-4xl md:text-5xl font-black text-[var(--color-text)] font-[Outfit] tracking-tight">
+                    El Proceso <span class="text-brand-primary">Paso a Paso</span>
+                </h3>
+            </div>
 
-            <!-- Timeline Container -->
-            <div
-                class="relative space-y-6 md:space-y-12 before:absolute before:inset-0 before:ml-8 md:before:ml-[50%] before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-brand-primary before:via-brand-primary/20 before:to-transparent"
-            >
-                <!-- Step 1 -->
+            <!-- Mobile Timeline (hidden on md) -->
+            <div class="md:hidden relative space-y-8 before:absolute before:inset-0 before:ml-8 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-brand-primary before:via-brand-primary/40 before:to-transparent">
+                <!-- Step 1 Mobile -->
                 <div class="relative flex items-center group">
-                    <div class="hidden md:block w-1/2 pr-16 text-right">
-                        <h4
-                            class="text-2xl font-bold text-[var(--color-text)] mb-3"
-                        >
-                            <span class="text-brand-primary text-sm mr-3"
-                                >1.</span
-                            >Plataforma OPL
-                        </h4>
-                        <p
-                            class="text-base text-[var(--color-text-muted)] leading-relaxed"
-                        >
-                            Recepción de requerimientos y despliegue de
-                            plataforma para seguimiento diario en tiempo real.
-                        </p>
-                    </div>
-                    <div
-                        class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-[var(--color-surface)] bg-[var(--color-bg)] group-hover:border-brand-primary shadow-[0_0_20px_rgba(234,179,8,0.2)] z-10 transition-all duration-500"
-                    >
-                        <div
-                            class="absolute inset-0 bg-brand-primary/10 rounded-full group-hover:scale-125 transition-transform duration-500"
-                        >
-                        </div>
-                        <svg
-                            class="w-6 h-6 md:w-8 md:h-8 text-brand-primary relative z-20"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.5"
-                                d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-                            ></path>
-                            <path
-                                class="animate-[pulse_1.5s_infinite]"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M12 11v6m0 0l-3-3m3 3l3-3"></path>
+                    <div class="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full border-4 border-[var(--color-surface)] bg-brand-primary shadow-lg z-10 relative">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+                            <path class="animate-pulse" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11v6m0 0l-3-3m3 3l3-3"></path>
                         </svg>
                     </div>
-                    <div
-                        class="w-full ml-[4.5rem] md:ml-0 md:w-1/2 md:pl-16 text-left md:hidden bg-[var(--color-surface)] md:bg-transparent p-6 md:p-0 rounded-2xl border border-[var(--color-border)] md:border-none shadow-md md:shadow-none"
-                    >
-                        <h4
-                            class="text-xl font-bold text-[var(--color-text)] mb-2"
-                        >
-                            <span class="text-brand-primary text-sm mr-2"
-                                >1.</span
-                            >Plataforma OPL
+                    <div class="ml-6 bg-[var(--color-surface)] p-5 rounded-2xl border border-[var(--color-border)] shadow-sm w-full">
+                        <h4 class="text-lg font-bold text-[var(--color-text)] mb-1">
+                            <span class="text-brand-primary mr-2">1.</span>Plataforma OPL
                         </h4>
-                        <p
-                            class="text-sm text-[var(--color-text-muted)] leading-relaxed"
-                        >
-                            Recepción de requerimientos y despliegue de
-                            plataforma para seguimiento diario en tiempo real.
+                        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
+                            Recepción de requerimientos y despliegue de plataforma para seguimiento diario en tiempo real.
                         </p>
                     </div>
                 </div>
 
-                <!-- Step 2 -->
+                <!-- Step 2 Mobile -->
                 <div class="relative flex items-center group">
-                    <div class="hidden md:block w-1/2 pr-16 text-right"></div>
-                    <div
-                        class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-[var(--color-surface)] bg-[var(--color-bg)] group-hover:border-brand-primary shadow-[0_0_20px_rgba(234,179,8,0.2)] z-10 transition-all duration-500"
-                    >
-                        <div
-                            class="absolute inset-0 bg-brand-primary/10 rounded-full group-hover:scale-125 transition-transform duration-500"
-                        >
-                        </div>
-                        <svg
-                            class="w-6 h-6 md:w-8 md:h-8 text-brand-primary relative z-20"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.5"
-                                d="M17 20h5V16a3 3 0 00-3-3h-2M9 20H4V16a3 3 0 013-3h2"
-                            ></path>
-                            <circle
-                                cx="12"
-                                cy="7"
-                                r="4"
-                                class="animate-pulse"
-                                stroke-width="2"></circle>
-                            <path
-                                class="animate-[pulse_1.5s_infinite]"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M12 14v6m-3-3h6"></path>
+                    <div class="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full border-4 border-[var(--color-surface)] bg-brand-primary shadow-lg z-10 relative">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5V16a3 3 0 00-3-3h-2M9 20H4V16a3 3 0 013-3h2"></path>
+                            <circle cx="12" cy="7" r="3" class="animate-pulse" stroke-width="2"></circle>
+                            <path class="animate-pulse" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v6m-3-3h6"></path>
                         </svg>
                     </div>
-                    <div
-                        class="w-full ml-[4.5rem] md:ml-[50%] md:pl-16 text-left bg-[var(--color-surface)] md:bg-transparent p-6 md:p-0 rounded-2xl border border-[var(--color-border)] md:border-none shadow-md md:shadow-none"
-                    >
-                        <h4
-                            class="text-xl md:text-2xl font-bold text-[var(--color-text)] mb-3"
-                        >
-                            <span class="text-brand-primary text-sm mr-3"
-                                >2.</span
-                            >Reclutamiento Guiado
+                    <div class="ml-6 bg-[var(--color-surface)] p-5 rounded-2xl border border-[var(--color-border)] shadow-sm w-full">
+                        <h4 class="text-lg font-bold text-[var(--color-text)] mb-1">
+                            <span class="text-brand-primary mr-2">2.</span>Reclutamiento Guiado
                         </h4>
-                        <p
-                            class="text-base text-[var(--color-text-muted)] leading-relaxed"
-                        >
-                            Reclutamiento guiado y asignación inmediata desde
-                            nuestra selecta bolsa de talento activa disponible.
+                        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
+                            Reclutamiento guiado y asignación inmediata desde nuestra selecta bolsa de talento activa disponible.
                         </p>
                     </div>
                 </div>
 
-                <!-- Step 3 -->
+                <!-- Step 3 Mobile -->
                 <div class="relative flex items-center group">
-                    <div class="hidden md:block w-1/2 pr-16 text-right">
-                        <h4
-                            class="text-2xl font-bold text-[var(--color-text)] mb-3"
-                        >
-                            <span class="text-brand-primary text-sm mr-3"
-                                >3.</span
-                            >App Clicker
-                        </h4>
-                        <p
-                            class="text-base text-[var(--color-text-muted)] leading-relaxed"
-                        >
-                            Asignación de aplicación móvil nativa para notificar
-                            turnos y roles a los colaboradores de inmediato.
-                        </p>
-                    </div>
-                    <div
-                        class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-[var(--color-surface)] bg-[var(--color-bg)] group-hover:border-brand-primary shadow-[0_0_20px_rgba(234,179,8,0.2)] z-10 transition-all duration-500"
-                    >
-                        <div
-                            class="absolute inset-0 bg-brand-primary/10 rounded-full group-hover:scale-125 transition-transform duration-500"
-                        >
-                        </div>
-                        <svg
-                            class="w-6 h-6 md:w-8 md:h-8 text-brand-primary relative z-20"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <rect
-                                x="5"
-                                y="2"
-                                width="14"
-                                height="20"
-                                rx="2"
-                                stroke-width="1.5"></rect>
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.5"
-                                d="M12 18h.01"></path>
-                            <circle
-                                cx="16"
-                                cy="6"
-                                r="3"
-                                fill="currentColor"
-                                class="animate-[ping_2s_infinite]"></circle>
+                    <div class="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full border-4 border-[var(--color-surface)] bg-brand-primary shadow-lg z-10 relative">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <rect x="5" y="2" width="14" height="20" rx="2" stroke-width="2"></rect>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01"></path>
+                            <circle cx="16" cy="6" r="2" fill="currentColor" class="animate-ping"></circle>
                         </svg>
                     </div>
-                    <div
-                        class="w-full ml-[4.5rem] md:ml-0 md:w-1/2 md:pl-16 text-left md:hidden bg-[var(--color-surface)] md:bg-transparent p-6 md:p-0 rounded-2xl border border-[var(--color-border)] md:border-none shadow-md md:shadow-none"
-                    >
-                        <h4
-                            class="text-xl font-bold text-[var(--color-text)] mb-2"
-                        >
-                            <span class="text-brand-primary text-sm mr-2"
-                                >3.</span
-                            >App Clicker
+                    <div class="ml-6 bg-[var(--color-surface)] p-5 rounded-2xl border border-[var(--color-border)] shadow-sm w-full">
+                        <h4 class="text-lg font-bold text-[var(--color-text)] mb-1">
+                            <span class="text-brand-primary mr-2">3.</span>App Clicker
                         </h4>
-                        <p
-                            class="text-sm text-[var(--color-text-muted)] leading-relaxed"
-                        >
-                            Asignación de aplicación móvil para notificar turnos
-                            de inmediato a los colaboradores.
+                        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
+                            Asignación de aplicación móvil para notificar turnos de inmediato a los colaboradores.
                         </p>
                     </div>
                 </div>
 
-                <!-- Step 4 -->
+                <!-- Step 4 Mobile -->
                 <div class="relative flex items-center group">
-                    <div class="hidden md:block w-1/2 pr-16 text-right"></div>
-                    <div
-                        class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-[var(--color-surface)] bg-[var(--color-bg)] group-hover:border-brand-primary shadow-[0_0_20px_rgba(234,179,8,0.2)] z-10 transition-all duration-500"
-                    >
-                        <div
-                            class="absolute inset-0 bg-brand-primary/10 rounded-full group-hover:scale-125 transition-transform duration-500"
-                        >
-                        </div>
-                        <svg
-                            class="w-6 h-6 md:w-8 md:h-8 text-brand-primary relative z-20"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                class="animate-[spin_4s_linear_infinite] origin-center"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.5"
-                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                            ></path>
-                            <circle
-                                cx="12"
-                                cy="12"
-                                r="3"
-                                stroke-width="1.5"
-                                class="animate-pulse"></circle>
+                    <div class="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full border-4 border-[var(--color-surface)] bg-brand-primary shadow-lg z-10 relative">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path class="animate-[spin_4s_linear_infinite] origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                            <circle cx="12" cy="12" r="3" stroke-width="2"></circle>
                         </svg>
                     </div>
-                    <div
-                        class="w-full ml-[4.5rem] md:ml-[50%] md:pl-16 text-left bg-[var(--color-surface)] md:bg-transparent p-6 md:p-0 rounded-2xl border border-[var(--color-border)] md:border-none shadow-md md:shadow-none"
-                    >
-                        <h4
-                            class="text-xl md:text-2xl font-bold text-[var(--color-text)] mb-3"
-                        >
-                            <span class="text-brand-primary text-sm mr-3"
-                                >4.</span
-                            >Operación Adaptable
+                    <div class="ml-6 bg-[var(--color-surface)] p-5 rounded-2xl border border-[var(--color-border)] shadow-sm w-full">
+                        <h4 class="text-lg font-bold text-[var(--color-text)] mb-1">
+                            <span class="text-brand-primary mr-2">4.</span>Operación Adaptable
                         </h4>
-                        <p
-                            class="text-base text-[var(--color-text-muted)] leading-relaxed"
-                        >
-                            Fase de operación táctica bajo demanda a la medida
-                            de la necesidad y del estándar operativo esperado.
+                        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
+                            Fase de operación táctica bajo demanda a la medida de la necesidad y del estándar operativo esperado.
                         </p>
                     </div>
                 </div>
 
-                <!-- Step 5 -->
+                <!-- Step 5 Mobile -->
                 <div class="relative flex items-center group">
-                    <div class="hidden md:block w-1/2 pr-16 text-right">
-                        <h4
-                            class="text-2xl font-bold text-[var(--color-text)] mb-3"
-                        >
-                            <span class="text-brand-primary text-sm mr-3"
-                                >5.</span
-                            >Mejora Continua
-                        </h4>
-                        <p
-                            class="text-base text-[var(--color-text-muted)] leading-relaxed"
-                        >
-                            Monitoreo continuo en sitio, recolección analítica
-                            de métricas y loops de retroalimentación.
-                        </p>
-                    </div>
-                    <div
-                        class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-[var(--color-surface)] bg-[var(--color-bg)] group-hover:border-brand-primary shadow-[0_0_20px_rgba(234,179,8,0.2)] z-10 transition-all duration-500"
-                    >
-                        <div
-                            class="absolute inset-0 bg-brand-primary/10 rounded-full group-hover:scale-125 transition-transform duration-500"
-                        >
-                        </div>
-                        <svg
-                            class="w-6 h-6 md:w-8 md:h-8 text-brand-primary relative z-20 flex"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <line
-                                x1="12"
-                                y1="20"
-                                x2="12"
-                                y2="10"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                class="animate-[pulse_1s_infinite]"></line>
-                            <line
-                                x1="18"
-                                y1="20"
-                                x2="18"
-                                y2="4"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                class="animate-[pulse_1.5s_infinite]"></line>
-                            <line
-                                x1="6"
-                                y1="20"
-                                x2="6"
-                                y2="14"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                class="animate-[pulse_2s_infinite]"></line>
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.5"
-                                d="M3 21h18"></path>
+                    <div class="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full border-4 border-[var(--color-surface)] bg-brand-primary shadow-lg z-10 relative">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <line x1="12" y1="20" x2="12" y2="10" stroke-width="2" stroke-linecap="round" class="animate-pulse"></line>
+                            <line x1="18" y1="20" x2="18" y2="4" stroke-width="2" stroke-linecap="round" class="animate-[pulse_1.5s_infinite]"></line>
+                            <line x1="6" y1="20" x2="6" y2="14" stroke-width="2" stroke-linecap="round" class="animate-[pulse_2s_infinite]"></line>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18"></path>
                         </svg>
                     </div>
-                    <div
-                        class="w-full ml-[4.5rem] md:ml-0 md:w-1/2 md:pl-16 text-left md:hidden bg-[var(--color-surface)] md:bg-transparent p-6 md:p-0 rounded-2xl border border-[var(--color-border)] md:border-none shadow-md md:shadow-none"
-                    >
-                        <h4
-                            class="text-xl font-bold text-[var(--color-text)] mb-2"
-                        >
-                            <span class="text-brand-primary text-sm mr-2"
-                                >5.</span
-                            >Mejora Continua
+                    <div class="ml-6 bg-[var(--color-surface)] p-5 rounded-2xl border border-[var(--color-border)] shadow-sm w-full">
+                        <h4 class="text-lg font-bold text-[var(--color-text)] mb-1">
+                            <span class="text-brand-primary mr-2">5.</span>Mejora Continua
                         </h4>
-                        <p
-                            class="text-sm text-[var(--color-text-muted)] leading-relaxed"
-                        >
-                            Monitoreo continuo en sitio, recolección analítica
-                            de métricas y loops de retroalimentación.
+                        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
+                            Monitoreo continuo en sitio, recolección analítica de métricas y loops de retroalimentación.
                         </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop Timeline (hidden on mobile) -->
+            <div class="hidden md:block relative mt-20 mb-10">
+                <!-- Horizontal Line -->
+                <div class="absolute top-1/2 -translate-y-1/2 left-0 w-full h-1 bg-gradient-to-r from-brand-primary/20 via-brand-primary to-brand-primary/20 rounded-full"></div>
+
+                <div class="grid grid-cols-5 gap-6">
+                    
+                    <!-- Step 1 (Text UP) -->
+                    <div class="flex flex-col items-center justify-between h-[320px] group">
+                        <!-- Text Top -->
+                        <div class="text-center px-2 h-[120px] flex flex-col justify-end pb-6 opacity-80 group-hover:opacity-100 transition-opacity">
+                            <span class="text-brand-primary font-bold text-sm uppercase tracking-wider mb-2">Paso 1</span>
+                            <h4 class="text-xl font-bold text-[var(--color-text)] mb-2 leading-tight">Plataforma OPL</h4>
+                            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Recepción de requerimientos y despliegue de plataforma en tiempo real.</p>
+                        </div>
+                        
+                        <!-- Icon Center -->
+                        <div class="w-20 h-20 rounded-full border-4 border-[var(--color-surface)] bg-brand-primary shadow-xl flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+                                <path class="animate-pulse" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11v6m0 0l-3-3m3 3l3-3"></path>
+                            </svg>
+                        </div>
+                        
+                        <!-- Empty Bottom -->
+                        <div class="h-[120px]"></div>
+                    </div>
+
+                    <!-- Step 2 (Text DOWN) -->
+                    <div class="flex flex-col items-center justify-between h-[320px] group">
+                        <!-- Empty Top -->
+                        <div class="h-[120px]"></div>
+                        
+                        <!-- Icon Center -->
+                        <div class="w-20 h-20 rounded-full border-4 border-[var(--color-surface)] bg-brand-primary shadow-xl flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5V16a3 3 0 00-3-3h-2M9 20H4V16a3 3 0 013-3h2"></path>
+                                <circle cx="12" cy="7" r="3" class="animate-pulse" stroke-width="2"></circle>
+                                <path class="animate-pulse" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v6m-3-3h6"></path>
+                            </svg>
+                        </div>
+                        
+                        <!-- Text Bottom -->
+                        <div class="text-center px-2 h-[120px] flex flex-col justify-start pt-6 opacity-80 group-hover:opacity-100 transition-opacity">
+                            <span class="text-brand-primary font-bold text-sm uppercase tracking-wider mb-2">Paso 2</span>
+                            <h4 class="text-xl font-bold text-[var(--color-text)] mb-2 leading-tight">Reclutamiento Guiado</h4>
+                            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Asignación inmediata desde nuestra selecta bolsa de talento activa disponible.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 (Text UP) -->
+                    <div class="flex flex-col items-center justify-between h-[320px] group">
+                        <!-- Text Top -->
+                        <div class="text-center px-2 h-[120px] flex flex-col justify-end pb-6 opacity-80 group-hover:opacity-100 transition-opacity">
+                            <span class="text-brand-primary font-bold text-sm uppercase tracking-wider mb-2">Paso 3</span>
+                            <h4 class="text-xl font-bold text-[var(--color-text)] mb-2 leading-tight">App Clicker</h4>
+                            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Aplicación móvil nativa para notificar turnos y roles a los colaboradores.</p>
+                        </div>
+                        
+                        <!-- Icon Center -->
+                        <div class="w-20 h-20 rounded-full border-4 border-[var(--color-surface)] bg-brand-primary shadow-xl flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="5" y="2" width="14" height="20" rx="2" stroke-width="2"></rect>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01"></path>
+                                <circle cx="16" cy="6" r="2" fill="currentColor" class="animate-ping"></circle>
+                            </svg>
+                        </div>
+                        
+                        <!-- Empty Bottom -->
+                        <div class="h-[120px]"></div>
+                    </div>
+
+                    <!-- Step 4 (Text DOWN) -->
+                    <div class="flex flex-col items-center justify-between h-[320px] group">
+                        <!-- Empty Top -->
+                        <div class="h-[120px]"></div>
+                        
+                        <!-- Icon Center -->
+                        <div class="w-20 h-20 rounded-full border-4 border-[var(--color-surface)] bg-brand-primary shadow-xl flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path class="animate-[spin_4s_linear_infinite] origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                <circle cx="12" cy="12" r="3" stroke-width="2"></circle>
+                            </svg>
+                        </div>
+                        
+                        <!-- Text Bottom -->
+                        <div class="text-center px-2 h-[120px] flex flex-col justify-start pt-6 opacity-80 group-hover:opacity-100 transition-opacity">
+                            <span class="text-brand-primary font-bold text-sm uppercase tracking-wider mb-2">Paso 4</span>
+                            <h4 class="text-xl font-bold text-[var(--color-text)] mb-2 leading-tight">Operación Adaptable</h4>
+                            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Fase de operación táctica bajo demanda a la medida de la necesidad esperada.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 (Text UP) -->
+                    <div class="flex flex-col items-center justify-between h-[320px] group">
+                        <!-- Text Top -->
+                        <div class="text-center px-2 h-[120px] flex flex-col justify-end pb-6 opacity-80 group-hover:opacity-100 transition-opacity">
+                            <span class="text-brand-primary font-bold text-sm uppercase tracking-wider mb-2">Paso 5</span>
+                            <h4 class="text-xl font-bold text-[var(--color-text)] mb-2 leading-tight">Mejora Continua</h4>
+                            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Monitoreo continuo en sitio, recolección analítica de métricas y retroalimentación.</p>
+                        </div>
+                        
+                        <!-- Icon Center -->
+                        <div class="w-20 h-20 rounded-full border-4 border-[var(--color-surface)] bg-brand-primary shadow-xl flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-black relative z-20 flex" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <line x1="12" y1="20" x2="12" y2="10" stroke-width="2" stroke-linecap="round" class="animate-pulse"></line>
+                                <line x1="18" y1="20" x2="18" y2="4" stroke-width="2" stroke-linecap="round" class="animate-[pulse_1.5s_infinite]"></line>
+                                <line x1="6" y1="20" x2="6" y2="14" stroke-width="2" stroke-linecap="round" class="animate-[pulse_2s_infinite]"></line>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18"></path>
+                            </svg>
+                        </div>
+                        
+                        <!-- Empty Bottom -->
+                        <div class="h-[120px]"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- PLATAFORMA TECNOLÓGICA SECTION -->
     <section class="py-32 bg-[var(--color-bg)] relative overflow-hidden border-t border-[var(--color-border)]">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-primary/5 via-transparent to-transparent pointer-events-none"></div>
+        <div class="hidden absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-primary/5 via-transparent to-transparent pointer-events-none"></div>
         
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center flex-col-reverse lg:flex-row">
                 
                 <!-- Left Text Content -->
                 <div class="max-w-xl order-last lg:order-first mt-8 lg:mt-0">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-semibold mb-6 md:mb-8 text-sm md:text-base">
-                        <i class="fa-solid fa-mobile-screen"></i> Portal Cliente Exclusivo
+                    <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-[var(--color-text)] text-[var(--color-surface)] font-bold mb-6 md:mb-8 text-sm md:text-base shadow-xl border border-[var(--color-text)]">
+                        <div class="bg-brand-primary text-black w-8 h-8 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                        </div>
+                        Portal Cliente Exclusivo
                     </div>
                     
                     <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-[var(--color-text)] mb-4 md:mb-6 font-[Outfit] tracking-tight leading-[1.15]">
@@ -579,19 +463,19 @@ import Layout from "../../layouts/Layout.astro";
                     
                     <ul class="space-y-4 md:space-y-6 mb-8 md:mb-10">
                         <li class="flex items-start gap-4">
-                            <div class="mt-1 w-10 h-10 md:w-8 md:h-8 rounded-full bg-brand-primary/20 flex items-center justify-center flex-shrink-0 text-brand-primary">
+                            <div class="mt-1 w-10 h-10 md:w-8 md:h-8 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] shadow-sm flex items-center justify-center flex-shrink-0 text-brand-primary">
                                 <i class="fa-solid fa-chart-line text-sm md:text-base"></i>
                             </div>
                             <p class="text-base md:text-lg text-[var(--color-text-muted)] leading-tight md:leading-normal"><strong class="text-[var(--color-text)] block mb-1">Dashboard de Cumplimiento</strong> Visualiza tasas de asistencia y eficiencia diaria sin intermediarios.</p>
                         </li>
                         <li class="flex items-start gap-4">
-                            <div class="mt-1 w-10 h-10 md:w-8 md:h-8 rounded-full bg-brand-primary/20 flex items-center justify-center flex-shrink-0 text-brand-primary">
+                            <div class="mt-1 w-10 h-10 md:w-8 md:h-8 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] shadow-sm flex items-center justify-center flex-shrink-0 text-brand-primary">
                                 <i class="fa-solid fa-user-plus text-sm md:text-base"></i>
                             </div>
                             <p class="text-base md:text-lg text-[var(--color-text-muted)] leading-tight md:leading-normal"><strong class="text-[var(--color-text)] block mb-1">Solicitudes Inmediatas</strong> Pide nuevo talento operativo directamente desde la App con plantillas.</p>
                         </li>
                         <li class="flex items-start gap-4">
-                            <div class="mt-1 w-10 h-10 md:w-8 md:h-8 rounded-full bg-brand-primary/20 flex items-center justify-center flex-shrink-0 text-brand-primary">
+                            <div class="mt-1 w-10 h-10 md:w-8 md:h-8 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] shadow-sm flex items-center justify-center flex-shrink-0 text-brand-primary">
                                 <i class="fa-solid fa-clock-rotate-left text-sm md:text-base"></i>
                             </div>
                             <p class="text-base md:text-lg text-[var(--color-text-muted)] leading-tight md:leading-normal"><strong class="text-[var(--color-text)] block mb-1">Histórico Operativo</strong> Analiza tendencias semanales o mensuales con gráficas en todas tus sedes.</p>
@@ -609,7 +493,7 @@ import Layout from "../../layouts/Layout.astro";
                 <!-- Right Mockups -->
                 <div class="relative w-full h-[280px] sm:h-[400px] lg:aspect-[4/3] order-first lg:order-last mx-auto max-w-[500px] lg:max-w-none mt-8 lg:mt-0">
                     <!-- Glowing backdrop -->
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[80%] h-[90%] md:h-[80%] bg-brand-primary/20 blur-[60px] md:blur-[100px] rounded-full pointer-events-none -z-10"></div>
+                    <div class="hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[80%] h-[90%] md:h-[80%] bg-brand-primary/20 blur-[60px] md:blur-[100px] rounded-full pointer-events-none -z-10"></div>
                     
                     <div class="relative w-full h-full group">
                         <!-- Desktop Mockup (Dashboard) -->

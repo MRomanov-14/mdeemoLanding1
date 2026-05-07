@@ -48,17 +48,17 @@ import "@fontsource/outfit/900.css";
             }
 
             [data-theme="light"] {
-                --color-bg: #ffffff;
-                --color-text: #000000;
-                --color-surface: #f3f4f6;
-                --navbar-bg: rgba(255, 255, 255, 0.95);
-                --color-text-muted: #4b5563; /* gray-600 */
-                --color-border: rgba(0, 0, 0, 0.1);
-                --color-card-bg: rgba(0, 0, 0, 0.05);
-                --color-input-bg: rgba(243, 244, 246, 0.8);
-                --gradient-from: #c27803;
+                --color-bg: #e9e9ec;
+                --color-text: #0a0a0a;
+                --color-surface: #ffffff;
+                --navbar-bg: rgba(255, 255, 255, 0.90);
+                --color-text-muted: #71717a; /* Zinc 500 */
+                --color-border: rgba(10, 10, 10, 0.10);
+                --color-card-bg: #ffffff;
+                --color-input-bg: rgba(233, 233, 236, 0.8);
+                --gradient-from: #eab308;
                 --gradient-via: #eab308;
-                --gradient-to: #c27803;
+                --gradient-to: #eab308;
             }
 
             body {
@@ -92,7 +92,7 @@ import "@fontsource/outfit/900.css";
         <!-- Preloader -->
         <div
             id="preloader"
-            style="position: fixed; inset: 0; z-index: 9999; background-color: #030303; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.05s ease-out;"
+            style="position: fixed; inset: 0; z-index: 9999; background-color: var(--color-bg); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.05s ease-out;"
         >
             <div
                 class="animate-pulse"
@@ -505,9 +505,9 @@ import "@fontsource/outfit/900.css";
             const html = document.documentElement;
 
             // Initialize
-            let currentTheme = forcedTheme;
+            let currentTheme = forcedTheme || "light";
             if (!currentTheme) {
-                currentTheme = localStorage.getItem("theme") || "dark";
+                currentTheme = localStorage.getItem("theme") || "light";
             }
 
             html.setAttribute("data-theme", currentTheme);
