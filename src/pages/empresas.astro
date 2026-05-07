@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Click Operaciones Logísticas | Soluciones Empresariales" description="Encuentra el mejor talento para tu empresa con Click Operaciones Logísticas. Especialistas en reclutamiento y posicionamiento de personal operativo." >
     <!-- Hero Section -->
     <section
-        class="hero-critical relative min-h-[80vh] flex flex-col justify-start items-center overflow-hidden bg-[var(--color-bg)] pt-48 pb-20">
+        class="hero-critical relative flex flex-col justify-start items-center overflow-hidden bg-[var(--color-bg)] pt-24 pb-2">
         <!-- Background Grid -->
         <div
             class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-20 pointer-events-none">
@@ -18,19 +18,19 @@ import Layout from '../layouts/Layout.astro';
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 text-center text-[var(--color-text)]">
             <div
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-sm font-semibold mb-8 animate-float backdrop-blur-md">
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-text)] border border-[var(--color-text)] text-[var(--color-surface)] shadow-lg text-sm font-semibold mb-8 animate-float backdrop-blur-md">
                 <span class="w-2 h-2 rounded-full bg-brand-primary animate-pulse"></span>
                 Soluciones B2B de Alto Impacto
             </div>
 
             <h1
-                class="h1-critical text-4xl md:text-7xl font-black tracking-tight text-[var(--color-text)] mb-6 leading-tight font-[Outfit]">
+                class="h1-critical text-4xl md:text-6xl font-black tracking-tight text-[var(--color-text)] mb-4 leading-tight font-[Outfit]">
                 EL TALENTO QUE<br />
                 <span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-brand-primary/60 to-brand-primary">IMPULSA TU ÉXITO</span>
+                    class="text-brand-primary">IMPULSA TU ÉXITO</span>
             </h1>
 
-            <p class="p-critical mt-4 max-w-2xl mx-auto text-lg md:text-xl text-[var(--color-text-muted)] font-light leading-relaxed mb-8">
+            <p class="p-critical mt-2 max-w-2xl mx-auto text-lg text-[var(--color-text-muted)] font-light leading-relaxed mb-4">
                 Conectamos tu operación con el <span class="text-[var(--color-text)] font-semibold">mejor capital humano</span> del país. Gestión inteligente para empresas que no se detienen.
             </p>
 
@@ -48,8 +48,8 @@ import Layout from '../layouts/Layout.astro';
     </section>
 
     <!-- Social Proof Ticker -->
-    <div class="bg-[var(--color-bg)] py-12 border-y border-[var(--color-border)] overflow-hidden relative">
-        <div class="max-w-7xl mx-auto px-6 mb-8 text-center">
+    <div class="bg-[var(--color-bg)] py-6 border-y border-[var(--color-border)] overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-6 mb-4 text-center">
             <p class="text-sm font-bold text-[var(--color-text-muted)] uppercase tracking-[0.2em]">Empresas que confían en nosotros</p>
         </div>
         <div class="flex overflow-x-hidden group whitespace-nowrap">
@@ -93,7 +93,7 @@ import Layout from '../layouts/Layout.astro';
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Benefit 1 -->
                 <div class="p-8 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/50 transition-all duration-300 group">
-                    <div class="w-14 h-14 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:scale-110 transition-transform">
+                    <div class="w-14 h-14 bg-brand-primary rounded-2xl flex items-center justify-center text-black shadow-md mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-users-viewfinder text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-[var(--color-text)] mb-4">Perfiles Curados</h3>
@@ -101,7 +101,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
                 <!-- Benefit 2 -->
                 <div class="p-8 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/50 transition-all duration-300 group">
-                    <div class="w-14 h-14 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:scale-110 transition-transform">
+                    <div class="w-14 h-14 bg-brand-primary rounded-2xl flex items-center justify-center text-black shadow-md mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-shield-halved text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-[var(--color-text)] mb-4">Respaldo Total</h3>
@@ -109,7 +109,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
                 <!-- Benefit 3 -->
                 <div class="p-8 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/50 transition-all duration-300 group">
-                    <div class="w-14 h-14 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:scale-110 transition-transform">
+                    <div class="w-14 h-14 bg-brand-primary rounded-2xl flex items-center justify-center text-black shadow-md mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-brain text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-[var(--color-text)] mb-4">Inteligencia Operativa</h3>
@@ -317,7 +317,7 @@ import Layout from '../layouts/Layout.astro';
                                     de Vacantes</label>
                                 <div class="relative">
                                     <select id="company-vacancy"
-                                        class="w-full bg-[#1a1a1a] border border-white/10 rounded-xl px-5 py-4 text-white focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all appearance-none cursor-pointer">
+                                        class="w-full bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all appearance-none cursor-pointer shadow-sm">
                                         <option>1 - 5</option>
                                         <option>5 - 20</option>
                                         <option>20 - 50</option>
@@ -334,7 +334,7 @@ import Layout from '../layouts/Layout.astro';
                                     class="text-sm font-medium text-[var(--color-text-muted)] ml-1 uppercase tracking-wide">Ubicación</label>
                                 <div class="relative">
                                     <select id="company-location"
-                                        class="w-full bg-[#1a1a1a] border border-white/10 rounded-xl px-5 py-4 text-white focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all appearance-none cursor-pointer">
+                                        class="w-full bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all appearance-none cursor-pointer shadow-sm">
                                         <option value="" disabled selected>Selecciona Departamento - Ciudad</option>
                                         <option>Amazonas - Leticia</option>
                                         <option>Antioquia - Medellín</option>
@@ -387,8 +387,8 @@ import Layout from '../layouts/Layout.astro';
 
                         <div class="mt-6 flex items-center justify-center gap-2">
                             <input type="checkbox" id="terms-company" required
-                                class="w-5 h-5 rounded border-white/10 bg-[#1a1a1a] text-brand-primary focus:ring-brand-primary/50 focus:ring-offset-0 cursor-pointer">
-                            <label for="terms-company" class="text-sm text-gray-400 select-none cursor-pointer text-center">
+                                class="w-5 h-5 rounded border border-[var(--color-border)] bg-[var(--color-surface)] text-brand-primary focus:ring-brand-primary focus:ring-offset-0 cursor-pointer accent-brand-primary">
+                            <label for="terms-company" class="text-sm text-[var(--color-text-muted)] select-none cursor-pointer text-center">
                                 Acepto los <button type="button" onclick="openTermsModal()"
                                     class="text-brand-primary hover:underline">Términos y
                                     Condiciones</button> y la <a href="/politica" target="_blank"
@@ -397,9 +397,9 @@ import Layout from '../layouts/Layout.astro';
                             </label>
                         </div>
 
-                        <div class="mt-10 flex justify-between items-center pt-6 border-t border-white/5">
+                        <div class="mt-10 flex justify-between items-center pt-6 border-t border-[var(--color-border)]">
                             <button type="button" onclick="prevStep()"
-                                class="px-8 py-4 text-gray-500 hover:text-white transition-colors font-medium flex items-center gap-2">
+                                class="px-8 py-4 text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors font-medium flex items-center gap-2">
                                 <i class="fa-solid fa-chevron-left text-xs"></i> Atrás
                             </button>
                             <button type="submit" onclick="submitForm()"
@@ -421,7 +421,7 @@ import Layout from '../layouts/Layout.astro';
                             requerimiento y te contactará en breve.
                         </p>
                         <button onclick="location.reload()"
-                            class="mt-10 px-8 py-3 text-sm text-brand-primary border border-brand-primary/30 rounded-full hover:bg-brand-primary hover:text-black transition-all font-bold">
+                            class="mt-10 px-8 py-3 text-sm bg-brand-primary text-black rounded-full hover:bg-yellow-400 transition-all font-bold shadow-md hover:scale-105 transform">
                             Volver al inicio
                         </button>
                     </div>

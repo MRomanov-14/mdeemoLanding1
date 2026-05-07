@@ -5,8 +5,8 @@ import Layout from '../../layouts/Layout.astro';
     <section class="py-32 bg-[var(--color-bg)] relative overflow-hidden min-h-screen">
         <div class="hidden absolute top-0 right-0 w-2/3 h-full bg-brand-primary/5 opacity-50 blur-[120px] pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <a href="/servicios" class="inline-flex items-center gap-2 text-[var(--color-text-muted)] hover:text-brand-primary transition-colors mb-12">
-                <i class="fa-solid fa-arrow-left"></i> Volver a Servicios
+            <a href="/servicios" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text)] font-medium mb-10 hover:bg-[var(--color-text)] hover:text-[var(--color-surface)] transition-all group w-fit mt-8 shadow-sm">
+                <i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i> Volver a Servicios
             </a>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -25,21 +25,21 @@ import Layout from '../../layouts/Layout.astro';
                         <h3 class="text-2xl font-bold mb-6">Nuestra Metodología Express</h3>
                         <div class="grid gap-4">
                             <div class="flex items-center gap-6 p-6 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl shadow-sm">
-                                <div class="text-4xl font-black text-brand-primary/20">01</div>
+                                <div class="text-4xl font-black text-brand-primary">01</div>
                                 <div>
                                     <h4 class="text-lg font-bold text-[var(--color-text)]">Visita Técnica</h4>
                                     <p class="text-sm text-[var(--color-text-muted)] mt-1">Relevamiento de la operación en sitio con personal especializado.</p>
                                 </div>
                             </div>
                             <div class="flex items-center gap-6 p-6 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl shadow-sm">
-                                <div class="text-4xl font-black text-brand-primary/20">02</div>
+                                <div class="text-4xl font-black text-brand-primary">02</div>
                                 <div>
                                     <h4 class="text-lg font-bold text-[var(--color-text)]">Calificación</h4>
                                     <p class="text-sm text-[var(--color-text-muted)] mt-1">Análisis de la información recopilada contrastada con KPIs internacionales.</p>
                                 </div>
                             </div>
                             <div class="flex items-center gap-6 p-6 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl shadow-sm">
-                                <div class="text-4xl font-black text-brand-primary/20">03</div>
+                                <div class="text-4xl font-black text-brand-primary">03</div>
                                 <div>
                                     <h4 class="text-lg font-bold text-[var(--color-text)]">Informe</h4>
                                     <p class="text-sm text-[var(--color-text-muted)] mt-1">Presentación ejecutiva de hallazgos, diagnóstico y oportunidades de mejora.</p>
@@ -71,70 +71,70 @@ import Layout from '../../layouts/Layout.astro';
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
-                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center text-black justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">1</div>
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center justify-center text-black font-black text-lg shrink-0 shadow-md group-hover:scale-110 transition-transform">1</div>
                     <div>
                         <h4 class="font-bold text-[var(--color-text)] text-sm">Sistemas de Recibo y Almacenamiento</h4>
                         <p class="text-xs text-[var(--color-text-muted)] mt-1">Infraestructura soporte de los procesos de recibo y almacenamiento.</p>
                     </div>
                 </div>
                 <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
-                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center text-black justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">2</div>
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center justify-center text-black font-black text-lg shrink-0 shadow-md group-hover:scale-110 transition-transform">2</div>
                     <div>
                         <h4 class="font-bold text-[var(--color-text)] text-sm">Separación, Alistamiento y Despacho</h4>
                         <p class="text-xs text-[var(--color-text-muted)] mt-1">Gestión de pedidos, metodología y recursos tecnológicos.</p>
                     </div>
                 </div>
                 <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
-                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center text-black justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">3</div>
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center justify-center text-black font-black text-lg shrink-0 shadow-md group-hover:scale-110 transition-transform">3</div>
                     <div>
                         <h4 class="font-bold text-[var(--color-text)] text-sm">Equipos y Medios de Almacenamiento</h4>
                         <p class="text-xs text-[var(--color-text-muted)] mt-1">Estado y funcionalidad de equipos en la operación.</p>
                     </div>
                 </div>
                 <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
-                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center text-black justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">4</div>
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center justify-center text-black font-black text-lg shrink-0 shadow-md group-hover:scale-110 transition-transform">4</div>
                     <div>
                         <h4 class="font-bold text-[var(--color-text)] text-sm">Distribución Física y Layout</h4>
                         <p class="text-xs text-[var(--color-text-muted)] mt-1">Espacios, zonas de servicio, pasillos y flujo de materiales.</p>
                     </div>
                 </div>
                 <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
-                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center text-black justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">5</div>
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center justify-center text-black font-black text-lg shrink-0 shadow-md group-hover:scale-110 transition-transform">5</div>
                     <div>
                         <h4 class="font-bold text-[var(--color-text)] text-sm">Gestión de Inventarios</h4>
                         <p class="text-xs text-[var(--color-text-muted)] mt-1">Control de transacciones, métodos de control físico y tenencia.</p>
                     </div>
                 </div>
                 <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
-                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center text-black justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">6</div>
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center justify-center text-black font-black text-lg shrink-0 shadow-md group-hover:scale-110 transition-transform">6</div>
                     <div>
                         <h4 class="font-bold text-[var(--color-text)] text-sm">Indicadores de Gestión</h4>
                         <p class="text-xs text-[var(--color-text-muted)] mt-1">Métricas estratégicas del proceso logístico.</p>
                     </div>
                 </div>
                 <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
-                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center text-black justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">7</div>
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center justify-center text-black font-black text-lg shrink-0 shadow-md group-hover:scale-110 transition-transform">7</div>
                     <div>
                         <h4 class="font-bold text-[var(--color-text)] text-sm">Seguridad Industrial y Salud</h4>
                         <p class="text-xs text-[var(--color-text-muted)] mt-1">Riesgos laborales en los procesos logísticos.</p>
                     </div>
                 </div>
                 <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
-                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center text-black justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">8</div>
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center justify-center text-black font-black text-lg shrink-0 shadow-md group-hover:scale-110 transition-transform">8</div>
                     <div>
                         <h4 class="font-bold text-[var(--color-text)] text-sm">Aseguramiento de Calidad</h4>
                         <p class="text-xs text-[var(--color-text-muted)] mt-1">Estandarización e identificación de actividades sin valor.</p>
                     </div>
                 </div>
                 <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
-                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center text-black justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">9</div>
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center justify-center text-black font-black text-lg shrink-0 shadow-md group-hover:scale-110 transition-transform">9</div>
                     <div>
                         <h4 class="font-bold text-[var(--color-text)] text-sm">Recurso Humano</h4>
                         <p class="text-xs text-[var(--color-text-muted)] mt-1">Nivel de conocimiento y falencias del personal.</p>
                     </div>
                 </div>
                 <div class="svc-reveal diagnostic-card group flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-brand-primary/30 transition-all cursor-default">
-                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center text-black justify-center text-brand-primary font-bold shrink-0 group-hover:bg-brand-primary group-hover:text-black transition-all">10</div>
+                    <div class="w-10 h-10 rounded-xl bg-brand-primary flex items-center justify-center text-black font-black text-lg shrink-0 shadow-md group-hover:scale-110 transition-transform">10</div>
                     <div>
                         <h4 class="font-bold text-[var(--color-text)] text-sm">Sistemas de Información y Tecnología</h4>
                         <p class="text-xs text-[var(--color-text-muted)] mt-1">Uso de tecnologías para optimizar procesos logísticos.</p>
