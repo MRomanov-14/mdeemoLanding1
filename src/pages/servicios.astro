@@ -7,7 +7,7 @@ import Layout from '../layouts/Layout.astro';
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[var(--color-bg)]">
         <canvas id="servicesNetworkCanvas" class="absolute inset-0 w-full h-full" style="z-index:1;"></canvas>
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-primary/10 via-[var(--color-bg)] to-[var(--color-bg)] pointer-events-none" style="z-index:2;"></div>
+        <div class="hidden absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-primary/10 via-[var(--color-bg)] to-[var(--color-bg)] pointer-events-none" style="z-index:2;"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 text-center" style="z-index:3;">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] text-brand-primary text-sm font-semibold mb-8 animate-float backdrop-blur-md">
@@ -65,7 +65,7 @@ import Layout from '../layouts/Layout.astro';
 
     <!-- Services Section -->
     <section id="servicios" class="py-24 md:py-32 bg-[var(--color-bg)] relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-2/3 h-full bg-brand-primary/5 opacity-50 blur-[120px] pointer-events-none"></div>
+        <div class="hidden absolute top-0 right-0 w-2/3 h-full bg-brand-primary/5 opacity-50 blur-[120px] pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16 svc-reveal">
@@ -82,9 +82,9 @@ import Layout from '../layouts/Layout.astro';
                 <!-- Service 1: Posicionamiento -->
                 <div class="svc-reveal group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 md:p-10 hover:border-brand-primary/50 transition-all duration-500 overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
+                    <div class="hidden absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
                     <div class="relative z-10">
-                        <div class="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:bg-brand-primary group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <div class="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center text-black mb-6 group-hover:scale-110 transition-all duration-300 shadow-md">
                             <i class="fa-solid fa-users-gear text-3xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-[var(--color-text)] mb-3 font-[Outfit]">Servicio de Posicionamiento</h3>
@@ -92,13 +92,13 @@ import Layout from '../layouts/Layout.astro';
                             Potenciamos su operación integrando personal altamente capacitado. Garantizamos eficiencia, agilidad y excelencia operativa en cada eslabón de su cadena logística.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Auxiliares Logísticos y de Ruta</span>
-                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Picking y Packing</span>
-                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Cargue y Descargue</span>
-                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Maquila</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text-muted)] rounded-full">Auxiliares Logísticos y de Ruta</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text-muted)] rounded-full">Picking y Packing</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text-muted)] rounded-full">Cargue y Descargue</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text-muted)] rounded-full">Maquila</span>
                         </div>
                         <div class="mt-8">
-                            <a href="/servicios/posicionamiento" class="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary/10 text-brand-primary rounded-xl font-bold hover:bg-brand-primary hover:text-black transition-all duration-300 w-full justify-center md:w-auto">
+                            <a href="/servicios/posicionamiento" class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-text)] text-[var(--color-bg)] rounded-xl font-bold hover:opacity-90 transition-all duration-300 w-full justify-center md:w-auto shadow-md">
                                 Conocer Más <i class="fa-solid fa-arrow-right text-sm"></i>
                             </a>
                         </div>
@@ -108,9 +108,9 @@ import Layout from '../layouts/Layout.astro';
                 <!-- Service 2: Inventarios -->
                 <div class="svc-reveal group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 md:p-10 hover:border-brand-primary/50 transition-all duration-500 overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
+                    <div class="hidden absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
                     <div class="relative z-10">
-                        <div class="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:bg-brand-primary group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <div class="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center text-black mb-6 group-hover:scale-110 transition-all duration-300 shadow-md">
                             <i class="fa-solid fa-clipboard-check text-3xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-[var(--color-text)] mb-3 font-[Outfit]">Toma Física de Inventarios</h3>
@@ -118,12 +118,12 @@ import Layout from '../layouts/Layout.astro';
                             Ofrecemos el servicio integral a la medida de la toma física de inventarios de materiales, partes y producto terminado. Optimice sus resultados financieros con métodos productivos y confiables.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Materiales</span>
-                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Producto Terminado</span>
-                            <span class="px-3 py-1 text-xs font-semibold bg-brand-primary/10 text-brand-primary rounded-full">Partes</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text-muted)] rounded-full">Materiales</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text-muted)] rounded-full">Producto Terminado</span>
+                            <span class="px-3 py-1 text-xs font-semibold bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-text-muted)] rounded-full">Partes</span>
                         </div>
                         <div class="mt-8">
-                            <a href="/servicios/inventarios" class="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary/10 text-brand-primary rounded-xl font-bold hover:bg-brand-primary hover:text-black transition-all duration-300 w-full justify-center md:w-auto">
+                            <a href="/servicios/inventarios" class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-text)] text-[var(--color-bg)] rounded-xl font-bold hover:opacity-90 transition-all duration-300 w-full justify-center md:w-auto shadow-md">
                                 Conocer Más <i class="fa-solid fa-arrow-right text-sm"></i>
                             </a>
                         </div>
@@ -133,9 +133,9 @@ import Layout from '../layouts/Layout.astro';
                 <!-- Service 3: Operación CD -->
                 <div class="svc-reveal group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 md:p-10 hover:border-brand-primary/50 transition-all duration-500 overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
+                    <div class="hidden absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
                     <div class="relative z-10">
-                        <div class="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:bg-brand-primary group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <div class="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center text-black mb-6 group-hover:scale-110 transition-all duration-300 shadow-md">
                             <i class="fa-solid fa-warehouse text-3xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-[var(--color-text)] mb-3 font-[Outfit]">Operación Logística CD</h3>
@@ -160,7 +160,7 @@ import Layout from '../layouts/Layout.astro';
                             </div>
                         </div>
                         <div class="mt-8">
-                            <a href="/servicios/operacion-cd" class="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary/10 text-brand-primary rounded-xl font-bold hover:bg-brand-primary hover:text-black transition-all duration-300 w-full justify-center md:w-auto">
+                            <a href="/servicios/operacion-cd" class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-text)] text-[var(--color-bg)] rounded-xl font-bold hover:opacity-90 transition-all duration-300 w-full justify-center md:w-auto shadow-md">
                                 Conocer Más <i class="fa-solid fa-arrow-right text-sm"></i>
                             </a>
                         </div>
@@ -170,9 +170,9 @@ import Layout from '../layouts/Layout.astro';
                 <!-- Service 4: Diagnóstico -->
                 <div class="svc-reveal group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-8 md:p-10 hover:border-brand-primary/50 transition-all duration-500 overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
+                    <div class="hidden absolute -top-20 -right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-all duration-700"></div>
                     <div class="relative z-10">
-                        <div class="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary mb-6 group-hover:bg-brand-primary group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-lg">
+                        <div class="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center text-black mb-6 group-hover:scale-110 transition-all duration-300 shadow-md">
                             <i class="fa-solid fa-magnifying-glass-chart text-3xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-[var(--color-text)] mb-3 font-[Outfit]">Diagnóstico Express CD</h3>
@@ -194,7 +194,7 @@ import Layout from '../layouts/Layout.astro';
                             </div>
                         </div>
                         <div class="mt-8">
-                            <a href="/servicios/diagnostico" class="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary/10 text-brand-primary rounded-xl font-bold hover:bg-brand-primary hover:text-black transition-all duration-300 w-full justify-center md:w-auto">
+                            <a href="/servicios/diagnostico" class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-text)] text-[var(--color-bg)] rounded-xl font-bold hover:opacity-90 transition-all duration-300 w-full justify-center md:w-auto shadow-md">
                                 Conocer Más <i class="fa-solid fa-arrow-right text-sm"></i>
                             </a>
                         </div>
@@ -207,7 +207,7 @@ import Layout from '../layouts/Layout.astro';
 
     <!-- CTA Section -->
     <section class="py-24 md:py-32 bg-[var(--color-bg)] relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-primary/5 via-transparent to-transparent pointer-events-none"></div>
+        <div class="hidden absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-primary/5 via-transparent to-transparent pointer-events-none"></div>
         <div class="max-w-4xl mx-auto px-6 text-center relative z-10 svc-reveal">
             <h2 class="text-4xl md:text-6xl font-black text-[var(--color-text)] mb-6 font-[Outfit]">
                 ¿LISTO PARA <span class="text-brand-primary">OPTIMIZAR</span>?
