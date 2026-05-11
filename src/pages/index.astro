@@ -272,9 +272,9 @@ import Layout from '../layouts/Layout.astro';
 
                     <div class="step-dot active w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-sm font-bold shadow-[0_0_15px_rgba(234,179,8,0.5)] transition-all z-10 text-black border-4 border-[var(--color-bg)]"
                         data-step="1">1</div>
-                    <div class="step-dot w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center text-sm font-bold transition-all z-10 text-[var(--color-text-muted)]"
+                    <div class="step-dot w-10 h-10 rounded-full bg-[var(--color-surface)] border-2 border-[#d4d4d8] flex items-center justify-center text-sm font-bold transition-all z-10 text-[var(--color-text-muted)]"
                         data-step="2">2</div>
-                    <div class="step-dot w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center text-sm font-bold transition-all z-10 text-[var(--color-text-muted)]"
+                    <div class="step-dot w-10 h-10 rounded-full bg-[var(--color-surface)] border-2 border-[#d4d4d8] flex items-center justify-center text-sm font-bold transition-all z-10 text-[var(--color-text-muted)]"
                         data-step="3">3</div>
                 </div>
 
@@ -288,40 +288,40 @@ import Layout from '../layouts/Layout.astro';
                             <!-- Full Name -->
                             <div class="space-y-3">
                                 <label
-                                    class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Nombre
+                                    class="text-sm font-medium text-[var(--color-text-muted)] ml-1 uppercase tracking-wide">Nombre
                                     Completo</label>
                                 <input type="text" id="candidate-name" required
-                                    class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[var(--color-text-muted)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all"
+                                    class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[#78787f] focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 focus:outline-none transition-all"
                                     placeholder="Ej. Juan Pérez">
                             </div>
                             <!-- Cédula -->
                             <div class="space-y-3">
                                 <label
-                                    class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Cédula</label>
+                                    class="text-sm font-medium text-[var(--color-text-muted)] ml-1 uppercase tracking-wide">Cédula</label>
                                 <input type="text" id="candidate-cedula" required inputmode="numeric" pattern="[0-9]*"
-                                    class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[var(--color-text-muted)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all"
+                                    class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[#78787f] focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 focus:outline-none transition-all"
                                     placeholder="Ej. 1234567890">
                             </div>
                             <div class="space-y-3">
                                 <label
-                                    class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Correo
+                                    class="text-sm font-medium text-[var(--color-text-muted)] ml-1 uppercase tracking-wide">Correo
                                     Electrónico</label>
                                 <input type="email" id="candidate-email" required
-                                    class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[var(--color-text-muted)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all"
+                                    class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[#78787f] focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 focus:outline-none transition-all"
                                     placeholder="juan@email.com">
                             </div>
                             <div class="space-y-3">
                                 <label
-                                    class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Teléfono
+                                    class="text-sm font-medium text-[var(--color-text-muted)] ml-1 uppercase tracking-wide">Teléfono
                                     / WhatsApp</label>
                                 <input type="tel" id="candidate-phone" required
-                                    class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[var(--color-text-muted)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all"
+                                    class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[#78787f] focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 focus:outline-none transition-all"
                                     placeholder="300 123 4567">
                             </div>
                             <!-- Departamento -->
                             <div class="space-y-3">
                                 <label for="candidate-department"
-                                    class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Departamento</label>
+                                    class="text-sm font-medium text-[var(--color-text-muted)] ml-1 uppercase tracking-wide">Departamento</label>
                                 <select id="candidate-department" required
                                     class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text-muted)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all appearance-none cursor-pointer hover:bg-[var(--color-surface)]"
                                     style="background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23eab308' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 1.25rem center;">
@@ -336,7 +336,7 @@ import Layout from '../layouts/Layout.astro';
                             <!-- Ciudad (dependiente del departamento) -->
                             <div class="space-y-3">
                                 <label for="candidate-city"
-                                    class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Ciudad</label>
+                                    class="text-sm font-medium text-[var(--color-text-muted)] ml-1 uppercase tracking-wide">Ciudad</label>
                                 <select id="candidate-city" required disabled
                                     class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text-muted)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all appearance-none cursor-pointer hover:bg-[var(--color-surface)] disabled:opacity-40 disabled:cursor-not-allowed"
                                     style="background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23eab308' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 1.25rem center;">
@@ -371,9 +371,9 @@ import Layout from '../layouts/Layout.astro';
                             <!-- Dirección -->
                             <div class="space-y-3 md:col-span-2">
                                 <label
-                                    class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Dirección</label>
+                                    class="text-sm font-medium text-[var(--color-text-muted)] ml-1 uppercase tracking-wide">Dirección</label>
                                 <input type="text" id="candidate-address" required
-                                    class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[var(--color-text-muted)] focus:border-brand-primary focus:ring-1 focus:ring-brand-primary focus:outline-none transition-all"
+                                    class="w-full bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-5 py-4 text-[var(--color-text)] placeholder-[#78787f] focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 focus:outline-none transition-all"
                                     placeholder="Ej. Calle 100 #15-20, Barrio Centro">
                             </div>
                         </div>
@@ -476,7 +476,7 @@ import Layout from '../layouts/Layout.astro';
                             </div>
                             <div class="space-y-3">
                                 <label
-                                    class="text-sm font-medium text-brand-primary ml-1 uppercase tracking-wide">Experiencia
+                                    class="text-sm font-medium text-[var(--color-text-muted)] ml-1 uppercase tracking-wide">Experiencia
                                     (Años)</label>
                                 <div class="flex gap-4">
                                     <label class="flex-1 cursor-pointer">

@@ -9,6 +9,9 @@ export default defineConfig({
   vite: {
     server: {
       allowedHosts: ['chun-unprofessed-telltalely.ngrok-free.dev'],
+      fs: {
+        allow: ['..', '../..', '../../..'],
+      },
     },
   },
 });
