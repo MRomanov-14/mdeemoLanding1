@@ -424,21 +424,17 @@ import "cropperjs/dist/cropper.css";
                                     >Departamento</span
                                 >
                                 <select
+                                    id="doc-departamento"
                                     required
                                     name="departamento"
                                     class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none appearance-none"
                                 >
-                                    <option value="" disabled selected
-                                        >Seleccionar...</option
-                                    >
+                                    <option value="" disabled selected>Selecciona el departamento</option>
+                                    <option value="Cundinamarca">Cundinamarca</option>
+                                    <option value="Bolívar">Bolívar</option>
                                     <option value="Antioquia">Antioquia</option>
+                                    <option value="Valle del Cauca">Valle del Cauca</option>
                                     <option value="Atlántico">Atlántico</option>
-                                    <option value="Bogotá D.C."
-                                        >Bogotá D.C.</option
-                                    >
-                                    <option value="Valle del Cauca"
-                                        >Valle del Cauca</option
-                                    >
                                 </select>
                             </label>
                             <label class="block">
@@ -447,21 +443,40 @@ import "cropperjs/dist/cropper.css";
                                     >Municipio/Ciudad</span
                                 >
                                 <select
+                                    id="doc-municipio"
                                     required
                                     name="municipio_ciudad"
-                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none appearance-none"
+                                    disabled
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none appearance-none disabled:opacity-40 disabled:cursor-not-allowed"
                                 >
-                                    <option value="" disabled selected
-                                        >Seleccionar...</option
-                                    >
-                                    <option value="Bogotá">Bogotá</option>
-                                    <option value="Medellín">Medellín</option>
-                                    <option value="Cali">Cali</option>
-                                    <option value="Barranquilla"
-                                        >Barranquilla</option
-                                    >
+                                    <option value="" disabled selected>Primero selecciona el departamento</option>
                                 </select>
                             </label>
+                            <script>
+                            (function () {
+                                const citiesByDept = {
+                                    "Cundinamarca": ["Bogotá D.C.","Soacha","Chía","Cajicá","Zipaquirá","Madrid","Funza","Mosquera","Cota","Sopó","Tocancipá","Tenjo","La Calera"],
+                                    "Bolívar": ["Cartagena de Indias"],
+                                    "Antioquia": ["Medellín","Bello","Itagüí","Envigado","Sabaneta","La Estrella","Copacabana","Girardota","Rionegro","Guarne"],
+                                    "Valle del Cauca": ["Cali","Palmira","Buenaventura","Buga","Tuluá","Yumbo","Jamundí"],
+                                    "Atlántico": ["Barranquilla","Soledad","Malambo","Baranoa","Puerto Colombia","Galapa"]
+                                };
+                                const deptSel = document.getElementById('doc-departamento');
+                                const citySel = document.getElementById('doc-municipio');
+                                deptSel.addEventListener('change', function () {
+                                    const cities = citiesByDept[this.value] || [];
+                                    citySel.innerHTML = '<option value="" disabled selected>Selecciona tu ciudad</option>';
+                                    cities.forEach(function (c) {
+                                        const o = document.createElement('option');
+                                        o.value = c; o.textContent = c;
+                                        citySel.appendChild(o);
+                                    });
+                                    citySel.disabled = false;
+                                    citySel.classList.remove('opacity-40', 'cursor-not-allowed');
+                                    citySel.value = '';
+                                });
+                            })();
+                            </script>
                             <label class="block"
                                 ><span
                                     class="text-sm font-medium text-brand-primary uppercase"
