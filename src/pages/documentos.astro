@@ -446,33 +446,34 @@ import "cropperjs/dist/cropper.css";
                                     id="doc-municipio"
                                     required
                                     name="municipio_ciudad"
-                                    disabled
-                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none appearance-none disabled:opacity-40 disabled:cursor-not-allowed"
+                                    class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none appearance-none opacity-40 cursor-not-allowed"
+                                    style="pointer-events:none"
                                 >
                                     <option value="" disabled selected>Primero selecciona el departamento</option>
                                 </select>
                             </label>
                             <script>
                             (function () {
-                                const citiesByDept = {
+                                var citiesByDept = {
                                     "Cundinamarca": ["Bogotá D.C.","Soacha","Chía","Cajicá","Zipaquirá","Madrid","Funza","Mosquera","Cota","Sopó","Tocancipá","Tenjo","La Calera"],
                                     "Bolívar": ["Cartagena de Indias"],
                                     "Antioquia": ["Medellín","Bello","Itagüí","Envigado","Sabaneta","La Estrella","Copacabana","Girardota","Rionegro","Guarne"],
                                     "Valle del Cauca": ["Cali","Palmira","Buenaventura","Buga","Tuluá","Yumbo","Jamundí"],
                                     "Atlántico": ["Barranquilla","Soledad","Malambo","Baranoa","Puerto Colombia","Galapa"]
                                 };
-                                const deptSel = document.getElementById('doc-departamento');
-                                const citySel = document.getElementById('doc-municipio');
+                                var deptSel = document.getElementById('doc-departamento');
+                                var citySel = document.getElementById('doc-municipio');
+                                if (!deptSel || !citySel) return;
                                 deptSel.addEventListener('change', function () {
-                                    const cities = citiesByDept[this.value] || [];
+                                    var cities = citiesByDept[this.value] || [];
                                     citySel.innerHTML = '<option value="" disabled selected>Selecciona tu ciudad</option>';
                                     cities.forEach(function (c) {
-                                        const o = document.createElement('option');
+                                        var o = document.createElement('option');
                                         o.value = c; o.textContent = c;
                                         citySel.appendChild(o);
                                     });
-                                    citySel.disabled = false;
                                     citySel.classList.remove('opacity-40', 'cursor-not-allowed');
+                                    citySel.style.pointerEvents = 'auto';
                                     citySel.value = '';
                                 });
                             })();
@@ -1496,30 +1497,7 @@ import "cropperjs/dist/cropper.css";
         "fc-telefono"
     ) as HTMLInputElement;
 
-    // Setup Department-City Auto-Select
-    if (formEl) {
-        const deptSelect = formEl.querySelector(
-            'select[name="departamento"]'
-        ) as HTMLSelectElement;
-        const citySelect = formEl.querySelector(
-            'select[name="municipio_ciudad"]'
-        ) as HTMLSelectElement;
-
-        if (deptSelect && citySelect) {
-            deptSelect.addEventListener("change", (e) => {
-                const val = (e.target as HTMLSelectElement).value;
-                const mappings: Record<string, string> = {
-                    Antioquia: "Medellín",
-                    Atlántico: "Barranquilla",
-                    "Bogotá D.C.": "Bogotá",
-                    "Valle del Cauca": "Cali",
-                };
-                if (mappings[val]) {
-                    citySelect.value = mappings[val];
-                }
-            });
-        }
-    }
+    // Department-City dynamic logic is handled by the inline IIFE script above the select elements.
 
     const STORAGE_KEY = "click_caracterizacion_data";
     const AUTH_KEY = "click_caracterizacion_auth";
