@@ -180,6 +180,7 @@ import "cropperjs/dist/cropper.css";
 
                 <form
                     id="caracterizacion-form"
+                    novalidate
                     class="hidden opacity-0 transition-opacity duration-500"
                 >
                     <!-- STEP 1: Datos Personales -->
@@ -1378,6 +1379,7 @@ import "cropperjs/dist/cropper.css";
                     <i class="fa-solid fa-circle-xmark"></i>
                 </div>
                 <h3
+                    id="error-message-title"
                     class="text-2xl font-bold text-[var(--color-text)] mb-3 text-center"
                 >
                     Error al enviar
@@ -1509,6 +1511,91 @@ import "cropperjs/dist/cropper.css";
         import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
         import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
     const supabase = createClient(supabaseUrl, supabaseKey);
+
+    // --- Subida de documentos: helpers de resiliencia ---
+    const STORAGE_BUCKET = "candidatos_documentos";
+    const MAX_UPLOAD_BYTES = 10 * 1024 * 1024; // 10 MB (tras comprimir)
+    const FIELD_LABELS: Record<string, string> = {
+        doc_foto_fondo_blanco: "Foto en fondo blanco",
+        doc_fotocopia_cedula: "Fotocopia de cédula",
+        doc_certificado_pensiones: "Certificado de pensiones",
+        doc_certificado_eps: "Certificado de EPS",
+        doc_antecedentes_policia: "Antecedentes Policía",
+        doc_antecedentes_contraloria: "Antecedentes Contraloría",
+        doc_antecedentes_procuraduria: "Antecedentes Procuraduría",
+    };
+    // URLs ya subidas, para no re-subir si el usuario reintenta el envío
+    // tras un fallo de red (clave por campo + firma del archivo).
+    const uploadedDocUrls: Record<string, { sig: string; url: string }> = {};
+
+    function fileSig(f: File | Blob, field: string): string {
+        const anyF = f as any;
+        return [field, f.size, anyF.name || "", anyF.lastModified || ""].join(
+            "|"
+        );
+    }
+
+    // Comprime imágenes grandes (downscale + re-encode a webp). PDFs y
+    // formatos no decodificables en canvas (p.ej. HEIC en Android) se
+    // devuelven sin cambios.
+    async function compressImage(
+        file: File,
+        maxDim = 1600,
+        quality = 0.8
+    ): Promise<File | Blob> {
+        if (!file.type.startsWith("image/")) return file;
+        try {
+            const bitmap = await createImageBitmap(file);
+            let width = bitmap.width;
+            let height = bitmap.height;
+            if (width > maxDim || height > maxDim) {
+                const scale = Math.min(maxDim / width, maxDim / height);
+                width = Math.round(width * scale);
+                height = Math.round(height * scale);
+            }
+            const canvas = document.createElement("canvas");
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext("2d");
+            if (!ctx) return file;
+            ctx.drawImage(bitmap, 0, 0, width, height);
+            if (typeof bitmap.close === "function") bitmap.close();
+            const blob: Blob | null = await new Promise((resolve) =>
+                canvas.toBlob((b) => resolve(b), "image/webp", quality)
+            );
+            // Si no se pudo codificar o no redujo tamaño, usar el original.
+            if (!blob || blob.size >= file.size) return file;
+            return blob;
+        } catch (e) {
+            return file;
+        }
+    }
+
+    // Sube con reintentos + backoff. Solo reintenta ante errores de red
+    // transitorios; los errores claros del servidor se lanzan de inmediato.
+    async function uploadWithRetry(
+        path: string,
+        blob: File | Blob,
+        opts: any,
+        attempts = 3
+    ) {
+        let lastError: any = null;
+        for (let i = 0; i < attempts; i++) {
+            const { error } = await supabase.storage
+                .from(STORAGE_BUCKET)
+                .upload(path, blob, opts);
+            if (!error) return;
+            lastError = error;
+            const msg = (error && error.message) || "";
+            const isTransient =
+                /failed to fetch|networkerror|load failed|timeout|err_/i.test(
+                    msg
+                );
+            if (!isTransient || i === attempts - 1) break;
+            await new Promise((r) => setTimeout(r, 800 * (i + 1)));
+        }
+        throw lastError;
+    }
 
     // --- Auth Gateway Logic ---
     function enableFormView(
@@ -1947,6 +2034,97 @@ import "cropperjs/dist/cropper.css";
         return valid;
     }
 
+    // Valida TODOS los pasos (no solo el actual). Devuelve el índice (1-based)
+    // del primer paso con un campo requerido inválido/vacío y ese campo, para
+    // poder llevar al usuario directo a él. Usa checkValidity() para conservar
+    // las reglas nativas (email, number min, date...) aunque el form lleve
+    // `novalidate` — que es lo que evita el bloqueo silencioso del navegador
+    // sobre campos requeridos dentro de pasos ocultos (display:none).
+    function validateAllSteps(): {
+        firstInvalidStep: number;
+        firstInvalidInput: HTMLElement | null;
+    } {
+        let firstInvalidStep = 0;
+        let firstInvalidInput: HTMLElement | null = null;
+
+        steps.forEach((stepEl, idx) => {
+            if (!stepEl) return;
+            const inputs = Array.from(
+                stepEl.querySelectorAll("input[required], select[required]")
+            ) as (HTMLInputElement | HTMLSelectElement)[];
+
+            inputs.forEach((inp) => {
+                const isInvalid = !inp.value.trim() || !inp.checkValidity();
+                if (isInvalid) {
+                    inp.classList.add("border-red-500", "bg-red-500/10");
+                    inp.classList.remove(
+                        "border-[var(--color-border)]",
+                        "bg-[var(--color-card-bg)]"
+                    );
+                    if (!firstInvalidStep) {
+                        firstInvalidStep = idx + 1;
+                        firstInvalidInput = inp;
+                    }
+                } else {
+                    inp.classList.remove("border-red-500", "bg-red-500/10");
+                    inp.classList.add(
+                        "border-[var(--color-border)]",
+                        "bg-[var(--color-card-bg)]"
+                    );
+                }
+            });
+        });
+
+        return { firstInvalidStep, firstInvalidInput };
+    }
+
+    // Modal de error centralizado. Reemplaza alert(), que los navegadores
+    // móviles silencian tras el primer diálogo (causa de "no hace nada").
+    function showErrorModal(
+        message: string,
+        title: string = "Error al enviar"
+    ) {
+        const errorModal = document.getElementById("error-message-modal");
+        const errorModalContent = document.getElementById(
+            "error-message-modal-content"
+        );
+        const errorModalText = document.getElementById("error-message-text");
+        const errorModalTitle = document.getElementById("error-message-title");
+        const btnCloseErrorModal = document.getElementById(
+            "btn-close-error-modal"
+        );
+
+        if (
+            !errorModal ||
+            !errorModalContent ||
+            !errorModalText ||
+            !btnCloseErrorModal
+        ) {
+            alert(title + ": " + message);
+            return;
+        }
+
+        if (errorModalTitle) errorModalTitle.innerText = title;
+        errorModalText.innerText = message;
+        errorModal.classList.remove("hidden");
+        void errorModal.offsetWidth;
+        errorModal.classList.remove("opacity-0");
+        errorModalContent.classList.remove("scale-95");
+        errorModalContent.classList.add("scale-100");
+
+        const closeErrorModal = () => {
+            errorModal.classList.add("opacity-0");
+            errorModalContent.classList.remove("scale-100");
+            errorModalContent.classList.add("scale-95");
+            setTimeout(() => {
+                errorModal.classList.add("hidden");
+            }, 300);
+            btnCloseErrorModal.removeEventListener("click", closeErrorModal);
+        };
+
+        btnCloseErrorModal.addEventListener("click", closeErrorModal);
+    }
+
     // Attach listeners
     document.querySelectorAll("button[data-next]").forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -1991,8 +2169,25 @@ import "cropperjs/dist/cropper.css";
     if (form) {
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
-            if (!validateCurrentStep()) {
-                alert("Por favor completa los campos requeridos.");
+
+            const { firstInvalidStep, firstInvalidInput } = validateAllSteps();
+            if (firstInvalidStep) {
+                // Llevar al usuario al paso que contiene el primer campo
+                // faltante (puede estar en un paso anterior oculto).
+                if (firstInvalidStep !== currentStep) {
+                    currentStep = firstInvalidStep;
+                    updateWizardUI();
+                }
+                if (firstInvalidInput) {
+                    firstInvalidInput.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center",
+                    });
+                }
+                showErrorModal(
+                    "Faltan campos obligatorios por completar. Te llevamos al primero que falta (resaltado en rojo).",
+                    "Campos incompletos"
+                );
                 return;
             }
 
@@ -2009,7 +2204,19 @@ import "cropperjs/dist/cropper.css";
 
             // Agregar un ID único para evitar restricciones "not-null" en la base de datos
             if (!doc.id) {
-                doc.id = crypto.randomUUID();
+                doc.id =
+                    typeof crypto !== "undefined" &&
+                    typeof crypto.randomUUID === "function"
+                        ? crypto.randomUUID()
+                        : "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+                              /[xy]/g,
+                              (c) => {
+                                  const r = (Math.random() * 16) | 0;
+                                  const v =
+                                      c === "x" ? r : (r & 0x3) | 0x8;
+                                  return v.toString(16);
+                              }
+                          );
             }
             if (!doc.created_at) {
                 doc.created_at = new Date().toISOString();
@@ -2042,53 +2249,107 @@ import "cropperjs/dist/cropper.css";
                 ];
 
                 for (const field of fileFields) {
-                    let file: File | Blob;
-                    let fileExt = "pdf";
-                    let isValidFile = false;
-
+                    // 1) Determinar el archivo fuente.
+                    let source: File | Blob | null = null;
+                    let isPhoto = false;
                     if (field === "doc_foto_fondo_blanco" && croppedBlob) {
-                        file = croppedBlob;
-                        fileExt = "webp";
-                        isValidFile = true;
+                        source = croppedBlob;
+                        isPhoto = true;
                     } else {
                         const fileInput = fd.get(field);
                         if (fileInput && (fileInput as File).size > 0) {
-                            file = fileInput as File;
-                            fileExt =
-                                (file as File).name.split(".").pop() || "pdf";
-                            isValidFile = true;
+                            source = fileInput as File;
                         }
                     }
 
-                    if (isValidFile) {
-                        const fileName = `${
-                            doc.cedula
-                        }/${field}-${Date.now()}.${fileExt}`;
-
-                        const { data, error } = await supabase.storage
-                            .from("candidatos_documentos")
-                            .upload(fileName, file!, {
-                                upsert: true,
-                                contentType:
-                                    field === "doc_foto_fondo_blanco" &&
-                                    croppedBlob
-                                        ? "image/webp"
-                                        : (file as File).type || undefined,
-                            });
-
-                        if (error)
-                            throw new Error(
-                                "Error subiendo " + field + ": " + error.message
-                            );
-
-                        const { data: publicUrldata } = supabase.storage
-                            .from("candidatos_documentos")
-                            .getPublicUrl(fileName);
-
-                        doc[field] = publicUrldata.publicUrl;
-                    } else {
+                    if (!source) {
                         delete doc[field];
+                        continue;
                     }
+
+                    // 2) No re-subir si ya se subió este mismo archivo antes
+                    //    (reintento del formulario tras un fallo de red).
+                    const sig = fileSig(source, field);
+                    const cached = uploadedDocUrls[field];
+                    if (cached && cached.sig === sig) {
+                        doc[field] = cached.url;
+                        continue;
+                    }
+
+                    // 3) Preparar blob: comprimir imágenes (los PDFs van tal cual).
+                    let blob: File | Blob = source;
+                    let fileExt = "pdf";
+                    let contentType: string | undefined;
+                    if (isPhoto) {
+                        fileExt = "webp";
+                        contentType = "image/webp";
+                    } else if ((source as File).type.startsWith("image/")) {
+                        const compressed = await compressImage(source as File);
+                        if (compressed !== source) {
+                            blob = compressed;
+                            fileExt = "webp";
+                            contentType = "image/webp";
+                        } else {
+                            fileExt =
+                                (source as File).name.split(".").pop() || "jpg";
+                            contentType = (source as File).type || undefined;
+                        }
+                    } else {
+                        fileExt =
+                            (source as File).name.split(".").pop() || "pdf";
+                        contentType = (source as File).type || undefined;
+                    }
+
+                    // 4) Tope de tamaño (tras comprimir).
+                    if (blob.size > MAX_UPLOAD_BYTES) {
+                        throw new Error(
+                            'El archivo de "' +
+                                (FIELD_LABELS[field] || field) +
+                                '" pesa ' +
+                                (blob.size / 1048576).toFixed(1) +
+                                " MB (máximo " +
+                                MAX_UPLOAD_BYTES / 1048576 +
+                                " MB). Sube un PDF más liviano o una foto de menor resolución."
+                        );
+                    }
+
+                    // 5) Subir con reintentos.
+                    const fileName = `${doc.cedula}/${field}-${Date.now()}.${fileExt}`;
+                    try {
+                        await uploadWithRetry(fileName, blob, {
+                            upsert: true,
+                            contentType,
+                        });
+                    } catch (upErr: any) {
+                        const m = (upErr && upErr.message) || "";
+                        if (
+                            /failed to fetch|networkerror|load failed|timeout|err_/i.test(
+                                m
+                            )
+                        ) {
+                            throw new Error(
+                                'Se interrumpió la conexión al subir "' +
+                                    (FIELD_LABELS[field] || field) +
+                                    '". Revisa tu internet e inténtalo de nuevo (lo ya subido no se repetirá).'
+                            );
+                        }
+                        throw new Error(
+                            'No se pudo subir "' +
+                                (FIELD_LABELS[field] || field) +
+                                '": ' +
+                                m
+                        );
+                    }
+
+                    const { data: publicUrldata } = supabase.storage
+                        .from(STORAGE_BUCKET)
+                        .getPublicUrl(fileName);
+
+                    doc[field] = publicUrldata.publicUrl;
+                    uploadedDocUrls[field] = {
+                        sig,
+                        url: publicUrldata.publicUrl,
+                    };
                 }
 
                 btn.innerHTML =
@@ -2115,51 +2376,20 @@ import "cropperjs/dist/cropper.css";
             } catch (err: any) {
                 console.error(err);
 
-                const errorModal = document.getElementById(
-                    "error-message-modal"
-                );
-                const errorModalContent = document.getElementById(
-                    "error-message-modal-content"
-                );
-                const errorModalText =
-                    document.getElementById("error-message-text");
-                const btnCloseErrorModal = document.getElementById(
-                    "btn-close-error-modal"
-                );
-
+                // "Failed to fetch" es un error de red opaco; traducirlo a algo
+                // accionable para el usuario.
+                let message =
+                    err && err.message ? err.message : String(err);
                 if (
-                    errorModal &&
-                    errorModalContent &&
-                    errorModalText &&
-                    btnCloseErrorModal
+                    /failed to fetch|networkerror|load failed|err_/i.test(
+                        message
+                    )
                 ) {
-                    errorModalText.innerText = err.message;
-                    errorModal.classList.remove("hidden");
-                    void errorModal.offsetWidth;
-                    errorModal.classList.remove("opacity-0");
-                    errorModalContent.classList.remove("scale-95");
-                    errorModalContent.classList.add("scale-100");
-
-                    const closeErrorModal = () => {
-                        errorModal.classList.add("opacity-0");
-                        errorModalContent.classList.remove("scale-100");
-                        errorModalContent.classList.add("scale-95");
-                        setTimeout(() => {
-                            errorModal.classList.add("hidden");
-                        }, 300);
-                        btnCloseErrorModal.removeEventListener(
-                            "click",
-                            closeErrorModal
-                        );
-                    };
-
-                    btnCloseErrorModal.addEventListener(
-                        "click",
-                        closeErrorModal
-                    );
-                } else {
-                    alert("Error al enviar: " + err.message);
+                    message =
+                        "Se interrumpió la conexión al subir tus archivos. Revisa tu internet e inténtalo de nuevo (tus datos no se han perdido).";
                 }
+
+                showErrorModal(message, "Error al enviar");
 
                 btn.innerHTML = original;
                 btn.disabled = false;
