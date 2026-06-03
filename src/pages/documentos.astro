@@ -1514,7 +1514,11 @@ import "cropperjs/dist/cropper.css";
 
     // --- Subida de documentos: helpers de resiliencia ---
     const STORAGE_BUCKET = "candidatos_documentos";
-    const MAX_UPLOAD_BYTES = 10 * 1024 * 1024; // 10 MB (tras comprimir)
+    // Tope de tamaño por archivo. Las imágenes se comprimen antes (a webp,
+    // típicamente <1 MB), así que este tope aplica de hecho a los PDFs: los
+    // mayores a 4 MB se rechazan con un mensaje claro pidiendo subir un PDF
+    // más liviano.
+    const MAX_UPLOAD_BYTES = 4 * 1024 * 1024; // 4 MB
     const FIELD_LABELS: Record<string, string> = {
         doc_foto_fondo_blanco: "Foto en fondo blanco",
         doc_fotocopia_cedula: "Fotocopia de cédula",
