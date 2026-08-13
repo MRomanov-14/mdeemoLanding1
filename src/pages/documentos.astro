@@ -1931,9 +1931,16 @@ import "cropperjs/dist/cropper.css";
                     const el = formEl.elements.namedItem(key) as
                         | HTMLInputElement
                         | HTMLSelectElement;
-                    if (el) {
-                        el.value = parsed[key];
-                    }
+                    if (!el) return;
+                    // Un input de archivo solo acepta que le asignen "". Con
+                    // cualquier otra cosa el navegador lanza, y como esto corre
+                    // dentro de un forEach en un try, se perdía la restauración
+                    // de todo lo que viniera después —las tallas—. Los
+                    // autoguardados viejos traen {} en esos campos, así que
+                    // también se descarta lo que no sea texto.
+                    if ((el as HTMLInputElement).type === "file") return;
+                    if (typeof parsed[key] !== "string") return;
+                    el.value = parsed[key];
                 });
 
                 // Disparar eventos para mostrar/ocultar los condicionales "Otros"
@@ -1961,7 +1968,14 @@ import "cropperjs/dist/cropper.css";
 
         formEl.addEventListener("input", () => {
             const fd = new FormData(formEl);
-            const doc = Object.fromEntries(fd.entries());
+            // Los File no sobreviven a JSON.stringify: quedan como {}. Se
+            // guarda solo el texto para no dejar basura que después haya que
+            // esquivar al restaurar.
+            const doc = Object.fromEntries(
+                Array.from(fd.entries()).filter(
+                    ([, value]) => typeof value === "string"
+                )
+            );
             localStorage.setItem(STORAGE_KEY, JSON.stringify(doc));
         });
     }
