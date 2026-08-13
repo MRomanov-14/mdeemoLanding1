@@ -2266,9 +2266,19 @@ import "cropperjs/dist/cropper.css";
                         }
                     }
 
+                    // Los siete documentos son obligatorios. `required` solo
+                    // mira el nombre del archivo en el input, no el archivo:
+                    // en celulares, uno elegido desde Drive/iCloud puede llegar
+                    // vacío o ilegible y el input sigue mostrando su nombre. Al
+                    // borrar el campo en silencio, la ficha se guardaba sin ese
+                    // documento y nadie se enteraba hasta abrir la carpeta del
+                    // clicker semanas después. Mejor cortar el envío aquí.
                     if (!source) {
-                        delete doc[field];
-                        continue;
+                        throw new Error(
+                            'No se pudo leer el archivo de "' +
+                                (FIELD_LABELS[field] || field) +
+                                '". Vuelve a seleccionarlo; si lo tomaste de Drive, iCloud o Fotos, descárgalo primero al dispositivo y súbelo desde ahí.'
+                        );
                     }
 
                     // 2) No re-subir si ya se subió este mismo archivo antes
