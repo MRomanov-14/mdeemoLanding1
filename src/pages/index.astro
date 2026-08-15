@@ -1,16 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HeroBackdrop from '../components/HeroBackdrop.astro';
 ---
 
 <Layout title="Click Operaciones Logísticas | Soluciones Logísticas" description="Click Operaciones Logísticas: Soluciones Logísticas. Optimizamos tu operación con talento humano especializado." forcedTheme="light">
     <!-- Hero Section con Canvas Interactivo -->
     <section class="hero-critical relative h-screen flex items-center justify-center overflow-hidden bg-[var(--color-bg)]">
-        <canvas id="networkCanvas" class="hero-canvas"></canvas>
+        <HeroBackdrop base="light" />
 
-        <!-- Radial Gradient Overlay (solo dark mode — en light mancha la experiencia) -->
-        <div
-            class="hero-radial absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-primary/10 via-[var(--color-bg)] to-[var(--color-bg)] pointer-events-none">
-        </div>
+        <canvas id="networkCanvas" class="hero-canvas"></canvas>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
             <div
@@ -743,10 +741,14 @@ import Layout from '../layouts/Layout.astro';
 
         /* En light mode, los overlays decorativos amarillos manchan la experiencia.
            Brand: gris plano + acento amarillo solo en CTAs/identidad. */
-        [data-theme="light"] .hero-radial,
         [data-theme="light"] #networkCanvas,
         [data-theme="light"] .decorative-glow {
             display: none;
+        }
+
+        /* La red neuronal compite con la foto: la dejamos como acento. */
+        [data-theme="dark"] .hero-canvas {
+            opacity: 0.18;
         }
 
         .h1-critical {

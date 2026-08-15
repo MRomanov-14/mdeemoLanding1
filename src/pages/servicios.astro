@@ -1,12 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HeroBackdrop from '../components/HeroBackdrop.astro';
 ---
 
 <Layout title="Click Operaciones Logísticas | Servicios Integrales de Operación Logística" description="Click OPL: Operador logístico 3PL especializado en toma de inventarios, operación de centros de distribución, diagnóstico express y consultoría logística.">
 
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[var(--color-bg)]">
-        <canvas id="servicesNetworkCanvas" class="absolute inset-0 w-full h-full" style="z-index:1;"></canvas>
+        <HeroBackdrop base="dark" />
+
+        <canvas id="servicesNetworkCanvas" class="absolute inset-0 w-full h-full hero-net-canvas" style="z-index:1;"></canvas>
         <div class="hidden absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-primary/10 via-[var(--color-bg)] to-[var(--color-bg)] pointer-events-none" style="z-index:2;"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 text-center" style="z-index:3;">
