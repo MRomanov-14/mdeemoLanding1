@@ -47,6 +47,41 @@ import "@fontsource/outfit/900.css";
                 --gradient-to: #eab308;
             }
 
+            /* Navbar: la altura se declara aquí en vez de salir de padding +
+               alto del contenido. Antes el handler de scroll quitaba `py-6`
+               cuando la clase real era `md:py-6`, así que la barra nunca
+               encogía; con una altura explícita el estado es inequívoco. */
+            .nav-inner {
+                height: 60px;
+                transition: height 0.3s ease;
+            }
+
+            #navbar.is-scrolled .nav-inner {
+                height: 54px;
+            }
+
+            @media (min-width: 768px) {
+                .nav-inner {
+                    height: 72px;
+                }
+
+                #navbar.is-scrolled .nav-inner {
+                    height: 60px;
+                }
+            }
+
+            /* Al hacer scroll: cristal + hairline inferior, en vez de barra
+               sólida con sombra. El color sale de --navbar-bg, que ya estaba
+               declarada por tema, así que el toggle claro/oscuro lo actualiza
+               solo (antes el JS fijaba el color inline y se quedaba obsoleto
+               hasta el siguiente scroll). */
+            #navbar.is-scrolled {
+                background-color: var(--navbar-bg);
+                backdrop-filter: saturate(180%) blur(12px);
+                -webkit-backdrop-filter: saturate(180%) blur(12px);
+                border-bottom: 1px solid var(--color-border);
+            }
+
             [data-theme="light"] {
                 --color-bg: #e9e9ec;          /* Gris marcado de marca — separa claramente del blanco */
                 --color-text: #0a0a0a;        /* Click Black — autoridad, contraste base */
@@ -198,28 +233,28 @@ import "@fontsource/outfit/900.css";
         <>
         <!-- Navbar Flotante -->
         <nav
-            class="fixed w-full z-50 transition-all duration-300 py-3 md:py-6"
+            class="fixed w-full z-50 transition-all duration-300"
             id="navbar"
         >
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16 md:h-20">
+                <div class="nav-inner flex items-center justify-between">
                     <div
                         class="flex items-center gap-2 md:gap-3 cursor-pointer group"
                         onclick="window.location.href='/'"
                     >
                         <div
-                            class="w-10 h-10 md:w-12 md:h-12 bg-brand-primary rounded-lg md:rounded-xl flex items-center justify-center text-black font-bold text-lg md:text-2xl shadow-[0_0_20px_rgba(234,179,8,0.3)] group-hover:shadow-[0_0_30px_rgba(234,179,8,0.6)] transition-all"
+                            class="w-9 h-9 md:w-10 md:h-10 bg-brand-primary rounded-lg flex items-center justify-center text-black font-bold text-base md:text-lg shadow-[0_0_16px_rgba(234,179,8,0.25)] group-hover:shadow-[0_0_24px_rgba(234,179,8,0.5)] transition-all"
                         >
                             C
                         </div>
                         <span
-                            class="text-lg md:text-2xl font-bold tracking-tight text-[var(--color-text)]"
+                            class="text-lg md:text-xl font-bold tracking-tight text-[var(--color-text)]"
                             >Click</span
                         >
                     </div>
 
                     <div class="hidden md:block">
-                        <div class="flex items-baseline space-x-10">
+                        <div class="flex items-center space-x-8">
                             <a
                                 href="/#ecosistema"
                                 class="text-sm font-medium text-[var(--color-text)] hover:text-brand-primary transition-colors"
@@ -260,13 +295,13 @@ import "@fontsource/outfit/900.css";
                             >
                             <a
                                 href="/#reclutamiento"
-                                class="bg-[var(--color-text)] text-[var(--color-bg)] px-8 py-3 rounded-full text-sm font-bold hover:bg-brand-primary hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] transition-all transform hover:-translate-y-0.5"
+                                class="bg-[var(--color-text)] text-[var(--color-bg)] px-5 py-2.5 rounded-full text-sm font-bold hover:bg-brand-primary hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] transition-all transform hover:-translate-y-0.5"
                             >
                                 Postúlate Ahora
                             </a>
                             <button
                                 id="theme-toggle"
-                                class="p-2 rounded-full hover:bg-[var(--color-surface)] transition-colors hidden md:flex items-center justify-center w-10 h-10 text-[var(--color-text)]"
+                                class="p-2 rounded-full hover:bg-[var(--color-surface)] transition-colors hidden md:flex items-center justify-center w-9 h-9 text-[var(--color-text)]"
                                 aria-label="Cambiar tema"
                             >
                                 <i
@@ -280,9 +315,9 @@ import "@fontsource/outfit/900.css";
                         <button
                             id="mobile-menu-open"
                             aria-label="Abrir menú"
-                            class="text-[var(--color-text)] hover:text-brand-primary transition-colors p-2"
+                            class="text-[var(--color-text)] hover:text-brand-primary transition-colors p-2 -mr-2"
                         >
-                            <i class="fa-solid fa-bars text-2xl"></i>
+                            <i class="fa-solid fa-bars text-xl"></i>
                         </button>
                     </div>
                 </div>
@@ -496,39 +531,18 @@ import "@fontsource/outfit/900.css";
                 link.addEventListener("click", closeMobileMenu);
             });
 
-            // Navbar Scroll Logic
+            // Navbar Scroll Logic — alto y fondo viven en CSS (.is-scrolled),
+            // aquí solo se conmuta el estado.
             const navbar = document.getElementById("navbar");
-            window.addEventListener("scroll", () => {
-                if (!navbar) return;
-
-                if (window.scrollY > 50) {
-                    navbar.classList.add(
-                        "backdrop-blur-md",
-                        "shadow-lg",
-                        "py-4"
-                    );
-                    navbar.classList.remove("py-6");
-
-                    const theme =
-                        document.documentElement.getAttribute("data-theme");
-                    if (theme === "light") {
-                        navbar.style.backgroundColor = "rgba(255,255,255,0.9)";
-                        navbar.classList.remove("bg-brand-black/90");
-                    } else {
-                        navbar.style.backgroundColor = "rgba(3,3,3,0.9)";
-                        navbar.classList.add("bg-brand-black/90");
-                    }
-                } else {
-                    navbar.classList.remove(
-                        "bg-brand-black/90",
-                        "backdrop-blur-md",
-                        "shadow-lg",
-                        "py-4"
-                    );
-                    navbar.classList.add("py-6");
-                    navbar.style.backgroundColor = "";
-                }
-            });
+            if (navbar) {
+                const syncNavbar = () => {
+                    navbar.classList.toggle("is-scrolled", window.scrollY > 24);
+                };
+                syncNavbar();
+                window.addEventListener("scroll", syncNavbar, {
+                    passive: true,
+                });
+            }
 
             // Theme Toggle Logic
             const themeToggle = document.getElementById("theme-toggle");
