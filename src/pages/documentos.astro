@@ -1039,7 +1039,7 @@ import "cropperjs/dist/cropper.css";
                                     type="file"
                                     required
                                     name="doc_fotocopia_cedula"
-                                    accept=".pdf,image/*"
+                                    accept=".pdf,application/pdf,image/*"
                                     class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
                                 />
                             </label>
@@ -1058,7 +1058,7 @@ import "cropperjs/dist/cropper.css";
                                     type="file"
                                     required
                                     name="doc_certificado_pensiones"
-                                    accept=".pdf,image/*"
+                                    accept=".pdf,application/pdf,image/*"
                                     class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
                                 />
                             </label>
@@ -1071,7 +1071,7 @@ import "cropperjs/dist/cropper.css";
                                     type="file"
                                     required
                                     name="doc_certificado_eps"
-                                    accept=".pdf,image/*"
+                                    accept=".pdf,application/pdf,image/*"
                                     class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
                                 />
                             </label>
@@ -1134,7 +1134,7 @@ import "cropperjs/dist/cropper.css";
                                     type="file"
                                     required
                                     name="doc_antecedentes_policia"
-                                    accept=".pdf,image/*"
+                                    accept=".pdf,application/pdf,image/*"
                                     class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
                                 />
                             </label>
@@ -1147,7 +1147,7 @@ import "cropperjs/dist/cropper.css";
                                     type="file"
                                     required
                                     name="doc_antecedentes_contraloria"
-                                    accept=".pdf,image/*"
+                                    accept=".pdf,application/pdf,image/*"
                                     class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
                                 />
                             </label>
@@ -1160,7 +1160,7 @@ import "cropperjs/dist/cropper.css";
                                     type="file"
                                     required
                                     name="doc_antecedentes_procuraduria"
-                                    accept=".pdf,image/*"
+                                    accept=".pdf,application/pdf,image/*"
                                     class="w-full mt-1 bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-xl px-4 py-3 text-[var(--color-text)] outline-none"
                                 />
                             </label>
@@ -1920,6 +1920,100 @@ import "cropperjs/dist/cropper.css";
             );
         });
     }
+
+    // --- Confirmación visible de cada documento adjunto ---
+    // El input de archivo nativo solo deja el nombre truncado a un lado del
+    // botón ("Scree...er.jpg"), que en un celular no se lee como "quedó
+    // adjunto". La foto sí confirma con un check verde, así que el candidato
+    // concluye que solo esa se subió y escribe a soporte preguntando por las
+    // demás —aunque las seis estén puestas y el envío vaya a funcionar. Aquí
+    // se les da la misma confirmación, y de paso se avisa al instante del
+    // archivo ilegible (0 bytes, típico de Drive/iCloud) y del PDF demasiado
+    // pesado, que antes solo reventaban al final tras llenar todo el wizard.
+    const docFileInputs = Array.from(
+        document.querySelectorAll(
+            '#step-5 input[type="file"]:not(#input-foto-perfil)'
+        )
+    ) as HTMLInputElement[];
+
+    function humanSize(bytes: number): string {
+        if (bytes < 1024) return bytes + " B";
+        if (bytes < 1048576) return Math.round(bytes / 1024) + " KB";
+        return (bytes / 1048576).toFixed(1) + " MB";
+    }
+
+    docFileInputs.forEach((input) => {
+        const status = document.createElement("div");
+        status.className = "hidden";
+        input.insertAdjacentElement("afterend", status);
+
+        // `detail` es el nombre del archivo: va aparte y en menor jerarquía,
+        // porque lo que el candidato necesita ver de un vistazo es el check.
+        const render = (
+            tone: "ok" | "error",
+            icon: string,
+            text: string,
+            detail: string = ""
+        ) => {
+            status.className =
+                "mt-2 text-sm font-medium " +
+                (tone === "ok" ? "text-green-400" : "text-red-400");
+            status.innerHTML = '<i class="fa-solid ' + icon + ' mr-1"></i>';
+            const span = document.createElement("span");
+            span.textContent = text;
+            status.appendChild(span);
+            if (detail) {
+                const sub = document.createElement("div");
+                // El nombre lo pone el usuario: va como texto, nunca como HTML.
+                sub.textContent = detail;
+                sub.className =
+                    "mt-0.5 text-xs font-normal text-[var(--color-text-muted)] break-all";
+                status.appendChild(sub);
+            }
+        };
+
+        input.addEventListener("change", () => {
+            const file = input.files && input.files[0];
+            if (!file) {
+                status.className = "hidden";
+                status.innerHTML = "";
+                return;
+            }
+
+            // El navegador muestra el nombre aunque no haya podido leer el
+            // contenido: lo elegido desde Drive/iCloud suele llegar en 0 bytes.
+            if (file.size === 0) {
+                render(
+                    "error",
+                    "fa-circle-exclamation",
+                    " No se pudo leer este archivo. Si lo tomaste de Drive, iCloud o Fotos, descárgalo primero al dispositivo y súbelo desde ahí."
+                );
+                return;
+            }
+
+            // Las imágenes se comprimen antes de subir, así que el tope solo
+            // hay que anticiparlo cuando el adjunto es un PDF.
+            if (!file.type.startsWith("image/") && file.size > MAX_UPLOAD_BYTES) {
+                render(
+                    "error",
+                    "fa-circle-exclamation",
+                    " Pesa " +
+                        humanSize(file.size) +
+                        " (máximo " +
+                        MAX_UPLOAD_BYTES / 1048576 +
+                        " MB). Adjunta un PDF más liviano."
+                );
+                return;
+            }
+
+            render(
+                "ok",
+                "fa-check-circle",
+                " Adjuntado (" + humanSize(file.size) + ")",
+                file.name
+            );
+        });
+    });
 
     // Persistencia LocalStorage
     if (formEl) {
