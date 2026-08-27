@@ -65,11 +65,19 @@ import Layout from "../../layouts/Layout.astro";
                     <div
                         class="relative rounded-[2.5rem] overflow-hidden border border-[var(--color-border)] shadow-2xl aspect-square lg:aspect-[4/5] xl:aspect-square"
                     >
-                        <img
-                            src="/images/posicionamiento-auxiliares.png"
-                            alt="Posicionamiento Operativo"
-                            class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
-                        />
+                        <picture class="block w-full h-full">
+                            <source
+                                srcset="/images/posicionamiento-auxiliares.webp"
+                                type="image/webp"
+                            />
+                            <img
+                                src="/images/posicionamiento-auxiliares.jpg"
+                                alt="Posicionamiento Operativo"
+                                class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
+                                width="2000" height="1493"
+                                fetchpriority="high" decoding="async"
+                            />
+                        </picture>
                         <!-- Subtle inner gradient for polish -->
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)]/80 via-transparent to-transparent pointer-events-none"
