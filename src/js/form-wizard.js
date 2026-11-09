@@ -361,6 +361,10 @@ export function initFormWizard() {
                                  input.id === 'candidate-phone' ? 'Teléfono/WhatsApp' :
                                  input.id === 'candidate-city' ? 'Ciudad' :
                                  input.id === 'candidate-address' ? 'Dirección' :
+                                 input.id === 'candidate-gender' ? 'Género' :
+                                 input.id === 'candidate-cedula-expedition' ? 'Fecha de expedición de la cédula' :
+                                 input.id === 'candidate-source' ? '¿Dónde nos conociste?' :
+                                 input.id === 'candidate-department' ? 'Departamento' :
                                  input.id === 'candidate-area' ? 'Área de interés' : 'Este campo';
                 
                 showError(input, `${fieldName} es obligatorio`);
@@ -848,6 +852,9 @@ export function initFormWizard() {
                     phone: document.getElementById('candidate-phone').value,
                     city: document.getElementById('candidate-city').value,
                     address: document.getElementById('candidate-address').value,
+                    gender: document.getElementById('candidate-gender').value,
+                    cedulaExpeditionDate: document.getElementById('candidate-cedula-expedition').value,
+                    referralSource: document.getElementById('candidate-source').value,
                     areaInterest: document.getElementById('candidate-area').value,
                     experienceYears: expInput ? expInput.value : '',
                     cvUrl: cvUrl,

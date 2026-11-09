@@ -17,8 +17,18 @@ export const POST = async ({ request }) => {
             areaInterest,
             experienceYears,
             cvUrl,
-            extraDocUrl
+            extraDocUrl,
+            gender,
+            cedulaExpeditionDate,
+            referralSource
         } = data;
+
+        // Campos opcionales en la BD: valores fuera de la lista quedan en null.
+        const GENDERS = ['Femenino', 'Masculino'];
+        const SOURCES = ['Referido', 'Feria de empleo', 'Redes sociales', 'Páginas de empleos', 'WhatsApp y canales de difusión'];
+        const genderValue = GENDERS.includes(gender) ? gender : null;
+        const sourceValue = SOURCES.includes(referralSource) ? referralSource : null;
+        const expeditionValue = /^\d{4}-\d{2}-\d{2}$/.test(cedulaExpeditionDate || '') ? cedulaExpeditionDate : null;
 
         if (!fullName || !email || !cedula) {
             return new Response(JSON.stringify({ error: 'Faltan campos obligatorios' }), {
@@ -28,8 +38,8 @@ export const POST = async ({ request }) => {
         }
 
         await sql`
-            INSERT INTO clicklandingpublic.candidates (full_name, cedula, email, phone, city, address, area_interest, experience_years, cv_url, extra_doc_url)
-            VALUES (${fullName}, ${cedula}, ${email}, ${phone}, ${city}, ${address}, ${areaInterest}, ${experienceYears}, ${cvUrl}, ${extraDocUrl || null})
+            INSERT INTO clicklandingpublic.candidates (full_name, cedula, email, phone, city, address, area_interest, experience_years, cv_url, extra_doc_url, gender, cedula_expedition_date, referral_source)
+            VALUES (${fullName}, ${cedula}, ${email}, ${phone}, ${city}, ${address}, ${areaInterest}, ${experienceYears}, ${cvUrl}, ${extraDocUrl || null}, ${genderValue}, ${expeditionValue}, ${sourceValue})
         `;
 
         return new Response(JSON.stringify({ success: true, message: 'Postulación recibida' }), {
